@@ -111,11 +111,6 @@
   align-items: stretch;
 }
 
-.columns > div div.non-singleton-img.text-only,
-.columns.collapse > div div.non-singleton-img {
-  margin: 0;
-}
-
 .columns.constrain-width > div > div.columns-img-col {
   margin: 0 1rem;
 }

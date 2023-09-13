@@ -68,8 +68,13 @@
     line-height: 2rem;
     color: var(--white);
     font-family: var(--body-font-family);
-    margin: 0;
+    margin: 2rem auto 1rem;
 }
+
+.hero-banner-text-wrapper p {
+    margin: 1rem auto;
+}
+
 
 .hero-banner .hero-banner-button-container span {
     font-size: var(--heading-font-size-xxs);
