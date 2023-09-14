@@ -1,8 +1,8 @@
 {
-  "name": "@sunstar/sunstar-engineering",
+  "name": "@sunstar/sunstar",
   "private": true,
   "version": "1.0.0",
-  "description": "Sunstar Engineering Website",
+  "description": "Sunstar Website",
   "scripts": {
     "test": "wtr \"./test/**/*.test.js\" --node-resolve --port=2000 --coverage",
     "test:watch": "npm test -- --watch",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hlxsites/sunstar-engineering.git"
+    "url": "git+https://github.com/hlxsites/sunstar.git"
   },
   "author": "Adobe",
   "license": "Apache License 2.0",
   "bugs": {
     "url": "https://github.com/adobe/helix-project-boilerplate/issues"
   },
-  "homepage": "https://www.sunstar-engineering.com",
+  "homepage": "https://www.sunstar.com",
   "devDependencies": {
     "@babel/core": "7.22.11",
     "@babel/eslint-parser": "7.22.11",
