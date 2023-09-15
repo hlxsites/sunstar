@@ -404,10 +404,10 @@ export function getSearchWidget(placeholders, initialVal, searchbox, lang = getL
 */
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
-    'sunstar-engineering.com': 'live',
-    'www.sunstar-engineering.com': 'live',
-    'main--sunstar-engineering--hlxsites.hlx.page': 'preview',
-    'main--sunstar-engineering--hlxsites.hlx.live': 'live',
+    'sunstar.com': 'live',
+    'www.sunstar.com': 'live',
+    'main--sunstar--hlxsites.hlx.page': 'preview',
+    'main--sunstar--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }

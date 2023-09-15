@@ -13,4 +13,4 @@ Disallow: /**/thankyou
 Disallow: /search
 Disallow: /**/search
 
-Sitemap: https://www.sunstar-engineering.com/sitemap.xml
+Sitemap: https://www.sunstar.com/sitemap.xml
