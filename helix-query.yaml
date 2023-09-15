@@ -41,3 +41,13 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      topic:
+        select: head > meta[name="topic"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[property="article:tag"]
+        values: |
+          attribute(el, 'content')
