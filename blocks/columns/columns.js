@@ -65,7 +65,7 @@ export default function decorate(block) {
           [...anchors].forEach((a) => {
             a.title = a.title || a.textContent;
             const up = a.parentElement;
-            if (!a.querySelector('img')) {
+            if (!a.querySelector('img') && up.tagName !== 'LI') {
               if (up.tagName === 'P') {
                 up.classList.add('button-container');
               }

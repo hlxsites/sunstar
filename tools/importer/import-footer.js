@@ -21,85 +21,114 @@ const createMetadata = (main, document) => {
   return meta;
 };
 
-function createSectionMetadata(cfg, doc) {
+function createSectionMetadata(cfg, document) {
   const cells = [['Section Metadata']];
   Object.keys(cfg).forEach((key) => {
     cells.push([key, cfg[key]]);
   });
-  return WebImporter.DOMUtils.createTable(cells, doc);
+  return WebImporter.DOMUtils.createTable(cells, document);
 }
 
-function addDetailPageNav(document) {
-  const detailPageNav = document.querySelector('.mega-footer-container');
-  detailPageNav.querySelectorAll('a').forEach((a) => {
-    a.href = 'https://main--sunstar-engineering--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
-  });
-  detailPageNav.after(document.createElement('hr'));
-  detailPageNav.after(createSectionMetadata({ Style: 'Primary' }, document));
+function changeLinks(document) {
+  const detailPageNav = document.querySelector('.ss-footer');
+  if (detailPageNav) {
+    detailPageNav.querySelectorAll('a').forEach((a) => {
+      if (!a.href.includes('sunstar-engineering') && !a.href.includes('sunstarfoundation')) {
+        a.href = 'https://main--sunstar--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
+      }
+    });
+  }
 }
 
-function addCategoryNav(document) {
-  const ul = document.createElement('ul');
-  document.querySelectorAll('.footer-nav-links > a').forEach((a) => {
-    a.href = 'https://main--sunstar-engineering--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
-    const li = document.createElement('li');
-    li.append(a);
-    ul.append(li);
-  });
-  const navLinks = document.querySelector('.footer-nav-links');
-  navLinks.after(document.createElement('hr'));
-  navLinks.after(createSectionMetadata({ Style: 'Nav-Links' }, document));
-  navLinks.replaceWith(ul);
-  document.querySelector('.footer-mid.mobile-only').remove();
-}
+function addFooterTop(document) {
+  const footerTop = document.querySelector('.footer-top');
 
-function addLogoAndSocial(document) {
-  const logoContent = document.querySelector('.footer-mid.desktop-only');
-  const sunstarGroupLink = logoContent.querySelector('a');
-  sunstarGroupLink.textContent += ' :link-white:';
-  logoContent.after(document.createElement('hr'));
-  logoContent.after(createSectionMetadata({ Style: 'Groups' }, document));
+  if (footerTop) {
+    const topDiv = document.createElement('div');
+    const footerTopNavContainers = footerTop.querySelectorAll('.nav-container');
 
-  const socialContent = document.querySelector('.nav-container.social');
-  const h6 = socialContent.querySelector('h6');
-  const title = document.createElement('h1');
-  title.textContent = h6.textContent;
-  h6.replaceWith(title);
-  socialContent.querySelectorAll('nav > a').forEach((a) => {
-    const div = document.createElement('div');
-    a.textContent = a.textContent === 'Linkedin' ? `:linkedin: ${a.textContent}` : `:youtube: ${a.textContent}`;
-    div.append(a);
-    socialContent.append(div);
-  });
-  socialContent.after(document.createElement('hr'));
-  socialContent.after(createSectionMetadata({ Style: 'Social' }, document));
-}
+    if (footerTopNavContainers) {
+      Array.from(footerTopNavContainers).forEach((navContainer) => {
+        [...navContainer.children].forEach((navChild) => {
+          if ([...navChild.classList].indexOf('menu-title') > -1 || [...navChild.classList].indexOf('menu-title-two') > -1) {
+            const h5 = document.createElement('h5');
+            h5.innerHTML = navChild.innerHTML;
+            topDiv.append(h5);
+          } else if (navChild.tagName === 'NAV') {
+            const innerNavs = navChild.querySelectorAll('nav');
 
-function addCopyright(document) {
-  document.querySelectorAll('.footer-nav-bottom > nav > a').forEach((a) => {
-    if (a.href === 'https://sunstar.integrityline.com/frontpage') {
-      a.textContent += ' :link-white:';
-      return;
+            if (innerNavs.length !== 0) {
+              [...innerNavs].forEach((innerNav) => {
+                const ul = document.createElement('ul');
+
+                [...innerNav.children].forEach((innerNavChild) => {
+                  if (innerNavChild.tagName === 'H6') {
+                    const h6 = document.createElement('h6');
+                    h6.innerHTML = innerNavChild.innerHTML;
+                    topDiv.append(h6);
+                  } else {
+                    const li = document.createElement('li');
+                    li.append(innerNavChild);
+                    ul.append(li);
+                  }
+                });
+
+                topDiv.append(ul);
+              });
+            } else {
+              const ul = document.createElement('ul');
+              const anchors = navChild.querySelectorAll('a');
+
+              if (anchors) {
+                anchors.forEach((a) => {
+                  const li = document.createElement('li');
+                  li.append(a);
+                  ul.append(li);
+                });
+
+                topDiv.append(ul);
+              }
+            }
+          }
+        });
+      });
     }
-    a.href = 'https://main--sunstar-engineering--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
-  });
-  const copyRight = document.querySelector('.footer-nav-bottom');
-  copyRight.after(document.createElement('hr'));
-  copyRight.after(createSectionMetadata({ Style: 'Copyright' }, document));
+
+    footerTop.replaceWith(topDiv);
+    topDiv.after(document.createElement('hr'));
+    topDiv.after(createSectionMetadata({ Style: 'Footer Top' }, document));
+  }
 }
 
-function reorderContents(document) {
-  const navLinks = document.querySelector('.footer-mega-menu-left-side > .footer-nav-links');
-  const socialContent = document.querySelector('.nav-container.social');
-  navLinks.after(socialContent);
+function addFooterMiddle(document) {
+  const footerMid = document.querySelector('.footer-mid');
+  const midDiv = document.createElement('div');
+
+  if (footerMid) {
+    midDiv.innerHTML = footerMid.innerHTML;
+    footerMid.replaceWith(midDiv);
+    midDiv.after(document.createElement('hr'));
+    midDiv.after(createSectionMetadata({ Style: 'Footer Middle' }, document));
+  }
+}
+
+function addFooterBottom(document) {
+  const footerBottom = document.querySelector('.footer-nav-bottom');
+  const bottomDiv = document.createElement('div');
+
+  if (footerBottom) {
+    bottomDiv.innerHTML = footerBottom.innerHTML;
+    footerBottom.replaceWith(bottomDiv);
+    bottomDiv.after(document.createElement('hr'));
+    bottomDiv.after(createSectionMetadata({ Style: 'Footer Bottom' }, document));
+  }
 }
 
 function customImportLogic(document) {
-  reorderContents(document);
-  addDetailPageNav(document);
-  addCategoryNav(document);
-  addLogoAndSocial(document);
-  addCopyright(document);
+  changeLinks(document);
+  addFooterTop(document);
+  addFooterMiddle(document);
+  addFooterBottom(document);
 }
 
 export default {

@@ -3,7 +3,7 @@ Please always provide the [GitHub issue(s)](../issues) your PR is for, as well a
 Fix #<gh-issue-id>
 
 Test URLs:
-- Before: https://main--sunstar-engineering--hlxsites.hlx.page/
-- After: https://<branch>--sunstar-engineering--hlxsites.hlx.page/
+- Before: https://main--sunstar--hlxsites.hlx.page/
+- After: https://<branch>--sunstar--hlxsites.hlx.page/
 
-- [ ]  If you are adding a new block or a variation to an existing block, has it been added in the [block-inventory](https://adobe.sharepoint.com/:w:/r/sites/HelixProjects/Shared%20Documents/sites/sunstar/sunstar-engineering/_drafts/block-inventory.docx?d=w0e883b961c9f4401bae37da23ace83ec&csf=1&web=1&e=KcfAim) ?
+- [ ]  If you are adding a new block or a variation to an existing block, has it been added in the [block-library](https://adobe.sharepoint.com/:x:/r/sites/HelixProjects/Shared%20Documents/sites/sunstar/sunstar/sidekick/library.xlsx?d=w7f8a415fe192444caa87806b565bb62d&csf=1&web=1&e=oJWCS0) ?
