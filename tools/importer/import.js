@@ -270,8 +270,9 @@ function removeCookiesBanner(document) {
  * @param {Node} targetNode The node to use for inlining the images
  */
 function convertBackgroundImgsToForegroundImgs(sourceNode, targetNode = sourceNode) {
-  const bgImgs = sourceNode.querySelectorAll('.background-image, .mobile-content, .bg-image');
-
+  const bgImgs = sourceNode.querySelectorAll('.background-image, .mobile-content');
+  // workaround for inability of importer to handle styles
+  // with whitespace in the url
   [...bgImgs].forEach((bgImg) => {
     WebImporter.DOMUtils.replaceBackgroundByImg(bgImg, targetNode);
   });
@@ -476,75 +477,6 @@ function changeNewsSocial(document) {
   }
 }
 
-function eliminateCommonBlocksFromCareerTestimonials(doc) {
-  const md = doc.querySelector('section.make-difference');
-  if (md) {
-    const table = WebImporter.DOMUtils.createTable([['career-apply']], doc);
-    md.replaceWith(table);
-  }
-
-  const mp = doc.querySelector('section.meet-people');
-  if (mp) {
-    const table = WebImporter.DOMUtils.createTable([['career-testimonials']], doc);
-    mp.replaceWith(table);
-  }
-}
-
-function handleCareerTestimonials(doc) {
-  const heroSect = doc.querySelector('section.hero-three');
-
-  const cells = [['career-hero']];
-  if (heroSect) {
-    const nameSect = heroSect.querySelector('.hero-card');
-    if (nameSect) {
-      const nameEl = nameSect.querySelector('h6');
-      if (nameEl) {
-        cells.push(['Name', nameEl.textContent]);
-      }
-      const titleEl = nameSect.querySelector('h6 + p');
-      if (titleEl) {
-        cells.push(['Title', titleEl.textContent]);
-      }
-    }
-
-    const careerInfo = heroSect.querySelector('.hero-message');
-    if (careerInfo) {
-      const quoteEl = careerInfo.querySelector('blockquote');
-      if (quoteEl) {
-        cells.push(['Quote', quoteEl.textContent]);
-      }
-      const cbEl = careerInfo.querySelector('h6 + p');
-      if (cbEl) {
-        cells.push(['Career-background', cbEl.textContent]);
-      }
-    }
-
-    const images = heroSect.querySelectorAll('img');
-    images.forEach((i) => {
-      const style = i.getAttribute('style');
-      if (style != null && style.includes('background-image: none;')) {
-        cells.push(['Photo', i]);
-      } else {
-        cells.push(['Hero-Background', i]);
-      }
-    });
-  }
-
-  const careerHero = WebImporter.DOMUtils.createTable(cells, doc);
-  heroSect.replaceWith(careerHero);
-
-  eliminateCommonBlocksFromCareerTestimonials(doc);
-
-  doc.querySelectorAll('figcaption').forEach((fc) => {
-    const txt = fc.textContent;
-    if (txt) {
-      const em = doc.createElement('em');
-      em.textContent = txt;
-      fc.replaceWith(em);
-    }
-  });
-}
-
 function getFomattedDate(newsDate) {
   const date = new Date(newsDate);
   const year = date.getFullYear();
@@ -601,8 +533,6 @@ function customImportLogic(doc) {
   convertBackgroundImgsToForegroundImgs(doc);
   changeNewsSocial(doc);
   addNewsBanner(doc);
-
-  handleCareerTestimonials(doc);
 }
 
 export default {
