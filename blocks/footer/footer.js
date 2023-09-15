@@ -13,25 +13,25 @@ import {
 function decorateFooterTop(block) {
   const footerTop = block.querySelector('.footer-top');
   const tempDiv = footerTop.querySelector('.section-container>div');
-  const childs = [...footerTop.querySelector('.section-container>div').children];
+  const children = [...footerTop.querySelector('.section-container>div').children];
   let index = 0;
   tempDiv.innerHTML = '';
 
-  while (index < childs.length) {
+  while (index < children.length) {
     const topItem = document.createElement('div');
     topItem.classList.add('footer-top-item');
-    topItem.appendChild(childs[index]);
+    topItem.appendChild(children[index]);
     index += 1;
 
-    while (index < childs.length) {
-      if (childs[index].tagName === 'H5') {
-        if (!childs[index + 1] || (childs[index - 1].tagName === 'H5' && childs[index + 1].tagName !== 'UL')) {
-          topItem.appendChild(childs[index]);
+    while (index < children.length) {
+      if (children[index].tagName === 'H5') {
+        if (!children[index + 1] || (children[index - 1].tagName === 'H5' && children[index + 1].tagName !== 'UL')) {
+          topItem.appendChild(children[index]);
         } else {
           break;
         }
       } else {
-        topItem.appendChild(childs[index]);
+        topItem.appendChild(children[index]);
       }
       index += 1;
     }
