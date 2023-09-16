@@ -24,5 +24,4 @@ for (const index of process.env.TEST_PATHS_INDEXES.split(' ')) {
     return url.pathname
   }));
 }
-
 writeFileSync('./generated-test-paths.txt', paths.join("\n"));
