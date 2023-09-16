@@ -33,7 +33,7 @@ function changeLinks(document) {
   const detailPageNav = document.querySelector('.ss-footer');
   if (detailPageNav) {
     detailPageNav.querySelectorAll('a').forEach((a) => {
-      if (!a.href.includes('sunstar') && !a.href.includes('sunstarfoundation')) {
+      if (!a.href.includes('sunstar-engineering') && !a.href.includes('sunstarfoundation')) {
         a.href = 'https://main--sunstar--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
       }
     });
