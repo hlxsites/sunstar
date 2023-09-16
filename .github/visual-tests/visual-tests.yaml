@@ -5,10 +5,10 @@ on:
     types: [ opened, synchronize ]
 
 env:
-  TEST_PATHS: "/ /trucks /trucks/vnl/ /find-a-dealer/"
+  TEST_PATHS: "/"
   TEST_PATHS_INDEXES: "/block-library/library.json "
-  DOMAIN_MAIN: "main--vg-volvotrucks-us--hlxsites.hlx.live"
-  DOMAIN_BRANCH: "${{github.head_ref}}--vg-volvotrucks-us--hlxsites.hlx.live"
+  DOMAIN_MAIN: "main--sunstar--hlxsites.hlx.page"
+  DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.live"
 
 jobs:
   compare-pages:
