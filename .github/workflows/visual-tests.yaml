@@ -1,0 +1,53 @@
+name: Visual Tests
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+env:
+  TEST_PATHS: "/"
+  TEST_PATHS_INDEXES: "/sidekick/library.json "
+  DOMAIN_MAIN: "main--sunstar--hlxsites.hlx.page"
+  DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.live"
+
+jobs:
+  compare-pages:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .github/visual-tests
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate path list
+        run: |
+          npm run collect-urls
+          cat generated-test-paths.txt
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        id: run-playwright-tests
+        run: ./run-and-create-github-summary.bash
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          path: .github/visual-tests/screenshots/*
+          name: screenshots
+
+      - name: Comment on Pull Request
+        if: env.SUMMARY != ''
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.number }}
+          body: ${{ env.SUMMARY }}
+#        edit-mode: replace
+#        comment-id: ${{ steps.find-comment.outputs.comment-id }}
