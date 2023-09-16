@@ -4,7 +4,7 @@
 #export DOMAIN_BRANCH="update-from-boilerplate--vg-macktrucks-com--hlxsites.hlx.page"
 
 export DOMAIN_MAIN="main--sunstar--hlxsites.hlx.page"
-export DOMAIN_BRANCH="index--sunstar--hlxsites.hlx.page"
+export DOMAIN_BRANCH="visual-tests--sunstar--hlxsites.hlx.page"
 
 export TEST_PATHS="/"
 

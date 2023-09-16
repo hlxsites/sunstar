@@ -19,7 +19,7 @@ for (const index of process.env.TEST_PATHS_INDEXES.split(' ')) {
   console.log(`fetching from ${indexUrl}`);
   const response = await fetch(indexUrl)
   const json = await response.json();
-  paths.push(...json.data.map((item) => {
+  paths.push(...json.blocks.data.map((item) => {
     const url = new URL(item.path);
     return url.pathname
   }));
