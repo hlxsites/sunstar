@@ -151,7 +151,7 @@ main .section.carousel-container {
   .carousel {
     display: flex;
     flex-direction: column;
-    height: 28.125rem
+    height: 38.125rem
   }
 
   .carousel .icon-right {
