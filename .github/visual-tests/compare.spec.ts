@@ -50,7 +50,10 @@ async function loadAndScreenshot(page: Page, url: string, testPath: string, suff
   // load page and wait for network to be idle
   await page.goto(url, { waitUntil: 'networkidle' });
   // just to be sure, wait until footer is loaded
-  // await page.locator('footer div.footer.block[data-block-status="loaded"]').waitFor();
+  if(!url.includes('/sidekick/blocks')) {
+    await page.locator('footer div.footer.block[data-block-status="loaded"]').waitFor();
+  }
+
   // to be extra sure, also wait until all images are loaded
   await allImagesLoaded(page);
 

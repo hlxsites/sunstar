@@ -8,7 +8,7 @@ env:
   TEST_PATHS: "/"
   TEST_PATHS_INDEXES: "/sidekick/library.json "
   DOMAIN_MAIN: "main--sunstar--hlxsites.hlx.page"
-  DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.live"
+  DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.page"
 
 jobs:
   compare-pages:
