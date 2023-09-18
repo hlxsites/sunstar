@@ -1,3 +1,4 @@
+import decoratePictures from './assets.js';
 import {
   sampleRUM,
   buildBlock,
@@ -177,6 +178,7 @@ export function getWindowSize() {
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  decoratePictures(main);
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateAnchors(main);
