@@ -406,6 +406,14 @@ main img {
 
 /* START Section Styles START */
 
+main .section .section-container h6 {
+  margin-bottom: 0.5rem;
+}
+
+main .section .section-container p {
+  padding-bottom: 3rem;
+}
+
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -678,6 +686,18 @@ main .section.thank-you p {
   font-weight: var(--font-weight-medium);
 }
 
+main .section.structure {
+  margin: 3rem 0 7.5rem;
+  padding: 0 1rem;
+  max-width: 45rem;
+}
+
+main .section.structure .section-container h1 {
+  font-size: 28px;
+  line-height: 1.3em;
+  margin-bottom: 3rem;
+}
+
 /* section - light-blue */
 main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
@@ -888,4 +908,16 @@ main .section.light-blue {
     margin-left: auto;
     max-width: 1200px
   }
+
+  main .section.structure{
+    padding: 0;
+    margin: 3rem auto 7.5rem;
+  }
+
+  main .section.structure .section-container h1 {
+    font-size: var(--heading-font-size-mxl);
+    line-height: 1.3em;
+    margin-bottom: 3rem;
+  }
+
 }
