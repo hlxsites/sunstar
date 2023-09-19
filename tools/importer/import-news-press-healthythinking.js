@@ -12,13 +12,13 @@
 /* global WebImporter */
 /* eslint-disable no-console, class-methods-use-this */
 
-const createSectionMetadata = (cfg, document) => {
-  const cells = [['Section Metadata']];
-  Object.keys(cfg).forEach((key) => {
-    cells.push([key, cfg[key]]);
-  });
-  return WebImporter.DOMUtils.createTable(cells, document);
-};
+// const createSectionMetadata = (cfg, document) => {
+//   const cells = [['Section Metadata']];
+//   Object.keys(cfg).forEach((key) => {
+//     cells.push([key, cfg[key]]);
+//   });
+//   return WebImporter.DOMUtils.createTable(cells, document);
+// };
 
 const createMetadata = (main, document, params) => {
   const meta = {};
@@ -59,7 +59,7 @@ const createMetadata = (main, document, params) => {
   return meta;
 };
 
-function extractEmbed(document) {
+const extractEmbed = (document) => {
   const embedItems = document.querySelectorAll('.wp-block-embed');
 
   if (embedItems && embedItems.length) {
@@ -74,15 +74,13 @@ function extractEmbed(document) {
         cells.push([anchor]);
 
         const table = WebImporter.DOMUtils.createTable(cells, document);
-        embedItem.before(document.createElement('hr'));
-        embedItem.after(document.createElement('hr'));
         embedItem.replaceWith(table);
       }
     });
   }
-}
+};
 
-function addBreadCrumb(document) {
+const addBreadCrumb = (document) => {
   const breadcrumb = document.querySelector('.section-breadcrumb');
 
   if (breadcrumb) {
@@ -91,13 +89,13 @@ function addBreadCrumb(document) {
     breadcrumb.after(document.createElement('hr'));
     breadcrumb.replaceWith(table);
   }
-}
+};
 
 /**
 * Creates a cards block from a section
 * @param {HTMLDocument} document The document
 */
-function createCardsBlockFromSection(document) {
+const createCardsBlockFromSection = (document) => {
   document.querySelectorAll('div.section-container').forEach((section) => {
     const block = [['Cards']];
     const healthifyThinkingCard = section.parentElement.className.includes('related-article');
@@ -140,13 +138,13 @@ function createCardsBlockFromSection(document) {
       section.replaceWith(table);
     }
   });
-}
+};
 
 /**
 * Creates a Feature block from a section
 * @param {HTMLDocument} document The document
 */
-function createFeatureBlockFromSection(document) {
+const createFeatureBlockFromSection = (document) => {
   document.querySelectorAll('div.section-container').forEach((section) => {
     const block = [['Feature']];
     // create a cards block from the section
@@ -160,9 +158,9 @@ function createFeatureBlockFromSection(document) {
       section.replaceWith(table);
     }
   });
-}
+};
 
-function addSocialBlock(document) {
+const addSocialBlock = (document) => {
   const socialShare = document.querySelector('.ss-share');
   if (socialShare) {
     const socialLinks = socialShare.querySelectorAll('a');
@@ -184,13 +182,13 @@ function addSocialBlock(document) {
       socialShare.replaceWith(table);
     }
   }
-}
+};
 
 /**
  * Prefixes relative links with the target domain
  * @param {HTMLDocument} document The document
  */
-function fixRelativeLinks(document) {
+const fixRelativeLinks = (document) => {
   document.querySelectorAll('a').forEach((a) => {
     const targetDomain = 'https://main--sunstar--hlxsites.hlx.page';
     // if the link is relative, make it absolute
@@ -214,9 +212,9 @@ function fixRelativeLinks(document) {
       a.href = targetDomain + link;
     }
   });
-}
+};
 
-function addTagsBlock(document) {
+const addTagsBlock = (document) => {
   const section = document.querySelector('.ss-tag-container');
 
   if (section) {
@@ -231,23 +229,36 @@ function addTagsBlock(document) {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
-      section.before(document.createElement('hr'));
       section.before(tagLabel);
-      section.after(createSectionMetadata({ Style: 'Narrow' }, document));
       section.replaceWith(table);
     }
   }
-}
+};
 
-function customImportLogic(document) {
+const addQuoteBlock = (document) => {
+  const blockQuotes = document.querySelectorAll('blockquote.wp-block-quote');
+
+  if (blockQuotes && blockQuotes.length) {
+    [...blockQuotes].forEach((quote) => {
+      const cells = [['Quote']];
+      cells.push([quote.querySelector('p').textContent]);
+
+      const table = WebImporter.DOMUtils.createTable(cells, document);
+      quote.replaceWith(table);
+    });
+  }
+};
+
+const customImportLogic = (document) => {
   addBreadCrumb(document);
   addTagsBlock(document);
   createCardsBlockFromSection(document);
   createFeatureBlockFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
+  addQuoteBlock(document);
   fixRelativeLinks(document);
-}
+};
 
 export default {
   /**
