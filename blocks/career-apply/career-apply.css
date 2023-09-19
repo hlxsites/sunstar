@@ -1,0 +1,73 @@
+.career-apply-wrapper {
+    background-color: var(--primary);
+}
+
+.career-apply {
+    color: var(--white);
+    text-align: left;
+    max-width: unset;
+    padding-inline: 16px;
+    padding-block: 48px;
+}
+
+.career-apply h2 {
+    color: var(--white);
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+
+.career-apply p {
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+.career-apply .button-container {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.career-apply a {
+    margin: 8px 0;
+}
+
+.career-apply a.button.primary.linkedin {
+    background-color: var(--primary);
+    border: 1px solid white;
+    padding-left: 40px;
+}
+
+.career-apply span.icon-linkedin {
+    margin-left: 10px;
+    margin-right: 16px;
+    height: 32px;
+    width: 34px;
+}
+
+.career-apply span.icon-linkedin svg {
+    /* This is needed as otherwise the icon is shown twice */
+    display: none;
+}
+
+@media (min-width: 62rem) {
+    .career-apply {
+        max-width: 720px;
+        text-align: center;
+        padding-block: 80px;
+    }
+
+    .career-apply h2 {
+        font-size: var(--heading-font-size-mxl);
+    }
+
+    .career-apply p {
+        margin-bottom: 50px;
+    }
+
+    .career-apply .button-container {
+        flex-direction: row;
+    }
+
+    .career-apply a {
+        margin: 0 8px;
+    }
+}
