@@ -1,14 +1,39 @@
+/*
+ * Copyright 2023 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
 main .hero-horizontal-tabs-wrapper {
   background-color: var(--primary);
+}
+
+main .hero-horiz-tabs-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 6rem;
+}
+
+main .hero-horiz-tabs-nav {
+  margin-left: 1rem;
 }
 
 main .hero-horizontal-tabs.block {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5rem;
 }
 
-main .hero-horiz-tabs-panel {
-  position: relative;
+main div.tab-item.hidden {
+  display: none;
 }
 
 main .hero-horiz-tabs-text {
@@ -48,6 +73,10 @@ main .hero-horiz-tabs-img picture {
   height: 240px;
 }
 
+main .hero-horizontal-tabs.block.no-image {
+  padding-top: 25%;
+}
+
 main .hero-horiz-tabs-img picture > img {
   object-fit: cover;
   object-position: center;
@@ -55,32 +84,33 @@ main .hero-horiz-tabs-img picture > img {
   min-width: 100%;
 }
 
-main .hero-horizontal-tabs nav {
-  position: absolute;
-  bottom: 0;
-  left: 1rem;
+main .hero-horizontal-tabs nav ul {
+  list-style: none;
   display: flex;
+  align-items: flex-end;
 }
 
-main .hero-horizontal-tabs nav a {
+main .hero-horizontal-tabs nav button {
   background-color: var(--transparent-blue-light-color);
   padding: 11px 16px;
-  color: var(--link-color);
+  color: var(--light-black);
   border-left: 1px solid #d9dfe2;
   font-size: var(--body-font-size-s);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
+  border-radius: 0;
 }
 
-main .hero-horizontal-tabs nav a:hover {
+main .hero-horizontal-tabs nav button:hover {
   text-decoration: none;
   background-color: white;
   color: var(--primary);
 }
 
-main .hero-horizontal-tabs nav a.current {
+main .hero-horizontal-tabs nav button.current {
   background-color: white;
   color: var(--primary);
 }
+
 
 @media (min-width:62rem) {
   main .hero-horizontal-tabs.block {
@@ -92,6 +122,10 @@ main .hero-horizontal-tabs nav a.current {
     padding-top: 66px;
     margin-left: 0;
     min-width: 436px;
+  }
+
+  main .hero-horiz-tabs-nav {
+    margin-left: 0;
   }
 
   main .hero-horiz-tabs-text > h6 {
@@ -109,14 +143,19 @@ main .hero-horizontal-tabs nav a.current {
 
   main .hero-horizontal-tabs nav {
     position: absolute;
-    bottom: 0;
     left: 0;
+    bottom: 0;
   }
 
-  main .hero-horizontal-tabs nav a {
+  main .hero-horizontal-tabs nav button {
     font-size: var(--body-font-size-l);
     font-weight: var(--font-weight-regular);
     padding: 16px 32px 18px;
+  }
+
+  main .hero-horizontal-tabs.block.no-image {
+    height: 400px;
+    padding-top: 0;
   }
 }
 
@@ -147,5 +186,10 @@ main .hero-horizontal-tabs nav a.current {
   main .hero-horiz-tabs-img picture {
     width: 897px;
     height: 520px;
+  }
+
+  main .hero-horizontal-tabs.block.no-image {
+    height: 520px;
+    padding-top: 0;
   }
 }

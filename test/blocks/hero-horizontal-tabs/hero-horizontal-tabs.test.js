@@ -27,11 +27,7 @@ describe('Hero Horizontal Tabs', () => {
   it('Render Tabs', async () => {
     const block = document.querySelector('.hero-horizontal-tabs');
 
-    const loc = {
-      href: `${window.location.origin}/global-network/the-americas`,
-    };
-
-    await scripts.default(block, loc);
+    await scripts.default(block);
 
     expect(block.children.length).to.equals(2);
     expect(['hero-horiz-tabs-panel']).to.deep.equal([...block.children[0].classList]);
@@ -39,15 +35,13 @@ describe('Hero Horizontal Tabs', () => {
     expect(['hero-horiz-tabs-text']).to.deep.equal([...block.children[0].children[0].classList]);
     const nav = block.children[0].children[1];
     expect(nav.tagName).to.equal('NAV');
-    expect(nav.children.length).to.equal(3);
-    const a0 = nav.children[0];
-    expect(a0.href.endsWith('/global-network/the-americas/')).to.be.true;
-    expect(a0.innerText).to.equal('The Americas');
-    expect([...a0.classList]).to.include('current');
-    expect(nav.children[1].href.endsWith('/global-network/asia/')).to.be.true;
-    expect([...nav.children[1].classList]).to.not.include('current');
-    expect(nav.children[2].href.endsWith('/global-network/europe/')).to.be.true;
-    expect([...nav.children[2].classList]).to.not.include('current');
+    const tabs = [...nav.querySelectorAll('li')];
+    expect(tabs.length).to.equal(3);
+
+    expect(tabs[0].innerText).to.equal('The Americas');
+    expect([...tabs[0].classList]).to.include('active');
+    expect([...tabs[1].classList]).to.not.include('active');
+    expect([...tabs[2].classList]).to.not.include('active');
 
     expect(['hero-horiz-tabs-img']).to.deep.equal([...block.children[1].classList]);
   });
@@ -55,21 +49,17 @@ describe('Hero Horizontal Tabs', () => {
   it('Render Tabs2', async () => {
     const block = document.querySelector('.hero-horizontal-tabs');
 
-    const loc = {
-      href: `${window.location.origin}/global-network/asia/`,
-    };
-
-    await scripts.default(block, loc);
+    await scripts.default(block);
 
     const nav = block.children[0].children[1];
     expect(nav.tagName).to.equal('NAV');
-    expect(nav.children.length).to.equal(3);
-    expect(nav.children[0].href.endsWith('/global-network/the-americas/')).to.be.true;
-    expect([...nav.children[0].classList]).to.not.include('current');
-    expect(nav.children[1].href.endsWith('/global-network/asia/')).to.be.true;
-    expect([...nav.children[1].classList]).to.include('current');
-    expect(nav.children[2].href.endsWith('/global-network/europe/')).to.be.true;
-    expect([...nav.children[2].classList]).to.not.include('current');
+
+    const tabs = [...nav.querySelectorAll('li')];
+    expect(tabs.length).to.equal(3);
+
+    expect([...tabs[0].classList]).to.include('active');
+    expect([...tabs[1].classList]).to.not.include('active');
+    expect([...tabs[2].classList]).to.not.include('active');
 
     expect(['hero-horiz-tabs-img']).to.deep.equal([...block.children[1].classList]);
   });

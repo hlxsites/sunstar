@@ -10,3 +10,10 @@
   left: 0.3rem;
   top: 0.05rem;
 }
+
+.link.block.arrow a::after {
+  content: url("../../icons/angle-right-blue.svg");
+  position:relative;
+  left: 0.3rem;
+  top: 0.5rem;
+}
