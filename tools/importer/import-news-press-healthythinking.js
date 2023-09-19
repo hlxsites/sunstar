@@ -12,6 +12,14 @@
 /* global WebImporter */
 /* eslint-disable no-console, class-methods-use-this */
 
+const createSectionMetadata = (cfg, document) => {
+  const cells = [['Section Metadata']];
+  Object.keys(cfg).forEach((key) => {
+    cells.push([key, cfg[key]]);
+  });
+  return WebImporter.DOMUtils.createTable(cells, document);
+};
+
 const createMetadata = (main, document, params) => {
   const meta = {};
 
@@ -23,6 +31,13 @@ const createMetadata = (main, document, params) => {
   const desc = document.querySelector('[property="og:description"]');
   if (desc) {
     meta.Description = desc.content;
+  }
+
+  const img = document.querySelector('[property="og:image"]');
+  if (img && img.content) {
+    const el = document.createElement('img');
+    el.src = img.content;
+    meta.Image = el;
   }
 
   const breadcrumb = document.querySelector('.section-breadcrumb');
@@ -67,14 +82,13 @@ function extractEmbed(document) {
   }
 }
 
-function addBreadCrumb(doc) {
-  const breadcrumb = doc.querySelector('.section-breadcrumb');
+function addBreadCrumb(document) {
+  const breadcrumb = document.querySelector('.section-breadcrumb');
 
   if (breadcrumb) {
-    // Not removing breadcrumb section from here because we need to extract breadcrumb title.
     const cells = [['Breadcrumb']];
-    const table = WebImporter.DOMUtils.createTable(cells, doc);
-    breadcrumb.after(doc.createElement('hr'));
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    breadcrumb.after(document.createElement('hr'));
     breadcrumb.replaceWith(table);
   }
 }
@@ -86,49 +100,7 @@ function addBreadCrumb(doc) {
 function createCardsBlockFromSection(document) {
   document.querySelectorAll('div.section-container').forEach((section) => {
     const block = [['Cards']];
-    // create a cards block from the section
-    const newsPressCard = section.parentElement.className.includes('news-featured');
     const healthifyThinkingCard = section.parentElement.className.includes('related-article');
-
-    if (newsPressCard) {
-      const cards = section.querySelectorAll('.card-slide');
-      Array.from(cards).forEach((card) => {
-        const newDiv = document.createElement('div');
-        const h6 = card.querySelector('h6');
-        if (h6) {
-          newDiv.appendChild(h6);
-        }
-
-        const p = card.querySelector('p');
-        if (p) {
-          newDiv.appendChild(p);
-        }
-
-        const btn = card.querySelector('.btn');
-        if (btn) {
-          const internalP = document.createElement('p');
-          internalP.textContent = btn.textContent;
-          newDiv.appendChild(internalP);
-        }
-
-        const img = card.querySelector('img');
-
-        const a = card.querySelector('a.card-home');
-        a.textContent = 'cards-link';
-
-        if (a) {
-          newDiv.appendChild(a);
-        }
-
-        block.push([img, newDiv]);
-      });
-
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      table.append(section.querySelector('h4'));
-      section.before(document.createElement('hr'));
-      section.after(document.createElement('hr'));
-      section.replaceWith(table);
-    }
 
     if (healthifyThinkingCard) {
       const cards = section.querySelectorAll('a.text-decoration-none');
@@ -163,6 +135,27 @@ function createCardsBlockFromSection(document) {
 
       const table = WebImporter.DOMUtils.createTable(block, document);
       section.before(document.createElement('hr'));
+      section.before(document.querySelector('.slider-title'));
+      section.after(document.createElement('hr'));
+      section.replaceWith(table);
+    }
+  });
+}
+
+/**
+* Creates a Feature block from a section
+* @param {HTMLDocument} document The document
+*/
+function createFeatureBlockFromSection(document) {
+  document.querySelectorAll('div.section-container').forEach((section) => {
+    const block = [['Feature']];
+    // create a cards block from the section
+    const newsPressCard = section.parentElement.className.includes('news-featured');
+
+    if (newsPressCard) {
+      const table = WebImporter.DOMUtils.createTable(block, document);
+      table.append(section.querySelector('h4'));
+      section.before(document.createElement('hr'));
       section.after(document.createElement('hr'));
       section.replaceWith(table);
     }
@@ -170,7 +163,6 @@ function createCardsBlockFromSection(document) {
 }
 
 function addSocialBlock(document) {
-  // TODO piyush check anchor tags again
   const socialShare = document.querySelector('.ss-share');
   if (socialShare) {
     const socialLinks = socialShare.querySelectorAll('a');
@@ -189,8 +181,6 @@ function addSocialBlock(document) {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
-      socialShare.before(document.createElement('hr'));
-      socialShare.after(document.createElement('hr'));
       socialShare.replaceWith(table);
     }
   }
@@ -226,12 +216,37 @@ function fixRelativeLinks(document) {
   });
 }
 
-function customImportLogic(doc) {
-  addBreadCrumb(doc);
-  createCardsBlockFromSection(doc);
-  extractEmbed(doc);
-  addSocialBlock(doc);
-  fixRelativeLinks(doc);
+function addTagsBlock(document) {
+  const section = document.querySelector('.ss-tag-container');
+
+  if (section) {
+    const tagLabel = section.querySelector('.tag-label');
+    const tagAnchors = section.querySelectorAll('.tag-link');
+
+    if (tagAnchors && tagAnchors.length) {
+      const cells = [['Tags']];
+
+      [...tagAnchors].forEach((x) => {
+        cells.push([x]);
+      });
+
+      const table = WebImporter.DOMUtils.createTable(cells, document);
+      section.before(document.createElement('hr'));
+      section.before(tagLabel);
+      section.after(createSectionMetadata({ Style: 'Narrow' }, document));
+      section.replaceWith(table);
+    }
+  }
+}
+
+function customImportLogic(document) {
+  addBreadCrumb(document);
+  addTagsBlock(document);
+  createCardsBlockFromSection(document);
+  createFeatureBlockFromSection(document);
+  extractEmbed(document);
+  addSocialBlock(document);
+  fixRelativeLinks(document);
 }
 
 export default {
@@ -268,13 +283,12 @@ export default {
               metadataDetails.PageName = lastItemDetails.name;
             }
           } else if (nodeType === 'WebPage' && (pathname.includes('/newsroom/') || pathname.includes('/healthy-thinking/')) && node.datePublished) {
-            metadataDetails.NewsDate = new Date(node.datePublished).getTime();
+            metadataDetails.PublishedDate = new Date(node.datePublished).getTime();
           }
         });
       }
     }
 
-    // const pathName = document.location.pathname;
     if (pathname.includes('/newsroom/')) {
       metadataDetails.Category = 'Newsroom';
 
@@ -293,6 +307,12 @@ export default {
       }
     }
 
+    const tags = document.querySelectorAll('.tag-pill');
+
+    if (tags && tags.length) {
+      metadataDetails.Tags = [...tags].map((x) => x.textContent).join(', ');
+    }
+
     params.preProcessMetadata = metadataDetails;
   },
 
@@ -309,8 +329,6 @@ export default {
       'footer',
       'noscript',
     ]);
-
-    console.log(params);
 
     customImportLogic(document);
     // create the metadata block and append it to the main element
