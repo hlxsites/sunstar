@@ -22,13 +22,13 @@ export default async function decorate(block) {
   const search = document.createElement('a');
   search.innerText = placeholders['career-apply-search'];
   search.classList.add('button', 'primary');
-  search.href = '#';
+  search.href = placeholders['career-apply-search-href'];
   buttonBar.appendChild(search);
 
   const linkedin = document.createElement('a');
   linkedin.innerText = placeholders['career-apply-linkedin'];
   linkedin.classList.add('button', 'primary', 'linkedin');
-  linkedin.href = '#';
+  linkedin.href = placeholders['career-apply-linkedin-href'];
   const sprite = document.createElement('span');
   sprite.classList.add('icon', 'icon-linkedin');
   linkedin.appendChild(sprite);
