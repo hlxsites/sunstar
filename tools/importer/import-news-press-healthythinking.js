@@ -144,13 +144,16 @@ const createCardsBlockFromSection = (document) => {
 * Creates a Feature block from a section
 * @param {HTMLDocument} document The document
 */
-const createFeatureBlockFromSection = (document) => {
+const addCardsBlockFragmentFromSection = (document) => {
   document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [['Feature']];
-    // create a cards block from the section
+    const block = [['Fragment']];
     const newsPressCard = section.parentElement.className.includes('news-featured');
 
     if (newsPressCard) {
+      const a = document.createElement('a');
+      a.href = 'https://main--sunstar--hlxsites.hlx.page/_drafts/piyush/title'; // todo piyush change this before merging
+      a.textContent = a.href;
+      block.push([a]);
       const table = WebImporter.DOMUtils.createTable(block, document);
       table.append(section.querySelector('h4'));
       section.before(document.createElement('hr'));
@@ -253,7 +256,7 @@ const customImportLogic = (document) => {
   addBreadCrumb(document);
   addTagsBlock(document);
   createCardsBlockFromSection(document);
-  createFeatureBlockFromSection(document);
+  addCardsBlockFragmentFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
   addQuoteBlock(document);
