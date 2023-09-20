@@ -92,71 +92,27 @@ const addBreadCrumb = (document) => {
 };
 
 /**
-* Creates a cards block from a section
-* @param {HTMLDocument} document The document
-*/
-const createCardsBlockFromSection = (document) => {
-  document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [['Cards']];
-    const healthifyThinkingCard = section.parentElement.className.includes('related-article');
-
-    if (healthifyThinkingCard) {
-      const cards = section.querySelectorAll('a.text-decoration-none');
-
-      Array.from(cards).forEach((card) => {
-        const newDiv = document.createElement('div');
-        const p = card.querySelector('p');
-        if (p) {
-          const h6 = document.createElement('h6');
-          h6.textContent = p.textContent;
-          newDiv.appendChild(h6);
-        }
-
-        const h4 = card.querySelector('h4');
-        if (h4) {
-          const internalP = document.createElement('p');
-          internalP.textContent = h4.textContent;
-          newDiv.appendChild(internalP);
-        }
-
-        const img = card.querySelector('img');
-        const a = document.createElement('a');
-        a.textContent = 'cards-link';
-        a.href = card.href;
-
-        if (a) {
-          newDiv.appendChild(a);
-        }
-
-        block.push([img, newDiv]);
-      });
-
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      section.before(document.createElement('hr'));
-      section.before(document.querySelector('.slider-title'));
-      section.after(document.createElement('hr'));
-      section.replaceWith(table);
-    }
-  });
-};
-
-/**
 * Creates a Feature block from a section
 * @param {HTMLDocument} document The document
 */
-const addCardsBlockFragmentFromSection = (document) => {
+const createFeatureBlockFromSection = (document) => {
   document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [['Fragment']];
+    const block = [];
+    const healthifyThinkingCard = section.parentElement.className.includes('related-article');
     const newsPressCard = section.parentElement.className.includes('news-featured');
+    let blockDetails = '';
 
-    if (newsPressCard) {
-      const a = document.createElement('a');
-      a.href = 'https://main--sunstar--hlxsites.hlx.page/_drafts/piyush/title'; // todo piyush change this before merging
-      a.textContent = a.href;
-      block.push([a]);
+    if (healthifyThinkingCard) {
+      blockDetails = 'Feature (related-article)';
+    } else if (newsPressCard) {
+      blockDetails = 'Feature (featured-article)';
+    }
+
+    if (blockDetails) {
+      block.push([blockDetails]);
       const table = WebImporter.DOMUtils.createTable(block, document);
-      table.append(section.querySelector('h4'));
       section.before(document.createElement('hr'));
+      section.before(document.querySelector('.slider-title'));
       section.after(document.createElement('hr'));
       section.replaceWith(table);
     }
@@ -255,8 +211,7 @@ const addQuoteBlock = (document) => {
 const customImportLogic = (document) => {
   addBreadCrumb(document);
   addTagsBlock(document);
-  createCardsBlockFromSection(document);
-  addCardsBlockFragmentFromSection(document);
+  createFeatureBlockFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
   addQuoteBlock(document);
