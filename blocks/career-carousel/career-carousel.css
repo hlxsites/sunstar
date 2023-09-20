@@ -1,0 +1,111 @@
+.slider {
+  width: 1300px; /* total width */
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+/* .slides::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+} */
+
+.slides > div {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background: #eee;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.slider > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  border-radius: 50%;
+  margin: 0 0 0.5rem;
+  position: relative;
+}
+
+.slider > a:active {
+  top: 1px;
+}
+
+.slider > a:focus {
+  background: #000;
+}
+
+.career-slider {
+  width: 1200px;
+  overflow: hidden;
+}
+
+.career-slides {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.career-carousel .career-card {
+  flex-shrink: 0;
+  box-shadow: #3c465033 0 2px 12px 0;
+  margin: 8px;
+  padding: 8px;
+  width: 288px;
+  min-width: 288px; /* TODO needed? */
+}
+
+.career-carousel .career-card a {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.career-carousel .career-card blockquote {
+  font-size: 19px;
+  line-height: 29px;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.career-carousel .career-card h6 {
+  color: var(--light-black);
+  font-size: var( --heading-font-size-mxs);
+  text-transform: none;
+  margin-bottom: 8px;
+}
+
+.career-carousel .career-card p {
+  color: var(--light-black);
+  font-size: 0.9rem;
+  line-height: 21.6px;
+  margin-bottom: 24px;
+}
+
+.career-carousel .career-card button {
+  background-color: unset;
+  color: var(--secondary);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-medium);
+  justify-content: left;
+  padding: 0;
+}
