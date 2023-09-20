@@ -96,60 +96,13 @@ export default function decorate(block) {
   const ar = document.createElement('a');
   ar.textContent = '>';
   ar.onclick = () => slideDivs[slideDivs.length - 1].scrollIntoView();
+  ar.onclick = () => {
+    const div = slideDivs[slideDivs.length - 1];
+    const rect = div.getBoundingClientRect();
+    careerSlides.scrollTo(rect.right, careerSlides.scrollHeight);
+  };
+
   careerSlider.appendChild(ar);
 
   block.appendChild(careerSlider);
-
-  // testing now
-  const slider = document.createElement('div');
-  slider.classList.add('slider');
-
-  for (let i = 1; i <= 10; i += 1) {
-    const a = document.createElement('a');
-    a.href = `#slide-${i}`;
-    a.textContent = `${i}`;
-    slider.appendChild(a);
-  }
-
-  const slides = document.createElement('div');
-  slides.classList.add('slides');
-
-  for (let i = 1; i <= 10; i += 1) {
-    const slide = document.createElement('div');
-    slide.id = `slide-${i}`;
-    slide.textContent = `${i}`;
-    slides.appendChild(slide);
-  }
-  slider.appendChild(slides);
-
-  block.appendChild(slider);
 }
-
-/*
-<div class="slider">
-
-<a href="#slide-1">1</a>
-<a href="#slide-2">2</a>
-<a href="#slide-3">3</a>
-<a href="#slide-4">4</a>
-<a href="#slide-5">5</a>
-
-<div class="slides">
-  <div id="slide-1">
-    1
-  </div>
-  <div id="slide-2">
-    2
-  </div>
-  <div id="slide-3">
-    3
-  </div>
-  <div id="slide-4">
-    4
-  </div>
-  <div id="slide-5">
-    5
-  </div>
-</div>
-
-*/
