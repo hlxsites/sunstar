@@ -68,7 +68,11 @@ export default function decorate(block) {
     a.appendChild(role);
 
     const link = document.createElement('button');
-    link.textContent = 'Read More > :angle-right:'; // TODO
+    link.textContent = 'Read More '; // TODO
+    const arrow = document.createElement('img');
+    arrow.src = '/icons/angle-right-blue.svg';
+    arrow.classList.add('icon-angle-right-blue');
+    link.appendChild(arrow);
     a.appendChild(link);
     div.appendChild(a);
 
