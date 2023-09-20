@@ -1,5 +1,5 @@
 import { getLanguage } from '../../scripts/scripts.js';
-import { decorateIcons, fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders(getLanguage());
@@ -32,7 +32,6 @@ export default async function decorate(block) {
   const sprite = document.createElement('span');
   sprite.classList.add('icon', 'icon-linkedin');
   linkedin.appendChild(sprite);
-  decorateIcons(linkedin);
   buttonBar.append(linkedin);
   block.appendChild(buttonBar);
 }
