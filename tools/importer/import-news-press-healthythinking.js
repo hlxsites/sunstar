@@ -11,15 +11,6 @@
  */
 /* global WebImporter */
 /* eslint-disable no-console, class-methods-use-this */
-
-// const createSectionMetadata = (cfg, document) => {
-//   const cells = [['Section Metadata']];
-//   Object.keys(cfg).forEach((key) => {
-//     cells.push([key, cfg[key]]);
-//   });
-//   return WebImporter.DOMUtils.createTable(cells, document);
-// };
-
 const createMetadata = (main, document, params) => {
   const meta = {};
 
