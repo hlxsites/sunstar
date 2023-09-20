@@ -36,6 +36,10 @@
     padding-left: 40px;
 }
 
+.career-apply a.button.primary.linkedin:hover {
+    opacity: 0.7;
+}
+
 .career-apply span.icon-linkedin {
     margin-left: 10px;
     margin-right: 16px;
