@@ -6,19 +6,19 @@
     color: var(--white);
     text-align: left;
     max-width: unset;
-    padding-inline: 16px;
-    padding-block: 48px;
+    padding-inline: 1rem;
+    padding-block: 3rem;
 }
 
 .career-apply h2 {
     color: var(--white);
     font-size: 28px;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
 .career-apply p {
     line-height: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
 }
 
 .career-apply .button-container {
@@ -27,13 +27,13 @@
 }
 
 .career-apply a {
-    margin: 8px 0;
+    margin: 0.5rem 0;
 }
 
 .career-apply a.button.primary.linkedin {
     background-color: var(--primary);
     border: 1px solid white;
-    padding-left: 40px;
+    padding-left: 2.5rem;
 }
 
 .career-apply a.button.primary.linkedin:hover {
@@ -41,10 +41,10 @@
 }
 
 .career-apply span.icon-linkedin {
-    margin-left: 10px;
-    margin-right: 16px;
-    height: 32px;
-    width: 34px;
+    margin-left: 0.625rem;
+    margin-right: 1rem;
+    height: 2rem;
+    width: 2.125rem;
 }
 
 .career-apply span.icon-linkedin svg {
@@ -54,9 +54,9 @@
 
 @media (min-width: 62rem) {
     .career-apply {
-        max-width: 720px;
+        max-width: 34rem;
         text-align: center;
-        padding-block: 80px;
+        padding-block: 5rem;
     }
 
     .career-apply h2 {
@@ -64,7 +64,7 @@
     }
 
     .career-apply p {
-        margin-bottom: 50px;
+        margin-bottom: 3.125rem;
     }
 
     .career-apply .button-container {
@@ -72,6 +72,6 @@
     }
 
     .career-apply a {
-        margin: 0 8px;
+        margin: 0 0.5rem;
     }
 }
