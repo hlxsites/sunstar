@@ -68,7 +68,7 @@ export default function decorate(block) {
     a.appendChild(role);
 
     const link = document.createElement('button');
-    link.textContent = 'Read More >'; // TODO
+    link.textContent = 'Read More > :angle-right:'; // TODO
     a.appendChild(link);
     div.appendChild(a);
 

@@ -1,3 +1,7 @@
+.career-carousel {
+  --card-width: 16rem;
+}
+
 .slider {
   width: 1300px; /* total width */
   overflow: hidden;
@@ -54,7 +58,8 @@
 }
 
 .career-slider {
-  width: 1200px;
+  margin-left: -1rem;
+  width: calc((var(--card-width) + 3rem) * 4);
   overflow: hidden;
 }
 
@@ -66,11 +71,10 @@
 
 .career-carousel .career-card {
   flex-shrink: 0;
-  box-shadow: #3c465033 0 2px 12px 0;
-  margin: 8px;
-  padding: 8px;
-  width: 288px;
-  min-width: 288px; /* TODO needed? */
+  box-shadow: #3c465040 0 2px 12px 0;
+  margin: 0.5rem;
+  padding: 1rem;
+  width: var(--card-width);
 }
 
 .career-carousel .career-card a {
@@ -79,25 +83,33 @@
   text-decoration: none;
 }
 
+.career-carousel .career-card figure {
+  align-self: center;
+  width: 14.375rem;
+  margin: 0 0 1.375rem;
+}
+
 .career-carousel .career-card blockquote {
   font-size: 19px;
+  font-style: normal;
   line-height: 29px;
   color: var(--primary);
-  margin-bottom: 16px;
+  margin: 0 0 19px;
+  text-indent: 0;
 }
 
 .career-carousel .career-card h6 {
   color: var(--light-black);
   font-size: var( --heading-font-size-mxs);
   text-transform: none;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .career-carousel .career-card p {
   color: var(--light-black);
   font-size: 0.9rem;
   line-height: 21.6px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .career-carousel .career-card button {
@@ -107,5 +119,6 @@
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-medium);
   justify-content: left;
+  height: auto;
   padding: 0;
 }
