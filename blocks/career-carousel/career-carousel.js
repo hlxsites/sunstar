@@ -41,6 +41,7 @@ export default function decorate(block) {
   const careerSlides = document.createElement('div');
   careerSlides.classList.add('career-slides');
 
+  const slideDivs = [];
   for (let i = 0; i < images.length; i += 1) {
     const div = document.createElement('div');
     div.id = `cs-${i}`;
@@ -72,15 +73,26 @@ export default function decorate(block) {
     div.appendChild(a);
 
     careerSlides.appendChild(div);
+    slideDivs.push(div);
   }
   careerSlider.appendChild(careerSlides);
 
+  const al = document.createElement('a');
+  al.textContent = '<';
+  al.onclick = () => slideDivs[0].scrollIntoView();
+  careerSlider.appendChild(al);
+
   for (let i = 0; i < images.length; i += 1) {
     const a = document.createElement('a');
-    a.href = `#cs-${i}`;
     a.textContent = `${i}`;
+    a.onclick = () => slideDivs[i].scrollIntoView();
     careerSlider.appendChild(a);
   }
+
+  const ar = document.createElement('a');
+  ar.textContent = '>';
+  ar.onclick = () => slideDivs[slideDivs.length - 1].scrollIntoView();
+  careerSlider.appendChild(ar);
 
   block.appendChild(careerSlider);
 
