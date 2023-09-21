@@ -11,7 +11,12 @@
  */
 /* global WebImporter */
 
-import { addBreadCrumb, createMetadata, fixRelativeLinks } from './utils.js';
+import {
+  addBreadCrumb,
+  createMetadata,
+  fixRelativeLinks,
+  createSectionMetadata,
+} from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 const extractEmbed = (document) => {
@@ -102,6 +107,8 @@ const addTagsBlock = (document) => {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
+      section.before(document.createElement('hr'));
+      section.after(createSectionMetadata({ Style: 'Narrow' }, document));
       section.before(tagLabel);
       section.replaceWith(table);
     }
