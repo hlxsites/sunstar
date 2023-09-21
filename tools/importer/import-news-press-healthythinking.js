@@ -114,7 +114,22 @@ const addQuoteBlock = (document) => {
   if (blockQuotes && blockQuotes.length) {
     [...blockQuotes].forEach((quote) => {
       const cells = [['Quote']];
-      cells.push([quote.querySelector('p').textContent]);
+      const ps = quote.querySelectorAll('p');
+      const div = document.createElement('div');
+
+      [...ps].forEach((para) => {
+        if (!para.querySelector('cite')) {
+          div.appendChild(para);
+        }
+      });
+
+      const caption = quote.querySelector('cite') ? quote.querySelector('cite').textContent : '';
+
+      if (caption) {
+        cells.push([div, caption]);
+      } else {
+        cells.push([div]);
+      }
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
       quote.replaceWith(table);

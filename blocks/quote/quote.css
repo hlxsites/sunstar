@@ -1,0 +1,36 @@
+.block.quote {
+  border-left: 0.25rem solid var(--black);
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  padding-left: 2rem;
+  color: var(--primary);
+  position: relative;
+}
+
+.block.quote::before {
+  content: "“";
+  font-family: var(--font-family-body);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: inherit;
+  position: absolute;
+  top: -2.75rem;
+}
+
+.block.quote::after {
+  content: "”";
+  font-family: var(--font-family-body);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: inherit;
+  position: absolute;
+  bottom: -5.25rem;
+  right: 0;
+}
+
+.block.quote .quote-caption {
+  color: var(--gray);
+  font-size: 0.8125rem;
+  position: relative;
+  font-style: normal;
+}
