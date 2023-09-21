@@ -98,6 +98,7 @@ main .hero-horizontal-tabs nav button {
   font-size: var(--body-font-size-s);
   font-weight: var(--font-weight-medium);
   border-radius: 0;
+  min-width: auto;
 }
 
 main .hero-horizontal-tabs nav button:hover {

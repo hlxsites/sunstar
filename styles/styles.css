@@ -621,6 +621,11 @@ main .section.about-us .button-container a:hover {
   text-decoration: none;
 }
 
+/* section - narrow */
+main .section.narrow {
+  padding: 0 1rem;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
