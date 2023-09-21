@@ -33,7 +33,7 @@
 }
 
 .tags a.button.primary:hover {
-background-color: #00577a;
+  background-color: #00577a;
 }
 
 
@@ -47,7 +47,7 @@ background-color: #00577a;
 
 @media (min-width: 62rem) {
   .section.tags-container.narrow {
-  max-width: 54.5rem; 
+    max-width: 54.5rem; 
   }
 
   .section.tags-container.narrow>.section-container {
