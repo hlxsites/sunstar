@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, isInternalPage } from './lib-franklin.js';
 // eslint-disable-next-line import/no-cycle
-import { getEnvType, loadConsentManager, loadScript } from './scripts.js';
+import {
+  getEnvType, loadConsentManager, loadScript,
+} from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');

@@ -332,6 +332,16 @@ export async function fetchIndex(indexFile, sheet, pageSize = 500) {
   return newIndex;
 }
 
+// export async function queryIndex(select, where, orderBy, rowCount, sheet) {
+//   let index = await fetchIndex('query-index', sheet);
+//   // Fetch the index until it is complete
+//   while (!index.complete) {
+//     // eslint-disable-next-line no-await-in-loop
+//     index = await fetchIndex('query-index', sheet);
+//   }
+//   const result = query(select, index.data, where, orderBy, rowCount);
+//   return result;
+// }
 /**
  * Loads everything that happens a lot later,
  * without impacting the user experience.
