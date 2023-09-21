@@ -5,7 +5,6 @@
 .career-apply {
     color: var(--white);
     text-align: left;
-    max-width: unset;
     padding-inline: 1rem;
     padding-block: 3rem;
 }
