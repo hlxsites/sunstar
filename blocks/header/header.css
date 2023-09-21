@@ -474,10 +474,10 @@ header form.search button.search-icon {
   right: 16px;
 }
 
-/* Lang picker Styles */
+/* picker Styles */
 
 /* stylelint-disable-next-line no-descending-specificity */
-header .lang-picker > a::after {
+header .picker > a::after {
   content: "";
   height: 1rem;
   width: 0.75rem;
@@ -492,84 +492,7 @@ header .lang-picker > a::after {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-header .website-picker > a::after {
-  content: "";
-  height: 1rem;
-  width: 0.75rem;
-  margin-left: 0.25rem;
-  display: inline-flex;
-  background-image: url("../../icons/arrow-down.svg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-  vertical-align: bottom;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .website-picker > ul {
-  display: none;
-  color: var(--link-color);
-  position: absolute;
-  margin: 0;
-  background: var(--secondary);
-  border-radius: 0;
-  padding: 0;
-  width: calc(100% - 3rem);
-  box-shadow: 0 2px 8px 0 var(--transparent-grey-color);
-  right: 0;
-  left: auto;
-  top: var(--nav-top-height);
-  z-index: 100;
-  font-size: 1rem;
-  text-align: left;
-  list-style: none;
-  border: 1px solid #00000026;
-  float: left;
-  min-width: 12.5rem;
-}
-
-header .website-picker:hover > ul {
-  display: block;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .website-picker-item > a {
-  font-size: var(--body-font-size-s);
-  font-weight: var(--font-weight-medium);
-  color: var(--white);
-  padding: 11px 0 11px 32px;
-  display: block;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .website-picker-item > a:hover {
-  background: var(--primary);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .website-picker-item > a::after {
-    content: "";
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    margin-left: 2px;
-    margin-top: 0;
-    position: relative;
-    top: 4px;
-    background-image: url("../../icons/link-white.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain
-}
-
-header .website-picker {
-  position: relative;
-  padding: 1rem 0;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .lang-picker > ul {
+header .picker > ul {
   display: none;
   color: var(--link-color);
   position: absolute;
@@ -591,12 +514,19 @@ header .lang-picker > ul {
   min-width: 10rem;
 }
 
-header .lang-picker:hover > ul {
+header .picker {
+  position: relative;
+  padding: 1rem 0;
+}
+
+header .picker:hover > ul {
   display: block;
 }
 
+/* PickerItem styles */
+
 /* stylelint-disable-next-line no-descending-specificity */
-header .lang-picker-item > a {
+header .picker-item > a {
   font-size: var(--body-font-size-s);
   font-weight: var(--font-weight-medium);
   color: var(--white);
@@ -605,8 +535,42 @@ header .lang-picker-item > a {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-header .lang-picker-item > a:hover {
+header .picker-item > a:hover {
   background: var(--primary);
+}
+
+/* WebsitePicker Styles */
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .website-picker > ul {
+  min-width: 12.5rem;
+}
+
+header .website-picker {
+  padding-left: 0.2rem;
+}
+
+/* WesbitePickerItem Styles */
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .website-picker-item > a::after {
+    content: "";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-left: 2px;
+    margin-top: 0;
+    position: relative;
+    top: 4px;
+    background-image: url("../../icons/link-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain
+}
+
+/* LangPicker Styles */
+header .lang-picker {
+  padding-left: 2.1rem;
 }
 
 header .nav-bottom .other-items .mobile-lang-picker {
@@ -628,12 +592,6 @@ header .nav-bottom .other-items .mobile-lang-picker .mobile-lang-picker-item a {
   text-decoration: none;
   font-size: var(--body-font-size-s);
   letter-spacing: -0.4px;
-}
-
-header .lang-picker {
-  position: relative;
-  padding: 1rem 0;
-  padding-left: 34px;
 }
 
 @media (min-width: 77rem) {

@@ -10,15 +10,16 @@ import
 } from '../../scripts/scripts.js';
 
 async function decorateWebsitePicker(websitePicker) {
+  websitePicker.classList.add('picker');
   websitePicker.classList.add('website-picker');
   websitePicker.innerHTML = websitePicker.innerHTML.replace(/\[websites\]/, '');
   const title = 'Sunstar Websites';
   websitePicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('picker-item');
     li.classList.add('website-picker-item');
   });
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
   a.textContent = title;
   websitePicker.prepend(a);
 
@@ -30,6 +31,7 @@ async function decorateWebsitePicker(websitePicker) {
 async function decorateLangPicker(langPicker) {
   const lang = getLanguage() || '';
   let langName = 'English'; // default to English
+  langPicker.classList.add('picker');
   langPicker.classList.add('lang-picker');
   langPicker.innerHTML = langPicker.innerHTML.replace(/\[languages\]/, '');
 
@@ -39,6 +41,7 @@ async function decorateLangPicker(langPicker) {
   const json = await fetchIndex('query-index');
 
   langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('picker-item');
     li.classList.add('lang-picker-item');
     // Update the language links to point to the current path
     let langRoot = li.querySelector('a').getAttribute('href');
@@ -66,7 +69,6 @@ async function decorateLangPicker(langPicker) {
   });
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
   a.textContent = langName;
   langPicker.prepend(a);
 
