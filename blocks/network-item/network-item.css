@@ -10,10 +10,37 @@
  * governing permissions and limitations under the License.
  */
 
+.network-item {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+.network-item h3.title,
+.network-item div.recruiting-link,
+.network-item div.career-opportunities,
+.network-item div.our-hr,
+.network-item div.website {
+    padding-bottom: 1rem;
+}
+
+.network-item.no-border {
+    border-bottom: none;
+}
+
 .network-item div.tags {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1.5rem;
+}
+
+.network-item div.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+}
+
+.network-item h3.title {
+    font-weight: var(--font-weight-bold);
 }
 
 .network-item .tags div {
@@ -34,8 +61,23 @@
     border-radius: 50%;
 }
 
-.network-item h3.title {
-    font-weight: var(--font-weight-bold);
+.network-item div.network-item-text h6 {
+    text-transform: capitalize;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.network-item div.network-item-text h6:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.network-item div.network-item-text {
+    margin-bottom: 1.5rem;
+}
+
+.network-item div.network-item-text p {
+    font-size: var(--body-font-size-s);
+    line-height: 1.5rem;
 }
 
 .network-item .tags div.blue {
@@ -74,26 +116,35 @@
     margin-right: 0;
 }
 
-div.network-item {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--transparent-grey-light-color);
+div.network-item div.content-wrapper div.network-item-img {
+    max-width: 100%;
+    width: 340px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 
-div.network-item.no-border {
-    border-bottom: none;
-}
-
-.network-item div.our-hr a::after {
+.network-item div.our-hr a::after,
+.network-item.image div.text-content-wrapper div.website a::after {
     content: url("../../icons/angle-right-blue.svg");
     position:relative;
     left: 0.3rem;
     top: 0.5rem;
 }
 
-div.network-item h3.title,
-div.network-item div.recruiting-link,
-div.network-item div.career-opportunities,
-div.network-item div.our-hr,
-div.network-item div.website {
-    padding-bottom: 1rem;
+@media screen and (max-width: 62rem) {
+    div.network-item div.content-wrapper {
+        flex-direction: column;
+    }
+
+    div.network-item div.content-wrapper div.network-item-img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    div.network-item div.content-wrapper div.network-item-img img {
+        width: 100%;
+        height: auto;
+    }
 }

@@ -11,6 +11,7 @@
  */
 
 import { readBlockConfig } from '../../scripts/lib-franklin.js';
+import { getNamedValueFromTable } from '../../scripts/scripts.js';
 
 function addCareerTagColor(tagDiv) {
   if (tagDiv.innerText === 'Oral Care') {
@@ -79,8 +80,26 @@ function createRecruitingLinkDiv(recruitingLink, recruitingLinkText) {
   return recruitingLinkDiv;
 }
 
+function getImage(block) {
+  const div = getNamedValueFromTable(block, 'Image');
+  if (!div) return null;
+  div.classList.add('network-item-img');
+  return div;
+}
+
+function getText(block) {
+  const div = getNamedValueFromTable(block, 'Content');
+  if (!div) return null;
+  div.classList.add('network-item-text');
+  return div;
+}
+
 export default function decorate(block) {
   const blockCfg = readBlockConfig(block);
+  const image = getImage(block);
+  const text = getText(block);
+  const hasImage = !!blockCfg.image;
+
   let { title } = blockCfg;
 
   if (Array.isArray(blockCfg.title)) {
@@ -119,13 +138,34 @@ export default function decorate(block) {
   }
 
   const careerOpportunitiesDiv = createCareerOpportunitiesDiv();
-  block.append(careerOpportunitiesDiv);
+  if (!hasImage) {
+    block.append(careerOpportunitiesDiv);
+  }
 
   if (recruitingLink) {
     block.append(recruitingLinkDiv);
   }
 
-  block.append(ourHrDiv);
+  if (!hasImage) {
+    block.append(ourHrDiv);
+  }
+
+  if (hasImage && image) {
+    const contentWrapper = document.createElement('div');
+    const textContentWrapper = document.createElement('div');
+    textContentWrapper.classList.add('text-content-wrapper');
+
+    if (website) {
+      textContentWrapper.append(text, websiteDiv);
+    } else {
+      textContentWrapper.append(text);
+    }
+
+    contentWrapper.classList.add('content-wrapper');
+    contentWrapper.append(image, textContentWrapper);
+
+    block.replaceChildren(titleDiv, tagsDiv, contentWrapper);
+  }
 
   return block;
 }
