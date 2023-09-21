@@ -15,6 +15,8 @@ import {
   isInternalPage,
 } from './lib-franklin.js';
 
+import query from './json-query.js';
+
 const LCP_BLOCKS = [
   'hero',
   'hero-banner',
@@ -332,6 +334,10 @@ export async function fetchIndex(indexFile, sheet, pageSize = 500) {
   return newIndex;
 }
 
+export function queryIndex(index, select, where, orderBy, rowCount) {
+  const result = query(select, index.data, where, orderBy, rowCount);
+  return result;
+}
 /**
  * Loads everything that happens a lot later,
  * without impacting the user experience.

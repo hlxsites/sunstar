@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, isInternalPage } from './lib-franklin.js';
 // eslint-disable-next-line import/no-cycle
-import { getEnvType, loadConsentManager, loadScript } from './scripts.js';
+import {
+  getEnvType, loadConsentManager, loadScript, fetchIndex, queryIndex,
+} from './scripts.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -25,4 +27,8 @@ window.addEventListener('consentmanager', () => {
 if (!isInternalPage()) {
   await loadConsentManager();
   await loadAdobeLaunch();
+  // TODO Remove. Just for testing.
+  const json = await fetchIndex('query-index');
+  const results = queryIndex(json, ['title', 'description'], ['category', '=', 'Newsroom'], ['newsdate', 'desc'], 3);
+  console.log(JSON.stringify(results, null, 2));
 }
