@@ -172,6 +172,15 @@ export default {
       }
     }
 
+    const sectionBreadcrumb = document.querySelector('.section-breadcrumb');
+    if (sectionBreadcrumb) {
+      const breadcrumbItems = sectionBreadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
+      if (breadcrumbItems && breadcrumbItems.length) {
+        const breadcrumbText = breadcrumbItems[breadcrumbItems.length - 1].textContent.trim();
+        metadataDetails.BreadcrumbTitle = breadcrumbText;
+      }
+    }
+
     if (pathname.includes('/newsroom/')) {
       metadataDetails.Category = 'Newsroom';
 
