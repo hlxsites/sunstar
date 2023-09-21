@@ -32,8 +32,8 @@ indices:
       breadcrumbtitle:
         select: head > meta[name="breadcrumbtitle"]
         value: attribute(el, "content")
-      newsdate:
-        select: head > meta[name="newsdate"]
+      publisheddate:
+        select: head > meta[name="publisheddate"]
         value: attribute(el, "content")
       pagename:
         select: head > meta[name="pagename"]

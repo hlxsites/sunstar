@@ -92,7 +92,7 @@ function addHeroVerticalTabs(doc) {
     const cells = [['Hero-Vertical-Tabs']];
     const heroMenu = doc.createElement('ul');
     hero.querySelectorAll('.auto-hero-menu li a').forEach((a) => {
-      a.href = 'https://main--sunstar-engineering--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
+      a.href = 'https://main--sunstar--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
       const li = doc.createElement('li');
       if (a.classList.contains('active')) {
         const strong = doc.createElement('strong');
@@ -330,7 +330,7 @@ function createCardsBlockFromSection(document) {
     const block = [['Cards']];
     // create a cards block from the section
 
-    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-engineering-solution');
+    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-solution');
     if (sectionIsCard) {
       const contentCards = Array.from(section.children)
         .filter(
@@ -421,7 +421,7 @@ function createImgVariantsBlockFromSection(document) {
  */
 function changeAnchorTags(document) {
   const aTags = document.querySelectorAll('.news-details a');
-  const homepage = 'https://www.sunstar-engineering.com';
+  const homepage = 'https://www.sunstar.com';
   const basePath = '/';
 
   aTags.forEach((aTag) => {
@@ -491,7 +491,7 @@ function getFomattedDate(newsDate) {
  */
 function fixRelativeLinks(document) {
   document.querySelectorAll('a').forEach((a) => {
-    const targetDomain = 'https://main--sunstar-engineering--hlxsites.hlx.page';
+    const targetDomain = 'https://main--sunstar--hlxsites.hlx.page';
     // if the link is relative, make it absolute
     if (a.href.startsWith('/')) {
       let link = a.href;

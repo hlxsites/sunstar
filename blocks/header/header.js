@@ -9,27 +9,29 @@ import
   decorateAnchors,
 } from '../../scripts/scripts.js';
 
-function decorateSocial(social) {
-  social.classList.add('social');
-  social.innerHTML = social.innerHTML.replace(/\[social\]/, '');
-  social.querySelectorAll(':scope>ul>li').forEach((li) => {
-    const a = li.querySelector('a');
-    a.setAttribute('target', '_blank');
-    if (a.innerHTML.includes('linkedin')) {
-      a.setAttribute('aria-label', 'LinkedIn');
-    } else if (a.innerHTML.includes('twitter')) {
-      a.setAttribute('aria-label', 'Twitter');
-    } else if (a.innerHTML.includes('facebook')) {
-      a.setAttribute('aria-label', 'Facebook');
-    } else if (a.innerHTML.includes('youtube')) {
-      a.setAttribute('aria-label', 'YouTube');
-    }
+async function decorateWebsitePicker(websitePicker) {
+  websitePicker.classList.add('picker');
+  websitePicker.classList.add('website-picker');
+  websitePicker.innerHTML = websitePicker.innerHTML.replace(/\[websites\]/, '');
+  const title = 'Sunstar Websites';
+  websitePicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('picker-item');
+    li.classList.add('website-picker-item');
   });
+
+  const a = document.createElement('a');
+  a.textContent = title;
+  websitePicker.prepend(a);
+
+  if (websitePicker.querySelectorAll(':scope>ul>li').length === 0 && websitePicker.querySelector('ul')) {
+    websitePicker.querySelector('ul').remove();
+  }
 }
 
 async function decorateLangPicker(langPicker) {
   const lang = getLanguage() || '';
   let langName = 'English'; // default to English
+  langPicker.classList.add('picker');
   langPicker.classList.add('lang-picker');
   langPicker.innerHTML = langPicker.innerHTML.replace(/\[languages\]/, '');
 
@@ -39,6 +41,7 @@ async function decorateLangPicker(langPicker) {
   const json = await fetchIndex('query-index');
 
   langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('picker-item');
     li.classList.add('lang-picker-item');
     // Update the language links to point to the current path
     let langRoot = li.querySelector('a').getAttribute('href');
@@ -66,7 +69,6 @@ async function decorateLangPicker(langPicker) {
   });
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
   a.textContent = langName;
   langPicker.prepend(a);
 
@@ -177,10 +179,10 @@ function buildDropDownMenu(l1menuItem, placeholders) {
 
 function decorateTopNav(nav) {
   nav.querySelectorAll(':scope>ul>li').forEach((li) => {
-    if (li.textContent.trim() === '[social]') {
-      decorateSocial(li);
-    } else if (li.textContent.includes('[languages]')) {
+    if (li.textContent.includes('[languages]')) {
       decorateLangPicker(li);
+    } else if (li.textContent.includes('[websites]')) {
+      decorateWebsitePicker(li);
     }
   });
 }
@@ -212,9 +214,6 @@ function decorateOtherItems(otherItemsEl) {
   });
 
   otherItemsEl.querySelector('.lang-picker').replaceWith(langPicker);
-
-  /* Move the social icons to the bottom */
-  otherItemsEl.appendChild(otherItemsEl.querySelector('.social'));
 }
 
 function decorateBottomNav(nav, placeholders) {
@@ -280,7 +279,7 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   // fetch nav content
   const navMeta = getMetadata('nav');
-  const navPath = navMeta || (getLanguage() === 'en' ? '/nav' : `/${getLanguage()}/nav`);
+  const navPath = navMeta || (getLanguage() === 'en' ? '/_drafts/himanshu/nav' : `/${getLanguage()}/nav`);
   const resp = await fetch(`${navPath}.plain.html`);
 
   if (resp.ok) {

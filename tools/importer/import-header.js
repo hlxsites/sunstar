@@ -37,7 +37,7 @@ function addTopNav(document) {
     } else if (el.tagName === 'SPAN' && el.classList.contains('links-social')) {
       li.textContent = '[social]';
       const social = document.createElement('ul');
-      const linkedin = '<li><a class="link" target="_blank" href="https://www.linkedin.com/company/sunstar-engineering">:linkedin:</a></li>';
+      const linkedin = '<li><a class="link" target="_blank" href="https://www.linkedin.com/company/sunstar">:linkedin:</a></li>';
       const youtube = '<li><a class="link" target="_blank" href="https://www.youtube.com/channel/UCM7etMw7LLy-MlNmk9xPrdQ">:youtube:</a></li>';
       social.innerHTML = linkedin + youtube;
       li.append(social);
@@ -70,8 +70,8 @@ function addMidNav(document, url) {
   const midNav = document.querySelector('nav.ss-header-middle');
   if (midNav) {
     midNav.innerHTML = `
-    <a href='https://main--sunstar-engineering--hlxsites.hlx.page/${lang}'>:sunstar-logo:</a>
-    <h4>Sunstar Engineering</h4>
+    <a href='https://main--sunstar--hlxsites.hlx.page/${lang}'>:sunstar-logo:</a>
+    <h4>Sunstar</h4>
   `;
     midNav.after(document.createElement('hr'));
   }

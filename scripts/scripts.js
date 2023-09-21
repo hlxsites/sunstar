@@ -22,6 +22,7 @@ const LCP_BLOCKS = [
   'hero-vertical-tabs',
   'overlapping-content',
   'carousel',
+  'career-hero',
 ]; // add your LCP blocks to the list
 const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP candidates to the list
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
@@ -404,10 +405,10 @@ export function getSearchWidget(placeholders, initialVal, searchbox, lang = getL
 */
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
-    'sunstar-engineering.com': 'live',
-    'www.sunstar-engineering.com': 'live',
-    'main--sunstar-engineering--hlxsites.hlx.page': 'preview',
-    'main--sunstar-engineering--hlxsites.hlx.live': 'live',
+    'sunstar.com': 'live',
+    'www.sunstar.com': 'live',
+    'main--sunstar--hlxsites.hlx.page': 'preview',
+    'main--sunstar--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
