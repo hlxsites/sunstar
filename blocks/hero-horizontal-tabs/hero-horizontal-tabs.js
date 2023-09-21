@@ -55,7 +55,6 @@ export function createTabs(block, text) {
         sectionWrapper.classList.add(c);
       });
 
-      sectionWrapper.classList.add();
       const tabDiv = document.createElement('div');
       tabDiv.classList.add('tab-item');
       tabDiv.append(...tabContent.children);
