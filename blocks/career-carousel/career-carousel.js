@@ -83,7 +83,7 @@ export default function decorate(block) {
 
   const al = document.createElement('a');
   al.textContent = '<';
-  al.onclick = () => slideDivs[0].scrollIntoView();
+  al.onclick = () => careerSlides.scrollTo(0, careerSlides.scrollHeight);
   careerSlider.appendChild(al);
 
   for (let i = 0; i < images.length; i += 1) {
@@ -95,7 +95,6 @@ export default function decorate(block) {
 
   const ar = document.createElement('a');
   ar.textContent = '>';
-  ar.onclick = () => slideDivs[slideDivs.length - 1].scrollIntoView();
   ar.onclick = () => {
     const div = slideDivs[slideDivs.length - 1];
     const rect = div.getBoundingClientRect();
