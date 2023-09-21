@@ -13,11 +13,11 @@ export default function decorate(block) {
         const pics = col.querySelectorAll('picture');
         if (pics.length) {
           const picWrapper = pics[0].closest('div');
-            if (picWrapper && picWrapper.children.length === pics.length) {
-              // pictures (either wrapped in achors, or otherwise)
-              // are only content in the column
-              picWrapper.classList.add('columns-small-img-col');
-            }
+          if (picWrapper && picWrapper.children.length === pics.length) {
+            // pictures (either wrapped in achors, or otherwise)
+            // are only content in the column
+            picWrapper.classList.add('columns-small-img-col');
+          }
         }
       }
     });
