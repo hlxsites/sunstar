@@ -51,13 +51,3 @@ indices:
         select: head > meta[property="article:tag"]
         values: |
           attribute(el, 'content')
-      career-image:
-        select: main .career-hero-photo img
-        value: attribute(el, "src")
-      career-quote:
-        select: main blockquote.career-hero-quote
-        value: textContent(el)
-      career-jobtitle:
-        select: main p.career-hero-title
-        value: textContent(el)
-
