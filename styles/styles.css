@@ -36,6 +36,7 @@
   --light: #f8f9fa;
   --dark: #343a40;
   --link-color: #007CAD;
+  --hero-strong-color: #89d1e1;
   --card-text-color: var(--secondary);
   --link-hover-color: var(--secondary);
   --background-color: var(--white);
@@ -81,6 +82,7 @@
   --heading-font-size-xmxl: 40px;
   --heading-font-size-mxl: 36px;
   --heading-font-size-l: 32px;
+  --heading-font-size-ml: 30px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
   --heading-font-size-ms: 20px;
@@ -624,6 +626,8 @@ main .section.about-us .button-container a:hover {
 /* section - narrow */
 main .section.narrow {
   padding: 0 1rem;
+  margin: auto;
+  max-width: 42rem;
 }
 
 /* section - static */

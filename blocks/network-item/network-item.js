@@ -14,7 +14,7 @@ import { readBlockConfig } from '../../scripts/lib-franklin.js';
 import { getNamedValueFromTable } from '../../scripts/scripts.js';
 
 function addCareerTagColor(tagDiv) {
-  if (tagDiv.innerText === 'Oral Care') {
+  if (tagDiv.innerText === 'Oral Care' || tagDiv.innerText === 'Mouth & Body') {
     tagDiv.classList.add('blue');
   } else if (tagDiv.innerText === 'Safety & Mobility') {
     tagDiv.classList.add('yellow');

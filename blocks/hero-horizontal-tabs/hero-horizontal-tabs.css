@@ -18,8 +18,6 @@ main .hero-horiz-tabs-panel {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-right: 6rem;
 }
 
 main .hero-horiz-tabs-nav {
@@ -39,7 +37,7 @@ main div.tab-item.hidden {
 main .hero-horiz-tabs-text {
   color: var(--muted-text);
   padding-top: 26px;
-  padding-bottom: 72px;
+  margin-bottom: 2rem;
   margin-left: 16px;
   margin-right: 32px;
 }
@@ -58,7 +56,7 @@ main .hero-horiz-tabs-text > h2 {
 }
 
 main .hero-horiz-tabs-text > h6 {
-  color: var(--muted-text);
+  color: var(--hero-strong-color);
   font-size: var(--heading-font-size-xxxs);
   letter-spacing: 0.7px;
   margin-bottom: 12px;
@@ -74,7 +72,7 @@ main .hero-horiz-tabs-img picture {
 }
 
 main .hero-horizontal-tabs.block.no-image {
-  padding-top: 25%;
+  padding-top: 15rem;
 }
 
 main .hero-horiz-tabs-img picture > img {
@@ -88,17 +86,19 @@ main .hero-horizontal-tabs nav ul {
   list-style: none;
   display: flex;
   align-items: flex-end;
+  text-wrap: nowrap;
 }
 
 main .hero-horizontal-tabs nav button {
   background-color: var(--transparent-blue-light-color);
-  padding: 11px 16px;
+  padding: 0.5px 1rem;
   color: var(--light-black);
   border-left: 1px solid #d9dfe2;
   font-size: var(--body-font-size-s);
   font-weight: var(--font-weight-medium);
   border-radius: 0;
   min-width: auto;
+  height: 2.5rem;
 }
 
 main .hero-horizontal-tabs nav button:hover {
@@ -107,7 +107,7 @@ main .hero-horizontal-tabs nav button:hover {
   color: var(--primary);
 }
 
-main .hero-horizontal-tabs nav button.current {
+main .hero-horizontal-tabs nav button.active {
   background-color: white;
   color: var(--primary);
 }
@@ -120,9 +120,13 @@ main .hero-horizontal-tabs nav button.current {
   }
 
   main .hero-horiz-tabs-text {
-    padding-top: 66px;
+    padding-top: 6rem;
     margin-left: 0;
     min-width: 436px;
+  }
+
+  main div.no-image .hero-horiz-tabs-text {
+    padding-top: 0;
   }
 
   main .hero-horiz-tabs-nav {
@@ -131,6 +135,10 @@ main .hero-horizontal-tabs nav button.current {
 
   main .hero-horiz-tabs-text > h6 {
     font-size: var(--heading-font-size-xxs);
+  }
+
+  main .hero-horiz-tabs-text > h2 {
+    font-size: var(--heading-font-size-ml);
   }
 
   main .hero-horiz-tabs-img {
@@ -151,12 +159,17 @@ main .hero-horizontal-tabs nav button.current {
   main .hero-horizontal-tabs nav button {
     font-size: var(--body-font-size-l);
     font-weight: var(--font-weight-regular);
-    padding: 16px 32px 18px;
+    padding: 1rem 2rem;
+    height: 3.5rem;
   }
 
   main .hero-horizontal-tabs.block.no-image {
     height: 400px;
     padding-top: 0;
+  }
+
+  main .hero-horizontal-tabs.block.no-image .hero-horiz-tabs-panel {
+    justify-content: center;
   }
 }
 
@@ -166,7 +179,7 @@ main .hero-horizontal-tabs nav button.current {
   }
 
   main .hero-horiz-tabs-text {
-    padding-top: 88px;
+    padding-top: 120px;
     margin-right: 32px;
     min-width: 472px;
   }
