@@ -1,0 +1,150 @@
+.career-hero {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 58%;
+}
+
+.career-hero .career-hero-top {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-width: 75rem;
+}
+
+.career-hero .career-hero-left {
+    color: var(--white);
+    margin: 3rem 0;
+    text-align: center;
+    width: 155px;
+}
+
+.career-hero .career-hero-photo {
+    margin-bottom: 1rem;
+}
+
+.career-hero .career-hero-photo img {
+    height: 10.75rem;
+    width: auto;
+}
+
+.career-hero .career-hero-name {
+    color: var(--white);
+    font-size: var(--heading-font-size-xxs);
+    letter-spacing: 0.9px;
+    margin-bottom: 14px;
+    padding-top: 0.5rem;
+    text-transform: unset;
+}
+
+.career-hero .career-hero-title {
+    font-size: var(--body-font-size-xs);
+}
+
+.career-hero .career-hero-right {
+    color: var(--white);
+    background-color: var(--primary);
+    width: 100vw;
+    padding-block: 50px;
+    margin-top: 0;
+}
+
+.career-hero .career-hero-quote {
+    font-size: var(--heading-font-size-s);
+    font-style: var(--font-style-normal);
+    line-height: 32px;
+    margin: 24px 16px 62px;
+    position: relative;
+    text-indent: 0;
+}
+
+.career-hero .career-hero-quote::before {
+    content: '“';
+    font-size: 90px;
+    line-height: 1;
+    opacity: 0.7;
+    position: absolute;
+    top: -44px;
+}
+
+.career-hero .career-hero-quote::after {
+    content: '”';
+    font-size: 90px;
+    line-height: 1;
+    opacity: 0.7;
+    position: absolute;
+    bottom: -84px;
+    right: 0;
+}
+
+.career-hero .career-hero-careerbgtitle {
+    color: white;
+    font-size: var(--heading-font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    margin: 0 16px 14px;
+    text-transform: unset;
+}
+
+.career-hero .career-hero-careerbg {
+    font-size: var(--heading-font-size-xxs);
+    line-height: 22px;
+    margin-inline: 16px;
+}
+
+@media (min-width: 62rem) {
+    .career-hero {
+        background-position: center;
+    }
+
+    .career-hero .career-hero-top {
+        flex-direction: row;
+        align-items: unset;
+        height: 700px;
+        margin-inline: auto;
+    }
+
+    .career-hero .career-hero-left {
+        width: 21rem;
+        margin-top: 5rem;
+        margin-right: 4rem;
+    }
+
+    .career-hero .career-hero-photo img {
+        height: 296px;
+    }
+
+    .career-hero .career-hero-name {
+        font-size: var(--heading-font-size-xs);
+        padding-top: 0;
+    }
+
+    .career-hero .career-hero-title {
+        font-size: var(--body-font-size-s);
+    }
+
+    .career-hero .career-hero-right {
+        background-color: unset;
+        margin-top: 120px;
+        padding-top: unset;
+        width: calc(100% - 336px - 4rem);
+    }
+
+    .career-hero .career-hero-quote {
+        font-size: var(--heading-font-size-xl);
+        line-height: 59px;
+        margin: 0 0 97px;
+    }
+
+    .career-hero .career-hero-careerbgtitle {
+        font-size: var(--heading-font-size-m);
+        letter-spacing: 1.2px;
+        margin: 0 0 13px;
+    }
+
+    .career-hero .career-hero-careerbg {
+        font-size: var(--body-font-size-m);
+        line-height: 32px;
+        margin: 0;
+    }
+}

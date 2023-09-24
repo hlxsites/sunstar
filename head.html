@@ -1,5 +1,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta data-privacy-proxy-server="https://privacy-proxy-server.usercentrics.eu"/>
+<script>
+    // Fix for screen flicker issue observed with Target
+    (function(g, b, d) {
+        (function(a, c, d) {
+            if (a) {
+                var e = b.createElement("style");
+                e.id = c;
+                e.innerHTML = d;
+                a.appendChild(e)
+            }
+        }
+        )(b.getElementsByTagName("head")[0], "at-body-style", d);
+    }
+    )(window, document, "body {opacity: 1 !important}");
+</script>
 <script src="/scripts/lib-franklin.js" type="module"></script>
 <script src="/scripts/scripts.js" type="module"></script>
 <link rel="stylesheet" href="/styles/styles.css"/>

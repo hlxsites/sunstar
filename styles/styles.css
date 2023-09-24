@@ -13,6 +13,7 @@
 
 :root {
   /* colors */
+  --black: #000;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -36,6 +37,7 @@
   --light: #f8f9fa;
   --dark: #343a40;
   --link-color: #007CAD;
+  --hero-strong-color: #89d1e1;
   --card-text-color: var(--secondary);
   --link-hover-color: var(--secondary);
   --background-color: var(--white);
@@ -58,6 +60,10 @@
   --light-black: #3C4650;
   --steel-blue: #6D757C;
   --link-sky-color: #0092CC;
+  --oral-care-blue: #009CBD;
+  --safety-mobility-yellow: #D9AB41;
+  --health-beauty-orange: #F87C56;
+  --living-environment-green: #00A499;
 
 
   /* fonts */
@@ -77,6 +83,7 @@
   --heading-font-size-xmxl: 40px;
   --heading-font-size-mxl: 36px;
   --heading-font-size-l: 32px;
+  --heading-font-size-ml: 30px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
   --heading-font-size-ms: 20px;
@@ -668,6 +675,13 @@ main .section.about-us .button-container a:hover {
   text-decoration: none;
 }
 
+/* section - narrow */
+main .section.narrow {
+  padding: 0 1rem;
+  margin: auto;
+  max-width: 42rem;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -836,6 +850,13 @@ main .brand-detail-page p:has(img) {
   main .section.brand-description h2 {
     font-weight: var(--font-weight-small);
     font-size: 2.25rem;
+  }
+
+  /* section - bottom-border */
+  main .section.bottom-border {
+    border-bottom: 1px solid var(--overlay-background-color);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   /* section - spaced */
