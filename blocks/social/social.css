@@ -8,6 +8,7 @@
 
 main .section.social-container a {
   color: var(--secondary);
+  overflow-wrap: break-word;
 }
 
 main .section.social-container h2 {
@@ -24,16 +25,12 @@ main .section.social-container .tag-name {
   margin-bottom: 0.5rem;
 }
 
-main .section.narrow.social-container {
-  max-width: 45rem;
-  padding: 0 1rem;
-  margin: 5rem auto;
-}
-
 main .section.social-container .section-container {
   max-width: 45rem;
   margin-right: auto;
   margin-left: unset;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 main .section.social-container p {
@@ -115,10 +112,6 @@ div.social-container h3 {
 }
 
 @media (min-width: 62rem) {
-	main .section.social-container.narrow {
-    max-width: 54.5rem;
-	}
-
   main .section.social-container .section-container {
     position: relative;
   }
@@ -128,7 +121,6 @@ div.social-container h3 {
   }
 
   main .section.social-container {
-    max-width: 54.5rem;
     padding-left: 0;
     padding-right: 0;
     margin-right: auto;
@@ -170,10 +162,6 @@ div.social-container h3 {
 }
 
 @media (min-width:77rem) {
-  main .section.social-container {
-    max-width: 54.5rem;
-  }
-
   .block.social {
     right: -10rem;
   }
