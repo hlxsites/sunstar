@@ -28,7 +28,7 @@ npm run lint
 
 ## Adding external JS libraries
 
-You can add external JS libraries to your project but you need to make sure to copy over the files to be used in front end code in browser to the [ext-libs](./ext-libs/) folder. This would make them avaialble for execution in the client browser.
+You can add external JS libraries to your project but you need to make sure to copy over the files to be used in front end code in browser to the [ext-libs](./ext-libs/) folder. This would make them available for execution in the client browser.
 
 Here are the steps to follow:
 
