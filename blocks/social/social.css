@@ -131,9 +131,9 @@ div.social-container h3 {
     line-height: 1.3em;
   }
 
-	main .section.social-container h2 {
+  main .section.social-container h2 {
     font-size: var(--heading-font-size-mxl);
-	}
+  }
 
   .block.social {
     flex-direction: column;
