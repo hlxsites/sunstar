@@ -87,6 +87,7 @@ const addSocialBlock = (document) => {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
+      socialShare.after(createSectionMetadata({ Style: 'Narrow' }, document));
       socialShare.replaceWith(table);
     }
   }

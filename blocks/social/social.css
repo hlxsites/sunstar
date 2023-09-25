@@ -3,19 +3,31 @@
   flex-direction: row;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 1.5rem;
-
+  margin-bottom: 2rem;
 }
 
 main .section.social-container a {
   color: var(--secondary);
 }
 
-main .section.social-container {
+main .section.social-container h2 {
+  font-size: var(--heading-font-size-m);
+  margin-bottom: 1rem;
+}
+
+main .section.social-container .tag-name {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+main .section.narrow.social-container {
   max-width: 45rem;
   padding: 0 1rem;
-  margin: 0 auto;
-  margin-bottom: 7.5rem;
+  margin: 5rem auto;
 }
 
 main .section.social-container .section-container {
@@ -33,7 +45,7 @@ main .section.social-container p {
   font-weight: var(--font-weight-medium);
   font-size: var(--heading-font-size-m);
   line-height: 1.3em;
-  margin: 2rem 0 1.5rem;
+  margin: 1rem 0;
 }
 
 .block.social>span {
@@ -65,9 +77,15 @@ main .section.social-container h1 + p {
 
 main .section.social-container h4 {
   color: var(--light-black);
+  margin-bottom: 0.5rem;
 }
 
 main .section.social-container .section-container ul {
+  margin-bottom: 1rem;
+  padding-inline-start: 2.5rem;
+}
+
+main .section.social-container .section-container ol {
   margin-bottom: 1rem;
   padding-inline-start: 2.5rem;
 }
@@ -93,10 +111,14 @@ main .section.social-container .section-container ul {
 div.social-container h3 {
   font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-ms);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 62rem) {
+	main .section.social-container.narrow {
+    max-width: 54.5rem;
+	}
+
   main .section.social-container .section-container {
     position: relative;
   }
@@ -115,8 +137,11 @@ div.social-container h3 {
   main .section.social-container h1 {
     font-size: 2.25rem;
     line-height: 1.3em;
-    margin: 5rem 0 2rem;
   }
+
+	main .section.social-container h2 {
+    font-size: var(--heading-font-size-mxl);
+	}
 
   .block.social {
     flex-direction: column;
