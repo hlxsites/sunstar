@@ -15,6 +15,17 @@ const resultParsers = {
   },
 };
 
+/**
+ * Generic feed block decorator
+ * Example block config:
+ * {
+ *  "block-type": "feed",
+ * "category": "news",
+ * "topic": "press-releases",
+ * "count": 3
+ * }
+ * @param {HTMLElement} block
+ */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
   const blockType = blockCfg['block-type'];
