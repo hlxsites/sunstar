@@ -7,11 +7,11 @@ import { fetchIndex } from '../../scripts/scripts.js';
 */
 export default async function decorate(block) {
   let tags = getMetadata('article:tag');
-  const json = await fetchIndex('tags');
+  const { data } = await fetchIndex('tags');
 
-  if (json && json.data && tags) {
+  if (data && tags) {
     tags = tags.split(', ');
-    const tagsList = json.data;
+    const tagsList = data;
     const tagsMap = {};
 
     tagsList.forEach((entry) => {
@@ -28,5 +28,12 @@ export default async function decorate(block) {
         block.appendChild(a);
       }
     });
+
+    const tagsSectionContainer = block.closest('.section.tags-container>.section-container');
+    const p = tagsSectionContainer ? tagsSectionContainer.querySelector('p') : null;
+
+    if (p) {
+      tagsSectionContainer.classList.add('para-present');
+    }
   }
 }
