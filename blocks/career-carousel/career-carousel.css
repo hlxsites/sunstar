@@ -89,5 +89,26 @@
 }
 
 .career-slides-nav {
+  display: inline-flex;
   align-self: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.career-slides-nav span {
+  width: 6px;
+  height: 6px;
+  margin: 0 3px;
+  border-radius: 50%;
+  background: #0003;
+}
+
+.career-slides-nav span.active-nav {
+  background: #007CAD;
+}
+
+.career-slides-nav .btn-angle {
+  height: 24px;
+  margin-inline: 8px;
 }
