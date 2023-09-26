@@ -4,6 +4,19 @@ function filterIncompleteEntries(json) {
   return json.data.filter((e) => e.image !== '' && e['career-quote'] !== '0' && e['career-jobtitle'] !== '0');
 }
 
+function scrollToCard(idx, card, prevCard, slides) {
+  const rect = card.getBoundingClientRect();
+
+  // Compute the gap to add to the location
+  let gap = 0;
+  if (prevCard) {
+    const prevRect = prevCard.getBoundingClientRect();
+    gap = rect.x - (prevRect.x + prevRect.width);
+  }
+
+  slides.scrollTo(idx * (rect.width + gap), slides.scrollHeight);
+}
+
 export default async function decorate(block) {
   const json = await fetchIndex('query-index', 'career-testimonials');
   const data = filterIncompleteEntries(json);
@@ -53,16 +66,20 @@ export default async function decorate(block) {
   }
   careerSlider.appendChild(careerSlides);
 
+  const navButtons = document.createElement('div');
+  navButtons.classList.add('career-slides-nav');
+
   const al = document.createElement('a');
   al.textContent = '<';
   al.onclick = () => careerSlides.scrollTo(0, careerSlides.scrollHeight);
-  careerSlider.appendChild(al);
+  navButtons.appendChild(al);
 
   for (let i = 0; i < data.length; i += 1) {
     const a = document.createElement('a');
     a.textContent = `${i}`;
-    a.onclick = () => slideDivs[i].scrollIntoView();
-    careerSlider.appendChild(a);
+    const prevDiv = i > 0 ? slideDivs[i - 1] : null;
+    a.onclick = () => scrollToCard(i, slideDivs[i], prevDiv, careerSlides);
+    navButtons.appendChild(a);
   }
 
   const ar = document.createElement('a');
@@ -72,8 +89,8 @@ export default async function decorate(block) {
     const rect = div.getBoundingClientRect();
     careerSlides.scrollTo(rect.right, careerSlides.scrollHeight);
   };
-
-  careerSlider.appendChild(ar);
+  navButtons.appendChild(ar);
+  careerSlider.appendChild(navButtons);
 
   block.appendChild(careerSlider);
 }

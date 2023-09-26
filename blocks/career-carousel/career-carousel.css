@@ -3,6 +3,8 @@
 }
 
 .career-slider {
+  display: flex;
+  flex-direction: column;
   margin-left: -1rem;
   width: calc((var(--card-width) + 3rem) * 4);
   overflow: hidden;
@@ -84,4 +86,8 @@
   height: 14px;
   margin-left: 6px;
   margin-top: 2px;
+}
+
+.career-slides-nav {
+  align-self: center;
 }
