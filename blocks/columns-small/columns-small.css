@@ -8,17 +8,12 @@
 
 .columns-small > div {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.columns-small > div {
-    display: flex;
     -ms-flex-align: center;
     align-items: center;
-    border-bottom: 1px solid rgba(60, 70, 80, 0.12);
+    border-bottom: 1px solid rgba(60 70 80 / 12%);
     margin-top: 2rem;
     padding-bottom: 2rem;
+    flex-direction: column;
 }
 
 .columns-small h6 {
@@ -38,7 +33,7 @@
     overflow: hidden;
     flex-shrink: 0;
     border-radius: 0;
-    border: 1px solid rgba(60,70,80,0.12);
+    border: 1px solid rgba(60 70 80 / 12%);
 }
 
 .columns-small.invert-image-order-in-narrow-view > div .columns-small-img-col {
@@ -71,7 +66,6 @@
     max-width: 1200px;
 }
 
-
 @media (min-width: 62rem) {
     .columns-small.top-down.collapse > div {
         gap: 1.5rem;
@@ -79,7 +73,6 @@
 }
 
 @media (min-width: 62rem) {
-
     .columns-small h2,
     .columns-small:not(.no-buttons) h3,
     .columns-small:not(.no-buttons) h4 {
@@ -88,7 +81,7 @@
         font-weight: 700;
         line-height: 2rem;
         width: 100%;
-        margin: 0 auto 0;
+        margin: 0 auto;
     }
 
 
@@ -121,13 +114,14 @@
         font-weight: 700;
         line-height: 2rem;
         width: 100%;
-        margin: 0 auto 0;
+        margin: 0 auto;
     }
 
     .description > p{
         font-size: 12px;
         line-height: 1.5rem;
     }
+
     .columns-small > div > .columns-small-img-col {
         margin-right: 1rem;
         height: auto;
@@ -139,7 +133,7 @@
         overflow: hidden;
         flex-shrink: 0;
         border-radius: 0;
-        border: 1px solid rgba(60,70,80,0.12);
+        border: 1px solid rgba(60 70 80 / 12%);
     }
 
 }
