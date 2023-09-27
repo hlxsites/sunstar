@@ -55,7 +55,7 @@
   color: var(--primary);
   font-size: 19px;
   font-style: normal;
-  height: 150px;
+  height: 9.375rem;
   line-height: 29px;
   margin: 0 0 19px;
   overflow: hidden;
@@ -73,9 +73,9 @@
 .career-carousel .career-card p {
   color: var(--light-black);
   font-size: 0.9rem;
-  height: 40px;
+  height: 2.5rem;
   line-height: 21.6px;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -102,15 +102,19 @@
   margin-top: 2px;
 }
 
-.career-slides-nav {
-  display: inline-flex;
-  align-self: center;
-  align-items: center;
-  margin-top: 50px;
-  margin-bottom: 40px;
+.career-carousel .career-slides-navbar {
+  display: flex;
 }
 
-.career-slides-nav span {
+.career-carousel .career-slides-nav {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 3.125rem;
+  margin-bottom: 2.5rem;
+  margin-inline: auto;
+}
+
+.career-carousel .career-slides-nav span {
   width: 6px;
   height: 6px;
   margin: 0 3px;
@@ -118,11 +122,11 @@
   background: #0003;
 }
 
-.career-slides-nav span.active-nav {
-  background: #007CAD;
+.career-carousel .career-slides-nav span.active-nav {
+  background: var(--link-color);
 }
 
-.career-slides-nav .btn-angle {
-  height: 24px;
-  margin-inline: 8px;
+.career-carousel .career-slides-nav .btn-angle {
+  height: 1.5rem;
+  margin-inline: 0.5rem;
 }

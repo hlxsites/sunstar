@@ -71,6 +71,8 @@ export default async function decorate(block) {
   }
   careerSlider.append(careerSlides);
 
+  const navBar = document.createElement('div');
+  navBar.classList.add('career-slides-navbar');
   const navButtons = document.createElement('div');
   navButtons.classList.add('career-slides-nav');
 
@@ -104,7 +106,8 @@ export default async function decorate(block) {
   ra.classList.add('btn-angle');
   ra.onclick = () => lastBtn.onclick();
   navButtons.append(ra);
-  careerSlider.append(navButtons);
+  navBar.append(navButtons);
 
   block.append(careerSlider);
+  block.append(navBar);
 }
