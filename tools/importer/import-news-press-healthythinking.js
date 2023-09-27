@@ -11,7 +11,12 @@
  */
 /* global WebImporter */
 
-import { addBreadCrumb, createMetadata, fixRelativeLinks } from './utils.js';
+import {
+  addBreadCrumb,
+  createMetadata,
+  fixRelativeLinks,
+  createSectionMetadata,
+} from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 const extractEmbed = (document) => {
@@ -82,6 +87,7 @@ const addSocialBlock = (document) => {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
+      socialShare.after(createSectionMetadata({ Style: 'Narrow' }, document));
       socialShare.replaceWith(table);
     }
   }
@@ -92,19 +98,13 @@ const addTagsBlock = (document) => {
 
   if (section) {
     const tagLabel = section.querySelector('.tag-label');
-    const tagAnchors = section.querySelectorAll('.tag-link');
+    const cells = [['Tags']];
 
-    if (tagAnchors && tagAnchors.length) {
-      const cells = [['Tags']];
-
-      [...tagAnchors].forEach((x) => {
-        cells.push([x]);
-      });
-
-      const table = WebImporter.DOMUtils.createTable(cells, document);
-      section.before(tagLabel);
-      section.replaceWith(table);
-    }
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    section.before(document.createElement('hr'));
+    section.after(createSectionMetadata({ Style: 'Narrow' }, document));
+    section.before(tagLabel);
+    section.replaceWith(table);
   }
 };
 
@@ -192,7 +192,7 @@ export default {
       const breadcrumbItems = sectionBreadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
       if (breadcrumbItems && breadcrumbItems.length) {
         const breadcrumbText = breadcrumbItems[breadcrumbItems.length - 1].textContent.trim();
-        metadataDetails.BreadcrumbTitle = breadcrumbText;
+        metadataDetails.BreadcrumbTitle = breadcrumbText.trim();
       }
     }
 
@@ -217,7 +217,7 @@ export default {
     const tags = document.querySelectorAll('.tag-pill');
 
     if (tags && tags.length) {
-      metadataDetails.Tags = [...tags].map((x) => x.textContent).join(', ');
+      metadataDetails.Tags = [...tags].map((x) => x.textContent.trim()).join(', ');
     }
 
     params.preProcessMetadata = metadataDetails;

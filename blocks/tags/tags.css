@@ -1,0 +1,47 @@
+.section.tags-container {
+  margin-bottom: 5rem;
+  padding-inline: 1rem;
+}
+
+.section.tags-container>.section-container {
+  border-top: 1px solid #3c465033;
+  padding-top: 1.75rem;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.section.tags-container>.section-container.para-present {
+  display: flex;
+}
+
+.section.tags-container h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.tags a.button.primary {
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  height: unset;
+  min-width: unset;
+  margin-right: 0.5rem;
+}
+
+.tags a.button.primary:hover {
+  background-color: #00577a;
+}
+
+@media (min-width: 62rem) {
+  main .section.tags-container .section-container {
+    padding-inline: 0;
+    margin-inline: 1rem;
+  }
+}
+
+@media (min-width: 77rem) {
+  main .section.tags-container .section-container {
+    margin-inline: 0;
+  }
+}

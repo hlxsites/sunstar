@@ -25,4 +25,14 @@ export default async function decorate(block) {
   spanWithImg.forEach((x) => {
     block.appendChild(x);
   });
+
+  const socialContainer = block.closest('.section.social-container>.section-container');
+  const firstP = socialContainer ? socialContainer.querySelector('p') : null;
+
+  if (firstP && firstP.nextElementSibling.tagName === 'H1') {
+    const innerSpan = document.createElement('span');
+    innerSpan.textContent = firstP.textContent;
+    innerSpan.classList.add('tag-name');
+    firstP.replaceWith(innerSpan);
+  }
 }
