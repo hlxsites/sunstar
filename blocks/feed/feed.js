@@ -4,12 +4,15 @@ import {
 import { queryIndex } from '../../scripts/scripts.js';
 
 const resultParsers = {
-  cards: (results) => {
+  cards: (results, blockCfg) => {
     const blockContents = [];
     results.forEach((result) => {
-      const resultTitle = document.createElement('div');
-      resultTitle.textContent = result.title;
-      blockContents.push([resultTitle]);
+      const fields = blockCfg.fields.split(',');
+      fields.forEach((field) => {
+        const div = document.createElement('div');
+        div.textContent = result[field.trim().toLowerCase()];
+        blockContents.push([div]);
+      });
     });
     return blockContents;
   },
@@ -42,7 +45,7 @@ export default async function decorate(block) {
     return match;
   }).take(blockCfg.count).toList();
   block.innerHTML = '';
-  const blockContents = resultParsers[blockType](results);
+  const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
   block.parentNode.replaceChild(builtBlock, block);
   decorateBlock(builtBlock);
