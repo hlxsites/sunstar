@@ -1,5 +1,5 @@
 import {
-  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig,
+  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig, getMetadata,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
@@ -8,6 +8,7 @@ const resultParsers = {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',');
+      const row = [];
       fields.forEach((field) => {
         const div = document.createElement('div');
         const fieldName = field.trim().toLowerCase();
@@ -16,23 +17,16 @@ const resultParsers = {
         } else {
           div.textContent = result[fieldName];
         }
-        blockContents.push([div]);
+        row.push(div);
       });
+      blockContents.push(row);
     });
     return blockContents;
   },
 };
 
 /**
- * Generic feed block decorator
- * Example block config:
- * {
- *  "block-type": "feed",
- * "category": "news",
- * "topic": "press-releases",
- * "count": 3
- * }
- * @param {HTMLElement} block
+ * Feed block decorator to build feeds based on block configuration
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
@@ -41,14 +35,26 @@ export default async function decorate(block) {
 
   const results = queryObj.where((el) => {
     let match = true;
-    if (match && blockCfg.category) {
-      match = el.category === blockCfg.category;
+    const category = blockCfg.category || getMetadata('category');
+    if (match && category) {
+      match = el.category === category;
     }
-    if (match && blockCfg.topic) {
-      match = el.type === blockCfg.topic;
+
+    const topic = blockCfg.topic || getMetadata('topic');
+    if (match && topic) {
+      match = el.topic === topic;
+    }
+    if (match && blockCfg.modifier) {
+      match = el.modifier === blockCfg.modifier;
     }
     return match;
-  }).take(blockCfg.count).toList();
+  }).orderByDescending((el) => {
+    if (blockCfg.sort) {
+      return el[blockCfg.sort];
+    }
+    return el.path;
+  }).take(blockCfg.count)
+    .toList();
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);

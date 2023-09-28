@@ -443,6 +443,7 @@ export async function loadScript(url, attrs = {}) {
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
   // TODO: Temporary index to hold the results
+  // TODO - remove this once the index is complete
   const index = await fetchIndex('_drafts/satyam/temp-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
