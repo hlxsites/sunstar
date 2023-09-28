@@ -89,6 +89,7 @@ export default async function decorate(block) {
     link.textContent = 'Read More '; // TODO
     const arrow = document.createElement('img');
     arrow.src = '/icons/angle-right-blue.svg';
+    arrow.alt = 'Read more';
     arrow.classList.add('icon-angle-right-blue');
     link.append(arrow);
     a.append(link);
@@ -120,12 +121,14 @@ export default async function decorate(block) {
   }
   const la = document.createElement('img');
   la.src = '/icons/angle-left-blue.svg';
+  la.alt = 'Previous person card';
   la.classList.add('btn-angle');
   la.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, false);
   navButtons.prepend(la);
 
   const ra = document.createElement('img');
   ra.src = '/icons/angle-right-blue.svg';
+  ra.alt = 'Next person card';
   ra.classList.add('btn-angle');
   ra.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, true);
   navButtons.append(ra);
