@@ -415,8 +415,7 @@ main img {
 
 main .section .section-container {
   max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 16px;
 }
 
 /* section - centered */
