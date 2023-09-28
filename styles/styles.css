@@ -427,7 +427,8 @@ main .section .section-container {
 /* section - full-width */
 main .section.full-width>.section-container {
   max-width: 100%;
-  padding: 16px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* section - brands-top */
