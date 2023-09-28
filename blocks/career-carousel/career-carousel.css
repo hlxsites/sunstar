@@ -60,12 +60,21 @@
   color: var(--primary);
   font-size: 19px;
   font-style: normal;
-  height: 9.375rem;
   line-height: 29px;
   margin: 0 0 19px;
+  max-height: 9.375rem;
   overflow: hidden;
   text-indent: 0;
-  text-overflow: ellipsis;
+
+  /* Show ellipsis on multiline text */
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.career-carousel .career-card .career-card-bqc {
+  height: 9.375rem;
+  margin-bottom: 12px;
 }
 
 .career-carousel .career-card h6 {

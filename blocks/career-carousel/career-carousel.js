@@ -75,9 +75,12 @@ export default async function decorate(block) {
     const pic = createOptimizedPicture(data[i].image, data[i].pagename);
     a.append(pic);
 
+    const bqc = document.createElement('div');
+    bqc.classList.add('career-card-bqc');
     const bq = document.createElement('blockquote');
     bq.textContent = data[i]['career-quote'];
-    a.append(bq);
+    bqc.append(bq);
+    a.append(bqc);
 
     const nm = document.createElement('h6');
     nm.textContent = data[i].pagename;
