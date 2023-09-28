@@ -36,9 +36,11 @@ function scrollToAdjecent(spans, slideDivs, slides, next) {
     return;
   }
 
-  const newActive = curActive + (next ? 1 : -1);
-  if (newActive < 0 || newActive >= spans.length) {
-    return;
+  let newActive = curActive + (next ? 1 : -1);
+  if (newActive < 0) {
+    newActive = spans.length - 1;
+  } else if (newActive >= spans.length) {
+    newActive = 0;
   }
 
   if (slideDivs.length <= newActive) {
@@ -136,4 +138,17 @@ export default async function decorate(block) {
 
   block.append(careerSlider);
   block.append(navBar);
+
+  document.onkeydown = (e) => {
+    switch (e.keyCode) {
+      case 37:
+        la.onclick();
+        break;
+      case 39:
+        ra.onclick();
+        break;
+      default:
+        // do nothing
+    }
+  };
 }
