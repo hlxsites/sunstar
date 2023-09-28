@@ -1,3 +1,4 @@
+import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 import { fetchIndex } from '../../scripts/scripts.js';
 
 function filterIncompleteEntries(json) {
@@ -69,12 +70,8 @@ export default async function decorate(block) {
     div.classList.add('career-card');
     const a = document.createElement('a');
     a.href = data[i].path;
-    const fig = document.createElement('figure');
-    const img = document.createElement('img');
-    img.src = data[i].image;
-    img.alt = data[i].pagename;
-    fig.append(img);
-    a.append(fig);
+    const pic = createOptimizedPicture(data[i].image, data[i].pagename);
+    a.append(pic);
 
     const bq = document.createElement('blockquote');
     bq.textContent = data[i]['career-quote'];
