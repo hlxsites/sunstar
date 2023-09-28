@@ -89,7 +89,7 @@ export default async function decorate(block) {
     link.textContent = 'Read More '; // TODO
     const arrow = document.createElement('img');
     arrow.src = '/icons/angle-right-blue.svg';
-    arrow.alt = 'Read more';
+    arrow.alt = 'Go to testimonial';
     arrow.classList.add('icon-angle-right-blue');
     link.append(arrow);
     a.append(link);
