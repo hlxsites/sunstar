@@ -1,15 +1,15 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 import { fetchIndex } from '../../scripts/scripts.js';
 
-function filterIncompleteEntries(json) {
+export function filterIncompleteEntries(json) {
   return json.data.filter((e) => e.image !== '' && e['career-quote'] !== '0' && e['career-jobtitle'] !== '0');
 }
 
-function scrollToCard(idx, card, precedingCard, slides, span) {
+export function scrollToCard(idx, card, precedingCard, slides, span, doc) {
   const rect = card.getBoundingClientRect();
 
   // set the style on the active button
-  const buttons = document.querySelectorAll('.career-slides-nav span');
+  const buttons = doc.querySelectorAll('.career-slides-nav span.active-nav');
   buttons.forEach((b) => b.classList.remove('active-nav'));
   span.classList.add('active-nav');
 
@@ -23,7 +23,7 @@ function scrollToCard(idx, card, precedingCard, slides, span) {
   slides.scrollTo(idx * (rect.width + gap), slides.scrollHeight);
 }
 
-function scrollToAdjecent(spans, slideDivs, slides, next) {
+export function scrollToAdjacent(spans, slideDivs, slides, next, doc) {
   let curActive;
   for (let i = 0; i < spans.length; i += 1) {
     if (spans[i].classList.contains('active-nav')) {
@@ -53,6 +53,7 @@ function scrollToAdjecent(spans, slideDivs, slides, next) {
     newActive > 0 ? slideDivs[newActive - 1] : null,
     slides,
     spans[newActive],
+    doc,
   );
 }
 
@@ -119,7 +120,7 @@ export default async function decorate(block) {
       s.classList.add('active-nav');
     }
     s.tabIndex = '-1';
-    s.onclick = () => scrollToCard(i, slideDivs[i], prevDiv, careerSlides, s);
+    s.onclick = () => scrollToCard(i, slideDivs[i], prevDiv, careerSlides, s, document);
     navButtons.append(s);
 
     buttons.push(s);
@@ -128,14 +129,14 @@ export default async function decorate(block) {
   la.src = '/icons/angle-left-blue.svg';
   la.alt = 'Previous person card';
   la.classList.add('btn-angle');
-  la.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, false);
+  la.onclick = () => scrollToAdjacent(buttons, slideDivs, careerSlides, false, document);
   navButtons.prepend(la);
 
   const ra = document.createElement('img');
   ra.src = '/icons/angle-right-blue.svg';
   ra.alt = 'Next person card';
   ra.classList.add('btn-angle');
-  ra.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, true);
+  ra.onclick = () => scrollToAdjacent(buttons, slideDivs, careerSlides, true, document);
   navButtons.append(ra);
   navBar.append(navButtons);
 
