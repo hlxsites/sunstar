@@ -106,8 +106,8 @@ function createTitle(title) {
   return titleH3;
 }
 
-function extractVideoFromContent(content, videoImage) {
-  const video = content.querySelector('p.button-container > a').parentNode;
+function getVideo(block, videoImage) {
+  const video = getNamedValueFromTable(block, 'Video');
   const div = document.createElement('div');
   div.classList.add('network-item-img');
   div.append(video.children[0]);
@@ -120,7 +120,6 @@ function extractVideoFromContent(content, videoImage) {
     a.classList.remove('button');
   }
 
-  content.removeChild(video);
   return div;
 }
 
@@ -133,14 +132,14 @@ function getVideoImage(block) {
 
 export default function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const hasMultimediaContent = !!blockCfg.image || block.classList.contains('video');
+  const hasMultimediaContent = !!blockCfg.image || !!blockCfg.video;
   const hasVideo = block.classList.contains('video');
   const hasVideoImage = hasVideo && !!blockCfg['video-image'];
 
   const image = blockCfg.image ? getImage(block) : null;
   const text = blockCfg.content ? getText(block) : null;
   const videoImage = hasVideoImage ? getVideoImage(block) : null;
-  const video = (!!text && hasVideo) ? extractVideoFromContent(text, videoImage) : null;
+  const video = hasVideo ? getVideo(block, videoImage) : null;
   const title = Array.isArray(blockCfg.title) ? blockCfg.title.join('\n') : blockCfg.title;
   const tags = blockCfg.tags ? [...blockCfg.tags.split(',')] : null;
   const recruitingLink = blockCfg['recruiting-link'];
