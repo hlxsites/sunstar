@@ -30,8 +30,12 @@ main .hero-horizontal-tabs.block {
   margin-bottom: 5rem;
 }
 
-main div.tab-item.hidden {
+main div.tab-item {
   display: none;
+}
+
+main div.tab-item.active {
+  display: block;
 }
 
 main .hero-horiz-tabs-text {

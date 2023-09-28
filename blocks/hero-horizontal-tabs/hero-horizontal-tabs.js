@@ -58,7 +58,6 @@ export function createTabs(block, text) {
       const tabDiv = document.createElement('div');
       tabDiv.classList.add('tab-item');
       tabDiv.append(...tabContent.children);
-      tabDiv.classList.add('hidden');
       sectionWrapper.append(tabDiv);
       container.insertBefore(sectionWrapper, wrapper);
 
@@ -109,16 +108,15 @@ export default function decorate(block) {
         activeButton.classList.remove('active');
         // remove active class from parent li
         activeButton.parentElement.classList.remove('active');
-
         button.classList.add('active');
         // add active class to parent li
         $tab.classList.add('active');
 
         tabs.forEach((t) => {
           if (name === t.name) {
-            t.$content.classList.remove('hidden');
+            t.$content.classList.add('active');
           } else {
-            t.$content.classList.add('hidden');
+            t.$content.classList.remove('active');
           }
         });
       }
@@ -128,7 +126,9 @@ export default function decorate(block) {
       button.classList.add('active');
       // add active class to parent li
       $tab.classList.add('active');
-      if (tab.$content) tab.$content.classList.remove('hidden');
+      if (tab.$content) {
+        tab.$content.classList.add('active');
+      }
     }
   });
 

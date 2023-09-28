@@ -13,7 +13,7 @@
 import { readBlockConfig } from '../../scripts/lib-franklin.js';
 import { getNamedValueFromTable } from '../../scripts/scripts.js';
 
-function addCareerTagColor(tagDiv) {
+function addTagColors(tagDiv) {
   if (tagDiv.innerText === 'Oral Care' || tagDiv.innerText === 'Mouth & Body') {
     tagDiv.classList.add('blue');
   } else if (tagDiv.innerText === 'Safety & Mobility') {
@@ -22,22 +22,26 @@ function addCareerTagColor(tagDiv) {
     tagDiv.classList.add('green');
   } else if (tagDiv.innerText === 'Health & Beauty') {
     tagDiv.classList.add('orange');
+  } else {
+    tagDiv.classList.add('gray');
   }
 }
 
 function createTagsDiv(tags) {
+  if (!tags) return null;
   const tagsDiv = document.createElement('div');
   tagsDiv.classList.add('tags');
   tags.forEach((tag) => {
     const tagDiv = document.createElement('div');
     tagDiv.innerText = tag.trim();
-    addCareerTagColor(tagDiv);
+    addTagColors(tagDiv);
     tagsDiv.append(tagDiv);
   });
   return tagsDiv;
 }
 
 function createWebsiteDiv(website) {
+  if (!website) return null;
   const websiteDiv = document.createElement('div');
   websiteDiv.classList.add('website');
   const websiteA = document.createElement('a');
@@ -67,6 +71,7 @@ function createOurHrDiv() {
 }
 
 function createRecruitingLinkDiv(recruitingLink, recruitingLinkText) {
+  if (!recruitingLink) return null;
   const recruitingLinkDiv = document.createElement('div');
   recruitingLinkDiv.classList.add('recruiting-link');
   const recruitingLinkA = document.createElement('a');
@@ -94,51 +99,73 @@ function getText(block) {
   return div;
 }
 
+function createTitle(title) {
+  const titleH3 = document.createElement('h3');
+  titleH3.classList.add('title');
+  titleH3.innerText = title;
+  return titleH3;
+}
+
+function extractVideoFromContent(content, videoImage) {
+  const video = content.querySelector('p.button-container > a').parentNode;
+  const div = document.createElement('div');
+  div.classList.add('network-item-img');
+  div.append(video.children[0]);
+
+  if (videoImage) {
+    const picture = videoImage.querySelector('picture');
+    picture.classList.add('network-item-img', 'video-image');
+    const a = div.querySelector('a');
+    a.replaceChildren(picture);
+    a.classList.remove('button');
+  }
+
+  content.removeChild(video);
+  return div;
+}
+
+function getVideoImage(block) {
+  const div = getNamedValueFromTable(block, 'Video-image');
+  if (!div) return null;
+  div.classList.add('network-item-img');
+  return div;
+}
+
 export default function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const image = getImage(block);
-  const text = getText(block);
-  const hasImage = !!blockCfg.image;
+  const hasMultimediaContent = !!blockCfg.image || block.classList.contains('video');
+  const hasVideo = block.classList.contains('video');
+  const hasVideoImage = hasVideo && !!blockCfg['video-image'];
 
-  let { title } = blockCfg;
-
-  if (Array.isArray(blockCfg.title)) {
-    title = title.join('\n');
-  }
-
-  const tags = [...blockCfg.tags.split(',')];
-
+  const image = blockCfg.image ? getImage(block) : null;
+  const text = blockCfg.content ? getText(block) : null;
+  const videoImage = hasVideoImage ? getVideoImage(block) : null;
+  const video = (!!text && hasVideo) ? extractVideoFromContent(text, videoImage) : null;
+  const title = Array.isArray(blockCfg.title) ? blockCfg.title.join('\n') : blockCfg.title;
+  const tags = blockCfg.tags ? [...blockCfg.tags.split(',')] : null;
   const recruitingLink = blockCfg['recruiting-link'];
   const recruitingLinkText = blockCfg['recruiting-link-text'];
+  /* eslint-disable-next-line prefer-destructuring */
+  const website = blockCfg.website;
 
-  const { website } = blockCfg;
-  let websiteDiv;
-  let recruitingLinkDiv;
-
-  const titleDiv = document.createElement('h3');
-  titleDiv.classList.add('title');
-  titleDiv.innerText = title;
-
+  const websiteDiv = createWebsiteDiv(website);
+  const recruitingLinkDiv = createRecruitingLinkDiv(recruitingLink, recruitingLinkText);
+  const titleH3 = createTitle(title);
   const tagsDiv = createTagsDiv(tags);
-
-  if (recruitingLink) {
-    recruitingLinkDiv = createRecruitingLinkDiv(recruitingLink, recruitingLinkText);
-  }
-
-  if (website) {
-    websiteDiv = createWebsiteDiv(website);
-  }
-
   const ourHrDiv = createOurHrDiv();
+  const careerOpportunitiesDiv = createCareerOpportunitiesDiv();
 
-  block.replaceChildren(titleDiv, tagsDiv);
+  block.replaceChildren(titleH3);
+
+  if (tags) {
+    block.append(tagsDiv);
+  }
 
   if (website) {
     block.append(websiteDiv);
   }
 
-  const careerOpportunitiesDiv = createCareerOpportunitiesDiv();
-  if (!hasImage) {
+  if (!hasMultimediaContent) {
     block.append(careerOpportunitiesDiv);
   }
 
@@ -146,26 +173,29 @@ export default function decorate(block) {
     block.append(recruitingLinkDiv);
   }
 
-  if (!hasImage) {
+  if (!hasMultimediaContent) {
     block.append(ourHrDiv);
   }
 
-  if (hasImage && image) {
+  if (hasMultimediaContent) {
     const contentWrapper = document.createElement('div');
     const textContentWrapper = document.createElement('div');
+
     textContentWrapper.classList.add('text-content-wrapper');
+    textContentWrapper.append(text);
 
     if (website) {
-      textContentWrapper.append(text, websiteDiv);
-    } else {
-      textContentWrapper.append(text);
+      textContentWrapper.append(websiteDiv);
     }
 
     contentWrapper.classList.add('content-wrapper');
-    contentWrapper.append(image, textContentWrapper);
-
-    block.replaceChildren(titleDiv, tagsDiv, contentWrapper);
+    if (image) {
+      contentWrapper.append(image);
+    } else if (video) {
+      contentWrapper.append(video);
+    }
+    contentWrapper.append(textContentWrapper);
+    block.append(contentWrapper);
   }
-
   return block;
 }
