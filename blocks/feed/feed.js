@@ -1,5 +1,5 @@
 import {
-  buildBlock, decorateBlock, loadBlock, readBlockConfig,
+  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
@@ -10,7 +10,12 @@ const resultParsers = {
       const fields = blockCfg.fields.split(',');
       fields.forEach((field) => {
         const div = document.createElement('div');
-        div.textContent = result[field.trim().toLowerCase()];
+        const fieldName = field.trim().toLowerCase();
+        if (fieldName === 'image') {
+          div.append(createOptimizedPicture(result[fieldName]));
+        } else {
+          div.textContent = result[fieldName];
+        }
         blockContents.push([div]);
       });
     });

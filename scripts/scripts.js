@@ -442,7 +442,8 @@ export async function loadScript(url, attrs = {}) {
 
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
-  const index = await fetchIndex('query-index', sheet);
+  // TODO: Temporary index to hold the results
+  const index = await fetchIndex('_drafts/satyam/temp-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
