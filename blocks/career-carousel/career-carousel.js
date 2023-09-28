@@ -22,6 +22,37 @@ function scrollToCard(idx, card, precedingCard, slides, span) {
   slides.scrollTo(idx * (rect.width + gap), slides.scrollHeight);
 }
 
+function scrollToAdjecent(spans, slideDivs, slides, next) {
+  let curActive;
+  for (let i = 0; i < spans.length; i += 1) {
+    if (spans[i].classList.contains('active-nav')) {
+      curActive = i;
+      break;
+    }
+  }
+
+  if (curActive === undefined) {
+    return;
+  }
+
+  const newActive = curActive + (next ? 1 : -1);
+  if (newActive < 0 || newActive >= spans.length) {
+    return;
+  }
+
+  if (slideDivs.length <= newActive) {
+    return;
+  }
+
+  scrollToCard(
+    newActive,
+    slideDivs[newActive],
+    newActive > 0 ? slideDivs[newActive - 1] : null,
+    slides,
+    spans[newActive],
+  );
+}
+
 export default async function decorate(block) {
   const json = await fetchIndex('query-index', 'career-testimonials');
   const data = filterIncompleteEntries(json);
@@ -76,8 +107,7 @@ export default async function decorate(block) {
   const navButtons = document.createElement('div');
   navButtons.classList.add('career-slides-nav');
 
-  let firstBtn;
-  let lastBtn;
+  const buttons = [];
   for (let i = 0; i < data.length; i += 1) {
     const prevDiv = i > 0 ? slideDivs[i - 1] : null;
 
@@ -89,22 +119,18 @@ export default async function decorate(block) {
     s.onclick = () => scrollToCard(i, slideDivs[i], prevDiv, careerSlides, s);
     navButtons.append(s);
 
-    if (i === 0) {
-      firstBtn = s;
-    } else if (i === data.length - 1) {
-      lastBtn = s;
-    }
+    buttons.push(s);
   }
   const la = document.createElement('img');
   la.src = '/icons/angle-left-blue.svg';
   la.classList.add('btn-angle');
-  la.onclick = () => firstBtn.onclick();
+  la.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, false);
   navButtons.prepend(la);
 
   const ra = document.createElement('img');
   ra.src = '/icons/angle-right-blue.svg';
   ra.classList.add('btn-angle');
-  ra.onclick = () => lastBtn.onclick();
+  ra.onclick = () => scrollToAdjecent(buttons, slideDivs, careerSlides, true);
   navButtons.append(ra);
   navBar.append(navButtons);
 
