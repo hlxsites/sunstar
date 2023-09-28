@@ -2,6 +2,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 58%;
+    height: 43.75rem;
 }
 
 .hero-career .hero-career-top {
@@ -19,11 +20,11 @@
     width: 155px;
 }
 
-.hero-career .hero-career-photo {
+.hero-career .hero-career-left picture {
     margin-bottom: 1rem;
 }
 
-.hero-career .hero-career-photo img {
+.hero-career .hero-career-left img {
     height: 10.75rem;
     width: auto;
 }
@@ -110,8 +111,8 @@
         margin-right: 4rem;
     }
 
-    .hero-career .hero-career-photo img {
-        height: 296px;
+    .hero-career .hero-career-left img {
+        height: 18.5rem;
     }
 
     .hero-career .hero-career-name {
