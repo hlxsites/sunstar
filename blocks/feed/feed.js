@@ -3,7 +3,10 @@ import {
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
+// Result parsers parse the query results into a format that can be used by the block builder for
+// the specific block types
 const resultParsers = {
+  // Parse results into a cards block
   cards: (results, blockCfg) => {
     const blockContents = [];
     results.forEach((result) => {
