@@ -10,7 +10,7 @@ export default async function decorate(block) {
     const a = x.querySelector('a');
     const span = document.createElement('span');
     const newAnchor = document.createElement('a');
-    newAnchor.href = a.href;
+    newAnchor.href = a.href.replaceAll(/%5C%5C&/g, '&'); // Replacing extra backslash which is getting appended
     const firstGrandChild = x.querySelector('div');
     span.classList.add(`icon-${firstGrandChild.innerText.toLowerCase()}`, 'icon');
     newAnchor.appendChild(span);
