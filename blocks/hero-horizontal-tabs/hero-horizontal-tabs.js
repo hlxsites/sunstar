@@ -22,7 +22,7 @@ export function createTabs(block, text) {
     return {
       title,
       name,
-      $tab: li,
+      tabButton: li,
     };
   });
 
@@ -58,13 +58,12 @@ export function createTabs(block, text) {
       const tabDiv = document.createElement('div');
       tabDiv.classList.add('tab-item');
       tabDiv.append(...tabContent.children);
-      tabDiv.classList.add('hidden');
       sectionWrapper.append(tabDiv);
       container.insertBefore(sectionWrapper, wrapper);
 
       // remove it from the dom
       tabContent.remove();
-      tab.$content = tabDiv;
+      tab.content = tabDiv;
     }
   });
   return tabs;
@@ -96,29 +95,28 @@ export default function decorate(block) {
 
   tabs.forEach((tab, index) => {
     const button = document.createElement('button');
-    const { $tab, title, name } = tab;
+    const { tabButton, title, name } = tab;
     button.textContent = title.split(',');
     button.classList.add('tab');
 
-    $tab.replaceChildren(button);
+    tabButton.replaceChildren(button);
 
-    $tab.addEventListener('click', () => {
+    tabButton.addEventListener('click', () => {
       const activeButton = block.querySelector('button.active');
 
-      if (activeButton !== $tab) {
+      if (activeButton !== tabButton) {
         activeButton.classList.remove('active');
         // remove active class from parent li
         activeButton.parentElement.classList.remove('active');
-
         button.classList.add('active');
         // add active class to parent li
-        $tab.classList.add('active');
+        tabButton.classList.add('active');
 
         tabs.forEach((t) => {
           if (name === t.name) {
-            t.$content.classList.remove('hidden');
+            t.content.classList.add('active');
           } else {
-            t.$content.classList.add('hidden');
+            t.content.classList.remove('active');
           }
         });
       }
@@ -127,8 +125,10 @@ export default function decorate(block) {
     if (index === 0) {
       button.classList.add('active');
       // add active class to parent li
-      $tab.classList.add('active');
-      if (tab.$content) tab.$content.classList.remove('hidden');
+      tabButton.classList.add('active');
+      if (tab.content) {
+        tab.content.classList.add('active');
+      }
     }
   });
 
