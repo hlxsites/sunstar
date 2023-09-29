@@ -17,21 +17,21 @@ function addTextEl(tag, txt, parent, ...classes) {
   parent.appendChild(newDiv);
 }
 
-export default function decorate($block) {
+export default function decorate(block) {
   const section = document.querySelector('.section.hero-career-container');
   if (section) {
     section.classList.add('full-width');
   }
 
-  const cfg = readBlockConfig($block);
+  const cfg = readBlockConfig(block);
 
   const bgimg = cfg['hero-background'];
   const s = `background-image: url(${bgimg})`;
-  $block.style = s;
+  block.style = s;
 
   const heroDiv = document.createElement('div');
   heroDiv.classList.add('hero-career-top');
-  $block.appendChild(heroDiv);
+  block.appendChild(heroDiv);
 
   const heroLeft = document.createElement('div');
   heroLeft.classList.add('hero-career-left');
@@ -50,5 +50,5 @@ export default function decorate($block) {
   addTextEl('h6', 'Career background', heroRight, 'hero-career-careerbgtitle'); // TODO i18n
   addTextEl('p', cfg['career-background'], heroRight, 'hero-career-careerbg');
 
-  deleteConfigBlock($block, heroDiv);
+  deleteConfigBlock(block, heroDiv);
 }
