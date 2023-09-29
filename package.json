@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Sunstar Website",
   "scripts": {
-    "test": "wtr \"./test/**/feed.test.js\" --node-resolve --port=2000 --coverage",
+    "test": "wtr \"./test/**/*.js\" --node-resolve --port=2000 --coverage",
     "test:watch": "npm test -- --watch",
     "lint:js": "eslint .",
     "lint:css": "stylelint blocks/**/*.css styles/**/*.css",
