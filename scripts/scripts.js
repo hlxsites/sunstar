@@ -342,7 +342,7 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-async function loadPage() {
+export async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
@@ -442,9 +442,7 @@ export async function loadScript(url, attrs = {}) {
 
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
-  // TODO: Temporary index to hold the results
-  // TODO - remove this once the index is complete
-  const index = await fetchIndex('_drafts/satyam/temp-index', sheet);
+  const index = await fetchIndex('query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
@@ -562,5 +560,3 @@ export async function loadConsentManager() {
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
-
-loadPage();

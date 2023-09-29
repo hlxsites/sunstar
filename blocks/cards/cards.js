@@ -50,7 +50,7 @@ export default function decorate(block) {
   ul.querySelectorAll('img')
     .forEach((img) => img.closest('picture')
       .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
-  if (ul.querySelector('a') === null && !block.classList.contains('omit-nolink-styles')) {
+  if (ul.querySelector('a') === null && !block.classList.contains('omit-nolink-styles') && block.closest('.section.cards-container')) {
     block.closest('.section.cards-container').classList.add('nolink');
   }
   block.textContent = '';

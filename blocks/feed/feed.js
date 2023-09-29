@@ -30,7 +30,7 @@ const resultParsers = {
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const blockType = blockCfg['block-type'];
+  const blockType = blockCfg['block-type'].trim().toLowerCase();
   const queryObj = await queryIndex();
 
   const results = queryObj.where((el) => {
