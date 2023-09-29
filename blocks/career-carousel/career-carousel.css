@@ -58,7 +58,7 @@
 
 .career-carousel .career-card blockquote {
   color: var(--primary);
-  font-size: 19px;
+  font-size: var(--body-font-size-l);
   font-style: normal;
   line-height: 29px;
   margin: 0 0 19px;
@@ -74,7 +74,7 @@
 
 .career-carousel .career-card .career-card-bqc {
   height: 9.375rem;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .career-carousel .career-card h6 {
@@ -86,7 +86,7 @@
 
 .career-carousel .career-card p {
   color: var(--light-black);
-  font-size: 0.9rem;
+  font-size: var(--body-font-size-s);
   height: 2.5rem;
   line-height: 21.6px;
   margin-bottom: 0.75rem;

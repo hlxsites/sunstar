@@ -24,25 +24,13 @@ export function scrollToCard(idx, card, precedingCard, slides, span, doc) {
 }
 
 export function scrollToAdjacent(spans, slideDivs, slides, next, doc) {
-  let curActive;
-  for (let i = 0; i < spans.length; i += 1) {
-    if (spans[i].classList.contains('active-nav')) {
-      curActive = i;
-      break;
-    }
-  }
-
-  if (curActive === undefined) {
+  const curActive = spans.findIndex((s) => s.classList.contains('active-nav'));
+  if (curActive === -1) {
     return;
   }
 
-  let newActive = curActive + (next ? 1 : -1);
-  if (newActive < 0) {
-    newActive = spans.length - 1;
-  } else if (newActive >= spans.length) {
-    newActive = 0;
-  }
-
+  // compute the next active element, wrapping around on over- or underflow.
+  const newActive = (curActive + (next ? 1 : -1) + spans.length) % spans.length;
   if (slideDivs.length <= newActive) {
     return;
   }
@@ -116,9 +104,7 @@ export default async function decorate(block) {
     const prevDiv = i > 0 ? slideDivs[i - 1] : null;
 
     const s = document.createElement('span');
-    if (i === 0) {
-      s.classList.add('active-nav');
-    }
+    s.classList.toggle('active-nav', i === 0);
     s.tabIndex = '-1';
     s.onclick = () => scrollToCard(i, slideDivs[i], prevDiv, careerSlides, s, document);
     navButtons.append(s);
