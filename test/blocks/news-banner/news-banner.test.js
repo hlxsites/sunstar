@@ -33,7 +33,6 @@ describe('News Block', () => {
     const queryIndex = '/query-index.json';
     const mf = sinon.stub(window, 'fetch');
     mf.callsFake((v) => {
-      console.log('>>>>>>>>>>>>>>>', v);
       if (v.startsWith(queryIndex)) {
         return {
           ok: true,
