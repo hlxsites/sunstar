@@ -3,7 +3,6 @@
 
 import { expect } from '@esm-bundle/chai';
 import { readFile } from '@web/test-runner-commands';
-import sinon from 'sinon';
 
 const scripts = {};
 
@@ -20,31 +19,20 @@ describe('Tags Block', () => {
   });
 
   it('Count of Tags should be 2', async () => {
-    const tags = '/tags.json';
-    const mf = sinon.stub(window, 'fetch');
-    mf.callsFake((v) => {
-      if (v.startsWith(tags)) {
-        return {
-          ok: true,
-          json: () => ({
-            data: [
-              { Name: 'COVID-19', Link: 'abcd' },
-              { Name: 'Global Healthy Thinking Report', Link: 'aadad' },
-            ],
-          }),
-        };
-      }
-
-      return {
-        ok: false, json: () => ({ data: [] }), text: () => '',
-      };
-    });
+    const placeholders = {
+      'covid-19-href': 'aaaadad',
+    };
+    window.placeholders = {
+      'translation-loaded': {},
+      translation: {
+        en: placeholders,
+      },
+    };
 
     const block = document.querySelector('.tags');
     try {
       await scripts.default(block); // The decorate method is the default one
     } finally {
-      mf.restore();
       window.index = {}; // Reset cache
     }
 

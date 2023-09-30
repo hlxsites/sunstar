@@ -29,7 +29,7 @@ export default async function decorate(block) {
   const socialContainer = block.closest('.section.social-container>.section-container');
   const firstP = socialContainer ? socialContainer.querySelector('p') : null;
 
-  if (firstP && firstP.nextElementSibling.tagName === 'H1') {
+  if (firstP && firstP.nextElementSibling?.tagName === 'H1') {
     const innerSpan = document.createElement('span');
     innerSpan.textContent = firstP.textContent;
     innerSpan.classList.add('tag-name');
