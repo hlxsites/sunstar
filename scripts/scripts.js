@@ -442,7 +442,8 @@ export async function loadScript(url, attrs = {}) {
 
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
-  const index = await fetchIndex('query-index', sheet);
+  // TODO: remove this once the index is fixed
+  const index = await fetchIndex('_drafts/satyam/query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
@@ -559,4 +560,16 @@ export async function loadConsentManager() {
     loadScript('https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js'),
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
+}
+
+/**
+ * Formats a unix timestamp into a date string.
+ * Example: 1609459200 -> January 1, 2021
+ * @param {*} unixTimestamp
+ * @returns {string} The formatted date string
+ */
+export function formatDateFromUnixTimestamp(unixTimestamp) {
+  const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
 }

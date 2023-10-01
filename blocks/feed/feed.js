@@ -1,7 +1,7 @@
 import {
   buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig, getMetadata,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex } from '../../scripts/scripts.js';
+import { formatDateFromUnixTimestamp, queryIndex } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -12,16 +12,30 @@ const resultParsers = {
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',');
       const row = [];
+      let cardImage;
+      const cardBody = document.createElement('div');
       fields.forEach((field) => {
-        const div = document.createElement('div');
         const fieldName = field.trim().toLowerCase();
         if (fieldName === 'image') {
-          div.append(createOptimizedPicture(result[fieldName]));
+          cardImage = createOptimizedPicture(result[fieldName]);
         } else {
-          div.textContent = result[fieldName];
+          const div = document.createElement('div');
+          if (fieldName === 'publisheddate') {
+            div.classList.add('date');
+            div.textContent = formatDateFromUnixTimestamp(result[fieldName]);
+          } else {
+            div.textContent = result[fieldName];
+          }
+          cardBody.appendChild(div);
         }
-        row.push(div);
       });
+      if (cardImage) {
+        row.push(cardImage);
+      }
+
+      if (cardBody) {
+        row.push(cardBody);
+      }
       blockContents.push(row);
     });
     return blockContents;
