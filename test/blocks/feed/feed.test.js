@@ -13,7 +13,8 @@ describe('Feed Block', async () => {
     const index = JSON.parse(await readFile({ path: './query-index.json' }));
 
     sinon.stub(window, 'fetch').callsFake((v) => {
-      const queryIndex = '/query-index.json';
+      // TODO: This is a hack to get around the fact that the query-index.json file is not available
+      const queryIndex = '/_drafts/satyam/query-index.json';
       if (v.startsWith(queryIndex)) {
         return {
           ok: true,
