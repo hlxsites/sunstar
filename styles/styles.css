@@ -699,6 +699,32 @@ main .section.light-blue {
 
 /* END Section Styles END */
 
+/* START Keyframes START */
+
+@keyframes fade-in {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+      display: block;   
+  }
+}
+
+@keyframes fade-out {
+  from {
+      display: block;
+  }
+
+  to {
+      opacity: 0;
+      display: none;
+  }
+}
+
+/* END Keyframes END */
+
 @media (min-width:62rem) {
   h2 {
     font-size: var(--heading-font-size-xl);
