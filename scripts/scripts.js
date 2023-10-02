@@ -113,7 +113,7 @@ function indexOfElementInParent(element) {
  * middle div.
  * @returns Returns the middle div.
  */
-function splitChildDiv(div, from, to) {
+export function splitChildDiv(div, from, to) {
   // run backwards because moving element will delete them from the original
 
   let afterDiv;
