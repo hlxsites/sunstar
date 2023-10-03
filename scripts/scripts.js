@@ -342,7 +342,7 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-export async function loadPage() {
+async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
@@ -573,3 +573,4 @@ export function formatDateFromUnixTimestamp(unixTimestamp) {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return date.toLocaleDateString(undefined, options);
 }
+loadPage();
