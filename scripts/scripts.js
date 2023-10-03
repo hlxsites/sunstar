@@ -99,10 +99,6 @@ function buildModalFragmentBlock(main) {
   }
 }
 
-function indexOfElementInParent(element) {
-  return [...element.parentElement.children].indexOf(element);
-}
-
 /**
  * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
  * the from and to indexes, separating the elements from-to into
@@ -157,10 +153,12 @@ function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
   const enclosingDiv = parentP.parentElement;
+
   if (enclosingDiv) {
-    // The caption could either be right next to the picture (if on the same line)
+    // The caption could either be right next to, or right before the picture (if on the same line)
     // or it could be in an adjacent sibling element (if 'enter' was pressed between)
     const captionP = [
+      picture.previousElementSibling,
       picture.nextElementSibling,
       parentP.nextElementSibling,
     ];
@@ -174,7 +172,14 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
 
       if (cp.localName === 'em') {
         // It's on the same line
-        enclosingDiv.append(buildImageCollageForPicture(picture, cp, buildBlockFunction));
+        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
+        newBlock.classList.add('autoblocked');
+        // caption before picture
+        if (cp === captionP[0]) {
+          newBlock.classList.add('caption-above');
+        }
+        // insert the new block at the position the old image was at
+        enclosingDiv.replaceChild(newBlock, parentP);
         return;
       }
 
@@ -189,9 +194,9 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
       }
 
       if (hasEMChild) {
-        const idx = indexOfElementInParent(parentP);
-        const section = splitChildDiv(enclosingDiv, idx, idx + 2);
-        section.append(buildImageCollageForPicture(parentP, cp, buildBlockFunction));
+        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
+        newBlock.classList.add('autoblocked');
+        enclosingDiv.replaceChild(newBlock, parentP);
         return;
       }
     }

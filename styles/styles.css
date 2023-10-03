@@ -64,6 +64,7 @@
   --safety-mobility-yellow: #D9AB41;
   --health-beauty-orange: #F87C56;
   --living-environment-green: #00A499;
+  --muted-text-color: #abb8c3;
 
 
   /* fonts */
@@ -557,7 +558,7 @@ main .section.spaced h2 {
 }
 
 main .section.spaced h3 {
-  margin: 2rem 0;
+  margin: 2rem 0 0.5rem !important; 
 }
 
 main .section.spaced p {
