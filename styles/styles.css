@@ -647,6 +647,10 @@ main .section.narrower {
   margin: auto;
 }
 
+main .section.narrower p{
+  padding-bottom: 3rem;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
