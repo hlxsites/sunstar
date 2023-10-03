@@ -852,7 +852,7 @@ main .section.light-blue {
     margin-right: auto;
     margin-left: auto;
     max-width: 45rem;
-    margin-bottom: 3rem;
+    margin-block-end: 3rem;
   }
 
   /* section - contacts and links from global-network */
