@@ -1,12 +1,19 @@
 export default function decorate(block) {
-  const childrens = [...block.children];
+  const children = [...block.children];
 
-  if (block.classList.contains('image-with-caption')) {
-    childrens.forEach((x) => {
+  const caption = block.classList.contains('image-with-caption');
+  const title = block.classList.contains('image-with-title');
+
+  if (caption || title) {
+    children.forEach((x) => {
       const img = x.querySelector('picture');
 
       if (img && img.parentElement && img.parentElement.nextElementSibling && img.parentElement.nextElementSibling.tagName === 'DIV') {
-        img.parentElement.nextElementSibling.classList.add('image-caption');
+        if (caption) {
+          img.parentElement.nextElementSibling.classList.add('image-caption');
+        } else if (title) {
+          img.parentElement.nextElementSibling.classList.add('image-title');
+        }
       }
     });
   }
