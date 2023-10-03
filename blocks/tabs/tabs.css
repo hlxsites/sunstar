@@ -1,0 +1,81 @@
+.tabs {
+    --tabs-per-row: 3;
+}
+
+main .tabs {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 0;
+}
+
+main div.tab-item:not(.active) {
+    animation: fade-out 0ms linear forwards;
+
+}
+  
+main div.tab-item.active {
+    animation: fade-in 0.15s linear forwards;
+}
+
+main .tabs nav ul {
+    list-style: none;
+    display: flex;
+    text-wrap: nowrap;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+main .tabs nav ul li {
+    margin-bottom: 0;
+}
+
+main .tabs nav ul li button {
+    width: 6rem;
+    height: 2.5rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    background-color: #f0f5f7;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--body-font-size-m);
+    color: var(--transparent-grey-color-2);
+    border-radius: 0;
+    min-width: auto;
+}
+
+main .tabs nav ul li.active button {
+    color: var(--white);
+    background-color: var(--link-color);
+}
+
+main .tabs nav ul li:hover:not(.active) button {
+    background-color: #cfdfe5;
+}
+
+@media screen and (max-width: 62rem) {
+    main .tabs nav ul {
+        border-bottom: 0;
+    }
+
+    main .tabs nav ul li {
+        width: calc(100% / var(--tabs-per-row));
+        min-width: fit-content;
+    }
+
+    main .tabs nav ul li button {
+        border: 1px solid var(--transparent-grey-light-color);
+        width: 100%;
+    }
+
+    /* 3 === var(--tabs-per-row) */
+    main .tabs nav ul li:nth-child(-n+3) button {
+        border-bottom: none;
+    }
+
+    main .tabs nav ul li:nth-child(1n):not(:nth-child(3n), :last-child) button {
+        border-right: none;
+    }
+
+    main .tabs nav ul li:last-child {
+        width: calc(100% / var(--tabs-per-row) + 1px);
+    }
+}

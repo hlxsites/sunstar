@@ -41,31 +41,31 @@ const extractEmbed = (document) => {
 };
 
 /**
-* Creates a Feature block from a section
+* Creates a Fragment block from a section
 * @param {HTMLDocument} document The document
 */
-const createFeatureBlockFromSection = (document) => {
-  document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [];
-    const healthifyThinkingCard = section.parentElement.className.includes('related-article');
-    const newsPressCard = section.parentElement.className.includes('news-featured');
-    let blockDetails = '';
+const createFragmentBlockFromSection = (document) => {
+  const block = [];
+  const healthifyThinkingCard = document.querySelector('.related-article');
+  const newsPressCard = document.querySelector('.news-featured');
+  let section;
+  block.push(['Fragment']);
 
-    if (healthifyThinkingCard) {
-      blockDetails = 'Feature (related-article)';
-    } else if (newsPressCard) {
-      blockDetails = 'Feature (featured-article)';
-    }
+  if (healthifyThinkingCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/related-articles']);
+    section = healthifyThinkingCard;
+  } else if (newsPressCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
+    section = newsPressCard;
+  }
 
-    if (blockDetails) {
-      block.push([blockDetails]);
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      section.before(document.createElement('hr'));
-      section.before(document.querySelector('.slider-title'));
-      section.after(document.createElement('hr'));
-      section.replaceWith(table);
-    }
-  });
+  if (section) {
+    const table = WebImporter.DOMUtils.createTable(block, document);
+    section.before(document.createElement('hr'));
+    section.before(document.querySelector('.slider-title'));
+    section.after(document.createElement('hr'));
+    section.replaceWith(table);
+  }
 };
 
 const addSocialBlock = (document) => {
@@ -140,11 +140,11 @@ const addQuoteBlock = (document) => {
 const customImportLogic = (document) => {
   addBreadCrumb(document);
   addTagsBlock(document);
-  createFeatureBlockFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
   addQuoteBlock(document);
   fixRelativeLinks(document);
+  createFragmentBlockFromSection(document);
 };
 
 export default {
