@@ -342,7 +342,7 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-export async function loadPage() {
+async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
@@ -560,3 +560,4 @@ export async function loadConsentManager() {
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
+loadPage();

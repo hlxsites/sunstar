@@ -5,11 +5,18 @@ import { expect, assert } from '@esm-bundle/chai';
 import { readFile } from '@web/test-runner-commands';
 import sinon from 'sinon';
 
-const feed = await import('../../../blocks/feed/feed.js');
+document.write(await readFile({ path: './feed.plain.html' }));
+const feed = {};
 
 describe('Feed Block', async () => {
   before(async () => {
-    document.write(await readFile({ path: './feed.plain.html' }));
+    const mod = await import('../../../blocks/feed/feed.js');
+    Object
+      .keys(mod)
+      .forEach((func) => {
+        feed[func] = mod[func];
+      });
+
     const index = JSON.parse(await readFile({ path: './query-index.json' }));
 
     sinon.stub(window, 'fetch').callsFake((v) => {

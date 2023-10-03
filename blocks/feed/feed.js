@@ -1,5 +1,5 @@
 import {
-  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig, getMetadata,
+  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
@@ -36,27 +36,10 @@ export default async function decorate(block) {
   const blockType = blockCfg['block-type'].trim().toLowerCase();
   const queryObj = await queryIndex();
 
-  const results = queryObj.where((el) => {
-    let match = true;
-    const category = blockCfg.category || getMetadata('category');
-    if (match && category) {
-      match = el.category === category;
-    }
-
-    const topic = blockCfg.topic || getMetadata('topic');
-    if (match && topic) {
-      match = el.topic === topic;
-    }
-    if (match && blockCfg.modifier) {
-      match = el.modifier === blockCfg.modifier;
-    }
-    return match;
-  }).orderByDescending((el) => {
-    if (blockCfg.sort) {
-      return el[blockCfg.sort];
-    }
-    return el.path;
-  }).take(blockCfg.count)
+  const results = queryObj.where((el) => (!blockCfg.category || blockCfg.category === el.category)
+    && (!blockCfg.topic || blockCfg.topic === el.topic)
+    && (!blockCfg.modifier || el.modifier === blockCfg.modifier))
+    .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort] : el.path)).take(blockCfg.count)
     .toList();
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
