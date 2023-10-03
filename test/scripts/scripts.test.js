@@ -203,19 +203,17 @@ describe('Scripts', () => {
   });
 
   it('Handles Image Collage autoblock with next para <em>', async () => {
-    let insertedElement;
-    let beforeElement;
     const parentEnclosingDiv = {};
-    parentEnclosingDiv.insertBefore = (s, e) => {
-      insertedElement = s;
-      beforeElement = e;
-    };
-    let removedChild;
-    parentEnclosingDiv.removeChild = (c) => {
-      removedChild = c;
-    };
 
     const enclosingDiv = {};
+
+    let newChild;
+    enclosingDiv.replaceChild = (n) => {
+      newChild = n;
+      enclosingDiv.lastChild = n;
+      delete enclosingDiv.o;
+    };
+
     enclosingDiv.parentElement = parentEnclosingDiv;
 
     const parentP = {};
@@ -246,24 +244,26 @@ describe('Scripts', () => {
 
     scripts.buildImageWithCaptionBlocks(mockMain, mockBBFunction);
 
-    expect(insertedElement).to.not.be.undefined;
-    expect(beforeElement).to.equal(enclosingDiv);
+    expect(newChild).to.not.be.undefined;
 
     expect(blockName).to.equal('image-collage');
-    expect(blockObj.elems).to.eql([parentP, captionP]);
+    expect(blockObj.elems[0]).to.equal(picture);
+    expect(blockObj.elems[1].children[1]).to.equal(emChild);
 
-    expect(insertedElement.lastChild.localName).to
+    expect(enclosingDiv.lastChild.localName).to
       .equal('myblock', 'Should have appended the block to the section');
-    expect(insertedElement.lastChild.classList.contains('boxy-col-1')).to
+    expect(newChild.classList.contains('boxy-col-1')).to
       .be.true;
-
-    expect(removedChild).to.equal(enclosingDiv);
   });
 
   it('Handles Image Collage autoblock with directly following <em>', async () => {
     const insertedEls = [];
     const enclosingDiv = { els: [] };
     enclosingDiv.append = (e) => insertedEls.push(e);
+    let newChild;
+    enclosingDiv.replaceChild = (n) => {
+      newChild = n;
+    };
     const parentP = {};
 
     const em = {};
@@ -289,7 +289,7 @@ describe('Scripts', () => {
     scripts.buildImageWithCaptionBlocks(mockdoc, mockBBFunction);
 
     expect(blockName).to.equal('image-collage');
-    expect(insertedEls[0].classList.contains('boxy-col-1')).to
+    expect(newChild.classList.contains('boxy-col-1')).to
       .be.true;
     const [actualPic, actualEM] = blockObj.elems;
     expect(actualPic).to.equal(picture);
