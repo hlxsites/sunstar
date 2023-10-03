@@ -58,11 +58,14 @@ const createFragmentBlockFromSection = (document) => {
     block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
     section = newsPressCard;
   }
-  const table = WebImporter.DOMUtils.createTable(block, document);
-  section.before(document.createElement('hr'));
-  section.before(document.querySelector('.slider-title'));
-  section.after(document.createElement('hr'));
-  section.replaceWith(table);
+
+  if (section) {
+    const table = WebImporter.DOMUtils.createTable(block, document);
+    section.before(document.createElement('hr'));
+    section.before(document.querySelector('.slider-title'));
+    section.after(document.createElement('hr'));
+    section.replaceWith(table);
+  }
 };
 
 const addSocialBlock = (document) => {
