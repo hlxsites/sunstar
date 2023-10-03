@@ -1,0 +1,183 @@
+/*
+ * Copyright 2023 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+.network-item {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+.network-item h3.title,
+.network-item div.recruiting-link,
+.network-item div.career-opportunities,
+.network-item div.our-hr,
+.network-item div.website {
+    padding-bottom: 1rem;
+}
+
+.network-item.no-border {
+    border-bottom: none;
+}
+
+.network-item div.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.network-item div.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+}
+
+.network-item h3.title {
+    font-weight: var(--font-weight-bold);
+}
+
+.network-item .tags div {
+    display: flex;
+    font-size: var(--body-font-size-xs);
+    margin-right: 1rem;
+    align-items: center;
+}
+
+.network-item .tags div::before {
+    display: inline-block;
+    content: '';
+    background: inherit;
+    background-color: var(--text-color);
+    height: 0.75rem;
+    width: 0.75rem;
+    margin-right: 0.25rem;
+    border-radius: 50%;
+}
+
+.network-item div.network-item-text h6 {
+    text-transform: capitalize;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.network-item div.network-item-text h6:not(:first-of-type) {
+    margin-top: 1rem;
+}
+
+.network-item div.network-item-text {
+    margin-bottom: 1.5rem;
+}
+
+.network-item div.network-item-text p {
+    font-size: var(--body-font-size-s);
+    line-height: 1.5rem;
+}
+
+.network-item .tags div.blue {
+    color: var(--oral-care-blue);
+}
+
+.network-item .tags div.yellow {
+    color: var(--safety-mobility-yellow);
+}
+
+.network-item .tags div.orange {
+    color: var(--health-beauty-orange);
+}
+
+.network-item .tags div.green {
+    color: var(--living-environment-green);
+}
+
+.network-item .tags div.gray {
+    color: var(--gray);
+}
+
+.network-item .tags div.green::before {
+    background-color: var(--living-environment-green);
+}
+
+.network-item .tags div.blue::before {
+    background-color: var(--oral-care-blue);
+}
+
+.network-item .tags div.yellow::before {
+    background-color: var(--safety-mobility-yellow);
+}
+
+.network-item .tags div.orange::before {
+    background-color: var(--health-beauty-orange);
+}
+
+.network-item .tags div.gray::before {
+    background-color: var(--gray);
+}
+
+.network-item .tags div:last-child {
+    margin-right: 0;
+}
+
+.network-item.video div.network-item-img {
+    position:relative;
+}
+
+div.network-item.video div.network-item-img a::after {
+    content: '';
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 5.25rem;
+    width: 5.25rem;
+    background-image: url("../../icons/play.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-width: auto;
+}
+
+div.network-item div.content-wrapper div.network-item-img {
+    max-width: 100%;
+    width: 340px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* stylelint-disable no-descending-specificity */
+div.network-item div.our-hr a::after,
+div.network-item.image div.text-content-wrapper div.website a::after,
+div.network-item.video div.text-content-wrapper div.website a::after{
+    content: url("../../icons/angle-right-blue.svg");
+    position: relative;
+    top: 0.1rem;
+    left: 0.3rem;
+}
+
+@media screen and (max-width: 62rem) {
+    div.network-item div.content-wrapper {
+        flex-direction: column;
+    }
+
+    div.network-item div.content-wrapper div.network-item-img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    div.network-item div.content-wrapper div.network-item-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.network-item.video div.network-item-img a::after {
+        top: 50%;
+    }
+}

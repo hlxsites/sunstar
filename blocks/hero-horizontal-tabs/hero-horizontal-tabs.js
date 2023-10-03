@@ -1,47 +1,47 @@
-import { getNamedValueFromTable } from '../../scripts/scripts.js';
+/*
+ * Copyright 2023 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 
-function normalizeURL(url) {
-  if (url.endsWith('/')) {
-    return url;
-  }
-  return url.concat('/');
-}
+import { getNamedValueFromTable } from '../../scripts/scripts.js';
+import { createTabs, addTabs } from '../../scripts/blocks-utils.js';
 
 function getImage(block) {
   const div = getNamedValueFromTable(block, 'Image');
+  if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
   return div;
 }
 
-export function getTabs(block, curLocation) {
-  const tabs = document.createElement('nav');
-  const div = getNamedValueFromTable(block, 'tabs');
-
-  div.querySelectorAll('ul > li > a').forEach((a) => {
-    if (normalizeURL(a.href) === normalizeURL(curLocation.href)) {
-      a.classList.add('current');
-    }
-    tabs.appendChild(a);
-  });
-  return tabs;
-}
-
 function getText(block) {
   const div = getNamedValueFromTable(block, 'Contents');
+  if (!div) return null;
   div.classList.add('hero-horiz-tabs-text');
   return div;
 }
 
-export default async function decorate(block, curLocation = window.location) {
-  const text = getText(block);
+export default function decorate(block) {
   const image = getImage(block);
-  const tabs = getTabs(block, curLocation);
+  const text = getText(block);
+  const tabs = createTabs(block, text);
 
-  const leftDiv = document.createElement('div');
-  leftDiv.classList.add('hero-horiz-tabs-panel');
-  leftDiv.append(text);
-  leftDiv.append(tabs);
+  // move the tab riders in front
+  const wrapper = block.parentElement;
+  const container = wrapper.parentElement;
+  container.insertBefore(wrapper, container.firstElementChild);
 
-  block.replaceChildren(leftDiv);
-  block.append(image);
+  addTabs(tabs, block);
+
+  if (image) {
+    block.append(image);
+  } else {
+    block.classList.add('no-image');
+  }
 }

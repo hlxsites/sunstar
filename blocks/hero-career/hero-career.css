@@ -1,0 +1,151 @@
+.hero-career {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 58%;
+    height: 43.75rem;
+}
+
+.hero-career .hero-career-top {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-width: 75rem;
+}
+
+.hero-career .hero-career-left {
+    color: var(--white);
+    margin: 3rem 0;
+    text-align: center;
+    width: 155px;
+}
+
+.hero-career .hero-career-left picture {
+    margin-bottom: 1rem;
+}
+
+.hero-career .hero-career-left img {
+    height: 10.75rem;
+    width: auto;
+}
+
+.hero-career .hero-career-name {
+    color: var(--white);
+    font-size: var(--heading-font-size-xxs);
+    letter-spacing: 0.9px;
+    margin-bottom: 14px;
+    padding-top: 0.5rem;
+    text-transform: unset;
+}
+
+.hero-career .hero-career-title {
+    font-size: var(--body-font-size-xs);
+}
+
+.hero-career .hero-career-right {
+    color: var(--white);
+    background-color: var(--primary);
+    width: 100vw;
+    padding-block: 50px;
+    margin-top: 0;
+}
+
+.hero-career .hero-career-quote {
+    font-size: var(--heading-font-size-s);
+    font-style: var(--font-style-normal);
+    line-height: 32px;
+    margin: 24px 16px 62px;
+    position: relative;
+    text-indent: 0;
+}
+
+.hero-career .hero-career-quote::before {
+    content: '“';
+    font-size: 90px;
+    line-height: 1;
+    opacity: 0.7;
+    position: absolute;
+    top: -44px;
+}
+
+.hero-career .hero-career-quote::after {
+    content: '”';
+    font-size: 90px;
+    line-height: 1;
+    opacity: 0.7;
+    position: absolute;
+    bottom: -84px;
+    right: 0;
+}
+
+.hero-career .hero-career-careerbgtitle {
+    color: white;
+    font-size: var(--heading-font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    margin: 0 16px 14px;
+    text-transform: unset;
+}
+
+.hero-career .hero-career-careerbg {
+    font-size: var(--heading-font-size-xxs);
+    line-height: 22px;
+    margin-inline: 16px;
+}
+
+@media (min-width: 62rem) {
+    .hero-career {
+        background-position: center;
+    }
+
+    .hero-career .hero-career-top {
+        flex-direction: row;
+        align-items: unset;
+        height: 700px;
+        margin-inline: auto;
+    }
+
+    .hero-career .hero-career-left {
+        width: 21rem;
+        margin-top: 5rem;
+        margin-right: 4rem;
+    }
+
+    .hero-career .hero-career-left img {
+        height: 18.5rem;
+    }
+
+    .hero-career .hero-career-name {
+        font-size: var(--heading-font-size-xs);
+        padding-top: 0;
+    }
+
+    .hero-career .hero-career-title {
+        font-size: var(--body-font-size-s);
+    }
+
+    .hero-career .hero-career-right {
+        background-color: unset;
+        margin-top: 120px;
+        padding-top: unset;
+        width: calc(100% - 336px - 4rem);
+    }
+
+    .hero-career .hero-career-quote {
+        font-size: var(--heading-font-size-xl);
+        line-height: 59px;
+        margin: 0 0 97px;
+    }
+
+    .hero-career .hero-career-careerbgtitle {
+        font-size: var(--heading-font-size-m);
+        letter-spacing: 1.2px;
+        margin: 0 0 13px;
+    }
+
+    .hero-career .hero-career-careerbg {
+        font-size: var(--body-font-size-m);
+        line-height: 32px;
+        margin: 0;
+    }
+}

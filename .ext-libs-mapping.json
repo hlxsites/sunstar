@@ -1,0 +1,7 @@
+[
+    {
+        "name": "jslinq",
+        "source": "node_modules/jslinq/build",
+        "target": "ext-libs/jslinq"
+    }
+]

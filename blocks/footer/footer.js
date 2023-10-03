@@ -4,50 +4,44 @@ import {
   getMetadata,
   updateSectionsStatus,
 } from '../../scripts/lib-franklin.js';
+
 import {
   getLanguage,
   decorateAnchors,
 } from '../../scripts/scripts.js';
 
-function wrapSocialAndNavLinks(block) {
-  const socialNavWrapper = document.createElement('div');
-  socialNavWrapper.classList.add('social-nav');
-  const navLinks = block.querySelector('.nav-links');
-  const social = block.querySelector('.social');
-
-  socialNavWrapper.appendChild(navLinks);
-  socialNavWrapper.appendChild(social);
-
-  block.querySelector('.primary').after(socialNavWrapper);
-}
-
-function decorateFooter(block) {
-  wrapSocialAndNavLinks(block);
-
-  const primaryFooter = block.querySelector('.section.primary>.section-container>div');
-  const itemsList = [];
-  const childrens = [...primaryFooter.children];
+function decorateFooterTop(block) {
+  const footerTop = block.querySelector('.footer-top');
+  const tempDiv = footerTop.querySelector('.section-container>div');
+  const children = [...footerTop.querySelector('.section-container>div').children];
   let index = 0;
+  tempDiv.innerHTML = '';
 
-  while (index < childrens.length) {
-    const navItem = document.createElement('div');
-    navItem.classList.add('primary-items');
-    navItem.appendChild(childrens[index]);
-    if (childrens[index + 1] && childrens[index + 1].tagName === 'UL') {
-      navItem.appendChild(childrens[index + 1]);
-      index += 2;
-    } else {
+  while (index < children.length) {
+    const topItem = document.createElement('div');
+    topItem.classList.add('footer-top-item');
+    topItem.appendChild(children[index]);
+    index += 1;
+
+    while (index < children.length) {
+      if (children[index].tagName === 'H5') {
+        if (!children[index + 1] || (children[index - 1].tagName === 'H5' && children[index + 1].tagName !== 'UL')) {
+          topItem.appendChild(children[index]);
+        } else {
+          break;
+        }
+      } else {
+        topItem.appendChild(children[index]);
+      }
       index += 1;
     }
 
-    itemsList.push(navItem);
+    tempDiv.appendChild(topItem);
   }
+}
 
-  primaryFooter.innerHTML = '';
-  itemsList.forEach((item) => {
-    primaryFooter.appendChild(item);
-  });
-
+function decorateFooter(block) {
+  decorateFooterTop(block);
   block.parentElement.classList.add('appear');
 }
 
@@ -69,13 +63,13 @@ export default async function decorate(block) {
     // decorate footer DOM
     const footer = document.createElement('div');
     footer.innerHTML = html;
-    await decorateSections(footer);
+    decorateSections(footer);
     updateSectionsStatus(footer);
 
     block.append(footer);
+
     decorateButtons(block);
     decorateFooter(block);
-
     decorateAnchors(block);
   }
 }
