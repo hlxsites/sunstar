@@ -1,7 +1,7 @@
 import {
-  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig,
+  buildBlock, createOptimizedPicture, decorateBlock, getFormattedDate, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { formatDateFromUnixTimestamp, queryIndex } from '../../scripts/scripts.js';
+import { queryIndex } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -22,7 +22,7 @@ const resultParsers = {
           const div = document.createElement('div');
           if (fieldName === 'publisheddate') {
             div.classList.add('date');
-            div.textContent = formatDateFromUnixTimestamp(result[fieldName]);
+            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName] * 1000, 10)));
           } else {
             div.textContent = result[fieldName];
           }
@@ -34,6 +34,9 @@ const resultParsers = {
       }
 
       if (cardBody) {
+        const path = document.createElement('a');
+        path.href = result.path;
+        cardBody.prepend(path);
         row.push(cardBody);
       }
       blockContents.push(row);

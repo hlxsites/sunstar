@@ -561,16 +561,4 @@ export async function loadConsentManager() {
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
-
-/**
- * Formats a unix timestamp into a date string.
- * Example: 1609459200 -> January 1, 2021
- * @param {*} unixTimestamp
- * @returns {string} The formatted date string
- */
-export function formatDateFromUnixTimestamp(unixTimestamp) {
-  const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString(undefined, options);
-}
 loadPage();
