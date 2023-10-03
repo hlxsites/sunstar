@@ -137,7 +137,38 @@ const addQuoteBlock = (document) => {
   }
 };
 
+const changeAnchorLinks = (document) => {
+  const anchors = document.querySelectorAll('a');
+  [...anchors].forEach((item) => {
+    const newsRegex = /newsroom\/(news|press-releases)/;
+    if (newsRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/newsroom\/(event|news|press-releases)\//g, 'newsroom/');
+    }
+
+    const healthifyThinkingRegex = /healthy-thinking\/(category)/;
+    if (healthifyThinkingRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/healthy-thinking\/(category)\//g, 'healthy-thinking/');
+    }
+  });
+};
+
+const removeRedundantTag = (document) => {
+  const topLevelTag = document.querySelector('.tag');
+  if (topLevelTag) {
+    topLevelTag.remove();
+  }
+
+  const initialH6 = document.querySelector('h6.rabel');
+  if (initialH6) {
+    const textContent = initialH6.querySelector('a')?.textContent;
+    initialH6.innerHTML = '';
+    initialH6.textContent = textContent;
+  }
+};
+
 const customImportLogic = (document) => {
+  removeRedundantTag(document);
+  changeAnchorLinks(document);
   addBreadCrumb(document);
   addTagsBlock(document);
   extractEmbed(document);
