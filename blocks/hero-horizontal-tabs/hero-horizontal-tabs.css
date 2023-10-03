@@ -31,11 +31,11 @@ main .hero-horizontal-tabs.block {
 }
 
 main div.tab-item {
-  display: none;
+  animation: fade-out 0ms linear forwards;
 }
 
 main div.tab-item.active {
-  display: block;
+  animation: fade-in 0.15s linear forwards;
 }
 
 main .hero-horiz-tabs-text {

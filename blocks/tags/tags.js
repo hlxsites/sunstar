@@ -1,36 +1,44 @@
-import { getMetadata } from '../../scripts/lib-franklin.js';
-import { fetchIndex } from '../../scripts/scripts.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
+import { getLanguage } from '../../scripts/scripts.js';
 
 /**
 * decorates the tags block
 * @param {Element} block The social block element
 */
+
+const getModifiedVal = (item) => {
+  if (item) {
+    return item.trim().toLowerCase()
+      .split(' ')
+      .filter(Boolean)
+      .join('-');
+  }
+  return '';
+};
+
 export default async function decorate(block) {
-  let tags = getMetadata('article:tag');
-  const { data } = await fetchIndex('tags');
+  const tags = getMetadata('article:tag');
+  const placeholders = await fetchPlaceholders(getLanguage());
 
-  if (data && tags) {
-    tags = tags.split(', ');
-    const tagsList = data;
-    const tagsMap = {};
-
-    tagsList.forEach((entry) => {
-      tagsMap[entry.Name.trim()] = entry.Link.trim();
+  if (placeholders && tags) {
+    const newMap = {};
+    Object.keys(placeholders).forEach((entry) => {
+      const newEntry = getModifiedVal(entry);
+      newMap[newEntry] = placeholders[entry];
     });
 
-    tags.forEach((tag) => {
-      const newTag = tag.trim();
-      if (tagsMap[newTag]) {
-        const a = document.createElement('a');
-        a.href = tagsMap[newTag];
-        a.textContent = newTag;
-        a.classList.add('button', 'primary');
-        block.appendChild(a);
-      }
+    tags.split(', ').forEach((tag) => {
+      const newTag = getModifiedVal(tag);
+      const val = newMap[`${newTag}-href`] || '#';
+      const a = document.createElement('a');
+      a.href = val;
+      a.textContent = tag;
+      a.classList.add('button', 'primary');
+      block.appendChild(a);
     });
 
     const tagsSectionContainer = block.closest('.section.tags-container>.section-container');
-    const p = tagsSectionContainer ? tagsSectionContainer.querySelector('p') : null;
+    const p = tagsSectionContainer?.querySelector('p');
 
     if (p) {
       tagsSectionContainer.classList.add('para-present');
