@@ -1,3 +1,5 @@
+import { decorateAnchors } from '../../scripts/scripts.js';
+
 /**
  * decorates the social block
  * @param {Element} block The social block element
@@ -35,4 +37,6 @@ export default async function decorate(block) {
     innerSpan.classList.add('tag-name');
     firstP.replaceWith(innerSpan);
   }
+
+  decorateAnchors(block);
 }

@@ -197,18 +197,13 @@ export default {
     }
 
     if (pathname.includes('/newsroom/')) {
-      metadataDetails.Category = 'Newsroom';
-
-      const span = document.querySelector('span.tag');
-      if (span) {
-        metadataDetails.Topic = span.textContent;
-      }
+      metadataDetails.Type = 'Newsroom';
     }
 
     if (pathname.includes('/healthy-thinking/')) {
-      metadataDetails.Category = 'Healthy Thinking';
-
+      metadataDetails.Type = 'Healthy Thinking';
       const firstH6 = document.querySelector('h6.rabel');
+
       if (firstH6) {
         metadataDetails.Topic = firstH6.textContent;
       }
