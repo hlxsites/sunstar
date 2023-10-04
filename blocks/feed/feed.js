@@ -64,7 +64,10 @@ export default async function decorate(block) {
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
-  block.parentNode.replaceChild(builtBlock, block);
+  if (block.parentNode) {
+    block.parentNode.replaceChild(builtBlock, block);
+  }
+
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   return builtBlock;

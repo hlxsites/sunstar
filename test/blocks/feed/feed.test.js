@@ -14,8 +14,7 @@ describe('Feed Block', async () => {
     try {
       const index = JSON.parse(await readFile({ path: './query-index.json' }));
       await sinon.stub(window, 'fetch').callsFake((v) => {
-        // TODO: remove this once the index is fixed
-        const queryIndex = '/_drafts/satyam/query-index.json';
+        const queryIndex = '/query-index.json';
         if (v.startsWith(queryIndex)) {
           return {
             ok: true,
