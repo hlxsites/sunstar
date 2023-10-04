@@ -549,8 +549,8 @@ main .section.brand-description strong > a.button.primary {
 
 /* section - spaced */
 main .section.spaced {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
 }
 
 main .section.spaced h2 {
