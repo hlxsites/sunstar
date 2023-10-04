@@ -452,19 +452,19 @@ main .brand-detail-page .toc-wrapper.flat {
   margin-bottom: 0;
 }
 
-main .brand-detail-page img {
-  padding: 2.5rem 0;
-  width: 58.75rem;
-  max-width: 100%;
-  margin-bottom: 2rem;
-  box-sizing: border-box;
-}
-
 main .brand-detail-page .image-collage img {
   max-width: 10rem;
   padding: unset;
   margin-bottom: 0.5rem;
   zoom: 1;
+}
+
+main .brand-detail-page .wide img {
+  padding: 2.5rem 1rem;
+  width: 58.75rem;
+  max-width: 100%;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
 }
 
 main .brand-detail-page p {
@@ -484,12 +484,6 @@ main .brand-detail-page a.button.primary {
   font-weight: var(--font-weight-medium);
   display: block;
   text-align: center;
-}
-
-main .brand-detail-page h3 {
-  padding: 0 1rem;
-  margin: 0 auto;
-  line-height: 1.5em;
 }
 
 /* END section - brand detail page */
@@ -829,21 +823,25 @@ main .section.light-blue {
   }
 
 /* START section - brand detail page */
-main .brand-detail-page img {
-  padding: 2.5rem 0;
-  width: 58.75rem;
-  max-width: 100%;
-  box-sizing: border-box;
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 main .brand-detail-page .image-collage img {
   width: unset;
   max-width: unset;
   padding: unset;
   margin-bottom: 0.5rem;
   zoom: 0.5;
+}
+
+main .brand-detail-page .wide img {
+  padding: 2.5rem 1rem;
+  width: unset;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+main .brand-detail-page .image-collage.wide.boxy-col-1>div {
+  flex: unset;
 }
 
 main .brand-detail-page .image-collage.boxy-col-1::after {
