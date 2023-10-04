@@ -1,11 +1,12 @@
 import { createOptimizedPicture } from './lib-franklin.js';
 
 function addBackdropEventListeners(element) {
+  const backdrop = document.querySelector('.backdrop');
   element.addEventListener('mouseover', () => {
-    document.querySelector('.backdrop').classList.add('visible');
+    backdrop.classList.add('visible');
   });
   element.addEventListener('mouseleave', () => {
-    document.querySelector('.backdrop').classList.remove('visible');
+    backdrop.classList.remove('visible');
   });
 }
 
@@ -22,7 +23,7 @@ function htmlToElement(html) {
 
 function decorateChildNodes(parent, json, level) {
   const nodes = json.reduce((accumalator, data) => {
-    if (data.parent && data.parent.toLowerCase() === parent.category.toLowerCase()) {
+    if (data.parent?.toLowerCase() === parent.category.toLowerCase()) {
       const children = data.hasChild === 'true' ? decorateChildNodes(data, json, level + 1) : '';
       if (data.link && !children) {
         return `${accumalator} <a class="link" href=${data.link}>${data.category}</a>`;
