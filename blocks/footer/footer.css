@@ -10,7 +10,7 @@ footer.appear {
 }
 
 footer p {
-  color: var(--off-white);
+  color: var(--white);
 }
 
 footer a:hover {
@@ -50,7 +50,7 @@ footer .footer-top h5 {
 }
 
 footer .footer-top-item:last-of-type h5 {
-  color: var(--off-white);
+  color: var(--white);
   font-weight: var(--font-weight-bold);
 }
 
@@ -73,7 +73,7 @@ footer .footer-middle p {
 }
 
 footer .footer-bottom p>a {
-  color: var(--off-white);
+  color: var(--white);
   margin-right: 1rem;
 }
 
