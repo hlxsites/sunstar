@@ -674,4 +674,43 @@ export async function loadConsentManager() {
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
+
+/**
+ * Crop a given string to a specified maximum length without cutting words in half.
+ * If the string is longer than the specified length, it will be cropped at the
+ * nearest space or punctuation.
+ *
+ * @param {string} str - The input string to be cropped.
+ * @param {number} maxLength - The maximum length the string should be cropped to.
+ * @returns {string} - The cropped string.
+ */
+export function cropString(inputString, maxLength) {
+  if (inputString.length <= maxLength) {
+    return inputString;
+  }
+
+  const words = inputString.split(/\s+/); // Split the string into words
+  let croppedString = '';
+  let currentLength = 0;
+
+  words.every((word) => {
+    if (currentLength + word.length + 1 <= maxLength) {
+      // Add the word and a space if it doesn't exceed the maxLength
+      croppedString += `${word} `;
+      currentLength += word.length + 1;
+      return true;
+    }
+    // Otherwise, stop the loop
+    return false;
+  });
+
+  // Remove trailing space and add an ellipsis if needed
+  croppedString = croppedString.trim();
+  if (croppedString.length < inputString.length) {
+    croppedString += '...';
+  }
+
+  return croppedString;
+}
+
 loadPage();

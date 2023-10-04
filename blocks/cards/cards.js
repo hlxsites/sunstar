@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { cropString } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -45,6 +46,11 @@ export default function decorate(block) {
       [...li.children].forEach(addCardChildrenClasses);
     }
 
+    const title = li.querySelector('.title');
+    if (title) {
+      [title.textContent] = title.textContent.split('|');
+      title.textContent = cropString(title.textContent, 65);
+    }
     ul.append(li);
   });
   ul.querySelectorAll('img')

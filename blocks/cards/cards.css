@@ -30,7 +30,7 @@ main .block.cards {
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  width: 270px;
+  width: 16.875rem;
   padding: 12px 1rem;
   margin: 0 0 1rem;
   align-items: center;
@@ -45,6 +45,7 @@ main .block.cards {
     font-size: var(--body-font-size-xs);
     color: var(--transparent-grey-color);
     font-weight: var(--font-weight-medium);
+    padding-bottom: 0.5rem;
 }
 
 .cards > ul > li > a.button {
@@ -80,6 +81,11 @@ main .block.cards {
   margin: 0 auto;
   padding: 0 0 0 16px;
   text-align: left;
+  color: var(--light-black);
+}
+
+.cards .cards-card-body .title {
+  margin-bottom: 1rem;
 }
 
 .cards .cards-card-image img {
@@ -276,7 +282,6 @@ main .cards.machine-parts ul > li {
   }
 
   .cards .cards-card-body {
-    padding-top: 20px;
     font-size: 1rem;
   }
 

@@ -23,6 +23,9 @@ const resultParsers = {
           if (fieldName === 'publisheddate') {
             div.classList.add('date');
             div.textContent = getFormattedDate(new Date(parseInt(result[fieldName] * 1000, 10)));
+          } else if (fieldName === 'title') {
+            div.classList.add('title');
+            div.textContent = result[fieldName];
           } else {
             div.textContent = result[fieldName];
           }
