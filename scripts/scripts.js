@@ -556,7 +556,7 @@ export async function loadScript(url, attrs = {}) {
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
   // TODO: remove this once the index is fixed
-  const index = await fetchIndex('query-index', sheet);
+  const index = await fetchIndex('_drafts/satyam/query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
