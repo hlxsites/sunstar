@@ -12,3 +12,5 @@ helix-importer-ui
 .github/visual-tests/screenshots/
 .github/visual-tests/node_modules/
 .github/visual-tests/generated-test-paths.txt
+
+difference_results.md

@@ -201,4 +201,236 @@ describe('Scripts', () => {
     const pg1 = navEl.children[1];
     expect(pg1).to.be.undefined;
   });
+
+  it('Handles Image Collage autoblock with next para <em>', async () => {
+    let insertedElement;
+    let beforeElement;
+    const parentEnclosingDiv = {};
+    parentEnclosingDiv.insertBefore = (s, e) => {
+      insertedElement = s;
+      beforeElement = e;
+    };
+    let removedChild;
+    parentEnclosingDiv.removeChild = (c) => {
+      removedChild = c;
+    };
+
+    const enclosingDiv = {};
+    enclosingDiv.parentElement = parentEnclosingDiv;
+
+    const parentP = {};
+
+    const picture = {};
+    const captionP = {};
+    picture.parentElement = parentP;
+
+    parentP.parentElement = enclosingDiv;
+    parentP.nextElementSibling = captionP;
+
+    const emChild = {};
+    emChild.localName = 'em';
+    captionP.children = [{}, emChild];
+    enclosingDiv.children = [parentP, captionP];
+
+    const mockMain = {};
+    mockMain.querySelectorAll = () => [picture];
+
+    let blockName;
+    let blockObj;
+    const mockBBFunction = (n, e) => {
+      blockName = n;
+      blockObj = e;
+
+      return document.createElement('myblock');
+    };
+
+    scripts.buildImageWithCaptionBlocks(mockMain, mockBBFunction);
+
+    expect(insertedElement).to.not.be.undefined;
+    expect(beforeElement).to.equal(enclosingDiv);
+
+    expect(blockName).to.equal('image-collage');
+    expect(blockObj.elems).to.eql([parentP, captionP]);
+
+    expect(insertedElement.lastChild.localName).to
+      .equal('myblock', 'Should have appended the block to the section');
+    expect(insertedElement.lastChild.classList.contains('boxy-col-1')).to
+      .be.true;
+
+    expect(removedChild).to.equal(enclosingDiv);
+  });
+
+  it('Handles Image Collage autoblock with directly following <em>', async () => {
+    const insertedEls = [];
+    const enclosingDiv = { els: [] };
+    enclosingDiv.append = (e) => insertedEls.push(e);
+    const parentP = {};
+
+    const em = {};
+    em.localName = 'em';
+
+    const picture = {};
+    picture.parentElement = parentP;
+    picture.nextElementSibling = em;
+    parentP.parentElement = enclosingDiv;
+
+    const mockdoc = {};
+    mockdoc.querySelectorAll = () => [picture];
+
+    let blockName;
+    let blockObj;
+    const mockBBFunction = (n, e) => {
+      blockName = n;
+      blockObj = e;
+
+      return document.createElement('myblock');
+    };
+
+    scripts.buildImageWithCaptionBlocks(mockdoc, mockBBFunction);
+
+    expect(blockName).to.equal('image-collage');
+    expect(insertedEls[0].classList.contains('boxy-col-1')).to
+      .be.true;
+    const [actualPic, actualEM] = blockObj.elems;
+    expect(actualPic).to.equal(picture);
+    expect(actualEM).to.equal(em);
+  });
+
+  it('No Image Collage autoblock when no <em>', async () => {
+    let insertedElement;
+    const parentEnclosingDiv = {};
+    parentEnclosingDiv.insertBefore = (s) => {
+      insertedElement = s;
+    };
+
+    const enclosingDiv = {};
+    enclosingDiv.parentElement = parentEnclosingDiv;
+
+    const parentP = {};
+
+    const picture = {};
+    const captionP = {};
+    picture.parentElement = parentP;
+
+    parentP.parentElement = enclosingDiv;
+    parentP.nextElementSibling = captionP;
+
+    const emChild = {};
+    emChild.localName = 'strong';
+    captionP.children = [{}, emChild];
+    enclosingDiv.children = [parentP, captionP];
+
+    const mockMain = {};
+    mockMain.querySelectorAll = () => [picture];
+
+    let blockName;
+    let blockObj;
+    const mockBBFunction = (n, e) => {
+      blockName = n;
+      blockObj = e;
+
+      return document.createElement('myblock');
+    };
+
+    scripts.buildImageWithCaptionBlocks(mockMain, mockBBFunction);
+
+    expect(insertedElement).to.be.undefined;
+    expect(blockName).to.be.undefined;
+    expect(blockObj).to.undefined;
+  });
+
+  it('Test splitChildDiv with only picture and caption', async () => {
+    const pdiv = document.createElement('div');
+    const div = document.createElement('div');
+    const ppict = document.createElement('p');
+    const picture = document.createElement('picture');
+    const pcapt = document.createElement('p');
+    const em = document.createElement('em');
+
+    ppict.append(picture);
+    pcapt.append(em);
+    div.append(ppict, pcapt);
+    pdiv.append(div);
+
+    const res = scripts.splitChildDiv(div, 0, 2);
+    expect(pdiv.children.length).to.be.equal(1);
+    expect(pdiv.children[0]).to.be.equal(res);
+    expect(res.children.length).to.be.equal(2);
+    expect(res.children[0]).to.be.equal(ppict);
+    expect(res.children[1]).to.be.equal(pcapt);
+  });
+
+  it('Test splitChildDiv other and picture', async () => {
+    const pdiv = document.createElement('div');
+    const div = document.createElement('div');
+    const pother = document.createElement('p');
+    const ppict = document.createElement('p');
+    const picture = document.createElement('picture');
+    const pcapt = document.createElement('p');
+    const em = document.createElement('em');
+
+    ppict.append(picture);
+    pcapt.append(em);
+    div.append(pother, ppict, pcapt);
+    pdiv.append(div);
+
+    const res = scripts.splitChildDiv(div, 1, 3);
+    expect(pdiv.children.length).to.be.equal(2);
+    const preDiv = pdiv.children[0];
+    expect(preDiv.children.length).to.be.equal(1);
+    expect(preDiv.children[0]).to.be.equal(pother);
+    expect(pdiv.children[1]).to.be.equal(res);
+  });
+
+  it('Test splitChildDiv picture and other', async () => {
+    const pdiv = document.createElement('div');
+    const div = document.createElement('div');
+    const ppict = document.createElement('p');
+    const picture = document.createElement('picture');
+    const pcapt = document.createElement('p');
+    const em = document.createElement('em');
+    const pother1 = document.createElement('p');
+    const pother2 = document.createElement('p');
+
+    ppict.append(picture);
+    pcapt.append(em);
+    div.append(ppict, pcapt, pother1, pother2);
+    pdiv.append(div);
+
+    const res = scripts.splitChildDiv(div, 0, 2);
+    expect(pdiv.children.length).to.be.equal(2);
+    expect(pdiv.children[0]).to.be.equal(res);
+    const postDiv = pdiv.children[1];
+    expect(postDiv.children.length).to.be.equal(2);
+    expect(postDiv.children[0]).to.be.equal(pother1);
+    expect(postDiv.children[1]).to.be.equal(pother2);
+  });
+
+  it('Test splidChildDiv other-picture-other', async () => {
+    const pdiv = document.createElement('div');
+    const div = document.createElement('div');
+    const pother = document.createElement('p');
+    const ppict = document.createElement('p');
+    const picture = document.createElement('picture');
+    const pcapt = document.createElement('p');
+    const em = document.createElement('em');
+    const pother1 = document.createElement('p');
+    const pother2 = document.createElement('p');
+
+    ppict.append(picture);
+    pcapt.append(em);
+    div.append(pother, ppict, pcapt, pother1, pother2);
+    pdiv.append(div);
+
+    const res = scripts.splitChildDiv(div, 1, 3);
+    expect(pdiv.children.length).to.be.equal(3);
+    const preDiv = pdiv.children[0];
+    expect(preDiv.children.length).to.be.equal(1);
+    expect(preDiv.children[0]).to.be.equal(pother);
+    expect(pdiv.children[1]).to.be.equal(res);
+    const postDiv = pdiv.children[2];
+    expect(postDiv.children.length).to.be.equal(2);
+    expect(postDiv.children[0]).to.be.equal(pother1);
+    expect(postDiv.children[1]).to.be.equal(pother2);
+  });
 });

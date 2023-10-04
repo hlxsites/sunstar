@@ -1,0 +1,35 @@
+name: Compare Folders
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+jobs:
+  compare-folders:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compare folders
+        id: run-compare
+        run: |
+          ./.github/folder-compare/run-and-create-github-summary.bash
+          cat difference_results.md
+
+      - name: Comment on Pull Request
+        if: env.SUMMARY != ''
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.number }}
+          body: ${{ env.SUMMARY }}
+

@@ -30,8 +30,12 @@ main .hero-horizontal-tabs.block {
   margin-bottom: 5rem;
 }
 
-main div.tab-item.hidden {
-  display: none;
+main div.tab-item {
+  animation: fade-out 0ms linear forwards;
+}
+
+main div.tab-item.active {
+  animation: fade-in 0.15s linear forwards;
 }
 
 main .hero-horiz-tabs-text {

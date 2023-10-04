@@ -11,7 +11,12 @@
  */
 /* global WebImporter */
 
-import { addBreadCrumb, createMetadata, fixRelativeLinks } from './utils.js';
+import {
+  addBreadCrumb,
+  createMetadata,
+  fixRelativeLinks,
+  createSectionMetadata,
+} from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 const extractEmbed = (document) => {
@@ -36,31 +41,31 @@ const extractEmbed = (document) => {
 };
 
 /**
-* Creates a Feature block from a section
+* Creates a Fragment block from a section
 * @param {HTMLDocument} document The document
 */
-const createFeatureBlockFromSection = (document) => {
-  document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [];
-    const healthifyThinkingCard = section.parentElement.className.includes('related-article');
-    const newsPressCard = section.parentElement.className.includes('news-featured');
-    let blockDetails = '';
+const createFragmentBlockFromSection = (document) => {
+  const block = [];
+  const healthifyThinkingCard = document.querySelector('.related-article');
+  const newsPressCard = document.querySelector('.news-featured');
+  let section;
+  block.push(['Fragment']);
 
-    if (healthifyThinkingCard) {
-      blockDetails = 'Feature (related-article)';
-    } else if (newsPressCard) {
-      blockDetails = 'Feature (featured-article)';
-    }
+  if (healthifyThinkingCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/related-articles']);
+    section = healthifyThinkingCard;
+  } else if (newsPressCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
+    section = newsPressCard;
+  }
 
-    if (blockDetails) {
-      block.push([blockDetails]);
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      section.before(document.createElement('hr'));
-      section.before(document.querySelector('.slider-title'));
-      section.after(document.createElement('hr'));
-      section.replaceWith(table);
-    }
-  });
+  if (section) {
+    const table = WebImporter.DOMUtils.createTable(block, document);
+    section.before(document.createElement('hr'));
+    section.before(document.querySelector('.slider-title'));
+    section.after(document.createElement('hr'));
+    section.replaceWith(table);
+  }
 };
 
 const addSocialBlock = (document) => {
@@ -82,6 +87,7 @@ const addSocialBlock = (document) => {
       });
 
       const table = WebImporter.DOMUtils.createTable(cells, document);
+      socialShare.after(createSectionMetadata({ Style: 'Narrow' }, document));
       socialShare.replaceWith(table);
     }
   }
@@ -92,19 +98,13 @@ const addTagsBlock = (document) => {
 
   if (section) {
     const tagLabel = section.querySelector('.tag-label');
-    const tagAnchors = section.querySelectorAll('.tag-link');
+    const cells = [['Tags']];
 
-    if (tagAnchors && tagAnchors.length) {
-      const cells = [['Tags']];
-
-      [...tagAnchors].forEach((x) => {
-        cells.push([x]);
-      });
-
-      const table = WebImporter.DOMUtils.createTable(cells, document);
-      section.before(tagLabel);
-      section.replaceWith(table);
-    }
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    section.before(document.createElement('hr'));
+    section.after(createSectionMetadata({ Style: 'Narrow' }, document));
+    section.before(tagLabel);
+    section.replaceWith(table);
   }
 };
 
@@ -137,14 +137,45 @@ const addQuoteBlock = (document) => {
   }
 };
 
+const changeAnchorLinks = (document) => {
+  const anchors = document.querySelectorAll('a');
+  [...anchors].forEach((item) => {
+    const newsRegex = /newsroom\/(news|press-releases)/;
+    if (newsRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/newsroom\/(event|news|press-releases)\//g, 'newsroom/');
+    }
+
+    const healthifyThinkingRegex = /healthy-thinking\/(category)/;
+    if (healthifyThinkingRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/healthy-thinking\/(category)\//g, 'healthy-thinking/');
+    }
+  });
+};
+
+const removeRedundantTag = (document) => {
+  const topLevelTag = document.querySelector('.tag');
+  if (topLevelTag) {
+    topLevelTag.remove();
+  }
+
+  const initialH6 = document.querySelector('h6.rabel');
+  if (initialH6) {
+    const textContent = initialH6.querySelector('a')?.textContent;
+    initialH6.innerHTML = '';
+    initialH6.textContent = textContent;
+  }
+};
+
 const customImportLogic = (document) => {
+  removeRedundantTag(document);
+  changeAnchorLinks(document);
   addBreadCrumb(document);
   addTagsBlock(document);
-  createFeatureBlockFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
   addQuoteBlock(document);
   fixRelativeLinks(document);
+  createFragmentBlockFromSection(document);
 };
 
 export default {
@@ -192,23 +223,18 @@ export default {
       const breadcrumbItems = sectionBreadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
       if (breadcrumbItems && breadcrumbItems.length) {
         const breadcrumbText = breadcrumbItems[breadcrumbItems.length - 1].textContent.trim();
-        metadataDetails.BreadcrumbTitle = breadcrumbText;
+        metadataDetails.BreadcrumbTitle = breadcrumbText.trim();
       }
     }
 
     if (pathname.includes('/newsroom/')) {
-      metadataDetails.Category = 'Newsroom';
-
-      const span = document.querySelector('span.tag');
-      if (span) {
-        metadataDetails.Topic = span.textContent;
-      }
+      metadataDetails.Type = 'Newsroom';
     }
 
     if (pathname.includes('/healthy-thinking/')) {
-      metadataDetails.Category = 'Healthy Thinking';
-
+      metadataDetails.Type = 'Healthy Thinking';
       const firstH6 = document.querySelector('h6.rabel');
+
       if (firstH6) {
         metadataDetails.Topic = firstH6.textContent;
       }
@@ -217,7 +243,7 @@ export default {
     const tags = document.querySelectorAll('.tag-pill');
 
     if (tags && tags.length) {
-      metadataDetails.Tags = [...tags].map((x) => x.textContent).join(', ');
+      metadataDetails.Tags = [...tags].map((x) => x.textContent.trim()).join(', ');
     }
 
     params.preProcessMetadata = metadataDetails;
