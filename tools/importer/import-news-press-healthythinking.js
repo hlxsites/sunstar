@@ -140,7 +140,7 @@ const addQuoteBlock = (document) => {
 const changeAnchorLinks = (document) => {
   const anchors = document.querySelectorAll('a');
   [...anchors].forEach((item) => {
-    const newsRegex = /newsroom\/(news|press-releases)/;
+    const newsRegex = /newsroom\/(event|news|press-releases)/;
     if (newsRegex.test(item.href)) {
       item.href = item.href.replaceAll(/newsroom\/(event|news|press-releases)\//g, 'newsroom/');
     }
