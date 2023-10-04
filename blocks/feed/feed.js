@@ -53,8 +53,8 @@ export default async function decorate(block) {
   const blockType = blockCfg['block-type'].trim().toLowerCase();
   const queryObj = await queryIndex();
 
-  const results = queryObj.where((el) => (!blockCfg.category || blockCfg.category === el.category)
-    && (!blockCfg.topic || blockCfg.topic === el.topic)
+  const results = queryObj.where((el) => (!blockCfg.type || blockCfg.type === el.type)
+    && (!blockCfg.category || blockCfg.category === el.category)
     && (!blockCfg.modifier || el.modifier === blockCfg.modifier))
     .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort] : el.path)).take(blockCfg.count)
     .toList();

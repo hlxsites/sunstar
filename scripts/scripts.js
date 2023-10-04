@@ -99,6 +99,118 @@ function buildModalFragmentBlock(main) {
   }
 }
 
+function indexOfElementInParent(element) {
+  return [...element.parentElement.children].indexOf(element);
+}
+
+/**
+ * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
+ * the from and to indexes, separating the elements from-to into
+ * a separate div on the same level and putting the remaining elements in new divs surrounding it.
+ * @param {HTMLElement} div The element to work on.
+ * @param {number} from The index from from which to put element into the middle div.
+ * @param {number} to The index up-to-but-not-including the element that marks then end of the
+ * middle div.
+ * @returns Returns the middle div.
+ */
+export function splitChildDiv(div, from, to) {
+  // run backwards because moving element will delete them from the original
+
+  let afterDiv;
+  if (to < div.children.length - 1) {
+    afterDiv = document.createElement('div');
+    for (let i = div.children.length - 1; i >= to; i -= 1) {
+      afterDiv.prepend(div.children[i]);
+    }
+  }
+
+  const midDiv = document.createElement('div');
+  for (let i = to - 1; i >= from; i -= 1) {
+    midDiv.prepend(div.children[i]);
+  }
+
+  let beforeDiv;
+  if (from > 0) {
+    beforeDiv = document.createElement('div');
+    for (let i = from - 1; i >= 0; i -= 1) {
+      beforeDiv.prepend(div.children[i]);
+    }
+  }
+
+  if (beforeDiv) {
+    div.parentElement.insertBefore(beforeDiv, div);
+  }
+  div.parentElement.insertBefore(midDiv, div);
+  if (afterDiv) {
+    div.parentElement.insertBefore(afterDiv, div);
+  }
+  div.parentElement.removeChild(div);
+
+  return midDiv;
+}
+
+function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
+  const newBlock = buildBlockFunction('image-collage', { elems: [picture, caption] });
+  newBlock.classList.add('boxy-col-1');
+  return newBlock;
+}
+
+function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
+  const enclosingDiv = parentP.parentElement;
+  if (enclosingDiv) {
+    // The caption could either be right next to the picture (if on the same line)
+    // or it could be in an adjacent sibling element (if 'enter' was pressed between)
+    const captionP = [
+      picture.nextElementSibling,
+      parentP.nextElementSibling,
+    ];
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const cp of captionP) {
+      if (!cp) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (cp.localName === 'em') {
+        // It's on the same line
+        enclosingDiv.append(buildImageCollageForPicture(picture, cp, buildBlockFunction));
+        return;
+      }
+
+      // Maybe the 'em' is on the next line, which means its in a separate <p> element
+      let hasEMChild = false;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const c of cp.children) {
+        if (c.localName === 'em') {
+          hasEMChild = true;
+          break;
+        }
+      }
+
+      if (hasEMChild) {
+        const idx = indexOfElementInParent(parentP);
+        const section = splitChildDiv(enclosingDiv, idx, idx + 2);
+        section.append(buildImageCollageForPicture(parentP, cp, buildBlockFunction));
+        return;
+      }
+    }
+  }
+}
+
+export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
+  // Find blocks that contain a picture followed by an em text block. These are
+  // single-column image collage blocks (with a caption)
+  const pictures = main.querySelectorAll('picture');
+
+  pictures.forEach((p) => {
+    const parentP = p.parentElement;
+    if (parentP) {
+      buildImageWithCaptionForPicture(parentP, p, buildBlockFunction);
+    }
+  });
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -107,6 +219,7 @@ function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
+    buildImageWithCaptionBlocks(main, buildBlock);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -443,7 +556,7 @@ export async function loadScript(url, attrs = {}) {
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
   // TODO: remove this once the index is fixed
-  const index = await fetchIndex('_drafts/satyam/query-index', sheet);
+  const index = await fetchIndex('query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
