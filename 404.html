@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <title>Page not found</title>
   <script type="text/javascript">
@@ -39,7 +38,6 @@
     if (healthifyThinkingRegex.test(windowHref)) {
 			window.stop(); // Stop processing this page, make sure no 404 rendering is done
       const newLoc = windowHref.replaceAll(/healthy-thinking\/(category)\//g, 'healthy-thinking/');
-			console.log(newLoc);
 			window.location.replace(newLoc);
     }
 
