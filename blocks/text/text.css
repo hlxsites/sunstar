@@ -52,7 +52,7 @@ main .block.text.highlight a.button.primary {
 }
 
 main .block.text.muted {
-  color: var(--muted-text-color);
+  color: var(--muted-text-block-color);
   font-size: var(--body-font-size-s);
   padding-bottom: 0.5rem;
 }
