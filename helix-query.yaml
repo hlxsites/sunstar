@@ -55,8 +55,8 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       career-quote:
-        select: main .career-hero
+        select: main .hero-career
         value: match(el, '.*?\n?Quote\n([^\n]+)')
       career-jobtitle:
-        select: main .career-hero
+        select: main .hero-career
         value: match(el, '.*?\n?Title\n([^\n]+)')
