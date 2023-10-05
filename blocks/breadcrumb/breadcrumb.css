@@ -22,6 +22,12 @@
 
 .block.breadcrumb a {
   color: var(--secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.block.breadcrumb ul {
+  list-style: none;
+  display: flex;
 }
 
 .breadcrumb-item+.breadcrumb-item {
@@ -45,7 +51,7 @@
 }
 
 .breadcrumb-item:last-child {
-  color: var(--light-black);
+  color: var(--black);
 }
 
 @media (min-width: 62rem) {
