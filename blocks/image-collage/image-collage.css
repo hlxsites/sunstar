@@ -23,6 +23,14 @@ main .image-collage>div>div:first-of-type {
   padding-bottom: 14px;
 }
 
+main .image-collage[class*='boxy-col-'].image-with-title > div {
+  display: flex;
+  flex-flow: column-reverse wrap;
+  justify-content: flex-end;
+  align-items: center;
+  flex-basis: calc(50% - 16px);
+}
+
 main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
@@ -61,6 +69,30 @@ main .image-collage .image-caption {
   text-align: center;
 }
 
+main .image-collage .image-title {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: var(--heading-font-size-ms);
+  font-weight: var(--font-weight-bolder);
+  text-align: start;
+  text-wrap: nowrap;
+}
+
+main .image-collage[class*='boxy-col-'].image-with-title {
+  display: flex;
+}
+
+main div.autoblocked.image-collage[class*='boxy-col-'].block {
+  display: flex;
+  flex-direction: column;
+}
+
+main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div > div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 @media (min-width: 62rem) {
   main .image-collage {
     columns: 2;
@@ -73,6 +105,10 @@ main .image-collage .image-caption {
     justify-content: center;
   }
 
+  main .image-collage[class*='boxy-col-'].aublocked {
+    flex-direction: column;
+  }
+  
   main .image-collage.boxy-col-1::after,
   main .image-collage.boxy-col-2::after {
     content: "";
@@ -115,5 +151,16 @@ main .image-collage .image-caption {
 
   main .image-collage[class*='boxy-col-']>div>div:first-of-type {
     padding: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  main .image-collage[class*='boxy-col-'].image-with-title {
+    flex-wrap: wrap;
+  }
+
+  main .image-collage[class*='boxy-col-'].image-with-title > div {
+    flex-basis: 100%;
+    align-items: flex-start;
   }
 }

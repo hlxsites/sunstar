@@ -1,5 +1,7 @@
 .career-carousel {
   --card-width: 16rem;
+
+  margin-top: 3rem;
 }
 
 .career-slider {

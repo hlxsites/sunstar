@@ -51,3 +51,9 @@ main .block.text.highlight a.button.primary {
   padding: 0;
   height: auto;
 }
+
+main .block.text.muted {
+  color: var(--muted-text-block-color);
+  font-size: var(--body-font-size-s);
+  padding-bottom: 0.5rem;
+}

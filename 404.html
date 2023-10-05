@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <title>Page not found</title>
   <script type="text/javascript">
@@ -22,6 +21,24 @@
       window.stop(); // Stop processing this page, make sure no 404 rendering is done
       const newLoc = window.location.href.replace('/en', '');
       window.location.replace(newLoc);
+    }
+
+		/**
+		* * Redirecting all newsroom pages and healthy thinking pages
+		*/
+		const windowHref = window.location.href;
+    const newsRegex = /newsroom\/(event|news|press-releases)/;
+    if (newsRegex.test(windowHref)) {
+			window.stop(); // Stop processing this page, make sure no 404 rendering is done
+      const newLoc = windowHref.replaceAll(/newsroom\/(event|news|press-releases)\//g, 'newsroom/');
+			window.location.replace(newLoc);
+    }
+
+    const healthifyThinkingRegex = /healthy-thinking\/(category)/;
+    if (healthifyThinkingRegex.test(windowHref)) {
+			window.stop(); // Stop processing this page, make sure no 404 rendering is done
+      const newLoc = windowHref.replaceAll(/healthy-thinking\/(category)\//g, 'healthy-thinking/');
+			window.location.replace(newLoc);
     }
 
   </script>
