@@ -5,7 +5,7 @@ on:
     types: [ opened, synchronize ]
 
 env:
-  TEST_PATHS: "/ /career/yuya-yoshisue /healthy-thinking/6-things-you-didnt-know-about-your-oral-health"
+  TEST_PATHS: "/ /career/yuya-yoshisue /brands/consumer-health-beauty /healthy-thinking/6-things-you-didnt-know-about-your-oral-health"
   TEST_PATHS_INDEXES: "/sidekick/library.json "
   DOMAIN_MAIN: "main--sunstar--hlxsites.hlx.page"
   DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.page"
