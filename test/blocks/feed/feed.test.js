@@ -28,7 +28,8 @@ describe('Feed Block', async () => {
   beforeEach(async () => {
     document.write(await readFile({ path: './feed.plain.html' }));
     await sinon.stub(window, 'fetch').callsFake((v) => {
-      const queryIndex = '/query-index.json';
+      // TODO - remove this once we have a proper index
+      const queryIndex = '/_drafts/satyam/query-index.json';
       if (v.startsWith(queryIndex)) {
         return {
           ok: true,
