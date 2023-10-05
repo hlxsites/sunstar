@@ -30,7 +30,6 @@ main .block.cards {
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  height: 5rem;
   width: 100%;
   min-width: 3.5rem;
   padding: 12px 1rem;
@@ -176,7 +175,7 @@ main .cards.machine-parts .cards-card-body a > strong {
 main .cards.machine-parts ul > li {
   padding: 0;
   box-shadow: none;
-  background: var(--transparent-blue-light-color);
+  /*background: var(--transparent-blue-light-color);*/
 }
 
 .section.cards-container.nolink {
@@ -203,8 +202,44 @@ main .nolink .cards > ul > li {
   text-align: left;
 }
 
+main .nolink .cards > ul > li .cards-card-image {
+  height: 135px;
+  width: 240px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  padding: 0;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: inherit;
+  order-radius: 0;
+  border: 1px solid rgba(60,70,80,0.12);
+}
+
+main .cards.machine-parts .cards-card-body h3{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #3C4650;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+  width: 100%;
+}
+
 main .nolink .cards > ul > li:last-child {
   margin: 0;
+}
+
+.cards.nolink.no-buttons.machine-parts.block{
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(60,70,80,0.12);
+  padding: 2rem;
 }
 
 main .nolink .cards > ul > li:hover {
@@ -233,7 +268,7 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   }
 
   .section.cards-container h2 {
-    max-width: 56.25rem;
+    max-width: 71.25rem;
   }
 
   .section.cards-container.nolink {
@@ -245,9 +280,6 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     padding-right: 0;
   }
 
-  div.cards > ul {
-    flex-flow: row nowrap;
-  }
 
   .cards > ul > li {
     width: 162px;
@@ -298,13 +330,12 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   }
 
   main .section.nolink h2 {
-    text-align: center;
     margin: 0 auto 4rem;
   }
 
   main .nolink .cards > ul > li {
     display: flex;
-    flex-direction: column;
+   /* flex-direction: column;*/
     box-shadow: none;
     height: 100%;
     margin: 0 1.25rem;
@@ -330,8 +361,11 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   }
 
   main .nolink .cards .cards-card-body {
-    padding-left: 0;
+    padding-left: 1rem;
     padding-right: 0;
+    padding-top: 0;
+    align-self: baseline;
+
   }
 
   main .nolink .cards > ul > li > .cards-card-body > h6 {
@@ -347,12 +381,26 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   }
 
   main .block.cards.machine-parts > ul > li {
-    width: inherit;
-    flex: 1;
+    /*width: inherit;
+    flex: 1;*/
   }
 
-  main .block.cards.machine-parts > ul > li .cards-card-image {
-    height: 17.1875rem;
+}
+
+@media screen and (max-width: 767px) {
+  main .block.cards.machine-parts > ul > li{
+     flex-direction: column;
+     text-align: center;
+  }
+  main .nolink .cards > ul > li .cards-card-image {
+    height: auto;
+    width: auto;
+  }
+  .cards.nolink.no-buttons.machine-parts.block {
+    padding: 0;
+  }
+  main .section.nolink h2 {
+    font-size: 2rem;
   }
 }
 
@@ -397,13 +445,9 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     margin: 0;
   }
 
-  main .block.cards.machine-parts > ul > li .cards-card-image {
-    height: 100%;
-    min-width: 50%;
-  }
 
   main .block.cards.machine-parts > ul > li > div {
-    flex: 1;
+    /*flex: 1;*/
   }
 
   main .block.cards.machine-parts > ul > li .cards-card-body p,
