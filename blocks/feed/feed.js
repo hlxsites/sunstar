@@ -54,11 +54,11 @@ const resultParsers = {
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const blockType = blockCfg['block-type'].trim().toLowerCase();
+  const blockType = blockCfg['block-type'] ? blockCfg['block-type'].trim().toLowerCase() : 'cards';
   const queryObj = await queryIndex();
 
-  const type = blockCfg.type ? blockCfg.type.trim().toLowerCase() : getMetadata('type');
-  const category = blockCfg.category ? blockCfg.category.trim().toLowerCase() : getMetadata('category');
+  const type = blockCfg.type ? blockCfg.type.trim().toLowerCase() : getMetadata('type')?.trim().toLowerCase();
+  const category = blockCfg.category ? blockCfg.category.trim().toLowerCase() : getMetadata('category')?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
   const results = queryObj.where(function filterElements(el) {
     const elType = el.type ? el.type.trim().toLowerCase() : '';

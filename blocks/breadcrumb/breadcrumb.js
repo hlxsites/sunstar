@@ -10,7 +10,7 @@ function prependSlash(path) {
   return path.startsWith('/') ? path : `/${path}`;
 }
 
-function renderBreadcrumb(breadcrumbs, block) {
+function renderBreadcrumb(breadcrumbs) {
   const li = document.createElement('li');
   li.classList.add('breadcrumb-item');
 
@@ -19,7 +19,7 @@ function renderBreadcrumb(breadcrumbs, block) {
         ${breadcrumbs.category_name ?? breadcrumbs.name}
     </a>
   ` : `${breadcrumbs.category_name ?? breadcrumbs.name}`;
-  block.append(li);
+  return li;
 }
 
 async function createAutoBreadcrumb(block, placeholders) {
@@ -51,12 +51,15 @@ async function createAutoBreadcrumb(block, placeholders) {
       name: currentTitle || pathSplit[pathSplit.length - 1],
     },
   ];
+
+  const ul = document.createElement('ul');
   breadcrumbs.forEach((crumb) => {
     if (crumb.name) {
-      renderBreadcrumb(crumb, block);
+      ul.appendChild(renderBreadcrumb(crumb));
     }
   });
 
+  block.append(ul);
   const breadcrumbContainer = document.querySelector('.section.breadcrumb-container');
   if (breadcrumbContainer) {
     breadcrumbContainer.classList.add('visible');
