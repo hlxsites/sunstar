@@ -18,7 +18,6 @@ main .block.cards {
 
 .cards > ul {
   display: flex;
-  justify-content: center;
   list-style: none;
   flex-flow: column nowrap;
   padding: 0;
@@ -30,7 +29,6 @@ main .block.cards {
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  width: 16.875rem;
   margin: 0 0 1rem;
   align-items: center;
   text-align: left;
@@ -197,6 +195,16 @@ main .cards.machine-parts ul > li {
   background: var(--transparent-blue-light-color);
 }
 
+@media screen and (min-width: 48rem) {
+  .cards > ul > li {
+    margin: 0 7px;
+  }
+
+  .cards > ul {
+    flex-flow: row nowrap;
+  }
+}
+
 @media screen and (min-width: 62rem) {
   .section.cards-container {
     margin: 5rem 0;
@@ -218,7 +226,6 @@ main .cards.machine-parts ul > li {
   .cards > ul > li {
     padding: 0;
     text-align: center;
-    margin: 0 7px;
   }
 
   .cards > ul > li > a.button {
