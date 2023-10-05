@@ -15,7 +15,8 @@ main .block.text.left-aligned h3,
 main .block.text.left-aligned h4,
 main .block.text.left-aligned h5,
 main .block.text.left-aligned h6,
-main .block.text.left-aligned p {
+main .block.text.left-aligned p,
+main .block.text.left-aligned div {
   text-align: left;
   margin-left: 0;
 }
