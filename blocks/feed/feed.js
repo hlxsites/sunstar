@@ -64,6 +64,13 @@ export default async function decorate(block) {
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
+
+  [...block.classList].forEach((item) => {
+    if (item !== 'feed') {
+      builtBlock.classList.add(item);
+    }
+  });
+
   if (block.parentNode) {
     block.parentNode.replaceChild(builtBlock, block);
   }

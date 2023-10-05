@@ -716,6 +716,10 @@ main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
+main .section.no-padding .section-container {
+  padding: 0;
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
@@ -770,9 +774,6 @@ main .section.light-blue {
   .tablet {
     display: block;
   }
-
-
-
 
   /* START Section Styles START */
 

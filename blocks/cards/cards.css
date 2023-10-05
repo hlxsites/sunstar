@@ -31,10 +31,10 @@ main .block.cards {
   border: none;
   transition: all 0.15s ease-in-out;
   width: 16.875rem;
-  padding: 12px 1rem;
   margin: 0 0 1rem;
   align-items: center;
   text-align: left;
+  flex: 1;
 }
 
 .cards > ul > li:hover {
