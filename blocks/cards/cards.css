@@ -43,10 +43,9 @@ main .block.cards {
 }
 
 .cards > ul > li .date {
-    font-size: var(--body-font-size-xs);
-    color: var(--transparent-grey-color);
-    font-weight: var(--font-weight-medium);
-    padding-bottom: 0.5rem;
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding-bottom: 0.5rem;
 }
 
 .cards > ul > li > a.button {
@@ -89,11 +88,11 @@ main .block.cards {
 }
 
 .cards.large-text .cards-card-body .date {
-  font-size: 12px;
+  font-size: var(--body-font-size-xs);
 }
 
 .cards.large-text .cards-card-body .title {
-  font-size: 16px;
+  font-size: var(--body-font-size-m);
   margin-bottom: 3rem;
 }
 
@@ -291,7 +290,7 @@ main .cards.machine-parts ul > li {
   }
 
   .cards.large-text .cards-card-body .date {
-    font-size: 14px;
+    font-size: var(--body-font-size-s);
   }
 
   .cards.large-text .cards-card-body .title {
