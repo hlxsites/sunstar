@@ -35,6 +35,7 @@ main .block.cards {
   align-items: center;
   text-align: left;
   flex: 1;
+  background-color: var(--white);
 }
 
 .cards > ul > li:hover {
