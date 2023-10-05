@@ -40,6 +40,22 @@ const extractEmbed = (document) => {
   }
 };
 
+const createTextBlock = (title) => {
+  const block = [];
+  block.push(['Text (left-aligned)']);
+  block.push([title]);
+  return block;
+};
+
+const createSpacerBlock = () => {
+  const block = [];
+  block.push(['Spacer']);
+  block.push(['Mobile', '60px']);
+  block.push(['Desktop', '60px']);
+  block.push(['Tablet', '60px']);
+  return block;
+};
+
 /**
 * Creates a Fragment block from a section
 * @param {HTMLDocument} document The document
@@ -50,19 +66,25 @@ const createFragmentBlockFromSection = (document) => {
   const newsPressCard = document.querySelector('.news-featured');
   let section;
   block.push(['Fragment']);
+  let title;
 
   if (healthifyThinkingCard) {
     block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/related-articles']);
     section = healthifyThinkingCard;
+    title = document.querySelector('.related-article .slider-title');
   } else if (newsPressCard) {
     block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
     section = newsPressCard;
+    title = document.querySelector('.news-featured .slider-title');
   }
 
   if (section) {
     const table = WebImporter.DOMUtils.createTable(block, document);
+    const spacerTable = WebImporter.DOMUtils.createTable(createSpacerBlock(), document);
+    const textTable = WebImporter.DOMUtils.createTable(createTextBlock(title), document);
     section.before(document.createElement('hr'));
-    section.before(document.querySelector('.slider-title'));
+    section.before(spacerTable);
+    section.before(textTable);
     section.after(document.createElement('hr'));
     section.replaceWith(table);
   }
@@ -160,9 +182,10 @@ const removeRedundantTag = (document) => {
 
   const initialH6 = document.querySelector('h6.rabel');
   if (initialH6) {
+    const h4 = document.createElement('h4');
     const textContent = initialH6.querySelector('a')?.textContent;
-    initialH6.innerHTML = '';
-    initialH6.textContent = textContent;
+    h4.textContent = textContent;
+    initialH6.replaceWith(h4);
   }
 };
 

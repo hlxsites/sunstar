@@ -51,10 +51,10 @@ export default async function decorate(block) {
     firstP.replaceWith(innerSpan);
   }
 
-  const firstH6 = socialContainer?.querySelector('h6');
+  const firstH4 = socialContainer?.querySelector('h4');
 
-  if (firstH6?.nextElementSibling?.tagName === 'H1') {
-    const { textContent } = firstH6;
+  if (firstH4?.nextElementSibling?.tagName === 'H1') {
+    const { textContent } = firstH4;
     const placeholders = await fetchPlaceholders(getLanguage());
     const newMap = {};
     Object.keys(placeholders).forEach((entry) => {
@@ -67,8 +67,8 @@ export default async function decorate(block) {
     const a = document.createElement('a');
     a.href = val;
     a.textContent = textContent;
-    firstH6.innerHTML = '';
-    firstH6.appendChild(a);
+    firstH4.innerHTML = '';
+    firstH4.appendChild(a);
   }
 
   decorateAnchors(block);

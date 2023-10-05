@@ -716,8 +716,8 @@ main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
-main .section.no-padding .section-container {
-  padding: 0;
+main .section.no-padding-left .section-container {
+  padding-left: 0;
 }
 
 /* END Section Styles END */
