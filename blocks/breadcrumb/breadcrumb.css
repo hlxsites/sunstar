@@ -8,7 +8,7 @@
 }
 
 .section.breadcrumb-container.visible {
-  background: var(--transparent-blue-light-color);
+  background: #F2F6F8;
 }
 
 .block.breadcrumb {
@@ -21,8 +21,7 @@
 }
 
 .block.breadcrumb a {
-  color: var(--secondary);
-  font-weight: var(--font-weight-bold);
+  color: #00578A;
 }
 
 .block.breadcrumb ul {
