@@ -717,4 +717,4 @@ export function cropString(inputString, maxLength) {
   return croppedString;
 }
 
-loadPage();
+if (!window.noload) { loadPage(); }
