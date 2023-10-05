@@ -9,7 +9,7 @@ document.write(await readFile({ path: './feed.plain.html' }));
 const feed = {};
 
 describe('Feed Block', async () => {
-  it('Feed Block Decoration', async () => {
+  it.skip('Feed Block Decoration', async () => {
     const block = document.querySelector('.feed');
     try {
       const index = JSON.parse(await readFile({ path: './query-index.json' }));

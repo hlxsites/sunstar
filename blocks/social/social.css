@@ -68,7 +68,6 @@ main .section.social-container p {
 main .section.social-container h1 + p {
   font-size: var(--font-size-xsmall);
   margin-bottom: 1.5rem;
-  color: var(--light-grey);
 }
 
 main .section.social-container h4 {
@@ -144,7 +143,7 @@ div.social-container h3 {
 
   .block.social>span {
     display: block;
-    color: var(--light-grey);
+    color: var(--black);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-small);
     line-height: 1;

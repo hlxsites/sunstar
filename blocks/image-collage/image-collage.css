@@ -40,6 +40,22 @@ main .image-collage img {
   width: calc(100vw - 2rem);
 }
 
+main .image-collage.wide img {
+padding: 2.5rem 1rem;
+}
+
+main .image-collage.zoom-in img {
+  max-width: 10rem;
+  padding: unset;
+  margin-bottom: 0.5rem;
+  transform: scale(1);
+}
+
+main .image-collage.boxy-col-1.zoom-in::after {
+  content: unset;
+  flex: unset;
+}
+
 main .image-collage * {
   font-size: var(--font-size-small);
   color: #6D757C;
@@ -115,6 +131,22 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
 
   main .image-collage[class*='boxy-col-']>div {
     margin-bottom: 2rem;
+  }
+
+  main .image-collage.zoom-in img {
+    transform: scale(1.5);
+  }
+
+  main .image-collage.wide img {
+    padding: 2.5rem 1rem;
+    width: unset;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  main .image-collage.wide.boxy-col-1>div {
+    flex: unset;
   }
 
   main .image-collage[class*='boxy-col-']>div>div:first-of-type {
