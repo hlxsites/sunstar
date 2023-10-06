@@ -54,16 +54,16 @@ const resultParsers = {
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const blockType = blockCfg['block-type'] ? blockCfg['block-type'].trim().toLowerCase() : 'cards';
+  const blockType = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const queryObj = await queryIndex();
 
-  const type = blockCfg.type ? blockCfg.type.trim().toLowerCase() : getMetadata('type')?.trim().toLowerCase();
-  const category = blockCfg.category ? blockCfg.category.trim().toLowerCase() : getMetadata('category')?.trim().toLowerCase();
+  const type = (blockCfg.type ?? getMetadata('type'))?.trim().toLowerCase();
+  const category = (blockCfg.category ?? getMetadata('category'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
   const results = queryObj.where(function filterElements(el) {
-    const elType = el.type ? el.type.trim().toLowerCase() : '';
-    const elCategory = el.category ? el.category.trim().toLowerCase() : '';
-    const elFeatured = el.featured ? el.featured.trim().toLowerCase() : '';
+    const elType = (el.type ?? '').trim().toLowerCase();
+    const elCategory = (el.category ?? '').trim().toLowerCase();
+    const elFeatured = (el.featured ?? '').trim().toLowerCase();
     return (!type || type === elType)
       && (!category || category === elCategory)
       && (!blockCfg.featured || elFeatured === blockCfg.featured.trim().toLowerCase());
