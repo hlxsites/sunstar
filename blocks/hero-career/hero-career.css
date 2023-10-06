@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-position: 58%;
     height: 43.75rem;
-    margin-bottom: 3rem;
+    margin-bottom: 9rem;
 }
 
 .hero-career .hero-career-top {
@@ -94,6 +94,7 @@
 @media (min-width: 62rem) {
     .hero-career {
         background-position: center;
+        margin-bottom: 3rem;
     }
 
     .hero-career .hero-career-top {
@@ -107,6 +108,7 @@
         width: 21rem;
         margin-top: 5rem;
         margin-right: 4rem;
+        margin-left: 8rem;
     }
 
     .hero-career .hero-career-left img {
@@ -130,9 +132,9 @@
     }
 
     .hero-career .hero-career-quote {
-        font-size: var(--heading-font-size-xl);
-        line-height: 59px;
-        margin: 0 0 97px;
+        font-size: var(--heading-font-size-l);
+        line-height: 3rem;
+        margin: 0 9rem 6.0625rem 0;
     }
 
     .hero-career .hero-career-careerbgtitle {
@@ -145,5 +147,17 @@
         font-size: var(--body-font-size-m);
         line-height: 32px;
         margin: 0;
+    }
+}
+
+@media (min-width: 77rem) {
+    .hero-career .hero-career-left {
+        margin-left: 0;
+    }
+
+    .hero-career .hero-career-quote {
+        font-size: var(--heading-font-size-xl);
+        line-height: 59px;
+        margin-right: 0;
     }
 }
