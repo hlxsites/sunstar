@@ -61,8 +61,8 @@ function buildTOCTop(ul, block) {
     li.innerText = '';
     li.append(aLink);
   });
-  [...document.querySelectorAll('[data-toc]')].forEach((section) => {
-    const name = section.dataset.toc.toLowerCase().trim();
+  [...document.querySelectorAll('[data-toc-anchor]')].forEach((section) => {
+    const name = section.dataset.tocAnchor.toLowerCase().trim();
     section.id = name;
   });
 }
