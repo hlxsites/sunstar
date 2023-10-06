@@ -236,7 +236,7 @@ export default {
       const firstH6 = document.querySelector('h6.rabel');
 
       if (firstH6) {
-        metadataDetails.Topic = firstH6.textContent;
+        metadataDetails.Category = firstH6.textContent;
       }
     }
 
