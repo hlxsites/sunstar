@@ -2,6 +2,7 @@
   --card-width: 16rem;
 
   margin-top: 3rem;
+  overflow: hidden;
 }
 
 .career-slider {
