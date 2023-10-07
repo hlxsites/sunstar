@@ -92,7 +92,7 @@ main .section.social-container .section-container ol {
   width: 100%;
 }
 
-.social-container div.news-image-caption {
+.social-container div.image-caption {
   color: #6D757C;
   font-size: var(--body-font-size-xs);
   text-align: center;
@@ -100,7 +100,7 @@ main .section.social-container .section-container ol {
   margin-bottom: 1.5rem;
 }
 
-.social-container div.news-image-caption a {
+.social-container div.image-caption a {
   background-color: white;
   font-weight: normal;
   color: var(--link-color);
@@ -117,7 +117,7 @@ div.social-container h3 {
     position: relative;
   }
 
-  .social-container div.news-image-caption {
+  .social-container div.image-caption {
     margin-bottom: 2rem;
   }
 
