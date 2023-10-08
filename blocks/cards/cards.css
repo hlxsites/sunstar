@@ -197,7 +197,6 @@ main .cards.machine-parts ul > li {
 main .nolink .cards > ul > li .cards-card-image {
   height: 135px;
   width: 240px;
-  display: -ms-flexbox;
   display: flex;
   align-self: flex-start;
   padding: 0;
@@ -207,7 +206,6 @@ main .nolink .cards > ul > li .cards-card-image {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin: inherit;
-  order-radius: 0;
   border: 1px solid #3C46501A;
 }
 
@@ -219,6 +217,10 @@ main .cards .machine-parts .cards-card-body h3{
   font-weight: var(--font-weight-bold);
   line-height: 2rem;
   width: 100%;
+}
+
+.cards.nolink.no-buttons.machine-parts.block > ul{
+  flex-flow: column;
 }
 
 @media screen and (min-width: 48rem) {
@@ -292,17 +294,21 @@ main .cards .machine-parts .cards-card-body h3{
      flex-direction: column;
      text-align: center;
   }
+
   main .nolink .cards > ul > li .cards-card-image {
     height: auto;
     width: auto;
   }
+
   .cards.nolink.no-buttons.machine-parts.block {
     padding: 0;
   }
+
   main .section.nolink h2 {
     font-size: 2rem;
   }
 }
+
 
 @media screen and (min-width: 77rem) {
   .cards > ul > li {
@@ -336,7 +342,7 @@ main .cards .machine-parts .cards-card-body h3{
   main .block.cards.machine-parts > ul > li {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(60,70,80,0.12);
+    border-bottom: 1px solid #3C46501E;
     padding: 2rem;
     width: auto;
     height: 12.1875rem;
