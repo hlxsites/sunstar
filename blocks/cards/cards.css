@@ -289,7 +289,7 @@ main .cards .machine-parts .cards-card-body h3{
 
 }
 
-@media screen and (max-width: 48rem) {
+@media screen and (max-width: 77rem) {
   main .block.cards.machine-parts > ul > li{
      flex-direction: column;
      text-align: center;
