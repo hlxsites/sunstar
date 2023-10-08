@@ -73,6 +73,7 @@ main .section.social-container p {
   right: unset;
   align-items: flex-start;
   flex-direction: row;
+  gap: 0.5rem;
 }
 
 .block.social.general span {
@@ -145,14 +146,17 @@ div.social-container h3 {
 }
 
 .block.social.general a {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 2rem;
-  margin-right: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 2.25rem;
   color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.block.social.general a:hover {
+  transform: scale(1.1);
 }
 
 @media (min-width: 62rem) {

@@ -93,7 +93,6 @@ export default async function decorate(block) {
       firstH4.innerHTML = '';
       firstH4.appendChild(a);
     }
+    decorateAnchors(block);
   }
-
-  decorateAnchors(block);
 }
