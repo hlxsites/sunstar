@@ -1,10 +1,12 @@
-.career-hero {
+.hero-career {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 58%;
+    height: 43.75rem;
+    margin-bottom: 9rem;
 }
 
-.career-hero .career-hero-top {
+.hero-career .hero-career-top {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -12,23 +14,20 @@
     max-width: 75rem;
 }
 
-.career-hero .career-hero-left {
+.hero-career .hero-career-left {
     color: var(--white);
     margin: 3rem 0;
     text-align: center;
     width: 155px;
 }
 
-.career-hero .career-hero-photo {
+.hero-career .hero-career-left img {
     margin-bottom: 1rem;
-}
-
-.career-hero .career-hero-photo img {
     height: 10.75rem;
     width: auto;
 }
 
-.career-hero .career-hero-name {
+.hero-career .hero-career-name {
     color: var(--white);
     font-size: var(--heading-font-size-xxs);
     letter-spacing: 0.9px;
@@ -37,11 +36,11 @@
     text-transform: unset;
 }
 
-.career-hero .career-hero-title {
+.hero-career .hero-career-title {
     font-size: var(--body-font-size-xs);
 }
 
-.career-hero .career-hero-right {
+.hero-career .hero-career-right {
     color: var(--white);
     background-color: var(--primary);
     width: 100vw;
@@ -49,7 +48,7 @@
     margin-top: 0;
 }
 
-.career-hero .career-hero-quote {
+.hero-career .hero-career-quote {
     font-size: var(--heading-font-size-s);
     font-style: var(--font-style-normal);
     line-height: 32px;
@@ -58,7 +57,7 @@
     text-indent: 0;
 }
 
-.career-hero .career-hero-quote::before {
+.hero-career .hero-career-quote::before {
     content: '“';
     font-size: 90px;
     line-height: 1;
@@ -67,7 +66,7 @@
     top: -44px;
 }
 
-.career-hero .career-hero-quote::after {
+.hero-career .hero-career-quote::after {
     content: '”';
     font-size: 90px;
     line-height: 1;
@@ -77,7 +76,7 @@
     right: 0;
 }
 
-.career-hero .career-hero-careerbgtitle {
+.hero-career .hero-career-careerbgtitle {
     color: white;
     font-size: var(--heading-font-size-xs);
     font-weight: var(--font-weight-bold);
@@ -86,65 +85,79 @@
     text-transform: unset;
 }
 
-.career-hero .career-hero-careerbg {
+.hero-career .hero-career-careerbg {
     font-size: var(--heading-font-size-xxs);
     line-height: 22px;
     margin-inline: 16px;
 }
 
 @media (min-width: 62rem) {
-    .career-hero {
+    .hero-career {
         background-position: center;
+        margin-bottom: 3rem;
     }
 
-    .career-hero .career-hero-top {
+    .hero-career .hero-career-top {
         flex-direction: row;
         align-items: unset;
         height: 700px;
         margin-inline: auto;
     }
 
-    .career-hero .career-hero-left {
+    .hero-career .hero-career-left {
         width: 21rem;
         margin-top: 5rem;
         margin-right: 4rem;
+        margin-left: 8rem;
     }
 
-    .career-hero .career-hero-photo img {
-        height: 296px;
+    .hero-career .hero-career-left img {
+        height: 18.5rem;
     }
 
-    .career-hero .career-hero-name {
+    .hero-career .hero-career-name {
         font-size: var(--heading-font-size-xs);
         padding-top: 0;
     }
 
-    .career-hero .career-hero-title {
+    .hero-career .hero-career-title {
         font-size: var(--body-font-size-s);
     }
 
-    .career-hero .career-hero-right {
+    .hero-career .hero-career-right {
         background-color: unset;
         margin-top: 120px;
         padding-top: unset;
         width: calc(100% - 336px - 4rem);
     }
 
-    .career-hero .career-hero-quote {
-        font-size: var(--heading-font-size-xl);
-        line-height: 59px;
-        margin: 0 0 97px;
+    .hero-career .hero-career-quote {
+        font-size: var(--heading-font-size-l);
+        line-height: 3rem;
+        margin: 0 9rem 6.0625rem 0;
     }
 
-    .career-hero .career-hero-careerbgtitle {
+    .hero-career .hero-career-careerbgtitle {
         font-size: var(--heading-font-size-m);
         letter-spacing: 1.2px;
         margin: 0 0 13px;
     }
 
-    .career-hero .career-hero-careerbg {
+    .hero-career .hero-career-careerbg {
         font-size: var(--body-font-size-m);
         line-height: 32px;
         margin: 0;
+    }
+}
+
+@media (min-width: 77rem) {
+    .hero-career .hero-career-left {
+        margin-left: 0;
+    }
+
+    .hero-career .hero-career-quote {
+        font-size: var(--heading-font-size-xl);
+        line-height: 59px;
+        margin-right: 0;
     }
 }

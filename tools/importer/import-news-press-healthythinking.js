@@ -41,31 +41,30 @@ const extractEmbed = (document) => {
 };
 
 /**
-* Creates a Feature block from a section
+* Creates a Fragment block from a section
 * @param {HTMLDocument} document The document
 */
-const createFeatureBlockFromSection = (document) => {
-  document.querySelectorAll('div.section-container').forEach((section) => {
-    const block = [];
-    const healthifyThinkingCard = section.parentElement.className.includes('related-article');
-    const newsPressCard = section.parentElement.className.includes('news-featured');
-    let blockDetails = '';
+const createFragmentBlockFromSection = (document) => {
+  const block = [];
+  const healthifyThinkingCard = document.querySelector('.related-article');
+  const newsPressCard = document.querySelector('.news-featured');
+  let section;
+  block.push(['Fragment']);
 
-    if (healthifyThinkingCard) {
-      blockDetails = 'Feature (related-article)';
-    } else if (newsPressCard) {
-      blockDetails = 'Feature (featured-article)';
-    }
+  if (healthifyThinkingCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/related-articles']);
+    section = healthifyThinkingCard;
+  } else if (newsPressCard) {
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
+    section = newsPressCard;
+  }
 
-    if (blockDetails) {
-      block.push([blockDetails]);
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      section.before(document.createElement('hr'));
-      section.before(document.querySelector('.slider-title'));
-      section.after(document.createElement('hr'));
-      section.replaceWith(table);
-    }
-  });
+  if (section) {
+    const table = WebImporter.DOMUtils.createTable(block, document);
+    section.before(document.createElement('hr'));
+    section.after(document.createElement('hr'));
+    section.replaceWith(table);
+  }
 };
 
 const addSocialBlock = (document) => {
@@ -137,14 +136,46 @@ const addQuoteBlock = (document) => {
   }
 };
 
+const changeAnchorLinks = (document) => {
+  const anchors = document.querySelectorAll('a');
+  [...anchors].forEach((item) => {
+    const newsRegex = /newsroom\/(event|news|press-releases)/;
+    if (newsRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/newsroom\/(event|news|press-releases)\//g, 'newsroom/');
+    }
+
+    const healthifyThinkingRegex = /healthy-thinking\/(category)/;
+    if (healthifyThinkingRegex.test(item.href)) {
+      item.href = item.href.replaceAll(/healthy-thinking\/(category)\//g, 'healthy-thinking/');
+    }
+  });
+};
+
+const removeRedundantTag = (document) => {
+  const topLevelTag = document.querySelector('.tag');
+  if (topLevelTag) {
+    topLevelTag.remove();
+  }
+
+  const initialH6 = document.querySelector('h6.rabel');
+  if (initialH6) {
+    const h4 = document.createElement('h4');
+    const textContent = initialH6.querySelector('a')?.textContent;
+    h4.textContent = textContent;
+    initialH6.replaceWith(h4);
+  }
+};
+
 const customImportLogic = (document) => {
+  removeRedundantTag(document);
+  changeAnchorLinks(document);
   addBreadCrumb(document);
   addTagsBlock(document);
-  createFeatureBlockFromSection(document);
   extractEmbed(document);
   addSocialBlock(document);
   addQuoteBlock(document);
   fixRelativeLinks(document);
+  createFragmentBlockFromSection(document);
 };
 
 export default {
@@ -197,20 +228,15 @@ export default {
     }
 
     if (pathname.includes('/newsroom/')) {
-      metadataDetails.Category = 'Newsroom';
-
-      const span = document.querySelector('span.tag');
-      if (span) {
-        metadataDetails.Topic = span.textContent;
-      }
+      metadataDetails.Type = 'Newsroom';
     }
 
     if (pathname.includes('/healthy-thinking/')) {
-      metadataDetails.Category = 'Healthy Thinking';
-
+      metadataDetails.Type = 'Healthy Thinking';
       const firstH6 = document.querySelector('h6.rabel');
+
       if (firstH6) {
-        metadataDetails.Topic = firstH6.textContent;
+        metadataDetails.Category = firstH6.textContent;
       }
     }
 

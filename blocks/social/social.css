@@ -34,8 +34,7 @@ main .section.social-container .section-container {
 }
 
 main .section.social-container p {
-  margin-bottom: 1.5rem;
-  line-height: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .section.social-container h1 {
@@ -69,12 +68,14 @@ main .section.social-container p {
 main .section.social-container h1 + p {
   font-size: var(--font-size-xsmall);
   margin-bottom: 1.5rem;
-  color: var(--light-grey);
 }
 
 main .section.social-container h4 {
   color: var(--light-black);
   margin-bottom: 0.5rem;
+  letter-spacing: 0.05rem;
+  font-size: var(--heading-font-size-xxs);
+  font-weight: var(--font-weight-bold);
 }
 
 main .section.social-container .section-container ul {
@@ -145,7 +146,7 @@ div.social-container h3 {
 
   .block.social>span {
     display: block;
-    color: var(--light-grey);
+    color: var(--black);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-small);
     line-height: 1;

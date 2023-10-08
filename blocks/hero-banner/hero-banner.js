@@ -83,4 +83,7 @@ export default function decorate($block) {
   if ($contentRow) {
     decorateTextContent($contentRow, $block);
   }
+  if ($block.classList.contains('overlap')) {
+    $block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
+  }
 }

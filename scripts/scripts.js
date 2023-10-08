@@ -100,6 +100,123 @@ function buildModalFragmentBlock(main) {
 }
 
 /**
+ * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
+ * the from and to indexes, separating the elements from-to into
+ * a separate div on the same level and putting the remaining elements in new divs surrounding it.
+ * @param {HTMLElement} div The element to work on.
+ * @param {number} from The index from from which to put element into the middle div.
+ * @param {number} to The index up-to-but-not-including the element that marks then end of the
+ * middle div.
+ * @returns Returns the middle div.
+ */
+export function splitChildDiv(div, from, to) {
+  // run backwards because moving element will delete them from the original
+
+  let afterDiv;
+  if (to < div.children.length - 1) {
+    afterDiv = document.createElement('div');
+    for (let i = div.children.length - 1; i >= to; i -= 1) {
+      afterDiv.prepend(div.children[i]);
+    }
+  }
+
+  const midDiv = document.createElement('div');
+  for (let i = to - 1; i >= from; i -= 1) {
+    midDiv.prepend(div.children[i]);
+  }
+
+  let beforeDiv;
+  if (from > 0) {
+    beforeDiv = document.createElement('div');
+    for (let i = from - 1; i >= 0; i -= 1) {
+      beforeDiv.prepend(div.children[i]);
+    }
+  }
+
+  if (beforeDiv) {
+    div.parentElement.insertBefore(beforeDiv, div);
+  }
+  div.parentElement.insertBefore(midDiv, div);
+  if (afterDiv) {
+    div.parentElement.insertBefore(afterDiv, div);
+  }
+  div.parentElement.removeChild(div);
+
+  return midDiv;
+}
+
+function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
+  const newBlock = buildBlockFunction('image-collage', { elems: [picture, caption] });
+  newBlock.classList.add('boxy-col-1');
+  return newBlock;
+}
+
+function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
+  const enclosingDiv = parentP.parentElement;
+
+  if (enclosingDiv) {
+    // The caption could either be right next to, or right before the picture (if on the same line)
+    // or it could be in an adjacent sibling element (if 'enter' was pressed between)
+    const captionP = [
+      picture.previousElementSibling,
+      picture.nextElementSibling,
+      parentP.nextElementSibling,
+    ];
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const cp of captionP) {
+      if (!cp) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (cp.localName === 'em') {
+        // It's on the same line
+        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
+        newBlock.classList.add('autoblocked');
+        // caption before picture
+        if (cp === captionP[0]) {
+          newBlock.classList.add('caption-above');
+        }
+        // insert the new block at the position the old image was at
+        enclosingDiv.replaceChild(newBlock, parentP);
+        return;
+      }
+
+      // Maybe the 'em' is on the next line, which means its in a separate <p> element
+      let hasEMChild = false;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const c of cp.children) {
+        if (c.localName === 'em') {
+          hasEMChild = true;
+          break;
+        }
+      }
+
+      if (hasEMChild) {
+        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
+        newBlock.classList.add('autoblocked');
+        enclosingDiv.replaceChild(newBlock, parentP);
+        return;
+      }
+    }
+  }
+}
+
+export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
+  // Find blocks that contain a picture followed by an em text block. These are
+  // single-column image collage blocks (with a caption)
+  const pictures = main.querySelectorAll('picture');
+
+  pictures.forEach((p) => {
+    const parentP = p.parentElement;
+    if (parentP) {
+      buildImageWithCaptionForPicture(parentP, p, buildBlockFunction);
+    }
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -107,6 +224,7 @@ function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
+    buildImageWithCaptionBlocks(main, buildBlock);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -561,4 +679,42 @@ export async function loadConsentManager() {
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
 
-loadPage();
+/**
+ * Crop a given string to a specified maximum length without cutting words in half.
+ * If the string is longer than the specified length, it will be cropped at the
+ * nearest space or punctuation.
+ *
+ * @param {string} str - The input string to be cropped.
+ * @param {number} maxLength - The maximum length the string should be cropped to.
+ * @returns {string} - The cropped string.
+ */
+export function cropString(inputString, maxLength) {
+  if (inputString.length <= maxLength) {
+    return inputString;
+  }
+
+  const words = inputString.split(/\s+/); // Split the string into words
+  let croppedString = '';
+  let currentLength = 0;
+
+  words.every((word) => {
+    if (currentLength + word.length + 1 <= maxLength) {
+      // Add the word and a space if it doesn't exceed the maxLength
+      croppedString += `${word} `;
+      currentLength += word.length + 1;
+      return true;
+    }
+    // Otherwise, stop the loop
+    return false;
+  });
+
+  // Remove trailing space and add an ellipsis if needed
+  croppedString = croppedString.trim();
+  if (croppedString.length < inputString.length) {
+    croppedString += '...';
+  }
+
+  return croppedString;
+}
+
+if (!window.noload) { loadPage(); }

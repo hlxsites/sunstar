@@ -18,7 +18,6 @@ main .block.cards {
 
 .cards > ul {
   display: flex;
-  justify-content: center;
   list-style: none;
   flex-flow: column nowrap;
   padding: 0;
@@ -33,10 +32,18 @@ main .block.cards {
   margin: 0 0 1rem;
   align-items: center;
   text-align: left;
+  flex: 1;
+  background-color: var(--white);
 }
 
 .cards > ul > li:hover {
   box-shadow: 0 4px 1rem 0 rgb(60 70 80 / 40%);
+}
+
+.cards > ul > li .date {
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding-bottom: 0.5rem;
 }
 
 .cards > ul > li > a.button {
@@ -68,14 +75,29 @@ main .block.cards {
 }
 
 .cards .cards-card-body {
-  width: calc(100% - 1rem - 3.5rem);
   margin: 0 auto;
-  padding: 0 0 0 16px;
+  text-align: left;
+  color: var(--light-black);
+  padding: 10px 10px 0;
+}
+
+.cards .cards-card-body .title {
+  margin-bottom: 1rem;
+}
+
+.cards.large-text .cards-card-body .date {
+  font-size: var(--body-font-size-xs);
+}
+
+.cards.large-text .cards-card-body .title {
+  font-size: var(--body-font-size-m);
+  margin-bottom: 3rem;
 }
 
 .cards .cards-card-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .cards .cards-card-image span.icon,
@@ -89,11 +111,9 @@ main .block.cards {
 }
 
 .cards .cards-card-image {
+  height: 155px;
   margin: 0;
   padding: 0;
-  width: 3.5rem;
-  min-width: 3.5rem;
-  height: 3.5rem;
 }
 
 .cards .cards-card-body div {
@@ -174,8 +194,6 @@ main .cards.machine-parts ul > li {
   box-shadow: none;
 }
 
-
-
 main .nolink .cards > ul > li .cards-card-image {
   height: 135px;
   width: 240px;
@@ -203,13 +221,14 @@ main .cards .machine-parts .cards-card-body h3{
   width: 100%;
 }
 
+@media screen and (min-width: 48rem) {
+  .cards > ul > li {
+    margin: 0 7px;
+  }
 
-main .nolink .cards > ul > li > .cards-card-body > h6 {
-  text-align: left;
-  text-transform: unset;
-  font-size: var(--body-font-size-m);
-  font-weight: var(--font-weight-bolder);
-  color: var(--text-color);
+  .cards > ul {
+    flex-flow: row nowrap;
+  }
 }
 
 @media screen and (min-width: 62rem) {
@@ -221,10 +240,6 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     max-width: 71.25rem;
   }
 
-  .section.cards-container.nolink {
-    margin-bottom: 7.5rem;
-  }
-
   main .block.cards {
     padding-left: 0;
     padding-right: 0;
@@ -232,11 +247,8 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
 
 
   .cards > ul > li {
-    width: 162px;
-    height: 222px;
     padding: 0;
     text-align: center;
-    margin: 0 7px;
   }
 
   .cards > ul > li > a.button {
@@ -254,8 +266,6 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
 
   .cards .cards-card-image {
     margin: auto;
-    width: 7.5rem;
-    height: 7.5rem;
   }
 
   .cards .cards-card-image img {
@@ -296,8 +306,6 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
 
 @media screen and (min-width: 77rem) {
   .cards > ul > li {
-    width: 214px;
-    height: 262px;
     margin: 0 1rem;
   }
 
@@ -313,18 +321,16 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     padding: 20px 0 0;
   }
 
-  .cards .cards-card-image {
-    width: 8.75rem;
-    height: 8.75rem;
+  .cards.large-text .cards-card-body .date {
+    font-size: var(--body-font-size-s);
+  }
+
+  .cards.large-text .cards-card-body .title {
+    font-size: 20px;
   }
 
   .cards .cards-card-body {
-    padding-top: 20px;
     font-size: 1rem;
-  }
-
-  .nolink .cards > ul > li {
-    width: 16.5rem;
   }
 
   main .block.cards.machine-parts > ul > li {
