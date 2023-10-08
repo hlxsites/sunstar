@@ -30,9 +30,6 @@ main .block.cards {
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  width: 100%;
-  min-width: 3.5rem;
-  padding: 12px 1rem;
   margin: 0 0 1rem;
   align-items: center;
   text-align: left;
@@ -175,39 +172,15 @@ main .cards.machine-parts .cards-card-body a > strong {
 main .cards.machine-parts ul > li {
   padding: 0;
   box-shadow: none;
-  /*background: var(--transparent-blue-light-color);*/
 }
 
-.section.cards-container.nolink {
-  margin-bottom: 5rem;
-}
 
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.nolink h2 {
-  text-align: left;
-  margin: 0 auto 1.5rem;
-}
-
-main .nolink .block.cards {
-  margin: 0 auto 2rem;
-}
-
-main .nolink .cards > ul > li {
-  display: flex;
-  flex-direction: row;
-  box-shadow: none;
-  width: 100%;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  text-align: left;
-}
 
 main .nolink .cards > ul > li .cards-card-image {
   height: 135px;
   width: 240px;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-item-align: start;
   align-self: flex-start;
   padding: 0;
   -ms-flex-pack: center;
@@ -217,42 +190,19 @@ main .nolink .cards > ul > li .cards-card-image {
   flex-shrink: 0;
   margin: inherit;
   order-radius: 0;
-  border: 1px solid rgba(60,70,80,0.12);
+  border: 1px solid #3C46501A;
 }
 
-main .cards.machine-parts .cards-card-body h3{
+main .cards .machine-parts .cards-card-body h3{
   margin-block-start: 0;
   margin-block-end: 0;
-  color: #3C4650;
+  color: var(--light-black);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: 2rem;
   width: 100%;
 }
 
-main .nolink .cards > ul > li:last-child {
-  margin: 0;
-}
-
-.cards.nolink.no-buttons.machine-parts.block{
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom: 1px solid rgba(60,70,80,0.12);
-  padding: 2rem;
-}
-
-main .nolink .cards > ul > li:hover {
-  box-shadow: none;
-}
-
-main .nolink .cards .cards-card-image {
-  margin: 0;
-  padding: 0;
-  width: 5rem;
-  min-width: 5rem;
-  height: 5rem;
-}
 
 main .nolink .cards > ul > li > .cards-card-body > h6 {
   text-align: left;
@@ -325,69 +275,9 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     color: var(--transparent-grey-color-2);
   }
 
-  main .nolink .block.cards {
-    margin: 0;
-  }
-
-  main .section.nolink h2 {
-    margin: 0 auto 4rem;
-  }
-
-  main .nolink .cards > ul > li {
-    display: flex;
-   /* flex-direction: column;*/
-    box-shadow: none;
-    height: 100%;
-    margin: 0 1.25rem;
-    padding: 0;
-  }
-
-  main .nolink .cards:not(.features-items) > ul > li {
-    width: calc(100% / 3 - 50px);
-  }
-
-  main .nolink .cards > ul > li:first-of-type {
-    margin-left: 0;
-  }
-
-  main .nolink .cards > ul > li:last-child {
-    margin-left: 1.25rem;
-  }
-
-  main .nolink .cards .cards-card-image {
-    margin: auto;
-    width: 7.5rem;
-    height: 7.5rem;
-  }
-
-  main .nolink .cards .cards-card-body {
-    padding-left: 1rem;
-    padding-right: 0;
-    padding-top: 0;
-    align-self: baseline;
-
-  }
-
-  main .nolink .cards > ul > li > .cards-card-body > h6 {
-    text-align: center;
-    font-size: var(--body-font-size-l);
-    font-weight: var(--font-weight-bold);
-  }
-
-  /* Styles for machine parts cards */
-
-  main .block.cards.machine-parts ul {
-    gap: 2rem;
-  }
-
-  main .block.cards.machine-parts > ul > li {
-    /*width: inherit;
-    flex: 1;*/
-  }
-
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48rem) {
   main .block.cards.machine-parts > ul > li{
      flex-direction: column;
      text-align: center;
@@ -439,15 +329,13 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
 
   main .block.cards.machine-parts > ul > li {
     display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(60,70,80,0.12);
+    padding: 2rem;
     width: auto;
     height: 12.1875rem;
     flex: 1;
     margin: 0;
-  }
-
-
-  main .block.cards.machine-parts > ul > li > div {
-    /*flex: 1;*/
   }
 
   main .block.cards.machine-parts > ul > li .cards-card-body p,
