@@ -40,10 +40,10 @@ main div.tab-item.active {
 
 main .hero-horiz-tabs-text {
   color: var(--muted-text);
-  padding-top: 26px;
+  padding-top: 1.625rem;
   margin-bottom: 2rem;
-  margin-left: 16px;
-  margin-right: 32px;
+  margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 main .hero-horiz-tabs-img {
@@ -55,7 +55,7 @@ main .hero-horiz-tabs-text > h2 {
   font-size: var(--heading-font-size-l);
   font-weight: var(--font-weight-small);
   line-height: 1.3em;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   margin-top: 0;
 }
 
@@ -63,7 +63,7 @@ main .hero-horiz-tabs-text > h6 {
   color: var(--hero-strong-color);
   font-size: var(--heading-font-size-xxxs);
   letter-spacing: 0.7px;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 main .hero-horiz-tabs-text > p {
@@ -72,7 +72,7 @@ main .hero-horiz-tabs-text > p {
 
 main .hero-horiz-tabs-img picture {
   display: block;
-  height: 240px;
+  height: 15rem;
 }
 
 main .hero-horizontal-tabs.block.no-image {
@@ -84,6 +84,7 @@ main .hero-horiz-tabs-img picture > img {
   object-position: center;
   max-height: 100%;
   min-width: 100%;
+  height: inherit;
 }
 
 main .hero-horizontal-tabs nav ul {
@@ -118,15 +119,19 @@ main .hero-horizontal-tabs nav button.active {
 
 
 @media (min-width:62rem) {
+  main .hero-horiz-tabs-panel {
+    width: 50%;
+  }
+
   main .hero-horizontal-tabs.block {
     flex-direction: row;
-    max-width: 872px;
+    max-width: 54.5rem;
   }
 
   main .hero-horiz-tabs-text {
     padding-top: 6rem;
     margin-left: 0;
-    min-width: 436px;
+    min-width: 27.25rem;
   }
 
   main div.no-image .hero-horiz-tabs-text {
@@ -150,8 +155,8 @@ main .hero-horizontal-tabs nav button.active {
   }
 
   main .hero-horiz-tabs-img picture {
-    width: 690px;
-    height: 400px;
+    width: calc(50vw - 7.5px);
+    height: 25rem;
   }
 
   main .hero-horizontal-tabs nav {
@@ -168,7 +173,7 @@ main .hero-horizontal-tabs nav button.active {
   }
 
   main .hero-horizontal-tabs.block.no-image {
-    height: 400px;
+    height: 25rem;
     padding-top: 0;
   }
 
@@ -179,35 +184,34 @@ main .hero-horizontal-tabs nav button.active {
 
 @media (min-width:77rem) {
   main .hero-horizontal-tabs.block {
-    max-width: 1200px;
+    max-width: 75rem;
   }
 
   main .hero-horiz-tabs-text {
-    padding-top: 120px;
-    margin-right: 32px;
-    min-width: 472px;
+    padding-top: 7.5rem;
+    margin-right: 2rem;
+    min-width: 29.5rem;
   }
 
   main .hero-horiz-tabs-text > h2 {
     font-size: 2.25rem;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   main .hero-horiz-tabs-text > h6 {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 
   main .hero-horiz-tabs-text > p {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   main .hero-horiz-tabs-img picture {
-    width: 897px;
-    height: 520px;
+    height: 32.5rem;
   }
 
   main .hero-horizontal-tabs.block.no-image {
-    height: 520px;
+    height: 32.5rem;
     padding-top: 0;
   }
 }

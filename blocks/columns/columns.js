@@ -21,9 +21,10 @@ export default function decorate(block) {
   const textOnlyColBlock = !block.querySelector('picture');
 
   // setup image columns
+  const contentimage = block.classList.contains('contentimage');
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      wrapImgsInLinks(col);
+      if (!contentimage) wrapImgsInLinks(col);
       if (!textOnlyColBlock) {
         const pics = col.querySelectorAll('picture');
         if (pics.length) {

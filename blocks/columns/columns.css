@@ -166,6 +166,16 @@
   gap: 0;
 }
 
+.columns.contentimage .non-singleton-img-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.columns.contentimage p.button-container {
+  margin-top: unset;
+}
+
 @media (min-width: 62rem) {
   .columns.top-down.collapse > div {
     gap: 1.5rem;
@@ -295,6 +305,15 @@
 
   .columns.plain-links.collapse ul {
     display: block;
+  }
+
+  .columns.contentimage>div {
+    align-items: unset;
+  }
+
+  .columns.contentimage .non-singleton-img-wrapper img {
+    height: 3.125rem;
+    width: unset;
   }
 
   .columns-container.backgroundimage {
