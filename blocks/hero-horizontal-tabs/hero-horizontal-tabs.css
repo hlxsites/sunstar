@@ -155,7 +155,7 @@ main .hero-horizontal-tabs nav button.active {
   }
 
   main .hero-horiz-tabs-img picture {
-    width: calc(50vw - 7.5px);
+    width: calc(50vw);
     height: 25rem;
   }
 
