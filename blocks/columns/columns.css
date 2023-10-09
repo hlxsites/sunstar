@@ -55,7 +55,6 @@
   flex-direction: column;
   gap: 1rem;
   width: 11rem;
-  margin-top: 3rem;
 }
 
 .columns a.button.tertiary {
@@ -78,6 +77,12 @@
 
 .columns.invert-image-order-in-narrow-view > div .columns-img-col {
   order: 2;
+}
+
+.columns .non-singleton-img-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .columns.crop-image img {
@@ -269,7 +274,6 @@
   }
 
   .columns > div {
-    align-items: center;
     flex-direction: unset;
     gap: 3rem;
   }
@@ -295,6 +299,11 @@
 
   .columns.plain-links.collapse ul {
     display: block;
+  }
+
+  .columns .non-singleton-img-wrapper img {
+    height: 3.125rem;
+    width: unset;
   }
 
   .columns-container.backgroundimage {

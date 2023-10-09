@@ -1,5 +1,3 @@
-import { wrapImgsInLinks } from '../../scripts/scripts.js';
-
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
@@ -23,7 +21,6 @@ export default function decorate(block) {
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      wrapImgsInLinks(col);
       if (!textOnlyColBlock) {
         const pics = col.querySelectorAll('picture');
         if (pics.length) {
