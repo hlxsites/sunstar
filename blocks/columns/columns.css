@@ -71,6 +71,7 @@
 .columns.history picture {
   display: block;
   margin: 0 auto 2rem;
+  width: 17rem;
 }
 
 .columns p.button-container {
@@ -135,6 +136,8 @@
 .columns.history h2 {
   border-bottom: 1px solid var(--primary);
   margin-bottom: 1rem;
+  font-size: var(--heading-font-size-xl);
+  font-weight: var(--font-weight-small);
 }
 
 .columns.crop-image > div {
@@ -210,8 +213,10 @@
   text-align: center;
 }
 
-  /* if the caption is on the same line then we can't text-align the em directly */
-.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type {
+
+.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type,
+.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -288,6 +293,8 @@
 .columns-container.backgroundimage .backgroundimage {
   display: none;
 }
+
+
 
 @media (min-width: 62rem) {
   .columns {
