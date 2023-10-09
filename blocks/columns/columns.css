@@ -374,7 +374,7 @@
     display: block;
   }
 
-  .columns.columns:not(.history) .non-singleton-img-wrapper img {
+  .columns:not(.history) .non-singleton-img-wrapper img {
     height: 3.125rem;
     width: unset;
   }
