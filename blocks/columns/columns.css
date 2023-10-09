@@ -49,6 +49,19 @@
   margin-top: 2rem;
 }
 
+.columns > div > div {
+  order: 1;
+}
+
+.columns.history > div {
+  align-items: center;
+}
+
+.columns.history picture {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
 .columns p.button-container {
   display: flex;
   align-items: flex-start;
@@ -94,10 +107,6 @@
   display: block;
 }
 
-.columns > div > div {
-  order: 1;
-}
-
 .columns > div > div h2,
 .columns > div > div h3,
 .columns > div > div h4 {
@@ -108,8 +117,13 @@
   margin-top: 0;
 }
 
-.columns > div div.non-singleton-img {
+.columns:not(.history) > div div.non-singleton-img {
   margin: 0 1rem;
+}
+
+.columns.history h2 {
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 1rem;
 }
 
 .columns.crop-image > div {
@@ -143,6 +157,10 @@
   margin-left: 0;
 }
 
+.columns.history.invert-image-order-in-narrow-view > div {
+  flex-direction: column-reverse;
+}
+
 .columns.plain-links > div > div p:last-of-type {
   margin-bottom: 0;
 }
@@ -169,6 +187,22 @@
 
 .columns.top-down.collapse > div {
   gap: 0;
+}
+
+  /* both autoblocking options for bottom caption */
+.columns.history div.image-collage.autoblocked picture ~ em,
+.columns.history div.image-collage.autoblocked picture ~ p {
+  color: var(--transparent-grey-color-2);
+  font-size: var(--body-font-size-s);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+  /* if the caption is on the same line then we can't text-align the em directly */
+.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 62rem) {
@@ -278,6 +312,20 @@
     gap: 3rem;
   }
 
+  .columns.history picture {
+    margin: 0 auto 2rem;
+  }
+
+  .columns.history picture:last-child {
+    margin: 0 auto;
+  }
+
+  /* picture in column with text */
+  .columns.history p ~ div > div.image-collage.autoblocked picture {
+    display: table;
+    width: auto;
+  }
+
   .columns > div .columns-img-col {
     order: unset;
   }
@@ -286,6 +334,13 @@
     flex: 1;
     order: unset;
     flex-basis: 50%;
+  }
+
+  .columns.history > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
   .columns.invert-image-order-in-narrow-view > div .columns-img-col {
@@ -370,5 +425,9 @@
   main .block.columns.machine-parts .non-singleton-img a > strong {
     color: var(--light-black);
     margin-right: 1rem;
+  }
+
+  main .columns.history.invert-image-order-in-narrow-view > div {
+    flex-direction: row;
   }
 }
