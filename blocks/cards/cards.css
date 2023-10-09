@@ -200,7 +200,6 @@ main .nolink .cards > ul > li .cards-card-image {
   display: flex;
   align-self: flex-start;
   padding: 0;
-  -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
   -ms-flex-negative: 0;
@@ -213,7 +212,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   margin-block-start: 0;
   margin-block-end: 0;
   color: var(--light-black);
-  font-size: 1.5rem;
+  font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-bold);
   line-height: 2rem;
   width: 100%;
@@ -343,7 +342,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   main .block.cards.machine-parts > ul > li {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #3C46501E;
+    border-bottom: 1px solid var(--text-h2-underline-color);
     padding: 2rem;
     width: auto;
     height: 12.1875rem;
