@@ -1,5 +1,3 @@
-import { wrapImgsInLinks } from '../../scripts/scripts.js';
-
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
