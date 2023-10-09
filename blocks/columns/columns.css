@@ -49,6 +49,17 @@
   margin-top: 2rem;
 }
 
+.columns.history h6 {
+  color: var(--transparent-grey-color-2);
+  font-size: var(--heading-font-size-mxs);
+  font-weight: var(--font-weight-medium);
+  margin: 0 0 1rem;
+}
+
+.columns.history strong {
+  font-size: var(--heading-font-size-ms);
+}
+
 .columns > div > div {
   order: 1;
 }
