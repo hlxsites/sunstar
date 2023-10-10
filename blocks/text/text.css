@@ -57,38 +57,3 @@ main .block.text.muted {
   font-size: var(--body-font-size-s);
   padding-bottom: 0.5rem;
 }
-
-main .block.block.text.history-title {
-  font-weight: var(--font-weight-bold);
-  color: var(--primary); 
-}
-
-main .block.text.history-title div.history-title-wrapper {
-  display: inline-flex;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  align-items: center;
-}
-
-main .block.text.history-title div.history-title-wrapper > div:first-child {
-  width: 100%;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  line-height: 1;
-}
-
-main .block.text.history-title div.history-title-wrapper > div:nth-child(2) {
-  font-size: 7.5rem;
-  line-height: 5rem;
-}
-
-main .block.text.history-title div.history-title-wrapper div.history-title-right {
-  font-size: var(--heading-font-size-xmxl);
-  line-height: 1;
-}
-
-@media (max-width: 20rem) {
-  main .block.text.history-title div.history-title-wrapper > div:nth-child(2) {
-    line-height: 7rem;
-  }
-}
