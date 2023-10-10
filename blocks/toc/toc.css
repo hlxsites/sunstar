@@ -16,7 +16,7 @@ main .toc-wrapper {
     margin-right: 0;
 }
 
-main .toc-wrapper.flat {
+main .toc-wrapper.flat:not(.no-bottom-spacing) {
     padding-bottom: 4rem;
 }
 
@@ -95,6 +95,9 @@ main .section:not([id='']) {
     main .toc-wrapper {
         flex-basis: 15rem;
         margin-right: 4rem;
+    }
+
+    main .toc-wrapper:not(.no-bottom-spacing) {
         margin-bottom: 3rem;
     }
 
