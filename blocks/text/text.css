@@ -67,6 +67,7 @@ main .block.text.history-title div.history-title-wrapper {
   display: inline-flex;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
+  align-items: center;
 }
 
 main .block.text.history-title div.history-title-wrapper > div:first-child {
