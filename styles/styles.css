@@ -716,6 +716,11 @@ main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
+/* section - padded */
+main .section.padded {
+  padding: 2rem !important;
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
