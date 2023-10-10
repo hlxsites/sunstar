@@ -2,6 +2,10 @@
   margin: 2rem 0 4rem;
 }
 
+.columns.smaller-bottom-margin {
+  margin-bottom: 0.5rem;
+}
+
 .columns *:last-child {
   margin-bottom: 0;
 }
