@@ -14,11 +14,10 @@ main .toc-wrapper {
     width: 100%;
     flex-basis: 100%;
     margin-right: 0;
-    margin-bottom: 2rem;
 }
 
 main .toc-wrapper.flat {
-    margin-bottom: 120px;
+    padding-bottom: 4rem;
 }
 
 main .toc.block ul {

@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.block.quote .quote-content {
+  margin-bottom: 1.5rem;
+}
+
 .block.quote::before {
   content: "“";
   font-family: var(--font-family-body);

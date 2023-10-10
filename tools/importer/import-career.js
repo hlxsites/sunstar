@@ -10,29 +10,26 @@
  * governing permissions and limitations under the License.
  */
 /* global WebImporter */
+import { createSectionMetadata } from './utils.js';
+
 /* eslint-disable no-console, class-methods-use-this */
 
-const createMetadata = (main, document, params) => {
+const createMetadata = (main, doc, params, mainImg) => {
   const meta = {};
 
-  const title = document.querySelector('title');
+  const title = doc.querySelector('title');
   if (title) {
     meta.Title = title.textContent.replace(/[\n\t]/gm, '');
   }
 
-  const desc = document.querySelector('[property="og:description"]');
+  const desc = doc.querySelector('[property="og:description"]');
   if (desc) {
     meta.Description = desc.content;
   }
 
-  const img = document.querySelector('[property="og:image"]');
-  if (img && img.content) {
-    const el = document.createElement('img');
-    el.src = img.content;
-    meta.Image = el;
-  }
+  meta.Image = mainImg;
 
-  const breadcrumb = document.querySelector('.section-breadcrumb');
+  const breadcrumb = doc.querySelector('.section-breadcrumb');
   if (breadcrumb) {
     const breadcrumbItems = breadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
     if (breadcrumbItems && breadcrumbItems.length) {
@@ -45,7 +42,7 @@ const createMetadata = (main, document, params) => {
     Object.assign(meta, params.preProcessMetadata);
   }
 
-  const block = WebImporter.Blocks.getMetadataBlock(document, meta);
+  const block = WebImporter.Blocks.getMetadataBlock(doc, meta);
   main.append(block);
 
   return meta;
@@ -78,23 +75,50 @@ function convertBackgroundImgsToForegroundImgs(sourceNode, targetNode = sourceNo
 }
 
 function eliminateCommonBlocksFromCareerTestimonials(doc) {
-  const md = doc.querySelector('section.make-difference');
+  let md = doc.querySelector('section.make-difference');
+  let mdReplace = true;
+  if (!md) {
+    md = doc.querySelector('section.meet-people');
+    mdReplace = false;
+  }
+
+  const sectionMetadata = createSectionMetadata({ Style: 'Narrower, Spaced' }, doc);
+  md.before(sectionMetadata);
+
+  md.before(doc.createElement('hr'));
   if (md) {
     const table = WebImporter.DOMUtils.createTable([['career-apply']], doc);
-    md.replaceWith(table);
+    if (mdReplace) {
+      md.replaceWith(table);
+    } else {
+      md.before(table);
+    }
+    table.after(doc.createElement('hr'));
+
+    table.after(createSectionMetadata({ Style: 'Narrower, Centered' }, doc));
+
+    const p = doc.createElement('p');
+    p.innerHTML = 'Read about the backgrounds, current activities and future goals of '
+      + 'team members contributing to the spirit of Sunstar around the world.';
+    table.after(p);
+    const h2 = doc.createElement('h2');
+    h2.innerHTML = 'Meet our people';
+    table.after(h2);
+    table.after(doc.createElement('hr'));
   }
 
   const mp = doc.querySelector('section.meet-people');
   if (mp) {
-    const table = WebImporter.DOMUtils.createTable([['career-testimonials']], doc);
+    const table = WebImporter.DOMUtils.createTable([['career-carousel']], doc);
     mp.replaceWith(table);
   }
 }
 
 function handleCareerTestimonials(doc) {
+  let mainImage;
   const heroSect = doc.querySelector('section.hero-three');
 
-  const cells = [['career-hero']];
+  const cells = [['hero-career']];
   if (heroSect) {
     const nameSect = heroSect.querySelector('.hero-card');
     if (nameSect) {
@@ -124,7 +148,7 @@ function handleCareerTestimonials(doc) {
     images.forEach((i) => {
       const style = i.getAttribute('style');
       if (style != null && style.includes('background-image: none;')) {
-        cells.push(['Photo', i]);
+        mainImage = i;
       } else {
         cells.push(['Hero-Background', i]);
       }
@@ -132,6 +156,7 @@ function handleCareerTestimonials(doc) {
   }
 
   const careerHero = WebImporter.DOMUtils.createTable(cells, doc);
+  heroSect.after(doc.createElement('hr'));
   heroSect.replaceWith(careerHero);
 
   eliminateCommonBlocksFromCareerTestimonials(doc);
@@ -144,6 +169,7 @@ function handleCareerTestimonials(doc) {
       fc.replaceWith(em);
     }
   });
+  return mainImage;
 }
 
 function getFomattedDate(newsDate) {
@@ -157,7 +183,7 @@ function getFomattedDate(newsDate) {
 function customImportLogic(doc) {
   addBreadCrumb(doc);
   convertBackgroundImgsToForegroundImgs(doc);
-  handleCareerTestimonials(doc);
+  return handleCareerTestimonials(doc);
 }
 
 export default {
@@ -217,9 +243,9 @@ export default {
       'footer',
       'noscript',
     ]);
-    customImportLogic(document);
+    const mainImg = customImportLogic(document);
     // create the metadata block and append it to the main element
-    createMetadata(main, document, params);
+    createMetadata(main, document, params, mainImg);
 
     return main;
   },

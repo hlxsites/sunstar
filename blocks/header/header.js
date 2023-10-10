@@ -187,7 +187,9 @@ function decorateTopNav(nav) {
   });
 }
 
-function decorateMiddleNav() {
+function decorateMiddleNav(nav) {
+  const a = nav.querySelector('a');
+  a.setAttribute('aria-label', 'Sunstar Home');
 }
 
 /* Decorate the other items - which is the items pulled from top nav */

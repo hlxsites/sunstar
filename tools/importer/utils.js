@@ -16,7 +16,7 @@ export const createMetadata = (main, document, params) => {
   const img = document.querySelector('[property="og:image"]');
   if (img && img.content) {
     const el = document.createElement('img');
-    el.src = img.content;
+    el.src = img.content.replaceAll('https://www.sunstar.com', '');
     meta.Image = el;
   }
 

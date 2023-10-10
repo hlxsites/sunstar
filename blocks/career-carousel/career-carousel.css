@@ -1,13 +1,13 @@
 .career-carousel {
   --card-width: 16rem;
+
+  margin-top: 3rem;
 }
 
 .career-slider {
   display: flex;
   flex-direction: column;
   margin-left: -1rem;
-  width: calc((var(--card-width) + 3rem) * 4);
-  overflow: hidden;
 }
 
 .career-slides {
@@ -119,6 +119,7 @@
 
 .career-carousel .career-slides-navbar {
   display: flex;
+  overflow-x: hidden;
 }
 
 .career-carousel .career-slides-nav {
@@ -145,4 +146,10 @@
   height: 1.5rem;
   width: 1rem;
   margin-inline: 0.5rem;
+}
+
+@media (min-width: 77rem) {
+  .career-slider {
+    width: calc(((var(--card-width) + 3rem) * 4));
+  }
 }
