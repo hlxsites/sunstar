@@ -716,9 +716,13 @@ main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
+main .section.light-blue .section-container {
+  background-color: var(--transparent-blue-light-color);
+}
+
 /* section - padded */
-main .section.padded {
-  padding: 2rem !important;
+main .section.padded .section-container {
+  padding: 2rem;
 }
 
 /* END Section Styles END */
