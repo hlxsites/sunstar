@@ -202,7 +202,6 @@ main .nolink .cards > ul > li .cards-card-image {
   padding: 0;
   justify-content: center;
   overflow: hidden;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   margin: inherit;
   border: 1px solid #3C46501A;
@@ -300,12 +299,12 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     width: auto;
   }
 
-  .cards.nolink.no-buttons.machine-parts.block {
+  .cards .nolink .no-buttons .machine-parts .block {
     padding: 0;
   }
 
-  main .section.nolink h2 {
-    font-size: 2rem;
+  main .section .nolink h2 {
+    font-size: var(--heading-font-size-l);
   }
 }
 
