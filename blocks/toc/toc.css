@@ -16,10 +16,6 @@ main .toc-wrapper {
     margin-right: 0;
 }
 
-main .toc-wrapper.flat:not(.no-bottom-spacing) {
-    padding-bottom: 4rem;
-}
-
 main .toc.block ul {
     width: 15rem;
     background: var(--white);
@@ -95,10 +91,7 @@ main .section:not([id='']) {
     main .toc-wrapper {
         flex-basis: 15rem;
         margin-right: 4rem;
-    }
-
-    main .toc-wrapper:not(.no-bottom-spacing) {
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
     }
 
     main .toc-container .section-container .main-content {

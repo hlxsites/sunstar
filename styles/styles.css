@@ -558,7 +558,7 @@ main .section.spaced h2 {
 }
 
 main .section.spaced h3 {
-  margin: 2rem 0 0.5rem !important; 
+  margin: 2rem 0 0.5rem; 
 }
 
 main .section.spaced p {
@@ -712,10 +712,7 @@ main .section.thank-you p {
 }
 
 /* section - light-blue */
-main .section.light-blue {
-  background-color: var(--transparent-blue-light-color);
-}
-
+main .section.light-blue,
 main .section.light-blue .section-container {
   background-color: var(--transparent-blue-light-color);
 }
