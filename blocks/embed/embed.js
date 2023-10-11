@@ -48,6 +48,32 @@ const embedYoutube = (url, isLite) => {
   return embedHTML;
 };
 
+/**
+* Facebook, twitter social plugins embedding
+* @param {*} url
+* @param {*} type
+* @returns
+*/
+const embedSocialPlugins = (url, type) => {
+  const usp = new URLSearchParams(url.search);
+  let width = usp.get('width') || '360px';
+  let height = usp.get('height') || usp.get('maxHeight') || '598px';
+
+  if (width.indexOf('px') === -1) {
+    width += 'px';
+  }
+  if (height.indexOf('px') === -1) {
+    height += 'px';
+  }
+
+  const embedHTML = `<div style="left: 0; width: 100%; height: 100%; position: relative; justify-content: left">
+    <iframe src=${url} loading="lazy" style="border:none; width:${width}; height:${height}; visibility:visible;"
+      title="${type}:post ${type} Social Plugin" frameborder="0" allowtransparency="true" scrolling="no" allow="encrypted-media" allowfullscreen="true"></iframe>
+  </div>`;
+
+  return embedHTML;
+};
+
 const loadEmbed = (block, grandChilds, link) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -57,6 +83,14 @@ const loadEmbed = (block, grandChilds, link) => {
     {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
+    },
+    {
+      match: ['facebook', 'fb'],
+      embed: embedSocialPlugins,
+    },
+    {
+      match: ['twitter'],
+      embed: embedSocialPlugins,
     },
   ];
 

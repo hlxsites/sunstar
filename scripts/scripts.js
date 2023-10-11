@@ -262,6 +262,25 @@ export function decorateExternalAnchors(externalAnchors) {
 }
 
 /**
+ * Gets the extension of a URL.
+ * @param {string} url The URL
+ * @returns {string} The extension
+ * @private
+ * @example
+ * get_url_extension('https://example.com/foo.jpg');
+ * // returns 'jpg'
+ * get_url_extension('https://example.com/foo.jpg?bar=baz');
+ * // returns 'jpg'
+ * get_url_extension('https://example.com/foo');
+ * // returns ''
+ * get_url_extension('https://example.com/foo.jpg#qux');
+ * // returns 'jpg'
+ */
+function getUrlExtension(url) {
+  return url.split(/[#?]/)[0].split('.').pop().trim();
+}
+
+/**
  * decorates anchors
  * for styling updates via CSS
  * @param {Element} element The element to decorate
@@ -273,7 +292,8 @@ export function decorateAnchors(element = document) {
     (a) => a.href.includes('youtu'),
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
-    (a) => a.href && !a.href.match(`^http[s]*://${window.location.host}/`),
+    (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
+    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
 }
 

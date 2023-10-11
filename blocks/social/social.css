@@ -27,6 +27,10 @@ main .section.social-container a {
   background-color: #0d66c2;
 }
 
+.section.social-container h2 {
+  color: var(--light-black);
+}
+
 main .section.social-container h2 {
   font-size: var(--heading-font-size-m);
   margin-bottom: 1rem;
@@ -62,6 +66,11 @@ main .section.social-container p {
   font-size: var(--heading-font-size-m);
   line-height: 1.3em;
   margin: 1rem 0;
+  color: var(--light-black);
+}
+
+.section.social-container h1:first-of-type {
+  color: var(--primary);
 }
 
 .block.social>span {
@@ -92,6 +101,11 @@ main .section.social-container p {
 .block.social .icon {
   height: 1.5rem;
   width: 1.5rem;
+}
+
+main .section.social-container .icon-link-blue {
+  height: 1.25rem;
+  width: 1.25rem;
 }
 
 .block.social .icon-twitter {
