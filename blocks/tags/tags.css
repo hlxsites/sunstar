@@ -38,6 +38,10 @@
     padding-inline: 0;
     margin-inline: 1rem;
   }
+
+  main .section.tags-container.tags-container-centered .section-container {
+    margin-inline: auto;
+  }
 }
 
 @media (min-width: 77rem) {
