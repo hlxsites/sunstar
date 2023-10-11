@@ -17,3 +17,31 @@
   left: 0.3rem;
   top: 0.5rem;
 }
+
+.link.block.no-buttons.blue-arrow a::after {
+  content: url("../../icons/link-blue.svg");
+  position: relative;
+  top: 0.3rem;
+}
+
+.link.block.transparent a {
+    background: var(--white);
+    border: 1px solid var(--link-color);
+    color: var(--link-blue-color);
+}
+
+.link.block.transparent.left-arrow a::before {
+  content: url("../../icons/angle-left-blue.svg");
+  position: relative;
+  right: 0.3rem;
+}
+
+.link.block.transparent.left-arrow a::after {
+  content: unset;
+}
+
+.link.block.transparent.left-arrow a:hover {
+  color: var(--white);
+  background-color: var(--link-blue-color);
+  border-color: var(--dark-cyan-color);
+}

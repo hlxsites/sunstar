@@ -65,6 +65,9 @@
   --health-beauty-orange: #F87C56;
   --living-environment-green: #00A499;
   --muted-text-block-color: #abb8c3;
+  --link-blue-color: #003d56;
+  --dark-cyan-color: #003449;
+
 
 
   /* fonts */
@@ -716,6 +719,15 @@ main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
+/* section - Secondary Headings */
+main .section.secondary-heading h1,h2 {
+  color: var(--secondary);
+}
+
+main .section.secondary-heading h2 {
+  font-size: var(--heading-font-size-m);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
@@ -919,6 +931,10 @@ main .section.light-blue {
   }
 
   main .section.static .section-container h2 {
+    font-size: var(--heading-font-size-mxl);
+  }
+
+  main .section.secondary-heading h2 {
     font-size: var(--heading-font-size-mxl);
   }
 
