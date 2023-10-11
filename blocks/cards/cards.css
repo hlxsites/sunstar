@@ -203,6 +203,15 @@ main .cards.machine-parts ul > li {
   .cards > ul {
     flex-flow: row nowrap;
   }
+
+  .cards.columns-3 > ul {
+    flex-flow: column nowrap;
+    margin: 0 0 1rem;
+  }
+
+  .cards.columns-3 > ul > li {
+    margin: 0 0 1rem;
+  }
 }
 
 @media screen and (min-width: 62rem) {
@@ -262,6 +271,20 @@ main .cards.machine-parts ul > li {
     color: var(--transparent-grey-color-2);
   }
 
+  main .cards.columns-3 > ul {
+    flex-flow: row wrap;
+  }
+
+  main .cards.columns-3 > ul > li {
+    padding: 0;
+    text-align: center;
+    flex: 0 0 calc(100% / 3 - 2rem);
+    margin: 0 0 4rem;
+  }
+
+  main .cards.columns-3 > ul > li:nth-child(3n+2) {
+    margin: 0 3rem 4rem;
+  }
 
   /* Styles for machine parts cards */
 
@@ -294,6 +317,19 @@ main .cards.machine-parts ul > li {
 
   .cards > ul > li > a.button {
     padding: 20px 0 0;
+  }
+
+  .cards.columns-3 > ul > li {
+    width: 21.875rem;
+    margin-bottom: 5rem;
+  }
+
+  .cards.columns-3 > ul > li:nth-child(3n+2) {
+    margin: 0 3rem 5rem;
+  }
+
+  .cards.columns-3 > ul > li:first-of-type {
+    margin-left: auto;
   }
 
   .cards.large-text .cards-card-body .date {
