@@ -111,7 +111,7 @@ main .block.cards {
 }
 
 .cards .cards-card-image {
-  height: auto;
+  height: 155px;
   margin: 0;
   padding: 0;
 }
@@ -224,12 +224,11 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 @media screen and (min-width: 48rem) {
   .cards > ul > li {
-    margin: 0 0 1rem;
+    margin: 0 7px;
   }
 
   .cards > ul {
-    flex-flow: column nowrap;
-    margin: 0 0 1rem;
+    flex-flow: row nowrap;
   }
 }
 
@@ -247,19 +246,10 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     padding-right: 0;
   }
 
-  .cards > ul {  
-    flex-flow: row wrap;
-  }
 
   .cards > ul > li {
     padding: 0;
     text-align: center;
-    flex: 0 0 calc(100% / 3 - 2rem);
-    margin: 0 0 4rem;
-  }
-
-  .cards > ul > li:nth-child(3n+2) {
-    margin: 0 3rem 4rem;
   }
 
   .cards > ul > li > a.button {
@@ -321,8 +311,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 @media screen and (min-width: 77rem) {
   .cards > ul > li {
-    width: 21.875rem;
-    margin-bottom: 5rem;
+    margin: 0 1rem;
   }
 
   .cards > ul > li:first-of-type {
@@ -331,10 +320,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards > ul > li:last-of-type {
     margin-right: 0;
-  }
-
-  .cards > ul > li:nth-child(3n+2) {
-    margin: 0 3rem 5rem;
   }
 
   .cards > ul > li > a.button {
