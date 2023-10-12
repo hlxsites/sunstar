@@ -78,8 +78,4 @@ export default async function decorate(block) {
   } else {
     buildTOCSide(ul, block);
   }
-
-  if (block.classList.contains('no-bottom-spacing')) {
-    block.parentElement.classList.add('no-bottom-spacing');
-  }
 }
