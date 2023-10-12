@@ -277,6 +277,69 @@ main pre {
   white-space: pre;
 }
 
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
+
+.icon svg {
+  height: 100%;
+  width: 100%;
+}
+
+.icon.icon-sunstar-logo {
+  width: 134px;
+  height: 20px;
+  background-image: url('/icons/sunstar-logo.svg');
+}
+
+.icon.icon-linkedin {
+  background-image: url('/icons/linkedin.svg');
+}
+
+.icon.icon-youtube {
+  background-image: url('/icons/youtube.svg');
+}
+
+.icon.icon-link-black {
+  background-image: url('/icons/link-black.svg');
+  display: inline-flex;
+  height: 18px;
+  width: 12px;
+}
+
+
+main table {
+  width: 100%;
+}
+
+main table tr {
+  display: flex;
+}
+
+main table td {
+  flex-grow: 1;
+}
+
+main table a {
+  display: flex;
+  align-items: center;
+}
+
+main table a > .icon {
+  padding-left: 0.25rem;
+}
+
+/* TODO: Remove this once this icon renders correctly */
+main table a > .icon-angle-right-blue {
+  transform: rotate(180deg);
+}
+
+
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -377,40 +440,6 @@ main img {
   height: auto;
 }
 
-.icon {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-}
-
-.icon svg {
-  height: 100%;
-  width: 100%;
-}
-
-.icon.icon-sunstar-logo {
-  width: 134px;
-  height: 20px;
-  background-image: url('/icons/sunstar-logo.svg');
-}
-
-.icon.icon-linkedin {
-  background-image: url('/icons/linkedin.svg');
-}
-
-.icon.icon-youtube {
-  background-image: url('/icons/youtube.svg');
-}
-
-.icon.icon-link-black {
-  background-image: url('/icons/link-black.svg');
-  display: inline-flex;
-  height: 18px;
-  width: 12px;
-}
 
 /* START Section Styles START */
 
@@ -558,7 +587,7 @@ main .section.spaced h2 {
 }
 
 main .section.spaced h3 {
-  margin: 2rem 0 0.5rem; 
+  margin: 2rem 0 0.5rem;
 }
 
 main .section.spaced p {
@@ -733,7 +762,7 @@ main .section.padded .section-container {
 
   to {
       opacity: 1;
-      display: block;   
+      display: block;
   }
 }
 
@@ -750,6 +779,7 @@ main .section.padded .section-container {
 
 /* END Keyframes END */
 
+
 @media (min-width:62rem) {
   h2 {
     font-size: var(--heading-font-size-xl);
@@ -759,10 +789,6 @@ main .section.padded .section-container {
 
   h3 {
     font-size: var(--heading-font-size-m);
-  }
-
-  h6 {
-    font-size: var(--heading-font-size-xxs);
   }
 
   .mobile {
