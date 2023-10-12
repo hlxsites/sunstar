@@ -415,6 +415,19 @@ main img {
   width: 12px;
 }
 
+.icon.icon-link-blue {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.3rem;
+}
+
+.icon.icon-angle-left-blue {
+  width: 1rem;
+  height: 1rem;
+  top: 0.2rem;
+  position: relative;
+}
+
 /* START Section Styles START */
 
 main .section .section-container {
@@ -717,15 +730,6 @@ main .section.thank-you p {
 /* section - light-blue */
 main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
-}
-
-/* section - Secondary Headings */
-main .section.secondary-heading h1,h2 {
-  color: var(--secondary);
-}
-
-main .section.secondary-heading h2 {
-  font-size: var(--heading-font-size-m);
 }
 
 /* END Section Styles END */
