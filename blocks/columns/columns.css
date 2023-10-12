@@ -1,5 +1,5 @@
 .columns {
-  margin: 2rem 0 4rem;
+  margin: 2rem 0;
 }
 
 .columns *:last-child {
@@ -290,13 +290,7 @@
   display: none;
 }
 
-
-
 @media (min-width: 62rem) {
-  .columns {
-    margin-bottom: 7.5rem;
-  }
-
   .columns h2,
   .columns:not(.no-buttons) h3,
   .columns:not(.no-buttons) h4 {
