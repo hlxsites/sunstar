@@ -208,10 +208,6 @@ blockquote {
   padding: 0;
 }
 
-ul {
-  list-style-type: none;
-}
-
 p {
   font-weight: var(--font-weight-medium);
   font-size: var(--body-font-size-m);
@@ -327,10 +323,6 @@ main table tr {
 
 main table td {
   flex-grow: 1;
-}
-
-main table li {
-  margin-bottom: 0.75rem;
 }
 
 main table a {
