@@ -191,10 +191,12 @@ h5 {
 }
 
 h6 {
+  font-size: var(--heading-font-size-xxxs);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--secondary);
   line-height: 1em;
   font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-xs);
-  margin-bottom: 1rem;
 }
 
 p,
