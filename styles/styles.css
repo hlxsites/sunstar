@@ -938,10 +938,6 @@ main .section.light-blue {
     font-size: var(--heading-font-size-mxl);
   }
 
-  main .section.secondary-heading h2 {
-    font-size: var(--heading-font-size-mxl);
-  }
-
   /* END Section Styles END */
 }
 
