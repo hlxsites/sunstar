@@ -276,6 +276,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   }
 
   .cards .cards-card-image {
+    height: 12.5rem;
     margin: auto;
   }
 
