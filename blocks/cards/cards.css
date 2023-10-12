@@ -12,6 +12,24 @@
   text-align: center;
 }
 
+.section .section-container h3 {
+  color: var(--light-black);
+  font-size: var(--heading-font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: 2rem;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.section .section-container h1 {
+  font-size: var(--heading-font-size-xl);
+  line-height: 3rem;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  font-weight: var(--font-weight-small);
+}
+
+
 main .block.cards {
   margin: 0 auto 3.75rem;
 }
@@ -110,6 +128,10 @@ main .block.cards {
   text-decoration: none;
 }
 
+.section-container > .cards-wrapper > .nomargin {
+  margin-top: -5rem;
+}
+
 .cards .cards-card-image {
   height: 155px;
   margin: 0;
@@ -177,7 +199,6 @@ main .cards.machine-parts .cards-card-body p:last-child {
 
 main .cards.machine-parts .cards-card-body a {
   line-height: 1;
-  display: inline-block;
   width: 100%;
   font-weight: var(--font-weight-medium);
   font-size: var(--body-font-size-m);
@@ -239,6 +260,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .section.cards-container h2 {
     max-width: 71.25rem;
+    margin:0;
   }
 
   main .block.cards {
@@ -342,7 +364,8 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--text-h2-underline-color);
-    padding: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     width: auto;
     height: 12.1875rem;
     flex: 1;
