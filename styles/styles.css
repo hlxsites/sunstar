@@ -195,7 +195,6 @@ h6 {
   text-transform: uppercase;
   margin-bottom: 1rem;
   color: var(--secondary);
-  line-height: 1em;
   font-weight: var(--font-weight-bold);
 }
 
