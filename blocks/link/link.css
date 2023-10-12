@@ -19,7 +19,6 @@
 }
 
 .link.block.white-button a {
-  background: var(--white);
   border: 1px solid var(--link-color);
   color: unset;
   background-color: unset;
