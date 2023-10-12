@@ -111,7 +111,7 @@ main .block.cards {
 }
 
 .cards .cards-card-image {
-  height: 155px;
+  height: auto;
   margin: 0;
   padding: 0;
 }
@@ -196,20 +196,12 @@ main .cards.machine-parts ul > li {
 }
 
 @media screen and (min-width: 48rem) {
-  .cards > ul > li {
-    margin: 0 7px;
-  }
-
   .cards > ul {
-    flex-flow: row nowrap;
-  }
-
-  .cards.columns-3 > ul {
     flex-flow: column nowrap;
     margin: 0 0 1rem;
   }
 
-  .cards.columns-3 > ul > li {
+  .cards > ul > li {
     margin: 0 0 1rem;
   }
 }
@@ -229,12 +221,18 @@ main .cards.machine-parts ul > li {
   }
 
   div.cards > ul {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
   }
 
   .cards > ul > li {
     padding: 0;
     text-align: center;
+    flex: 0 0 calc(100% / 3 - 2rem);
+    margin: 0 0 4rem;
+  }
+
+  .cards > ul > li:nth-child(3n+2) {
+    margin: 0 3rem 4rem;
   }
 
   .cards > ul > li > a.button {
@@ -267,23 +265,8 @@ main .cards.machine-parts ul > li {
 
   main .cards.features-items p {
     margin: 0 auto;
-    font-size: 14px;
+    font-size: var(--body-font-size-s);
     color: var(--transparent-grey-color-2);
-  }
-
-  main .cards.columns-3 > ul {
-    flex-flow: row wrap;
-  }
-
-  main .cards.columns-3 > ul > li {
-    padding: 0;
-    text-align: center;
-    flex: 0 0 calc(100% / 3 - 2rem);
-    margin: 0 0 4rem;
-  }
-
-  main .cards.columns-3 > ul > li:nth-child(3n+2) {
-    margin: 0 3rem 4rem;
   }
 
   /* Styles for machine parts cards */
@@ -304,32 +287,24 @@ main .cards.machine-parts ul > li {
 
 @media screen and (min-width: 77rem) {
   .cards > ul > li {
-    margin: 0 1rem;
+    width: 21.875rem;
+    margin-bottom: 5rem;
   }
 
   .cards > ul > li:first-of-type {
-    margin-left: 0;
+    margin-left: auto;
   }
 
   .cards > ul > li:last-of-type {
     margin-right: 0;
   }
 
-  .cards > ul > li > a.button {
-    padding: 20px 0 0;
-  }
-
-  .cards.columns-3 > ul > li {
-    width: 21.875rem;
-    margin-bottom: 5rem;
-  }
-
-  .cards.columns-3 > ul > li:nth-child(3n+2) {
+  .cards > ul > li:nth-child(3n+2) {
     margin: 0 3rem 5rem;
   }
 
-  .cards.columns-3 > ul > li:first-of-type {
-    margin-left: auto;
+  .cards > ul > li > a.button {
+    padding: 1.25rem 0 0;
   }
 
   .cards.large-text .cards-card-body .date {
@@ -337,7 +312,7 @@ main .cards.machine-parts ul > li {
   }
 
   .cards.large-text .cards-card-body .title {
-    font-size: 20px;
+    font-size: var(--heading-font-size-s);
   }
 
   .cards .cards-card-body {
@@ -364,7 +339,7 @@ main .cards.machine-parts ul > li {
   main .block.cards.machine-parts > ul > li .cards-card-body p,
   main .block.cards.machine-parts > ul > li .cards-card-body a {
     width: 100%;
-    font-size: 14px;
+    font-size: var(--body-font-size-s);
     line-height: 1.5;
     align-self: flex-start;
   }
