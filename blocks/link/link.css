@@ -4,13 +4,6 @@
   align-items: center;
 }
 
-.link.block a.button::after {
-  content: url("../../icons/link.svg");
-  position: relative;
-  left: 0.3rem;
-  top: 0.05rem;
-}
-
 .link.block.arrow a::after {
   content: url("../../icons/angle-right-blue.svg");
   position:relative;
@@ -22,10 +15,6 @@
   border: 1px solid var(--link-color);
   color: unset;
   background-color: unset;
-}
-
-.link.block.white-button a::after {
-  content: unset;
 }
 
 .link.block.white-button a:hover {
