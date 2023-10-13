@@ -57,3 +57,9 @@ main .block.text.muted {
   font-size: var(--body-font-size-s);
   padding-bottom: 0.5rem;
 }
+
+main .block.text.alert {
+  color: #cf2e2e;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
