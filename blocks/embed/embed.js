@@ -54,7 +54,7 @@ const embedYoutube = (url, isLite) => {
 * @param {*} type
 * @returns
 */
-const embedSocialPlugins = (url, type) => {
+const embedSocialPlugins = (url, type, customStyle) => {
   const usp = new URLSearchParams(url.search);
   let width = usp.get('width') || '360px';
   let height = usp.get('height') || usp.get('maxHeight') || '598px';
@@ -66,7 +66,7 @@ const embedSocialPlugins = (url, type) => {
     height += 'px';
   }
 
-  const embedHTML = `<div style="left: 0; width: 100%; height: 100%; position: relative; justify-content: left">
+  const embedHTML = `<div style="left: 0; max-width:100%; width:${width}; height:100%; position: relative; justify-content: left; ${customStyle || ''}">
     <iframe src=${url} loading="lazy" style="border:none; width:${width}; height:${height}; visibility:visible;"
       title="${type}:post ${type} Social Plugin" frameborder="0" allowtransparency="true" scrolling="no" allow="encrypted-media" allowfullscreen="true"></iframe>
   </div>`;
@@ -92,6 +92,11 @@ const loadEmbed = (block, grandChilds, link) => {
       match: ['twitter'],
       embed: embedSocialPlugins,
     },
+    {
+      match: ['instagram'],
+      embed: embedSocialPlugins,
+      customStyle: 'border: 1px solid rgb(219, 219, 219);',
+    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
@@ -99,7 +104,7 @@ const loadEmbed = (block, grandChilds, link) => {
   const isLite = block.classList.contains('lite');
 
   if (config) {
-    block.innerHTML = config.embed(url, isLite);
+    block.innerHTML = config.embed(url, isLite, config.customStyle);
     block.classList = `block embed embed-${config.match[0]}`;
   }
   block.classList.add('embed-is-loaded');
