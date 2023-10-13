@@ -4,16 +4,21 @@
   align-items: center;
 }
 
-.link.block a.button::after {
-  content: url("../../icons/link.svg");
-  position: relative;
-  left: 0.3rem;
-  top: 0.05rem;
-}
-
 .link.block.arrow a::after {
   content: url("../../icons/angle-right-blue.svg");
   position:relative;
   left: 0.3rem;
   top: 0.5rem;
+}
+
+.link.block.white-button a {
+  border: 1px solid var(--link-color);
+  color: unset;
+  background-color: unset;
+}
+
+.link.block.white-button a:hover {
+  color: var(--white);
+  background-color: var(--link-blue-color);
+  border-color: var(--dark-cyan-color);
 }
