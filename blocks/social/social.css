@@ -7,7 +7,6 @@
 }
 
 main .section.social-container a {
-  color: var(--secondary);
   overflow-wrap: break-word;
 }
 
