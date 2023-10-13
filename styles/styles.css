@@ -664,6 +664,23 @@ main .section.about-us .button-container a:hover {
   text-decoration: none;
 }
 
+/* section - small narrow */
+main .section.small-narrow {
+  margin-top: 3rem;
+}
+
+main .section.small-narrow .section-container {
+  padding: 0 1rem;
+}
+
+main .section.small-narrow h1 {
+  margin-bottom: 2.5rem;
+}
+
+main .section.small-narrow h5 {
+  margin-bottom: 0.5rem;
+}
+
 /* section - narrow */
 main .section.narrow {
   padding: 0 1rem;
@@ -715,13 +732,6 @@ main .section.no-margin-bottom {
 /* section - add pidding 1rem */
 main .section.padding-1 {
   padding: 0 1rem;
-}
-
-/* Avoid double section-container styling for fragment */
-main .section.fragment-container > .section-container {
-  max-width: unset;
-  padding-left: unset;
-  padding-right: unset;
 }
 
 /* section - highlight */
@@ -873,6 +883,14 @@ main .section.padded .section-container {
     font-size: var(--heading-font-size-xl);
   }
 
+  /* section - small narrow */
+  main .section.small-narrow h1 {
+    margin-bottom: 3.5rem;
+  }
+
+  main .section.small-narrow h5 {
+    margin-bottom: 1rem;
+  }
 
   /* section - narrow */
   main .section.narrow {

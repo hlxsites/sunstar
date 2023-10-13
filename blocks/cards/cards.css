@@ -98,6 +98,7 @@ main .block.cards {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 0%;    
 }
 
 .cards .cards-card-image span.icon,
@@ -111,7 +112,7 @@ main .block.cards {
 }
 
 .cards .cards-card-image {
-  height: auto;
+  height: 12.5rem;
   margin: 0;
   padding: 0;
 }
@@ -249,17 +250,17 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards > ul {  
     flex-flow: row wrap;
+    justify-content: space-between;
   }
 
   .cards > ul > li {
     padding: 0;
     text-align: center;
-    flex: 0 0 calc(100% / 3 - 2rem);
     margin: 0 0 4rem;
   }
 
   .cards > ul > li:nth-child(3n+2) {
-    margin: 0 3rem 4rem;
+    margin: 0 2.9375rem 4rem;
   }
 
   .cards > ul > li > a.button {
@@ -277,12 +278,8 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards .cards-card-image {
     height: 12.5rem;
+    width: 16.875rem;
     margin: auto;
-  }
-
-  .cards .cards-card-image img {
-    width: 100%;
-    height: 100%;
   }
 
   /* Style for features-items cards */
@@ -321,6 +318,10 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 
 @media screen and (min-width: 77rem) {
+  .cards .cards-card-image {
+      width: 21.875rem;
+    }
+
   .cards > ul > li {
     width: 21.875rem;
     margin-bottom: 5rem;
@@ -335,7 +336,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   }
 
   .cards > ul > li:nth-child(3n+2) {
-    margin: 0 3rem 5rem;
+    margin: 0 4.6875rem 5rem;
   }
 
   .cards > ul > li > a.button {
