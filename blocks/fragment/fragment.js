@@ -13,13 +13,12 @@ export default async function decorate(block) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
       block.closest('.section').classList.add(...fragmentSection.classList);
-      fragmentSection.childNodes.forEach((childNode) => {
-        if (childNode.classList?.contains('section-container')) {
-          // Remving extra section container which is getting added
-          childNode.replaceWith(...childNode.children);
-        }
-      });
-      block.closest('.fragment-wrapper').replaceWith(...fragmentSection.childNodes);
+      const fragmentSectionContainer = fragmentSection.querySelector('.section-container');
+      if (fragmentSectionContainer) {
+        block.closest('.fragment-wrapper').replaceWith(...fragmentSectionContainer.childNodes);
+      } else {
+        block.closest('.fragment-wrapper').replaceWith(...fragmentSection.childNodes);
+      }
     }
   }
 }
