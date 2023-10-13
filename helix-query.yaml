@@ -47,6 +47,9 @@ indices:
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
+      featured:
+        select: head > meta[name="featured"]
+        value: attribute(el, "content")
       tags:
         select: head > meta[property="article:tag"]
         values: |
