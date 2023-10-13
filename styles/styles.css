@@ -10,7 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-
 :root {
   /* colors */
   --black: #000;
@@ -463,6 +462,11 @@ main img {
 
 /* START Section Styles START */
 
+main .section:not(.breadcrumb-container, .hero-horizontal-tabs-container, .carousel-container):first-of-type > div.section-container,
+main .section:not(.breadcrumb-container, .hero-horizontal-tabs-container, .carousel-container):nth-of-type(2) > div.section-container {
+  margin-top: 3rem;
+}
+
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -809,6 +813,7 @@ main .section.thank-you {
   margin: 64px auto 120px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.thank-you div.section-container {
   padding: 0 16px;
 }
