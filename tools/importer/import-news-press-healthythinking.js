@@ -62,7 +62,6 @@ const createFragmentBlockFromSection = (document) => {
   if (section) {
     const table = WebImporter.DOMUtils.createTable(block, document);
     section.before(document.createElement('hr'));
-    section.after(document.createElement('hr'));
     section.replaceWith(table);
   }
 };
