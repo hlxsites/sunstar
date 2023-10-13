@@ -250,13 +250,13 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards > ul {  
     flex-flow: row wrap;
-    justify-content: space-between;
   }
 
   .cards > ul > li {
     padding: 0;
     text-align: center;
     margin: 0 0 4rem;
+    max-width: 16.875rem;
   }
 
   .cards > ul > li:nth-child(3n+2) {
@@ -323,7 +323,7 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     }
 
   .cards > ul > li {
-    width: 21.875rem;
+    max-width: 21.875rem;;
     margin-bottom: 5rem;
   }
 
