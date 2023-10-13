@@ -99,11 +99,6 @@ main .section.social-container p {
   width: 1.5rem;
 }
 
-main .section.social-container .icon-link-blue {
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
 .block.social .icon-twitter {
   background-image: url("../../icons/twitter.svg");
 }
