@@ -17,12 +17,6 @@
   background-color: unset;
 }
 
-.block.link.white-button a:hover {
-  color: var(--white);
-  background-color: var(--link-blue-color);
-  border-color: var(--dark-cyan-color);
-}
-
 .block.link.large-button a {
   width: 100%;
   font-size: 1.25rem;
@@ -33,6 +27,12 @@
 
 .block.link.large-button a::after {
   content: unset;
+}
+
+.block.link.white-button a:hover {
+  color: var(--white);
+  background-color: var(--link-blue-color);
+  border-color: var(--dark-cyan-color);
 }
 
 @media (min-width:62rem) {
