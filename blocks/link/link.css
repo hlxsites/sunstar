@@ -17,3 +17,21 @@
   left: 0.3rem;
   top: 0.5rem;
 }
+
+.link.block.large-button a {
+  width: 100%;
+  font-size: 1.25rem;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  margin-bottom: 1.5rem;
+}
+
+.link.block.large-button a::after {
+  content: unset;
+}
+
+@media (min-width:62rem) {
+  .link.block.large-button a {
+      font-size: 1.5rem;
+  }
+}

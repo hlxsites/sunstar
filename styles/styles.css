@@ -312,6 +312,10 @@ main pre {
   width: 12px;
 }
 
+.icon.icon-angle-white-70 {
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
+}
 
 main table {
   width: 100%;
