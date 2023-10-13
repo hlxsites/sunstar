@@ -729,11 +729,6 @@ main .section.no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* section - add pidding 1rem */
-main .section.padding-1 {
-  padding: 0 1rem;
-}
-
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
