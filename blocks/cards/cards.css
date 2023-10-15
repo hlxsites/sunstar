@@ -225,12 +225,19 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 @media screen and (min-width: 48rem) {
   .cards > ul > li {
+    margin: 0 7px;
+  }
+
+  .cards.grid > ul > li {
     margin: 0 0 1rem;
   }
 
   .cards > ul {
+    flex-flow: row nowrap;
+  }
+
+  .cards.grid > ul {
     flex-flow: column nowrap;
-    margin: 0 0 1rem;
   }
 }
 
@@ -248,19 +255,16 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     padding-right: 0;
   }
 
-  .cards > ul {  
-    flex-flow: row wrap;
+  .cards.grid > ul {  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 16.875rem);
+    justify-content: space-between;
+    grid-gap: 2rem;
   }
 
   .cards > ul > li {
     padding: 0;
     text-align: center;
-    margin: 0 0 4rem;
-    max-width: 16.875rem;
-  }
-
-  .cards > ul > li:nth-child(3n+2) {
-    margin: 0 2.9375rem 4rem;
   }
 
   .cards > ul > li > a.button {
@@ -277,8 +281,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   }
 
   .cards .cards-card-image {
-    height: 12.5rem;
-    width: 16.875rem;
     margin: auto;
   }
 
@@ -318,13 +320,14 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 
 @media screen and (min-width: 77rem) {
-  .cards .cards-card-image {
-      width: 21.875rem;
-    }
+  .cards.grid > ul {
+      grid-template-columns: repeat(auto-fill, 21.875rem);
+      justify-content: space-between;
+      grid-gap: 3rem;
+  }
 
   .cards > ul > li {
-    max-width: 21.875rem;;
-    margin-bottom: 5rem;
+    margin: 0 1rem;
   }
 
   .cards > ul > li:first-of-type {
@@ -333,10 +336,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards > ul > li:last-of-type {
     margin-right: 0;
-  }
-
-  .cards > ul > li:nth-child(3n+2) {
-    margin: 0 4.6875rem 5rem;
   }
 
   .cards > ul > li > a.button {

@@ -54,7 +54,9 @@ const resultParsers = {
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const blockType = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
+  const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
+  const blockType = (blockName.split('(')[0]).trim();
+  const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
   const queryObj = await queryIndex();
 
   const type = (blockCfg.type ?? getMetadata('type'))?.trim().toLowerCase();
@@ -80,6 +82,10 @@ export default async function decorate(block) {
       builtBlock.classList.add(item);
     }
   });
+
+  if (variation) {
+    builtBlock.classList.add(variation);
+  }
 
   if (block.parentNode) {
     block.parentNode.replaceChild(builtBlock, block);
