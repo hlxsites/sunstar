@@ -65,6 +65,9 @@
   --health-beauty-orange: #F87C56;
   --living-environment-green: #00A499;
   --muted-text-block-color: #abb8c3;
+  --link-blue-color: #003d56;
+  --dark-cyan-color: #003449;
+
 
 
   /* fonts */
@@ -312,6 +315,10 @@ main pre {
   width: 12px;
 }
 
+.icon.icon-angle-white-70 {
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
+}
 
 main table {
   width: 100%;
@@ -440,6 +447,19 @@ main img {
   height: auto;
 }
 
+
+.icon.icon-link-blue {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.3rem;
+}
+
+.icon.icon-angle-left-blue {
+  width: 1rem;
+  height: 1rem;
+  top: 0.2rem;
+  position: relative;
+}
 
 /* START Section Styles START */
 
