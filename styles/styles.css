@@ -766,6 +766,32 @@ main .section.light-blue .section-container {
   background-color: var(--transparent-blue-light-color);
 }
 
+/* section - dark-blue */
+main .section.dark-blue,
+main .section.dark-blue .section-container {
+  background-color: var(--primary);
+  padding-bottom: 1rem;
+}
+
+/* Keep the dark-blue styles together */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.dark-blue h1,
+main .section.dark-blue h2,
+main .section.dark-blue h3,
+main .section.dark-blue h4,
+main .section.dark-blue h5,
+main .section.dark-blue h6 {
+  color: var(--white);
+  padding-top: 3rem;
+  margin-bottom: 0;
+}
+
+main .section.dark-blue p {
+  color: var(--white);
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
 /* section - padded */
 main .section.padded .section-container {
   padding: 2rem;
