@@ -54,7 +54,7 @@ main .hero-horiz-tabs-text > h1 {
   color: var(--white);
   font-size: var(--heading-font-size-l);
   font-weight: var(--font-weight-small);
-  line-height: 48px;
+  line-height: 3rem;
   margin-bottom: 0.75rem;
   margin-top: 0;
 }
