@@ -30,7 +30,7 @@ jobs:
           npm run collect-urls
           cat generated-test-paths.txt
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run Playwright tests
         id: run-playwright-tests
