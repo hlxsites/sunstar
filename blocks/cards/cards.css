@@ -98,6 +98,7 @@ main .block.cards {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 0%;    
 }
 
 .cards .cards-card-image span.icon,
@@ -111,7 +112,7 @@ main .block.cards {
 }
 
 .cards .cards-card-image {
-  height: 155px;
+  height: 12.5rem;
   margin: 0;
   padding: 0;
 }
@@ -227,8 +228,16 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     margin: 0 7px;
   }
 
+  .cards.grid > ul > li {
+    margin: 0 0 1rem;
+  }
+
   .cards > ul {
     flex-flow: row nowrap;
+  }
+
+  .cards.grid > ul {
+    flex-flow: column nowrap;
   }
 }
 
@@ -246,6 +255,12 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     padding-right: 0;
   }
 
+  .cards.grid > ul {  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 16.875rem);
+    justify-content: space-between;
+    grid-gap: 2rem;
+  }
 
   .cards > ul > li {
     padding: 0;
@@ -267,11 +282,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards .cards-card-image {
     margin: auto;
-  }
-
-  .cards .cards-card-image img {
-    width: 100%;
-    height: 100%;
   }
 
   /* Style for features-items cards */
@@ -310,6 +320,12 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 
 @media screen and (min-width: 77rem) {
+  .cards.grid > ul {
+      grid-template-columns: repeat(auto-fill, 21.875rem);
+      justify-content: space-between;
+      grid-gap: 3rem;
+  }
+
   .cards > ul > li {
     margin: 0 1rem;
   }
