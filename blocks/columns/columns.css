@@ -23,6 +23,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  gap: 1em;
 }
 
 .columns:not(.native-image-sizes) img {
@@ -55,7 +56,6 @@
 
 .columns > div > div {
   order: 1;
-  margin-bottom: 1em;
 }
 
 .columns > div > div > div {
