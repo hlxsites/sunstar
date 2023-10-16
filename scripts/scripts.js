@@ -35,6 +35,8 @@ export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_
 
 let language;
 
+const lastPossibleTopSpacingSectionIndex = 3;
+
 export function getLanguageFromPath(pathname, resetCache = false) {
   if (resetCache) {
     language = undefined;
@@ -317,7 +319,7 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   let added = false;
 
   sections.every((section) => {
-    if (added || sections.indexOf(section) >= 3) return false;
+    if (added || sections.indexOf(section) === lastPossibleTopSpacingSectionIndex) return false;
     const sectionClasses = [...section.classList];
     const matchesExcluded = excludedClasses.filter((excluded) => sectionClasses.includes(excluded));
     const incompatible = matchesExcluded.length > 0;
