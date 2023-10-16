@@ -45,9 +45,18 @@ main .hero-horiz-tabs-text {
   margin-left: 1rem;
   margin-right: 2rem;
 }
-
+  
 main .hero-horiz-tabs-img {
   order: -1;
+}
+
+main .hero-horiz-tabs-text > h1 {
+  color: var(--white);
+  font-size: var(--heading-font-size-l);
+  font-weight: var(--font-weight-small);
+  line-height: 3rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
 }
 
 main .hero-horiz-tabs-text > h2 {
@@ -70,14 +79,17 @@ main .hero-horiz-tabs-text > p {
   font-size: var(--body-font-size-s);
 }
 
+main div.no-image .hero-horiz-tabs-text > p {
+  color: var(--white);
+  line-height: 1.5em;
+}
+
 main .hero-horiz-tabs-img picture {
   display: block;
   height: 15rem;
 }
 
-main .hero-horizontal-tabs.block.no-image {
-  padding-top: 15rem;
-}
+
 
 main .hero-horiz-tabs-img picture > img {
   object-fit: cover;
@@ -117,6 +129,9 @@ main .hero-horizontal-tabs nav button.active {
   color: var(--primary);
 }
 
+main .hero-horizontal-tabs-wrapper + .section.static {
+  margin-bottom: unset;
+}
 
 @media (min-width:62rem) {
   main .hero-horiz-tabs-panel {
@@ -136,6 +151,7 @@ main .hero-horizontal-tabs nav button.active {
 
   main div.no-image .hero-horiz-tabs-text {
     padding-top: 0;
+    margin: 3rem 2rem 7rem 0;
   }
 
   main .hero-horiz-tabs-nav {
@@ -144,6 +160,12 @@ main .hero-horizontal-tabs nav button.active {
 
   main .hero-horiz-tabs-text > h6 {
     font-size: var(--heading-font-size-xxs);
+  }
+
+  main .hero-horiz-tabs-text > h1 {
+    font-size: var(--heading-font-size-xxl);
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
   }
 
   main .hero-horiz-tabs-text > h2 {
@@ -173,12 +195,14 @@ main .hero-horizontal-tabs nav button.active {
   }
 
   main .hero-horizontal-tabs.block.no-image {
-    height: 25rem;
+    height: auto;
+    min-height: 20rem;
     padding-top: 0;
   }
 
   main .hero-horizontal-tabs.block.no-image .hero-horiz-tabs-panel {
     justify-content: center;
+    width: 70%;
   }
 }
 
@@ -208,10 +232,5 @@ main .hero-horizontal-tabs nav button.active {
 
   main .hero-horiz-tabs-img picture {
     height: 32.5rem;
-  }
-
-  main .hero-horizontal-tabs.block.no-image {
-    height: 32.5rem;
-    padding-top: 0;
   }
 }
