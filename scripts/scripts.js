@@ -317,7 +317,7 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   let added = false;
 
   sections.every((section) => {
-    if (added || sections.indexOf(section) >= 2) return false;
+    if (added || sections.indexOf(section) >= 3) return false;
     const sectionClasses = [...section.classList];
     const matchesExcluded = excludedClasses.filter((excluded) => sectionClasses.includes(excluded));
     const incompatible = matchesExcluded.length > 0;
