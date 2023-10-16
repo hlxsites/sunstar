@@ -55,6 +55,7 @@
 
 .columns > div > div {
   order: 1;
+  margin-bottom: 1em;
 }
 
 .columns > div > div > div {
