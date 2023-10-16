@@ -5,11 +5,7 @@ export default function decorate(block) {
     block.innerHTML = '';
 
     [...grandChildren].forEach((grandChild, index) => {
-      if (index === 0 && grandChild.children.length === 0) {
-        const p = document.createElement('p');
-        p.textContent = grandChild.textContent;
-        grandChild.innerHTML = '';
-        grandChild.appendChild(p);
+      if (index === 0) {
         grandChild.classList.add('quote-content');
       } else if (index === 1) {
         grandChild.classList.add('quote-caption');

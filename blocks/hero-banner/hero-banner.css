@@ -160,6 +160,7 @@
         flex-basis: calc(100% - 11.625rem);
         margin-bottom: unset;
         width: unset;
+        padding-left: 2rem;
     }
 
     .hero-banner .hero-banner-button-container a.button.primary {

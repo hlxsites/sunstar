@@ -1,5 +1,5 @@
 .columns {
-  margin: 2rem 0 4rem;
+  margin: 2rem 0;
 }
 
 .columns *:last-child {
@@ -13,11 +13,6 @@
 .columns pre,
 .columns blockquote {
   margin-bottom: 1.5rem;
-}
-
-.columns:not(.no-buttons) ol,
-.columns:not(.no-buttons) ul {
-  padding: revert;
 }
 
 .columns.invert-image-order-in-narrow-view {
@@ -44,9 +39,36 @@
 }
 
 .columns h6 {
-  color: var(--secondary);
-  font-size: var(--heading-font-size-xxxs);
   margin-top: 2rem;
+}
+
+.columns.history h6 {
+  color: var(--transparent-grey-color-2);
+  font-size: var(--heading-font-size-mxs);
+  font-weight: var(--font-weight-medium);
+  margin: 0 0 1rem;
+}
+
+.columns.history strong {
+  font-size: var(--heading-font-size-ms);
+}
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns > div > div > div {
+  width: 100%
+}
+
+.columns.history > div {
+  align-items: center;
+}
+
+.columns.history picture {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 17rem;
 }
 
 .columns p.button-container {
@@ -55,7 +77,6 @@
   flex-direction: column;
   gap: 1rem;
   width: 11rem;
-  margin-top: 3rem;
 }
 
 .columns a.button.tertiary {
@@ -80,6 +101,12 @@
   order: 2;
 }
 
+.columns .non-singleton-img-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -87,10 +114,6 @@
 
 .columns > div > .columns-img-col img {
   display: block;
-}
-
-.columns > div > div {
-  order: 1;
 }
 
 .columns > div > div h2,
@@ -103,8 +126,15 @@
   margin-top: 0;
 }
 
-.columns > div div.non-singleton-img {
+.columns:not(.history) > div div.non-singleton-img {
   margin: 0 1rem;
+}
+
+.columns.history h2 {
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 1rem;
+  font-size: var(--heading-font-size-xl);
+  font-weight: var(--font-weight-small);
 }
 
 .columns.crop-image > div {
@@ -138,12 +168,15 @@
   margin-left: 0;
 }
 
+.columns.history.invert-image-order-in-narrow-view > div {
+  flex-direction: column-reverse;
+}
+
 .columns.plain-links > div > div p:last-of-type {
   margin-bottom: 0;
 }
 
 .columns.plain-links > div h6 {
-  color: var(--link-color);
   border-bottom: 1px var(--transparent-grey-light-color) solid;
   font-size: 1rem;
   line-height: 1.5;
@@ -164,6 +197,24 @@
 
 .columns.top-down.collapse > div {
   gap: 0;
+}
+
+  /* both autoblocking options for bottom caption */
+.columns.history div.image-collage.autoblocked picture ~ em,
+.columns.history div.image-collage.autoblocked picture ~ p {
+  color: var(--transparent-grey-color-2);
+  font-size: var(--body-font-size-s);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type,
+.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 62rem) {
@@ -240,10 +291,6 @@
 }
 
 @media (min-width: 62rem) {
-  .columns {
-    margin-bottom: 7.5rem;
-  }
-
   .columns h2,
   .columns:not(.no-buttons) h3,
   .columns:not(.no-buttons) h4 {
@@ -253,7 +300,6 @@
   }
 
   .columns h6 {
-    font-size: var(--heading-font-size-xxs);
     margin-top: unset;
   }
 
@@ -269,9 +315,22 @@
   }
 
   .columns > div {
-    align-items: center;
     flex-direction: unset;
     gap: 3rem;
+  }
+
+  .columns.history picture {
+    margin: 0 auto 2rem;
+  }
+
+  .columns.history picture:last-child {
+    margin: 0 auto;
+  }
+
+  /* picture in column with text */
+  .columns.history p ~ div > div.image-collage.autoblocked picture {
+    display: table;
+    width: auto;
   }
 
   .columns > div .columns-img-col {
@@ -282,6 +341,13 @@
     flex: 1;
     order: unset;
     flex-basis: 50%;
+  }
+
+  .columns.history > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
   .columns.invert-image-order-in-narrow-view > div .columns-img-col {
@@ -295,6 +361,11 @@
 
   .columns.plain-links.collapse ul {
     display: block;
+  }
+
+  .columns:not(.history) .non-singleton-img-wrapper img {
+    height: 3.125rem;
+    width: unset;
   }
 
   .columns-container.backgroundimage {
@@ -361,5 +432,9 @@
   main .block.columns.machine-parts .non-singleton-img a > strong {
     color: var(--light-black);
     margin-right: 1rem;
+  }
+
+  main .columns.history.invert-image-order-in-narrow-view > div {
+    flex-direction: row;
   }
 }

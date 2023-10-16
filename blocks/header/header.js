@@ -136,7 +136,9 @@ function decorateTopNav(nav) {
   });
 }
 
-function decorateMiddleNav() {
+function decorateMiddleNav(nav) {
+  const a = nav.querySelector('a');
+  a.setAttribute('aria-label', 'Sunstar Home');
 }
 
 function getNavbarToggler() {

@@ -14,11 +14,6 @@ main .toc-wrapper {
     width: 100%;
     flex-basis: 100%;
     margin-right: 0;
-    margin-bottom: 2rem;
-}
-
-main .toc-wrapper.flat {
-    margin-bottom: 120px;
 }
 
 main .toc.block ul {
@@ -96,7 +91,7 @@ main .section:not([id='']) {
     main .toc-wrapper {
         flex-basis: 15rem;
         margin-right: 4rem;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
     }
 
     main .toc-container .section-container .main-content {

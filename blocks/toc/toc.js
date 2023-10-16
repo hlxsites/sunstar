@@ -52,25 +52,18 @@ function buildTOCSide(ul, block) {
 
 function buildTOCTop(ul, block) {
   block.parentElement.classList.add('flat');
-  let others = false;
-  let tocIndex = 0;
-  [...document.querySelector('main').children].forEach((section, i) => {
-    if (others) {
-      const liItem = ul.querySelectorAll('li')[i - tocIndex - 1];
-      if (liItem) {
-        const liVar = liItem.innerText.toLowerCase();
-        section.id = liVar;
-        const aLink = document.createElement('a');
-        aLink.href = `#${liVar}`;
-        aLink.innerText = liItem.innerText;
-        liItem.innerText = '';
-        liItem.append(aLink);
-      }
-    }
-    if (section.classList.contains('toc-container')) {
-      others = true;
-      tocIndex = i;
-    }
+
+  [...ul.querySelectorAll('li')].forEach((li) => {
+    const liVar = li.innerText.toLowerCase();
+    const aLink = document.createElement('a');
+    aLink.href = `#${liVar}`;
+    aLink.innerText = li.innerText;
+    li.innerText = '';
+    li.append(aLink);
+  });
+  [...document.querySelectorAll('[data-toc-anchor]')].forEach((section) => {
+    const name = section.dataset.tocAnchor.toLowerCase().trim();
+    section.id = name;
   });
 }
 

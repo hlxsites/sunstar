@@ -7,8 +7,27 @@
 }
 
 main .section.social-container a {
-  color: var(--secondary);
   overflow-wrap: break-word;
+}
+
+.block.social.general a.general-facebook {
+  background-color: #1778f2;
+}
+
+.block.social.general a.general-twitter {
+  background-color: #1da1f2;
+}
+
+.block.social.general a.general-instagram {
+  background-color: #f00075;
+}
+
+.block.social.general a.general-linkedin {
+  background-color: #0d66c2;
+}
+
+.section.social-container h2 {
+  color: var(--light-black);
 }
 
 main .section.social-container h2 {
@@ -34,8 +53,7 @@ main .section.social-container .section-container {
 }
 
 main .section.social-container p {
-  margin-bottom: 1.5rem;
-  line-height: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .section.social-container h1 {
@@ -43,10 +61,28 @@ main .section.social-container p {
   font-size: var(--heading-font-size-m);
   line-height: 1.3em;
   margin: 1rem 0;
+  color: var(--light-black);
+}
+
+.section.social-container h1:first-of-type {
+  color: var(--primary);
 }
 
 .block.social>span {
   display: none;
+}
+
+.block.social.general {
+  position: relative;
+  right: unset;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.block.social.general span {
+  color: currentcolor;
+  fill: currentcolor;
 }
 
 .block.social .icon-linkedin {
@@ -69,12 +105,14 @@ main .section.social-container p {
 main .section.social-container h1 + p {
   font-size: var(--font-size-xsmall);
   margin-bottom: 1.5rem;
-  color: var(--light-grey);
 }
 
 main .section.social-container h4 {
   color: var(--light-black);
   margin-bottom: 0.5rem;
+  letter-spacing: 0.05rem;
+  font-size: var(--heading-font-size-xxs);
+  font-weight: var(--font-weight-bold);
 }
 
 main .section.social-container .section-container ul {
@@ -91,7 +129,7 @@ main .section.social-container .section-container ol {
   width: 100%;
 }
 
-.social-container div.news-image-caption {
+.social-container div.image-caption {
   color: #6D757C;
   font-size: var(--body-font-size-xs);
   text-align: center;
@@ -99,7 +137,7 @@ main .section.social-container .section-container ol {
   margin-bottom: 1.5rem;
 }
 
-.social-container div.news-image-caption a {
+.social-container div.image-caption a {
   background-color: white;
   font-weight: normal;
   color: var(--link-color);
@@ -111,12 +149,26 @@ div.social-container h3 {
   margin-bottom: 1rem;
 }
 
+.block.social.general a {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 2.25rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block.social.general a:hover {
+  transform: scale(1.1);
+}
+
 @media (min-width: 62rem) {
   main .section.social-container .section-container {
     position: relative;
   }
 
-  .social-container div.news-image-caption {
+  .social-container div.image-caption {
     margin-bottom: 2rem;
   }
 
@@ -143,9 +195,13 @@ div.social-container h3 {
     right: -7.813rem;
   }
 
+  .block.social.general {
+    top: unset;
+  }
+
   .block.social>span {
     display: block;
-    color: var(--light-grey);
+    color: var(--black);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-small);
     line-height: 1;

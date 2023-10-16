@@ -15,7 +15,8 @@ main .block.text.left-aligned h3,
 main .block.text.left-aligned h4,
 main .block.text.left-aligned h5,
 main .block.text.left-aligned h6,
-main .block.text.left-aligned p {
+main .block.text.left-aligned p,
+main .block.text.left-aligned div {
   text-align: left;
   margin-left: 0;
 }
@@ -49,4 +50,16 @@ main .block.text.highlight a.button.primary {
   text-decoration: none;
   padding: 0;
   height: auto;
+}
+
+main .block.text.muted {
+  color: var(--muted-text-block-color);
+  font-size: var(--body-font-size-s);
+  padding-bottom: 0.5rem;
+}
+
+main .block.text.alert {
+  color: #cf2e2e;
+  font-weight: bolder;
+  margin-bottom: 1rem;
 }

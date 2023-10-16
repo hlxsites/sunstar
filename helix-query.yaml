@@ -41,11 +41,14 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+      type:
+        select: head > meta[name="type"]
+        value: attribute(el, "content")
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
-      topic:
-        select: head > meta[name="topic"]
+      featured:
+        select: head > meta[name="featured"]
         value: attribute(el, "content")
       tags:
         select: head > meta[property="article:tag"]
@@ -55,8 +58,8 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       career-quote:
-        select: main .career-hero
+        select: main .hero-career
         value: match(el, '.*?\n?Quote\n([^\n]+)')
       career-jobtitle:
-        select: main .career-hero
+        select: main .hero-career
         value: match(el, '.*?\n?Title\n([^\n]+)')

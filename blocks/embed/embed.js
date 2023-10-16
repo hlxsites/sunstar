@@ -48,6 +48,32 @@ const embedYoutube = (url, isLite) => {
   return embedHTML;
 };
 
+/**
+* Facebook, twitter social plugins embedding
+* @param {*} url
+* @param {*} type
+* @returns
+*/
+const embedSocialPlugins = (url, isLite, type) => {
+  const usp = new URLSearchParams(url.search);
+  let width = usp.get('width') || '360px';
+  let height = usp.get('height') || usp.get('maxHeight') || '598px';
+
+  if (width.indexOf('px') === -1) {
+    width += 'px';
+  }
+  if (height.indexOf('px') === -1) {
+    height += 'px';
+  }
+
+  const embedHTML = `<div class='social-plugin ${type}' style="width:${width};">
+    <iframe class='social-plugin-iframe' src=${url} loading="lazy" style="width:${width}; height:${height};"
+      title="${type}:post ${type} Social Plugin" frameborder="0" allowtransparency="true" scrolling="no" allow="encrypted-media" allowfullscreen="true"></iframe>
+  </div>`;
+
+  return embedHTML;
+};
+
 const loadEmbed = (block, grandChilds, link) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -58,6 +84,21 @@ const loadEmbed = (block, grandChilds, link) => {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
     },
+    {
+      match: ['facebook', 'fb'],
+      embed: embedSocialPlugins,
+      type: 'facebook',
+    },
+    {
+      match: ['twitter'],
+      embed: embedSocialPlugins,
+      type: 'twitter',
+    },
+    {
+      match: ['instagram'],
+      embed: embedSocialPlugins,
+      type: 'instagram',
+    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
@@ -65,7 +106,7 @@ const loadEmbed = (block, grandChilds, link) => {
   const isLite = block.classList.contains('lite');
 
   if (config) {
-    block.innerHTML = config.embed(url, isLite);
+    block.innerHTML = config.embed(url, isLite, config.type);
     block.classList = `block embed embed-${config.match[0]}`;
   }
   block.classList.add('embed-is-loaded');

@@ -8,7 +8,7 @@
 }
 
 .section.breadcrumb-container.visible {
-  background: var(--transparent-blue-light-color);
+  background: #F2F6F8;
 }
 
 .block.breadcrumb {
@@ -21,7 +21,12 @@
 }
 
 .block.breadcrumb a {
-  color: var(--secondary);
+  color: #00578A;
+}
+
+.block.breadcrumb ul {
+  list-style: none;
+  display: flex;
 }
 
 .breadcrumb-item+.breadcrumb-item {
@@ -45,7 +50,7 @@
 }
 
 .breadcrumb-item:last-child {
-  color: var(--light-black);
+  color: var(--black);
 }
 
 @media (min-width: 62rem) {

@@ -64,6 +64,10 @@
   --safety-mobility-yellow: #D9AB41;
   --health-beauty-orange: #F87C56;
   --living-environment-green: #00A499;
+  --muted-text-block-color: #abb8c3;
+  --link-blue-color: #003d56;
+  --dark-cyan-color: #003449;
+
 
 
   /* fonts */
@@ -276,6 +280,73 @@ main pre {
   white-space: pre;
 }
 
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}
+
+.icon svg {
+  height: 100%;
+  width: 100%;
+}
+
+.icon.icon-sunstar-logo {
+  width: 134px;
+  height: 20px;
+  background-image: url('/icons/sunstar-logo.svg');
+}
+
+.icon.icon-linkedin {
+  background-image: url('/icons/linkedin.svg');
+}
+
+.icon.icon-youtube {
+  background-image: url('/icons/youtube.svg');
+}
+
+.icon.icon-link-black {
+  background-image: url('/icons/link-black.svg');
+  display: inline-flex;
+  height: 18px;
+  width: 12px;
+}
+
+.icon.icon-angle-white-70 {
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+main table {
+  width: 100%;
+}
+
+main table tr {
+  display: flex;
+}
+
+main table td {
+  flex-grow: 1;
+}
+
+main table a {
+  display: flex;
+  align-items: center;
+}
+
+main table a > .icon {
+  padding-left: 0.25rem;
+}
+
+/* TODO: Remove this once this icon renders correctly */
+main table a > .icon-angle-right-blue {
+  transform: rotate(180deg);
+}
+
+
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -376,39 +447,18 @@ main img {
   height: auto;
 }
 
-.icon {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  display: inline-block;
-  height: 16px;
-  width: 16px;
+
+.icon.icon-link-blue {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.3rem;
 }
 
-.icon svg {
-  height: 100%;
-  width: 100%;
-}
-
-.icon.icon-sunstar-logo {
-  width: 134px;
-  height: 20px;
-  background-image: url('/icons/sunstar-logo.svg');
-}
-
-.icon.icon-linkedin {
-  background-image: url('/icons/linkedin.svg');
-}
-
-.icon.icon-youtube {
-  background-image: url('/icons/youtube.svg');
-}
-
-.icon.icon-link-black {
-  background-image: url('/icons/link-black.svg');
-  display: inline-flex;
-  height: 18px;
-  width: 12px;
+.icon.icon-angle-left-blue {
+  width: 1rem;
+  height: 1rem;
+  top: 0.2rem;
+  position: relative;
 }
 
 /* START Section Styles START */
@@ -557,7 +607,7 @@ main .section.spaced h2 {
 }
 
 main .section.spaced h3 {
-  margin: 2rem 0;
+  margin: 2rem 0 0.5rem;
 }
 
 main .section.spaced p {
@@ -645,6 +695,8 @@ main .section.narrow {
 main .section.narrower {
   padding: 0 1rem;
   margin: auto;
+  margin-block-end: 3rem;
+  max-width: 45rem;
 }
 
 /* section - static */
@@ -709,8 +761,14 @@ main .section.thank-you p {
 }
 
 /* section - light-blue */
-main .section.light-blue {
+main .section.light-blue,
+main .section.light-blue .section-container {
   background-color: var(--transparent-blue-light-color);
+}
+
+/* section - padded */
+main .section.padded .section-container {
+  padding: 2rem;
 }
 
 /* END Section Styles END */
@@ -724,7 +782,7 @@ main .section.light-blue {
 
   to {
       opacity: 1;
-      display: block;   
+      display: block;
   }
 }
 
@@ -741,6 +799,7 @@ main .section.light-blue {
 
 /* END Keyframes END */
 
+
 @media (min-width:62rem) {
   h2 {
     font-size: var(--heading-font-size-xl);
@@ -750,10 +809,6 @@ main .section.light-blue {
 
   h3 {
     font-size: var(--heading-font-size-m);
-  }
-
-  h6 {
-    font-size: var(--heading-font-size-xxs);
   }
 
   .mobile {
@@ -767,9 +822,6 @@ main .section.light-blue {
   .tablet {
     display: block;
   }
-
-
-
 
   /* START Section Styles START */
 
@@ -850,6 +902,7 @@ main .section.light-blue {
     margin-right: auto;
     margin-left: auto;
     max-width: 45rem;
+    margin-block-end: 3rem;
   }
 
   /* section - contacts and links from global-network */
