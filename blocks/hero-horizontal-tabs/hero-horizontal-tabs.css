@@ -89,10 +89,7 @@ main .hero-horiz-tabs-img picture {
   height: 15rem;
 }
 
-main .hero-horizontal-tabs.block.no-image {
-  padding: 0;
-  margin: auto;
-}
+
 
 main .hero-horiz-tabs-img picture > img {
   object-fit: cover;

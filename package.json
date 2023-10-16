@@ -43,9 +43,9 @@
     "stylelint": "15.10.3",
     "stylelint-config-standard": "34.0.0"
   },
-
   "dependencies": {
     "fs-extra": "^11.1.1",
-    "jslinq": "^1.0.22"
+    "jslinq": "^1.0.22",
+    "lint": "^0.8.19"
   }
 }

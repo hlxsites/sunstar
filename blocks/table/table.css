@@ -3,10 +3,6 @@ main .table.block h3.table-title {
     margin-bottom: 0.5rem;
 }
 
-main .table.block .table-title h4 {
-    color: var(--gray-dark);
-}
-
 main .table .table-item {
     display: grid;
     grid-auto-flow: column;
@@ -57,10 +53,6 @@ main .table.inner-table .table-item div {
     padding: unset;
 }
 
-main .table.inner-table table tbody tr:first-of-type {
-    background: var(--transparent-blue-light-color);
-}
-
 main .table.inner-table table td {
     font-size: 0.88rem;
     line-height: 1.7em;
@@ -76,10 +68,6 @@ main .table.inner-table table td p {
     margin-bottom: 0;
     /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-text-size-adjust: none;
-}
-
-main .table.inner-table.lastline-leftalign table tr:last-of-type td {
-    text-align: left;
 }
 
 main .table.fixed .table-item {
@@ -143,5 +131,97 @@ main .multiple-table .flat-table {
 
     main .section .table.block p.table-annotation {
         margin-bottom: 2rem;
+    }
+}
+
+/* Text Table varient */
+main .table.text-table h3.table-title {
+    text-transform: uppercase;
+    border-bottom: 0.1em solid var(--primary);
+    font-size: var(--heading-font-size-ms);
+    line-height: 2.4em;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 0.5em;
+}
+
+main .table.text-table .table-item {
+    border: none;
+    display: block;
+}
+
+main .table.text-table .table-item .table-head {
+    background: var(--white);
+    padding: 0;
+}
+
+main .table.text-table table {
+    text-align: left;
+    border-spacing: unset;
+    display: block;
+}
+
+main .table.text-table table tbody {
+    display: block;
+}
+
+main .table.text-table table tr {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+main .table.text-table table tr td {
+    color: var(--text-color);
+    flex-basis: calc(100% - 7.5em);
+}
+
+main .table.text-table table tr td h4 {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+main .table.text-table table tr td p {
+    font-size: 14px;
+}
+
+main .table.text-table table tr td a {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+main .table.text-table table tr td a .icon {
+    margin-left: 0.25em;
+    height: 20px;
+    width: 24px;
+}
+
+main .table.text-table table tr td:first-child {
+    color: var(--transparent-grey-color);
+    font-size: 16px;
+    line-height: 1.5rem;
+}
+
+main .table.inner-table table tbody tr:first-of-type {
+    background: var(--transparent-blue-light-color);
+}
+
+main .table.inner-table.lastline-leftalign table tr:last-of-type td {
+    text-align: left;
+}
+
+main .table.block .table-title h4 {
+    color: var(--gray-dark);
+}
+
+@media (min-width: 62rem) {
+    main .table.text-table table tr {
+        flex-direction: row;
+    }
+
+    main .table.text-table table tr td:first-child {
+        flex-basis: 7.5em;
     }
 }
