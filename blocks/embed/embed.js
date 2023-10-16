@@ -50,13 +50,14 @@ const embedYoutube = (url, isLite) => {
 
 /**
 * Facebook, twitter social plugins embedding
-* @param {*} url
+* @param {*} urlParam
 * @param {*} type
 * @returns
 */
-const embedSocialPlugins = (url, isLite, type) => {
-  const usp = new URLSearchParams(url.search);
-  let width = usp.get('width') || '360px';
+const embedSocialPlugins = (urlParam, isLite, type) => {
+  const url = decodeURI(urlParam);
+  const usp = new URLSearchParams(url);
+  let width = usp.get('container_width') || usp.get('width') || '360px';
   let height = usp.get('height') || usp.get('maxHeight') || '598px';
 
   if (width.indexOf('px') === -1) {
