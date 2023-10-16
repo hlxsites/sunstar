@@ -3,10 +3,6 @@ main .table.block h3.table-title {
     margin-bottom: 0.5rem;
 }
 
-main .table.block .table-title h4 {
-    color: var(--gray-dark);
-}
-
 main .table .table-item {
     display: grid;
     grid-auto-flow: column;
@@ -139,10 +135,6 @@ main .multiple-table .flat-table {
 }
 
 /* Text Table varient */
-main .table.text-table {
-    margin: 0 1em;
-}
-
 main .table.text-table h3.table-title {
     text-transform: uppercase;
     border-bottom: 0.1em solid var(--primary);
@@ -165,6 +157,11 @@ main .table.text-table .table-item .table-head {
 main .table.text-table table {
     text-align: left;
     border-spacing: unset;
+    display: block;
+}
+
+main .table.text-table table tbody {
+    display: block;
 }
 
 main .table.text-table table tr {
@@ -172,6 +169,33 @@ main .table.text-table table tr {
     flex-direction: column;
     padding: 1.2rem 0;
     border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+main .table.text-table table tr td {
+    color: var(--text-color);
+    flex-basis: calc(100% - 7.5em);
+}
+
+main .table.text-table table tr td h4 {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+main .table.text-table table tr td p {
+    font-size: 14px;
+}
+
+main .table.text-table table tr td a {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+main .table.text-table table tr td a .icon {
+    margin-left: 0.25em;
+    height: 20px;
+    width: 24px;
 }
 
 main .table.text-table table tr td:first-child {
@@ -188,11 +212,11 @@ main .table.inner-table.lastline-leftalign table tr:last-of-type td {
     text-align: left;
 }
 
-@media (min-width: 62rem) {
-    main .table.text-table {
-        margin: 0;
-    }
+main .table.block .table-title h4 {
+    color: var(--gray-dark);
+}
 
+@media (min-width: 62rem) {
     main .table.text-table table tr {
         flex-direction: row;
     }
