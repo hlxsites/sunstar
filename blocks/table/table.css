@@ -178,13 +178,13 @@ main .table.text-table table tr td {
 
 main .table.text-table table tr td h4 {
     color: var(--text-color);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 34px;
+    font-size: var(--heading-font-size-s);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.7em;
 }
 
 main .table.text-table table tr td p {
-    font-size: 14px;
+    font-size: var(--body-font-size-s);
 }
 
 main .table.text-table table tr td a {
@@ -194,13 +194,13 @@ main .table.text-table table tr td a {
 
 main .table.text-table table tr td a .icon {
     margin-left: 0.25em;
-    height: 20px;
-    width: 24px;
+    height: 1.5em;
+    width: 1.5em;
 }
 
 main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
-    font-size: 16px;
+    font-size: var(--body-font-size-m);
     line-height: 1.5rem;
 }
 
