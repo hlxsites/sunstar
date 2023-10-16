@@ -462,16 +462,14 @@ main img {
 
 /* START Section Styles START */
 
-main .section:not(.static, .modal-fragment-container, .hero-banner-container, .hero-career-container, .breadcrumb-container, .hero-horizontal-tabs-container, .carousel-container):first-of-type > div.section-container,
-main .section:not(.static, .modal-fragment-container, .hero-banner-container, .hero-career-container, .breadcrumb-container, .hero-horizontal-tabs-container, .carousel-container):nth-of-type(2) > div.section-container,
-main .section:not(.static, .modal-fragment-container, .hero-banner-container, .hero-career-container, .breadcrumb-container, .hero-horizontal-tabs-container, .carousel-container):nth-of-type(3) > div.section-container {
-  margin-top: 3rem;
-}
-
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
+}
+
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
 }
 
 /* section - bold headings */

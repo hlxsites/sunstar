@@ -310,6 +310,26 @@ export function getWindowSize() {
     height: windowHeight,
   };
 }
+
+export function addTopSpacingStyleToFirstMatchingSection(main) {
+  const excludedClasses = ['static', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const sections = [...main.querySelectorAll(':scope > div')];
+  let added = false;
+
+  sections.every((section) => {
+    if (added || sections.indexOf(section) >= 2) return false;
+    const sectionClasses = [...section.classList];
+    const matchesExcluded = excludedClasses.filter((excluded) => sectionClasses.includes(excluded));
+    const incompatible = matchesExcluded.length > 0;
+    if (!incompatible) {
+      section.classList.add('auto-top-spacing');
+      added = true;
+      return false;
+    }
+    return true;
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -323,6 +343,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  addTopSpacingStyleToFirstMatchingSection(main);
 }
 
 function decoratePageStyles() {
