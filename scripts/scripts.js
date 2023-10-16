@@ -312,7 +312,7 @@ export function getWindowSize() {
 }
 
 export function addTopSpacingStyleToFirstMatchingSection(main) {
-  const excludedClasses = ['static', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 
