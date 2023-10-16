@@ -1,11 +1,12 @@
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
-import buildNavTree from '../../scripts/nav-tree-utils.js';
+import buildNavTree from './nav-tree-utils.js';
 import
 {
   getLanguage,
   getSearchWidget,
   fetchIndex,
   decorateAnchors,
+  htmlToElement,
 } from '../../scripts/scripts.js';
 
 async function decorateWebsitePicker(websitePicker) {
@@ -25,6 +26,55 @@ async function decorateWebsitePicker(websitePicker) {
   if (websitePicker.querySelectorAll(':scope>ul>li').length === 0 && websitePicker.querySelector('ul')) {
     websitePicker.querySelector('ul').remove();
   }
+}
+
+/* Decorate the other items - which is the items pulled from top nav */
+function decorateOtherItems(otherItemsEl) {
+  otherItemsEl.classList.add('other-items');
+
+  /* Pull items from the top nav */
+  document.querySelector('nav.nav-top').querySelectorAll(':scope>ul>li').forEach((li) => {
+    otherItemsEl.appendChild(li.cloneNode(true));
+  });
+
+  /* Make a website picker for mobile */
+  const websitePicker = document.createElement('li');
+  websitePicker.classList.add('mobile-website-picker');
+  const websitePickerUl = document.createElement('ul');
+  const title = otherItemsEl.querySelector('.website-picker').querySelector(':scope>a');
+  websitePicker.appendChild(title);
+  websitePicker.appendChild(websitePickerUl);
+  otherItemsEl.querySelector('.website-picker').querySelectorAll(':scope>ul>li').forEach((li) => {
+    websitePickerUl.appendChild(li.cloneNode(true));
+  });
+
+  websitePicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('mobile-website-picker-item');
+    li.classList.remove('website-picker-item');
+    li.classList.remove('picker-item');
+  });
+
+  otherItemsEl.querySelector('.website-picker').replaceWith(websitePicker);
+
+  /* Make a lang picker for mobile */
+  const langPicker = document.createElement('li');
+  langPicker.classList.add('mobile-lang-picker');
+  const langPickerUl = document.createElement('ul');
+  langPicker.appendChild(langPickerUl);
+  otherItemsEl.querySelector('.lang-picker').querySelectorAll(':scope>ul>li').forEach((li) => {
+    langPickerUl.appendChild(li.cloneNode(true));
+  });
+
+  langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('mobile-lang-picker-item');
+    li.classList.remove('lang-picker-item');
+    li.classList.remove('picker-item');
+  });
+
+  otherItemsEl.querySelector('.lang-picker').replaceWith(langPicker);
+
+  /* Move the social icons to the bottom */
+  // otherItemsEl.appendChild(otherItemsEl.querySelector('.social'));
 }
 
 async function decorateLangPicker(langPicker) {
@@ -89,10 +139,40 @@ function decorateTopNav(nav) {
 function decorateMiddleNav() {
 }
 
+function getNavbarToggler() {
+  const navbarToggl = htmlToElement(`<button class="navbar-toggler">
+  <span class="mobile-icon">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </span>
+  </button>`);
+  navbarToggl.addEventListener('click', () => {
+    const navBottom = document.querySelector('.nav-bottom');
+    const header = document.querySelector('header');
+    const { body } = document;
+    if (navBottom.classList.contains('open')) {
+      navBottom.classList.remove('open');
+      header.classList.remove('menu-open');
+      body.style.position = '';
+    } else {
+      navBottom.classList.add('open');
+      header.classList.add('menu-open');
+      body.style.position = 'fixed';
+    }
+  });
+  return navbarToggl;
+}
+
 function decorateBottomNav(nav, placeholders, navTreeJson) {
   const navTree = buildNavTree(navTreeJson);
+  nav.append(getNavbarToggler());
   nav.append(navTree);
   nav.append(getSearchWidget(placeholders));
+  const otherItemsEl = document.createElement('li');
+  decorateOtherItems(otherItemsEl);
+  nav.querySelector(':scope .menu-level-1').append(otherItemsEl);
 }
 
 const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };

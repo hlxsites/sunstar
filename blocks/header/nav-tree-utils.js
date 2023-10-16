@@ -1,24 +1,48 @@
-import { createOptimizedPicture } from './lib-franklin.js';
+import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { htmlToElement } from '../../scripts/scripts.js';
 
-function addBackdropEventListeners(element) {
-  const backdrop = document.querySelector('.backdrop');
-  element.addEventListener('mouseover', () => {
-    backdrop.classList.add('visible');
-  });
-  element.addEventListener('mouseleave', () => {
-    backdrop.classList.remove('visible');
+function getBackButton() {
+  const backButton = htmlToElement(`<div class="menu-back-btn">
+    <span class="icon icon-angle-left"></span>
+    <a>Back To Menu</a>
+  </div>`);
+  return backButton;
+}
+
+function attachBackButtonEventListeners(backButton, element) {
+  backButton.addEventListener('click', () => {
+    document.querySelector('.navbar-toggler').style.display = 'block';
+    element.querySelector('.mega-dropdown').style.display = 'none';
+    backButton.classList.remove('visible');
+    backButton.remove();
   });
 }
 
-/**
- * @param {String} HTML representing a single element
- * @return {Element}
- */
-function htmlToElement(html) {
-  const template = document.createElement('template');
-  const trimmedHtml = html.trim(); // Never return a text node of whitespace as the result
-  template.innerHTML = trimmedHtml;
-  return template.content.firstChild;
+function addDropdownEventListeners(element) {
+  const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
+  element.addEventListener('click', (evt) => {
+    if (!widerScreenWidth.matches) {
+      const backButton = getBackButton();
+      attachBackButtonEventListeners(backButton, element);
+      evt.preventDefault();
+      evt.stopPropagation();
+      element.closest('nav').insertBefore(backButton, document.querySelector('.navbar-toggler'));
+      document.querySelector('.menu-back-btn').classList.add('visible');
+      document.querySelector('.navbar-toggler').style.display = 'none';
+      element.querySelector('.mega-dropdown').style.display = 'block';
+    }
+  });
+}
+
+function addBackdropEventListeners(element) {
+  element.addEventListener('mouseover', () => {
+    const backdrop = document.querySelector('.backdrop');
+    backdrop.classList.add('visible');
+  });
+  element.addEventListener('mouseleave', () => {
+    const backdrop = document.querySelector('.backdrop');
+    backdrop.classList.remove('visible');
+  });
 }
 
 function decorateChildNodes(parent, json, level) {
@@ -70,6 +94,7 @@ function decorateNodes(json, level) {
           </div>
         </li>`);
         addBackdropEventListeners(li);
+        addDropdownEventListeners(li);
       } else {
         li = htmlToElement(`<li class="menu-level-${level}-item"><a class="link" href=${data.link}>${data.category}</a></li>`);
       }
