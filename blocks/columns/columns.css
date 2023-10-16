@@ -23,6 +23,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  gap: 1em;
 }
 
 .columns:not(.native-image-sizes) img {
