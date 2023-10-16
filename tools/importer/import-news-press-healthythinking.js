@@ -165,6 +165,19 @@ const removeRedundantTag = (document) => {
   }
 };
 
+const remmoveNewsContactBar = (document) => {
+  const newsContactBar = document.querySelector('.news-contact-bar');
+
+  if (newsContactBar) {
+    const block = [];
+    block.push(['Fragment']);
+    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/press-contact-download-center']);
+    const table = WebImporter.DOMUtils.createTable(block, document);
+    newsContactBar.before(document.createElement('hr'));
+    newsContactBar.replaceWith(table);
+  }
+};
+
 const customImportLogic = (document) => {
   removeRedundantTag(document);
   changeAnchorLinks(document);
@@ -174,6 +187,7 @@ const customImportLogic = (document) => {
   addSocialBlock(document);
   addQuoteBlock(document);
   fixRelativeLinks(document);
+  remmoveNewsContactBar(document);
   createFragmentBlockFromSection(document);
 };
 
