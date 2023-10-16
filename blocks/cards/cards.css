@@ -126,8 +126,9 @@ main .cards.features-items ul > li {
 /* Styles for machine parts cards */
 
 main .cards.machine-parts .cards-card-image {
-  width: 100%;
-  height: 100%;
+  width: 240px;
+  height: 135px;
+  flex-shrink: 0;
 }
 
 main .cards.machine-parts .cards-card-body {
