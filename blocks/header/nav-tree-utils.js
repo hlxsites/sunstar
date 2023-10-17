@@ -12,7 +12,7 @@ function getBackButton() {
 function attachBackButtonEventListeners(backButton, element) {
   backButton.addEventListener('click', () => {
     document.querySelector('.navbar-toggler').style.display = 'block';
-    element.querySelector('.mega-dropdown').style.display = 'none';
+    element.parentElement.querySelector('.mega-dropdown').style.display = 'none';
     backButton.classList.remove('visible');
     backButton.remove();
   });
@@ -21,6 +21,7 @@ function attachBackButtonEventListeners(backButton, element) {
 function addDropdownEventListeners(element) {
   const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
   element.addEventListener('click', (evt) => {
+    if (element !== evt.target) return;
     if (!widerScreenWidth.matches) {
       const backButton = getBackButton();
       attachBackButtonEventListeners(backButton, element);
@@ -29,7 +30,7 @@ function addDropdownEventListeners(element) {
       element.closest('nav').insertBefore(backButton, document.querySelector('.navbar-toggler'));
       document.querySelector('.menu-back-btn').classList.add('visible');
       document.querySelector('.navbar-toggler').style.display = 'none';
-      element.querySelector('.mega-dropdown').style.display = 'block';
+      element.parentElement.querySelector('.mega-dropdown').style.display = 'block';
     }
   });
 }
@@ -84,6 +85,9 @@ function decorateNodes(json, level) {
                     <p>${data.description}</p>
                   </div>
                   <nav class="mega-sub-menu">
+                    <h3 class="mobile-menu-header">
+                      <a class="link" href="${data.link}">${data.category}</a>
+                    </h3>
                     ${children}
                   </nav>
                 </div>
@@ -94,7 +98,7 @@ function decorateNodes(json, level) {
           </div>
         </li>`);
         addBackdropEventListeners(li);
-        addDropdownEventListeners(li);
+        addDropdownEventListeners(li.querySelector('a:first-child'));
       } else {
         li = htmlToElement(`<li class="menu-level-${level}-item"><a class="link" href=${data.link}>${data.category}</a></li>`);
       }

@@ -163,6 +163,17 @@ function getNavbarToggler() {
       header.classList.add('menu-open');
       body.style.position = 'fixed';
     }
+    window.addEventListener('resize', () => {
+      const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
+      if (navBottom.classList.contains('open') && widerScreenWidth.matches) {
+        navBottom.classList.remove('open');
+        header.classList.remove('menu-open');
+        body.style.position = '';
+        document.querySelector('.navbar-toggler').style.display = 'none';
+      } else if (!widerScreenWidth.matches) {
+        document.querySelector('.navbar-toggler').style.display = 'inline-block';
+      }
+    }, true);
   });
   return navbarToggl;
 }
