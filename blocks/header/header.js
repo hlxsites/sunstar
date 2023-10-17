@@ -9,6 +9,24 @@ import
   htmlToElement,
 } from '../../scripts/scripts.js';
 
+function decorateSocial(social) {
+  social.classList.add('social');
+  social.innerHTML = social.innerHTML.replace(/\[social\]/, '');
+  social.querySelectorAll(':scope>ul>li').forEach((li) => {
+    const a = li.querySelector('a');
+    a.setAttribute('target', '_blank');
+    if (a.innerHTML.includes('linkedin')) {
+      a.setAttribute('aria-label', 'LinkedIn');
+    } else if (a.innerHTML.includes('twitter')) {
+      a.setAttribute('aria-label', 'Twitter');
+    } else if (a.innerHTML.includes('facebook')) {
+      a.setAttribute('aria-label', 'Facebook');
+    } else if (a.innerHTML.includes('youtube')) {
+      a.setAttribute('aria-label', 'YouTube');
+    }
+  });
+}
+
 async function decorateWebsitePicker(websitePicker) {
   websitePicker.classList.add('picker');
   websitePicker.classList.add('website-picker');
@@ -74,7 +92,7 @@ function decorateOtherItems(otherItemsEl) {
   otherItemsEl.querySelector('.lang-picker').replaceWith(langPicker);
 
   /* Move the social icons to the bottom */
-  // otherItemsEl.appendChild(otherItemsEl.querySelector('.social'));
+  otherItemsEl.appendChild(otherItemsEl.querySelector('.social'));
 }
 
 async function decorateLangPicker(langPicker) {
@@ -132,6 +150,8 @@ function decorateTopNav(nav) {
       decorateLangPicker(li);
     } else if (li.textContent.includes('[websites]')) {
       decorateWebsitePicker(li);
+    } else if (li.textContent.trim() === '[social]') {
+      decorateSocial(li);
     }
   });
 }

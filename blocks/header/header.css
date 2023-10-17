@@ -65,6 +65,42 @@ header nav.nav-top > ul > li > a:first-of-type {
   text-decoration: none;
 }
 
+header .social {
+  padding: 0 1rem 0 1.5rem;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .social > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .social > ul > li {
+  margin-right: 0.5rem;
+  display: flex;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .social > ul > li > a {
+  display: flex;
+}
+
+header .social .icon {
+  width: 16px;
+  height: 16px;
+}
+
+header .social span.icon-youtube {
+  background-image: url("../../icons/youtube.svg");
+}
+
+header .social span.icon-linkedin {
+  background-image: url("../../icons/linkedin.svg");
+}
+
+
 header nav.nav-middle {
   justify-content: space-between;
   height: var(--nav-middle-height);
@@ -281,7 +317,7 @@ header .nav-bottom .other-items {
   height: auto;
   border: none;
   padding-top: 1rem;
-  padding-bottom: 5rem;
+  padding-bottom: 10rem;
 }
 
 header .nav-bottom .other-items .icon-link-black {
@@ -453,10 +489,6 @@ header > div > nav.nav-bottom.open > ul > li.other-items > li.mobile-website-pic
 }
 
 /* LangPicker Styles */
-header .lang-picker {
-  padding-left: 2.1rem;
-}
-
 header .nav-bottom .other-items .mobile-lang-picker {
   padding: 0;
 }
@@ -507,6 +539,7 @@ header .mega-dropdown {
   width: 100%;
   top: 7rem;
   overflow-y: auto;
+  z-index: 10
 }
 
 header .mega-container {
