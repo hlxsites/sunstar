@@ -22,7 +22,7 @@ const embedYoutube = (url, isLite) => {
     suffix += `&muted=${mutedParam}`;
   }
 
-  const embed = url.pathname;
+  let embed = url.pathname;
   if (url.origin.includes('youtu.be')) {
     [, vid] = url.pathname.split('/');
   }
@@ -39,6 +39,10 @@ const embedYoutube = (url, isLite) => {
     loadCSS(`${window.hlx.codeBasePath}/blocks/embed/lite-yt-embed.css`);
     loadScript(`${window.hlx.codeBasePath}/blocks/embed/lite-yt-embed.js`);
   } else {
+    if (usp.get('list')) {
+      // Special handling to support urls like "https://www.youtube.com/embed/videoseries?list=PL5uLvIsyvVSkGAGW3nW4pe3nfwQQRlMvD"
+      embed += url.search;
+    }
     embedHTML = `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
         <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
