@@ -200,6 +200,20 @@
   gap: 0;
 }
 
+.columns.text-and-image-in-column > div div.non-singleton-img {
+  margin: 0;
+}
+
+.columns.text-and-image-in-column > div div.non-singleton-img p{
+  text-align: center;
+}
+
+.columns.text-and-image-in-column > div div.non-singleton-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
   /* both autoblocking options for bottom caption */
 .columns.history div.image-collage.autoblocked picture ~ em,
 .columns.history div.image-collage.autoblocked picture ~ p {
