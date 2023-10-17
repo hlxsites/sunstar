@@ -771,7 +771,7 @@ main .section.static {
 }
 
 main .section.static .section-container {
-  padding: 2rem 1rem;
+  padding: 0 1rem 2rem;
   margin-bottom: 5rem;
 }
 
@@ -1035,10 +1035,6 @@ main .section.padded .section-container {
   }
 
   /* section - static */
-  main .section.static .section-container {
-    padding: 2rem 0;
-  }
-
   main .section.static .section-container h1 {
     font-size: var(--heading-font-size-xxl);
     margin: 4rem 0 1.5rem;
