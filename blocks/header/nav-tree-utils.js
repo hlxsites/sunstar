@@ -11,8 +11,8 @@ function getBackButton() {
 
 function attachBackButtonEventListeners(backButton, element) {
   backButton.addEventListener('click', () => {
-    document.querySelector('.navbar-toggler').style.display = 'block';
-    element.parentElement.querySelector('.mega-dropdown').style.display = 'none';
+    document.querySelector('.navbar-toggler').classList.add('visible');
+    element.parentElement.querySelector('.mega-dropdown').classList.remove('visible');
     backButton.classList.remove('visible');
     backButton.remove();
   });
@@ -29,8 +29,8 @@ function addDropdownEventListeners(element) {
       evt.stopPropagation();
       element.closest('nav').insertBefore(backButton, document.querySelector('.navbar-toggler'));
       document.querySelector('.menu-back-btn').classList.add('visible');
-      document.querySelector('.navbar-toggler').style.display = 'none';
-      element.parentElement.querySelector('.mega-dropdown').style.display = 'block';
+      document.querySelector('.navbar-toggler').classList.remove('visible');
+      element.parentElement.querySelector('.mega-dropdown').classList.add('visible');
     }
   });
 }

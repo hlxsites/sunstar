@@ -1,4 +1,4 @@
-/* header and nav layout */
+/* stylelint-disable no-duplicate-selectors */
 header {
   width: 100%;
   background-color: var(--background-color);
@@ -532,14 +532,18 @@ header ul li {
 }
 
 header .mega-dropdown {
-  position: fixed;
   display: none;
+  position: fixed;
   background-color: var(--primary);
   height: 100%;
   width: 100%;
   top: 7rem;
   overflow-y: auto;
   z-index: 10
+}
+
+header .mega-dropdown.visible {
+  display: block;
 }
 
 header .mega-container {
@@ -613,6 +617,10 @@ header .mega-container .left-content-container .mega-sub-menu .menu-level-3 {
 }
 
 header .nav-bottom > .navbar-toggler {
+  display: none;
+}
+
+header .nav-bottom > .navbar-toggler.visible {
   display: inline-block;
   padding: 13px;
   position: relative;
@@ -948,7 +956,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
   }
 
   header .nav-bottom > ul > li:hover > .mega-dropdown {
-    display:block;
+    display: block;
     opacity: 1;
     z-index: 10
   }
