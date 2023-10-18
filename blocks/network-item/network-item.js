@@ -10,8 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
-import { readBlockConfig } from '../../scripts/lib-franklin.js';
-import { getNamedValueFromTable } from '../../scripts/scripts.js';
+import { readBlockConfig, fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { getNamedValueFromTable, getLanguage } from '../../scripts/scripts.js';
 
 function addTagColors(tagDiv) {
   if (tagDiv.innerText === 'Oral Care' || tagDiv.innerText === 'Mouth & Body') {
@@ -40,32 +40,32 @@ function createTagsDiv(tags) {
   return tagsDiv;
 }
 
-function createWebsiteDiv(website) {
+function createWebsiteDiv(website, placeholders) {
   if (!website) return null;
   const websiteDiv = document.createElement('div');
   websiteDiv.classList.add('website');
   const websiteA = document.createElement('a');
   websiteA.href = website;
-  websiteA.innerText = 'View Website';
+  websiteA.innerText = placeholders['network-item-website-text'];
   websiteDiv.append(websiteA);
   return websiteDiv;
 }
 
-function createCareerOpportunitiesDiv() {
+function createCareerOpportunitiesDiv(placeholders) {
   const careerOpportunitiesDiv = document.createElement('div');
   const careerOpportunitiesStrong = document.createElement('strong');
   careerOpportunitiesDiv.classList.add('career-opportunities');
-  careerOpportunitiesStrong.innerText = 'Career Opportunities';
+  careerOpportunitiesStrong.innerText = placeholders['career-opportunities-text'];
   careerOpportunitiesDiv.append(careerOpportunitiesStrong);
   return careerOpportunitiesDiv;
 }
 
-function createOurHrDiv() {
+function createOurHrDiv(placeholders) {
   const ourHrDiv = document.createElement('div');
   ourHrDiv.classList.add('our-hr');
   const ourHrA = document.createElement('a');
-  ourHrA.href = 'https://www.sunstar.com/contact/';
-  ourHrA.innerText = 'Our HR Department';
+  ourHrA.href = placeholders['our-hr-href'];
+  ourHrA.innerText = placeholders['our-hr-text'];
   ourHrDiv.append(ourHrA);
   return ourHrDiv;
 }
@@ -130,7 +130,8 @@ function getVideoImage(block) {
   return div;
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
+  const placeholders = await fetchPlaceholders(getLanguage());
   const blockCfg = readBlockConfig(block);
   const hasMultimediaContent = !!blockCfg.image || !!blockCfg.video;
   const hasVideo = block.classList.contains('video');
@@ -147,12 +148,12 @@ export default function decorate(block) {
   /* eslint-disable-next-line prefer-destructuring */
   const website = blockCfg.website;
 
-  const websiteDiv = createWebsiteDiv(website);
+  const websiteDiv = createWebsiteDiv(website, placeholders);
   const recruitingLinkDiv = createRecruitingLinkDiv(recruitingLink, recruitingLinkText);
   const titleH3 = createTitle(title);
   const tagsDiv = createTagsDiv(tags);
-  const ourHrDiv = createOurHrDiv();
-  const careerOpportunitiesDiv = createCareerOpportunitiesDiv();
+  const ourHrDiv = createOurHrDiv(placeholders);
+  const careerOpportunitiesDiv = createCareerOpportunitiesDiv(placeholders);
 
   block.replaceChildren(titleH3);
 
