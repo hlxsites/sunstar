@@ -19,15 +19,15 @@
     overflow: hidden;
 }
 
+.hero-banner.social .hero-banner-media-section {
+    display: none;
+}
+
 .hero-banner video,
 .hero-banner img {
     width: 100%;
     object-fit: cover;
     min-height: 10rem;
-}
-
-.hero-banner.social video {
-    display: none;
 }
 
 .hero-banner .hero-banner-heading-section {
@@ -171,10 +171,6 @@
         position: absolute;
     }
 
-    .hero-banner.social .hero-banner-media-section {
-        height: 40rem;
-    }
-
     .hero-banner video,
     .hero-banner img
     {
@@ -190,10 +186,6 @@
     .hero-banner .hero-banner-heading-container {
         position: absolute;
         top: 20.5rem;
-    }
-
-    .hero-banner.social .hero-banner-heading-container {
-        top: 0;
     }
 
     .hero-banner .hero-banner-text-container {
@@ -225,23 +217,6 @@
     .hero-banner-text-wrapper h1 {
         font-size: 2.25rem;
         line-height: 1.3em;
-    }
-
-    .hero-banner.social video {
-        display: inline;
-    }
-
-    .hero-banner.social .hero-banner-media-section::after {
-        content: "";
-        background: var(--transparent-grey-color-2);
-        position: absolute;
-        inset: 0;
-        display: block;
-    }
-
-    .hero-banner.social .hero-banner-text-wrapper h2,
-    .hero-banner.social .hero-banner-text-wrapper h1 {
-        font-size: 3rem;
     }
 
     .hero-banner .hero-banner-button-container {
@@ -279,6 +254,28 @@
         font-size: var(--heading-font-size-l);
         line-height: 2.9375rem;
         margin: 0 auto 1.5rem;
+    }
+
+    .hero-banner.social .hero-banner-heading-container {
+        top: 0;
+    }
+
+    .hero-banner.social .hero-banner-media-section {
+        display: block;
+        height: 40rem;
+    }
+
+    .hero-banner.social .hero-banner-media-section::after {
+        content: "";
+        background: var(--transparent-grey-color-2);
+        position: absolute;
+        inset: 0;
+        display: block;
+    }
+
+    .hero-banner.social .hero-banner-text-wrapper h2,
+    .hero-banner.social .hero-banner-text-wrapper h1 {
+        font-size: 3rem;
     }
 }
 

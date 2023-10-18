@@ -136,6 +136,10 @@ main .cards.features-items ul > li {
 }
 
 /* Styles for info points cards */
+main .cards.info-points .cards-card-body * {
+  text-align: left;
+}
+
 main .cards.info-points .cards-card-body h1,
 main .cards.info-points .cards-card-body h2,
 main .cards.info-points .cards-card-body h3,
@@ -145,12 +149,34 @@ main .cards.info-points .cards-card-body h6 {
   margin-bottom: 1.5rem;
 }
 
+main .cards.info-points .cards-card-body h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+main .cards.info-points .cards-card-body p {
+  font-size: 14px;
+}
+
+main .cards.info-points > ul {
+  flex-direction: column;
+}
+
 main .cards.info-points > ul > li {
+  display: flex;
   box-shadow: none;
 }
 
 main .cards.info-points > ul > li:hover {
   box-shadow: none;
+}
+
+main .cards.info-points .cards-card-image img {
+  margin-top: 2rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 /* Styles for machine parts cards */
@@ -366,6 +392,30 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards .cards-card-body {
     font-size: 1rem;
+  }
+
+  main .cards.info-points .cards-card-body * {
+    text-align: center;
+  }
+
+  main .cards.info-points .cards-card-body h4 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-inline: 3rem;
+  }
+
+  main .cards.info-points > ul {
+    flex-direction: row;
+  }
+
+  main .cards.info-points > ul > li {
+    display: block;
+  }
+
+  main .cards.info-points .cards-card-image img {
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
   }
 
   main .block.cards.machine-parts > ul > li {
