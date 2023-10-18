@@ -1,3 +1,6 @@
+import { getLanguage } from '../../scripts/scripts.js';
+import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+
 /* eslint-disable no-console */
 
 function fetchPosterURL($poster) {
@@ -19,7 +22,9 @@ function decorateVideo(mediaRow, target) {
   videoTag.toggleAttribute('muted', true);
   videoTag.toggleAttribute('playsinline', true);
   videoTag.toggleAttribute('loop', true);
-  videoTag.setAttribute('poster', fetchPosterURL($poster));
+  if ($poster) {
+    videoTag.setAttribute('poster', fetchPosterURL($poster));
+  }
   const source = document.createElement('source');
   source.setAttribute('src', `${videoURL}`);
   source.setAttribute('type', 'video/mp4');
@@ -43,12 +48,25 @@ function decorateBackGroundImage(mediaRow, target) {
   target.appendChild(mediaDiv);
 }
 
-function decorateTextContent(headingRow, target) {
+function decorateTextContent(headingRow, target, placeholders) {
   headingRow.classList.add('hero-banner-text-container');
   const firstDiv = headingRow.querySelector('div');
   firstDiv.classList.add('hero-banner-text-wrapper');
   const pElement = firstDiv.querySelector('p');
-  if (pElement && pElement.childElementCount === 1 && pElement.firstElementChild.tagName === 'A') {
+  if (target.classList.contains('social')) {
+    const linkedin = document.createElement('a');
+    // a.href = 'https://www.linkedin.com/company/sunstar-global';
+    // a.href =
+    // a.innerText = 'Follow us on Linkedin';
+    linkedin.innerText = placeholders['career-apply-linkedin'];
+    linkedin.classList.add('button', 'primary', 'linkedin');
+    linkedin.href = placeholders['career-apply-linkedin-href'];
+    const sprite = document.createElement('span');
+    sprite.classList.add('icon', 'icon-linkedin');
+    linkedin.appendChild(sprite);
+
+    pElement.append(linkedin);
+  } else if (pElement && pElement.childElementCount === 1 && pElement.firstElementChild.tagName === 'A') {
     firstDiv.removeChild(pElement);
     const buttonDiv = document.createElement('div');
     buttonDiv.classList.add('hero-banner-button-container');
@@ -69,7 +87,9 @@ function decorateTextContent(headingRow, target) {
   target.appendChild(heroBannerMainDiv);
 }
 
-export default function decorate($block) {
+export default async function decorate($block) {
+  const placeholders = await fetchPlaceholders(getLanguage());
+
   const $rows = [...$block.children];
   const $mediaRow = $rows.at(0);
   const $contentRow = $rows.at(1);
@@ -81,7 +101,7 @@ export default function decorate($block) {
     }
   }
   if ($contentRow) {
-    decorateTextContent($contentRow, $block);
+    decorateTextContent($contentRow, $block, placeholders);
   }
   if ($block.classList.contains('overlap')) {
     $block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
