@@ -169,6 +169,15 @@
   margin-left: 0;
 }
 
+.columns.text-layout > div > div h2 {
+  font-size: var(--heading-font-size-mxl);
+  margin: 0;
+}
+
+.columns.text-layout > div > div > div {
+  font-size: var(--body-font-size-l);
+}
+
 .columns.history.invert-image-order-in-narrow-view > div {
   flex-direction: column-reverse;
 }
