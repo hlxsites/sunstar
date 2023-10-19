@@ -3,6 +3,7 @@
 
 import { readFile } from '@web/test-runner-commands';
 import { expect } from '@esm-bundle/chai';
+import { shuffleArray } from '../../scripts/scripts.js';
 
 const scripts = {};
 
@@ -432,5 +433,25 @@ describe('Scripts', () => {
     expect(postDiv.children.length).to.be.equal(2);
     expect(postDiv.children[0]).to.be.equal(pother1);
     expect(postDiv.children[1]).to.be.equal(pother2);
+  });
+
+  it('Shuffles arrays', () => {
+    expect(shuffleArray([]).length).to.equal(0);
+    expect(shuffleArray(['hi'])).to.deep.equal(['hi']);
+
+    const arr1 = [1, 2, 3, 4, 5, 6, 7];
+    const arr1b = shuffleArray(arr1);
+    expect(arr1b).to.equal(arr1, 'Should have returned the same object');
+    expect(arr1).to.not.deep.equal([1, 2, 3, 4, 5, 6, 7], 'Contents should have been shuffled');
+
+    const arr2 = [1, 2, 3, 4, 5, 6, 7];
+    shuffleArray(arr2);
+    expect(arr2).to.not.deep.equal([1, 2, 3, 4, 5, 6, 7], 'Contents should have been shuffled');
+    expect(arr2).to.not.deep.equal(arr1, 'Shuffle result should be different given the same input');
+
+    const arr3 = [{ foo: 'bar' }, { test: true }];
+    shuffleArray(arr3);
+    expect(arr3).to.deep.contain({ foo: 'bar' });
+    expect(arr3).to.deep.contain({ test: true });
   });
 });

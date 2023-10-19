@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
-import { fetchIndex } from '../../scripts/scripts.js';
+import { fetchIndex, shuffleArray } from '../../scripts/scripts.js';
 
 export function filterIncompleteEntries(json) {
   return json.data.filter((e) => e.image !== '' && e['career-quote'] !== '0' && e['career-jobtitle'] !== '0');
@@ -47,7 +47,7 @@ export function scrollToAdjacent(spans, slideDivs, slides, next, doc) {
 
 export default async function decorate(block) {
   const json = await fetchIndex('query-index', 'career-testimonials');
-  const data = filterIncompleteEntries(json);
+  const data = shuffleArray(filterIncompleteEntries(json));
 
   const careerSlider = document.createElement('div');
   careerSlider.classList.add('career-slider');
