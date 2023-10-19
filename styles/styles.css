@@ -678,12 +678,6 @@ main .section.spaced li {
   line-height: 1;
 }
 
-main .section.spaced a {
-  color: var(--secondary);
-  text-decoration: none;
-  background-color: transparent;
-}
-
 main .section.spaced>.section-container {
   max-width: 100%;
   padding: 0 1rem;
