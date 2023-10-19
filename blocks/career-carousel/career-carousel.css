@@ -29,7 +29,7 @@
 .career-carousel .career-card {
   flex-shrink: 0;
   box-shadow: #3c465040 0 2px 12px 0;
-  margin: 0.5rem;
+  margin: 1rem;
   padding: 1rem;
   width: var(--card-width);
   transition: all 0.15s ease-in-out;
@@ -151,7 +151,7 @@
 
 @media (min-width: 77rem) {
   .career-slider {
-    width: calc(((var(--card-width) + 3rem) * 4));
+    width: calc(((var(--card-width) + 4rem) * 4));
   }
 
   .career-carousel .career-card blockquote {
