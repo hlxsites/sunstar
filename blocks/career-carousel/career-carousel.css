@@ -119,7 +119,7 @@
 }
 
 .career-carousel .career-slides-navbar {
-  display: flex;
+  display: none;
   overflow-x: hidden;
 }
 
@@ -163,5 +163,9 @@
     height: 16rem;
     width: 14.375rem;
     padding-inline: 0;
+  }
+
+  .career-carousel .career-slides-navbar {
+    display: flex;
   }
 }
