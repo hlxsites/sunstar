@@ -610,6 +610,20 @@ export async function loadScript(url, attrs = {}) {
   return loadingPromise;
 }
 
+/**
+ * Shuffles the contents of any array.
+ *
+ * @param {array} arr Any array. This array is modified in-place.
+ * @returns The array. It's the same array as passed in, not a copy.
+ */
+export function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
   const index = await fetchIndex('query-index', sheet);
