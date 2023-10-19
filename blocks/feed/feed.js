@@ -49,6 +49,11 @@ const resultParsers = {
   },
 };
 
+function getMetadataNullable(key) {
+  const meta = getMetadata(key);
+  return meta === '' ? null : meta;
+}
+
 /**
  * Feed block decorator to build feeds based on block configuration
  */
@@ -59,16 +64,30 @@ export default async function decorate(block) {
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
   const queryObj = await queryIndex();
 
-  const type = (blockCfg.type ?? getMetadata('type'))?.trim().toLowerCase();
-  const category = (blockCfg.category ?? getMetadata('category'))?.trim().toLowerCase();
+  // Get the query string, which includes the leading "?" character
+  const queryString = window.location.search;
+
+  // Parse the query string into an object
+  const queryParams = new URLSearchParams(queryString);
+
+  const type = (blockCfg.type ?? getMetadataNullable('type') ?? queryParams.get('feed-type'))?.trim().toLowerCase();
+  const category = (blockCfg.category ?? getMetadataNullable('category' ?? queryParams.get('feed-category')))?.trim().toLowerCase();
+  const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? queryParams.get('feed-tags'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
   const results = queryObj.where(function filterElements(el) {
     const elType = (el.type ?? '').trim().toLowerCase();
     const elCategory = (el.category ?? '').trim().toLowerCase();
     const elFeatured = (el.featured ?? '').trim().toLowerCase();
-    return (!type || type === elType)
+    let match = false;
+    match = (!type || type === elType)
       && (!category || category === elCategory)
       && (!blockCfg.featured || elFeatured === blockCfg.featured.trim().toLowerCase());
+    if (match && tags) {
+      const tagList = tags.split(',');
+      const elTags = JSON.parse(el.tags ?? '').map((tag) => tag.trim().toLowerCase());
+      match = tagList.some((tag) => elTags.includes(tag.trim()));
+    }
+    return match;
   })
     .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort.trim().toLowerCase()] : el.path))
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)

@@ -10,7 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-
 :root {
   /* colors */
   --black: #000;
@@ -469,6 +468,10 @@ main .section .section-container {
   padding-right: 0;
 }
 
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
+}
+
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -522,6 +525,55 @@ main .section.brands-top p {
 
 main .section.brands-top>.section-container {
   padding: 0 1rem;
+}
+
+/* section - social */
+main .section.social-media {
+  padding: 4rem 0;
+  background-color: var(--transparent-blue-light-color);
+}
+
+main .section.social-media .section-container {
+  padding: 0 1rem;
+}
+
+main .section.social-media .default-content-wrapper svg {
+  display: none;
+}
+
+main .section.social-media a.button.primary {
+  background: unset;
+  justify-content: unset;
+  align-items: center;
+  display: flex;
+  line-height: 2.5rem;
+  color: var(--light-black);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--body-font-size-m);
+  padding-left: 0;
+  padding-right: 0;
+  letter-spacing: -0.006rem;
+}
+
+main .section.social-media p {
+  display: inline-flex;
+  width: 50%;
+}
+
+main .section.social-media .icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  display: inline-flex;
+  margin-right: 1rem;
+}
+
+main .section.social-media .icon-youtube {
+  background-image: url("../../icons/youtube.svg");
+}
+
+main .section.social-media .icon-linkedin {
+  background-image: url("../../icons/linkedin.svg");
+  ;
 }
 
 /* section - brands-description */
@@ -1019,6 +1071,46 @@ main .section.padded .section-container {
 
   main .section.static .section-container h2 {
     font-size: var(--heading-font-size-mxl);
+  }
+
+  /* section - social */
+  main .section.social-media {
+    padding: 5rem 0;
+  }
+
+  main .section.social-media .section-container {
+    display: flex;
+  }
+
+  main .section.social-media .default-content-wrapper {
+    width: 100%;
+  }
+
+  main .section.social-media a::after {
+    content: "";
+    height: 0.625rem;
+    width: 0.375rem;
+    display: inline;
+    background-image: url("../../icons/arrow-down-gray.svg");
+    background-size: contain;
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    background-repeat: no-repeat;
+    transform: rotate(270deg);
+  }
+
+  main .section.social-media p {
+    display: unset;
+  }
+
+  main .section.social-media .embed-wrapper {
+    margin-left: 4rem;
+    max-width: 18.25rem;
+  }
+
+  main .section.social-media .embed {
+    margin: unset;
+    min-height: unset;
   }
 
   /* END Section Styles END */

@@ -127,11 +127,11 @@ describe('Search Results', () => {
     window.placeholders = {
       'translation-loaded': {},
       translation: {
-        ja: placeholders,
+        jp: placeholders,
       },
     };
 
-    const queryIndex = /query-index.json\\?(.*)&sheet=ja-search/;
+    const queryIndex = /query-index.json\\?(.*)&sheet=jp-search/;
     const mf = sinon.stub(window, 'fetch');
     mf.callsFake((v) => {
       if (queryIndex.test(v)) {
@@ -139,9 +139,9 @@ describe('Search Results', () => {
           ok: true,
           json: () => ({
             data: [
-              { path: '/ja/news/a/', title: 'a text', lastModified: 1685443971 },
-              { path: '/ja/news/b/', title: 'some b', lastModified: 1685443972 },
-              { path: '/ja/news/c/', title: 'c text', lastModified: 1685443973 },
+              { path: '/jp/news/a/', title: 'a text', lastModified: 1685443971 },
+              { path: '/jp/news/b/', title: 'some b', lastModified: 1685443972 },
+              { path: '/jp/news/c/', title: 'c text', lastModified: 1685443973 },
             ],
           }),
         };
@@ -155,7 +155,7 @@ describe('Search Results', () => {
     const block = document.querySelector('.search-results');
     const loc = {
       search: '?s=a',
-      pathname: '/ja/search',
+      pathname: '/jp/search',
     };
 
     try {
@@ -180,7 +180,7 @@ describe('Search Results', () => {
     expect(res1h3.nodeName).to.equal('H3');
     const res1h3a = res1h3.children[0];
     expect(res1h3a.nodeName).to.equal('A');
-    expect(res1h3a.href.endsWith('/ja/news/a/')).to.be.true;
+    expect(res1h3a.href.endsWith('/jp/news/a/')).to.be.true;
 
     const pageWidget = block.children[3];
     expect(pageWidget.className.toString()).to.equal('pagination');
