@@ -206,9 +206,9 @@ function attachWindowResizeListeners(nav) {
       if (toggler.classList.contains('visible')) {
         toggler.classList.remove('visible');
       }
-      const megaDrop = nav.querySelector('.mega-dropdown');
-      if (megaDrop.classList.contains('visible')) {
-        megaDrop.classList.remove('visible');
+      const visibleMegaDrop = nav.querySelector('.mega-dropdown.visible');
+      if (visibleMegaDrop) {
+        visibleMegaDrop.classList.remove('visible');
       }
       const backButton = nav.querySelector('.menu-back-btn');
       if (backButton) {

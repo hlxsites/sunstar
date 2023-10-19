@@ -1,4 +1,3 @@
-/* stylelint-disable no-duplicate-selectors */
 header {
   width: 100%;
   background-color: var(--background-color);
@@ -37,19 +36,40 @@ header nav {
   align-items: center;
 }
 
-header nav.nav-top {
-  justify-content: flex-end;
-  height: var(--nav-top-height);
-  display: none;
+header ul li {
+  list-style-type: none;
 }
 
-header nav.nav-top > ul {
-  display: flex;
+header .social {
+  padding: 0 1rem 0 1.5rem;
 }
 
-header nav.nav-top > ul > li {
+header .social > ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
+}
+
+
+header .social > ul > li {
+  margin-right: 0.5rem;
+  display: flex;
+}
+
+header .picker-item > a {
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--white);
+  padding: 11px 0 11px 32px;
+  display: block;
+}
+
+header nav.nav-middle a {
+  display: flex;
+}
+
+header .social > ul > li > a {
+  display: flex;
 }
 
 header nav.nav-top > ul > li > a {
@@ -57,34 +77,8 @@ header nav.nav-top > ul > li > a {
   display: flex;
 }
 
-header nav.nav-top > ul > li > a:first-of-type {
-  font-size: var(--body-font-size-s);
-  line-height: 1;
-  display: inline-flex;
-  padding: 0 0.5rem;
-  text-decoration: none;
-}
-
-header .social {
-  padding: 0 1rem 0 1.5rem;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .social > ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .social > ul > li {
-  margin-right: 0.5rem;
-  display: flex;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .social > ul > li > a {
-  display: flex;
+header .picker-item > a:hover {
+  background: var(--primary);
 }
 
 header .social .icon {
@@ -100,6 +94,71 @@ header .social span.icon-linkedin {
   background-image: url("../../icons/linkedin.svg");
 }
 
+header nav.nav-top {
+  justify-content: flex-end;
+  height: var(--nav-top-height);
+  display: none;
+}
+
+header .picker > ul {
+  display: none;
+  color: var(--link-color);
+  position: absolute;
+  margin: 0;
+  background: var(--secondary);
+  border-radius: 0;
+  padding: 0;
+  width: calc(100% - 3rem);
+  box-shadow: 0 2px 8px 0 var(--transparent-grey-color);
+  right: 0;
+  left: auto;
+  top: var(--nav-top-height);
+  z-index: 100;
+  font-size: 1rem;
+  text-align: left;
+  list-style: none;
+  border: 1px solid #00000026;
+  float: left;
+  min-width: 10rem;
+}
+
+/* WebsitePicker Styles */
+header .website-picker > ul {
+  min-width: 12.5rem;
+}
+
+header .website-picker {
+  padding-left: 0.2rem;
+}
+
+header nav.nav-top > ul {
+  display: flex;
+}
+
+header nav.nav-top > ul > li {
+  display: flex;
+  align-items: center;
+}
+
+header nav.nav-bottom .menu-level-1-item > a {
+  margin-right: 0;
+  font-size: 1rem;
+  padding: 0 1rem;
+  width: 100%;
+  color: var(--white);
+  border-bottom: none;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav.nav-top > ul > li > a:first-of-type {
+  font-size: var(--body-font-size-s);
+  line-height: 1;
+  display: inline-flex;
+  padding: 0 0.5rem;
+  text-decoration: none;
+}
 
 header nav.nav-middle {
   justify-content: space-between;
@@ -113,11 +172,6 @@ header.menu-open .nav-middle {
   left: 0;
   right: 0;
   top: 0;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header nav.nav-middle a {
-  display: flex;
 }
 
 header.fixed nav.nav-top,
@@ -184,20 +238,6 @@ header nav.nav-bottom .menu-level-1-item {
   margin-right: auto;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-header nav.nav-bottom .menu-level-1-item > a {
-  margin-right: 0;
-  font-size: 1rem;
-  padding: 0 1rem;
-  width: 100%;
-  color: var(--white);
-  border-bottom: none;
-  line-height: 1.5;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
 header nav.nav-bottom .menu-level-1-item > .dropdown-menu {
   display: none;
   width: 100%;
@@ -393,9 +433,22 @@ header form.search button.search-icon {
   right: 1rem;
 }
 
-/* picker Styles */
+header .drop > a::after {
+  content: "";
+  height: 23px;
+  width: 12px;
+  display: inline-flex;
+  background-image: url('../../icons/angle-white-70.svg');
+  background-size: contain;
+  background-position: top 5px center;
+  background-repeat: no-repeat;
+  border: none;
+  vertical-align: bottom;
+  margin-left: 8px;
+  position: unset;
+}
 
-/* stylelint-disable-next-line no-descending-specificity */
+/* picker Styles */
 header .picker > a::after {
   content: "";
   height: 1rem;
@@ -410,29 +463,6 @@ header .picker > a::after {
   vertical-align: bottom;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-header .picker > ul {
-  display: none;
-  color: var(--link-color);
-  position: absolute;
-  margin: 0;
-  background: var(--secondary);
-  border-radius: 0;
-  padding: 0;
-  width: calc(100% - 3rem);
-  box-shadow: 0 2px 8px 0 var(--transparent-grey-color);
-  right: 0;
-  left: auto;
-  top: var(--nav-top-height);
-  z-index: 100;
-  font-size: 1rem;
-  text-align: left;
-  list-style: none;
-  border: 1px solid #00000026;
-  float: left;
-  min-width: 10rem;
-}
-
 header .picker {
   position: relative;
   padding: 1rem 0;
@@ -442,36 +472,7 @@ header .picker:hover > ul {
   display: block;
 }
 
-/* PickerItem styles */
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .picker-item > a {
-  font-size: var(--body-font-size-s);
-  font-weight: var(--font-weight-medium);
-  color: var(--white);
-  padding: 11px 0 11px 32px;
-  display: block;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .picker-item > a:hover {
-  background: var(--primary);
-}
-
-/* WebsitePicker Styles */
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .website-picker > ul {
-  min-width: 12.5rem;
-}
-
-header .website-picker {
-  padding-left: 0.2rem;
-}
-
 /* WesbitePickerItem Styles */
-
-/* stylelint-disable-next-line no-descending-specificity */
 header .website-picker-item > a::after,
 header > div > nav.nav-bottom.open > ul > li.other-items > li.mobile-website-picker > ul > li > a::after {
     content: "";
@@ -508,27 +509,6 @@ header .nav-bottom .other-items .mobile-lang-picker .mobile-lang-picker-item a {
   text-decoration: none;
   font-size: var(--body-font-size-s);
   letter-spacing: -0.4px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .drop > a::after {
-  content: "";
-  height: 23px;
-  width: 12px;
-  display: inline-flex;
-  background-image: url('../../icons/angle-white-70.svg');
-  background-size: contain;
-  background-position: top 5px center;
-  background-repeat: no-repeat;
-  border: none;
-  vertical-align: bottom;
-  margin-left: 8px;
-  position: unset;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header ul li {
-  list-style-type: none;
 }
 
 header .mega-dropdown {
@@ -569,6 +549,15 @@ header .mega-container .left-content-container .mega-sub-menu .menu-level-2 {
   flex-direction: column;
 }
 
+header .mega-container .left-content-container .mega-sub-menu a.link:last-child {
+  margin-bottom: 0;
+}
+
+header .mega-container .left-content-container .mega-sub-menu .mobile-menu-header a.link {
+  color: var(--white);
+  padding: 0 1rem;
+}
+
 header .mega-container .left-content-container .mega-sub-menu .menu-level-2 a.link {
   line-height: 21px;
   font-size: var(--font-size-small);
@@ -598,11 +587,6 @@ header .mega-container .left-content-container .mega-sub-menu .subtitle {
   text-transform: uppercase;
   padding-left: 1rem;
   font-size: var(--body-font-size-s);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .mega-container .left-content-container .mega-sub-menu a.link:last-child {
-  margin-bottom: 0;
 }
 
 header .mega-container .left-content-container .mega-sub-menu .menu-level-2 .menu-level-2-item {
@@ -686,12 +670,6 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
   margin-top: 2rem;
   margin-bottom: 1.5rem;
   color: var(--white);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header .mega-container .left-content-container .mega-sub-menu .mobile-menu-header a.link {
-  color: var(--white);
-  padding: 0 1rem;
 }
 
 @media (min-width: 77rem) {
