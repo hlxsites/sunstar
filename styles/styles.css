@@ -860,9 +860,10 @@ main .section.bg-primary p {
   margin-bottom: 3rem;
 }
 
-/* section - padded */
+  /* section - padded */
 main .section.padded .section-container {
-  padding: 2rem;
+  padding: 2rem 0;
+  box-sizing: border-box;
 }
 
 /* END Section Styles END */
@@ -1110,6 +1111,11 @@ main .section.padded .section-container {
   main .section.social-media .embed {
     margin: unset;
     min-height: unset;
+  }
+
+  /* section - padded */
+  main .section.padded .section-container {
+    padding: 2rem;
   }
 
   /* END Section Styles END */

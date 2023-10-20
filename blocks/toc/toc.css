@@ -57,6 +57,7 @@ main .toc-container .section-container .toc.flat ul {
     justify-content: center;
     padding-left: 0;
     width: 100%;
+    container-type: inline-size;
 }
 
 main .toc-container .section-container .toc.flat ul li {
@@ -66,7 +67,7 @@ main .toc-container .section-container .toc.flat ul li {
 }
 
 main .toc-container .section-container .toc.flat ul li:last-child {
-    border-right: none;
+    border: none;
 }
 
 main .toc-container .section-container .toc.flat ul li a {
@@ -81,6 +82,12 @@ main .main-content h2 {
 
 main .section:not([id='']) {
     scroll-margin-top: 11rem;
+}
+
+@container (max-width: 27.625rem) {
+    main .toc-container .section-container .toc.flat ul li {
+        padding: 5px 2rem;
+    }
 }
 
 @media (min-width: 62rem) {
