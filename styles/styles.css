@@ -767,6 +767,10 @@ main .section.narrower {
   max-width: 45rem;
 }
 
+main .section.narrower.spaced {
+  padding: 0;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
