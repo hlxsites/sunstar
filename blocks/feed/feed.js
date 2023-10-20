@@ -73,14 +73,18 @@ export default async function decorate(block) {
   const type = (blockCfg.type ?? getMetadataNullable('type') ?? queryParams.get('feed-type'))?.trim().toLowerCase();
   const category = (blockCfg.category ?? getMetadataNullable('category' ?? queryParams.get('feed-category')))?.trim().toLowerCase();
   const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? queryParams.get('feed-tags'))?.trim().toLowerCase();
+  const omitPageTypes = (blockCfg['omit-page-types'] ?? getMetadataNullable('omit-page-types')
+  ?? queryParams.get('feed-omit-page-types'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
   const results = queryObj.where(function filterElements(el) {
     const elType = (el.type ?? '').trim().toLowerCase();
     const elCategory = (el.category ?? '').trim().toLowerCase();
     const elFeatured = (el.featured ?? '').trim().toLowerCase();
+    const elPageType = (el.pagetype ?? '').trim().toLowerCase();
     let match = false;
     match = (!type || type === elType)
       && (!category || category === elCategory)
+      && (!omitPageTypes || !(omitPageTypes.split(',').includes(elPageType)))
       && (!blockCfg.featured || elFeatured === blockCfg.featured.trim().toLowerCase());
     if (match && tags) {
       const tagList = tags.split(',');
