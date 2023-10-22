@@ -249,6 +249,21 @@ header {
   height: var(--nav-total-height);
 }
 
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p {
+  color: var(--white);
+}
+
+.dark h6 {
+  color: var(--hero-strong-color);
+}
+
+
 .tablet {
   display: none;
 }
@@ -828,6 +843,12 @@ main .section.thank-you p {
   font-weight: var(--font-weight-medium);
 }
 
+/* section - dark-blue */
+main .section.dark,
+main .section.dark .section-container {
+  background-color: var(--primary);
+}
+
 /* section - light-blue */
 main .section.light-blue,
 main .section.light-blue .section-container {
@@ -862,7 +883,7 @@ main .section.bg-primary p {
 
   /* section - padded */
 main .section.padded .section-container {
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   box-sizing: border-box;
 }
 

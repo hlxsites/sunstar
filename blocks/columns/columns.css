@@ -96,12 +96,6 @@
   order: 2;
 }
 
-.columns .non-singleton-img-wrapper img {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -120,6 +114,7 @@
 .columns > div > div p {
   margin-top: 0;
 }
+
 
 .columns:not(.history) > div div.non-singleton-img {
   margin: 0 1rem;
@@ -155,6 +150,10 @@
 
 .columns.top-down.columns-3-cols {
   max-width: 1200px;
+}
+
+.columns > div > div:not(.columns-img-col) {
+  padding: 1rem;
 }
 
 .columns.plain-links > div > div,
@@ -374,11 +373,6 @@
 
   .columns.plain-links.collapse ul {
     display: block;
-  }
-
-  .columns:not(.history) .non-singleton-img-wrapper img {
-    height: 3.125rem;
-    width: unset;
   }
 
   .columns-container.backgroundimage {

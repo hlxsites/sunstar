@@ -47,6 +47,48 @@ const resultParsers = {
     });
     return blockContents;
   },
+
+  highlight: (results, blockCfg) => {
+    const blockContents = [];
+    results.forEach((result) => {
+      const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
+      const row = [];
+      let cardImage;
+      const cardBody = fields.includes('path') ? document.createElement('a') : document.createElement('div');
+      fields.forEach((field) => {
+        const fieldName = field.trim().toLowerCase();
+        if (fieldName === 'path') {
+          cardBody.href = result[fieldName];
+        } else if (fieldName === 'image') {
+          cardImage = createOptimizedPicture(result[fieldName]);
+        } else {
+          const div = document.createElement('div');
+          if (fieldName === 'publisheddate') {
+            div.classList.add('date');
+            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
+          } else if (fieldName === 'title') {
+            div.classList.add('title');
+            div.textContent = result[fieldName];
+          } else {
+            div.textContent = result[fieldName];
+          }
+          cardBody.appendChild(div);
+        }
+      });
+      if (cardImage) {
+        row.push(cardImage);
+      }
+
+      if (cardBody) {
+        const path = document.createElement('a');
+        path.href = result.path;
+        cardBody.prepend(path);
+        row.push(cardBody);
+      }
+      blockContents.push(row);
+    });
+    return blockContents;
+  },
 };
 
 function getMetadataNullable(key) {

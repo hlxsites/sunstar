@@ -1,0 +1,63 @@
+.block.highlight {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.block.highlight > * {
+  flex: 1;
+}
+
+.block.highlight .date {
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding-bottom: 0.5rem;
+}
+
+.block.highlight > .others {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+.block.highlight > .others > .other {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #3C465033;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.block.highlight > .others picture {
+  width: 174px;
+  height: 98px;
+  display: block;
+  position: relative;
+}
+
+.block.highlight > .others picture > img {
+    width: 100%; /* Cover the full width of the container */
+    height: 100%; /* Cover the full height of the container */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    position: absolute; /* Position the image absolutely inside the container */
+    top: 0;
+    left: 0;
+  }
+
+@media (min-width: 62rem) {
+  .block.highlight {
+    flex-direction: row;
+  }
+
+  .block.highlight > .others {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block.highlight > .others > .other {
+    flex-direction: row;
+  }
+}
