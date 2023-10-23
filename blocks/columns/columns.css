@@ -96,6 +96,12 @@
   order: 2;
 }
 
+.columns .non-singleton-img-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -373,6 +379,11 @@
 
   .columns.plain-links.collapse ul {
     display: block;
+  }
+
+  .columns:not(.history) .non-singleton-img-wrapper img {
+    height: 3.125rem;
+    width: unset;
   }
 
   .columns-container.backgroundimage {

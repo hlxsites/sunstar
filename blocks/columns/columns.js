@@ -35,6 +35,24 @@ export default function decorate(block) {
     });
   });
 
+  // decorate columns with non-singleton-image content
+  [...block.children].forEach((row) => {
+    const cells = row.querySelectorAll('div:not(.columns-img-col)');
+    if (cells.length) {
+      [...cells].forEach((content) => {
+        content.classList.add('non-singleton-img');
+        const contentWrapper = document.createElement('div');
+        contentWrapper.classList.add('non-singleton-img-wrapper');
+        const contentParent = content.parentElement;
+        contentParent.insertBefore(contentWrapper, content);
+        contentWrapper.appendChild(content);
+        if (textOnlyColBlock) {
+          content.classList.add('text-only');
+        }
+      });
+    }
+  });
+
   // stylize anchors unless block has no-buttons class
   if (!block.classList.contains('no-buttons')) {
     [...block.firstElementChild.children].forEach((row) => {
