@@ -1,8 +1,10 @@
 import {
   createOptimizedPicture,
+  fetchPlaceholders,
   getMetadata,
   readBlockConfig,
 } from '../../scripts/lib-franklin.js';
+import { getLanguage } from '../../scripts/scripts.js';
 
 function deleteConfigBlock(block, firstNonCfgEl) {
   while (block.children.length > 0 && block.children[0] !== firstNonCfgEl) {
@@ -17,7 +19,9 @@ function addTextEl(tag, txt, parent, ...classes) {
   parent.appendChild(newDiv);
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
+  const placeholders = await fetchPlaceholders(getLanguage());
+
   const section = document.querySelector('.section.hero-career-container');
   if (section) {
     section.classList.add('full-width');
@@ -47,7 +51,7 @@ export default function decorate(block) {
   heroRight.classList.add('hero-career-right');
   heroDiv.appendChild(heroRight);
   addTextEl('blockquote', cfg.quote, heroRight, 'hero-career-quote');
-  addTextEl('h6', 'Career background', heroRight, 'hero-career-careerbgtitle'); // TODO i18n
+  addTextEl('h6', placeholders['hero-career-careerbg'], heroRight, 'hero-career-careerbgtitle');
   addTextEl('p', cfg['career-background'], heroRight, 'hero-career-careerbg');
 
   deleteConfigBlock(block, heroDiv);
