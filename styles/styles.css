@@ -173,28 +173,50 @@ h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-xxl);
-  margin: 4.375rem 0 2.5rem;
-}
-
-h2 {
   font-size: var(--heading-font-size-mxl);
-  font-weight: 500;
-  line-height: 1.3em;
   margin: 3.5rem 0 2rem;
 }
 
-h3 {
+h2 {
   font-size: var(--heading-font-size-m);
+  margin: 3rem 0 1.5rem;
   font-weight: 500;
   line-height: 1.3em;
-  margin: 2.5rem 0 1rem;
+}
+
+h3 {
+  font-size: var(--heading-font-size-ms);
+  margin: 2rem 0 0.75rem;
+  font-weight: 500;
+  line-height: 1.3em;
 }
 
 h4 {
-  font-size: var(--heading-font-size-ms);
-  margin: 2rem 0 0.5rem;
+  font-size: var(--heading-font-size-mxs);
+  margin: 1.5em 0 0.5rem;
 }
+
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+ul, 
+ol {
+  padding: 0 0 0 1.625rem;
+}
+
+ul li,
+ol li {
+  margin: 0.5rem 0;
+  padding: 0 0 0 0.375rem;
+}
+
 
 h5 {
   font-size: var(--heading-font-size-s)
@@ -206,27 +228,6 @@ h6 {
   margin-bottom: 1rem;
   color: var(--secondary);
   font-weight: var(--font-weight-bold);
-}
-
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-ul, 
-ol {
-  padding: 0 0 0 1.75rem;
-}
-
-ul li,
-ol li {
-  margin: 0.75rem 0;
-  padding: 0 0 0 0.5rem;
 }
 
 p {
@@ -1137,44 +1138,44 @@ main .section.padded .section-container {
   }
 
   h1 {
+    font-size: var(--heading-font-size-xxl);
+    margin: 4.375rem 0 2.5rem;
+  }
+  
+  h2 {
     font-size: var(--heading-font-size-mxl);
     margin: 3.5rem 0 2rem;
   }
   
-  h2 {
-    font-size: var(--heading-font-size-m);
-    margin: 3rem 0 1.5rem;
-  }
-  
   h3 {
-    font-size: var(--heading-font-size-ms);
-    margin: 2rem 0 0.75rem;
+    font-size: var(--heading-font-size-m);
+    margin: 2.5rem 0 1rem;
   }
   
   h4 {
-    font-size: var(--heading-font-size-mxs);
-    margin: 1.5em 0 0.5rem;
+    font-size: var(--heading-font-size-ms);
+    margin: 2rem 0 0.5rem;
   }
-
+  
   p,
   dl,
   ol,
   ul,
   pre,
   blockquote {
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.5rem;
     padding: 0;
   }
-
+  
   ul, 
   ol {
-    padding: 0 0 0 1.625rem;
+    padding: 0 0 0 1.75rem;
   }
-
+  
   ul li,
   ol li {
-    margin: 0.5rem 0;
-    padding: 0 0 0 0.375rem;
+    margin: 0.75rem 0;
+    padding: 0 0 0 0.5rem;
   }
 
   body.no-scroll {
