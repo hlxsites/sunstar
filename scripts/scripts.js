@@ -150,7 +150,11 @@ export function splitChildDiv(div, from, to) {
 }
 
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
-  const newBlock = buildBlockFunction('image-collage', { elems: [picture, caption] });
+  const captionText = caption.textContent;
+  const captionP = document.createElement('p');
+  captionP.textContent = captionText;
+  caption.remove();
+  const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
 }
