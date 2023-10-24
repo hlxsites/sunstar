@@ -21,6 +21,7 @@ export default async function decorate(block) {
   buttonBar.classList.add('button-container');
   const search = document.createElement('a');
   search.innerText = placeholders['career-apply-search'];
+  search.innerText = 'Hey there!';
   search.classList.add('button', 'primary');
   search.href = placeholders['career-apply-search-href'];
   buttonBar.appendChild(search);
