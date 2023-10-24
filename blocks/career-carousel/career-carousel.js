@@ -45,6 +45,7 @@ export function scrollToAdjacent(spans, slideDivs, slides, next, doc) {
   );
 }
 
+const MAX_BUTTONS = 10;
 export default async function decorate(block) {
   const json = await fetchIndex('query-index', 'career-testimonials');
   const data = shuffleArray(filterIncompleteEntries(json));
@@ -100,7 +101,7 @@ export default async function decorate(block) {
   navButtons.classList.add('career-slides-nav');
 
   const buttons = [];
-  for (let i = 0; i < data.length; i += 1) {
+  for (let i = 0; i < data.length && i < MAX_BUTTONS; i += 1) {
     const prevDiv = i > 0 ? slideDivs[i - 1] : null;
 
     const s = document.createElement('span');
