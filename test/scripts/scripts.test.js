@@ -231,6 +231,10 @@ describe('Scripts', () => {
     captionP.children = [{}, emChild];
     enclosingDiv.children = [parentP, captionP];
 
+    captionP.remove = () => {
+      delete captionP.children[1];
+    };
+
     const mockMain = {};
     mockMain.querySelectorAll = () => [picture];
 
@@ -239,7 +243,8 @@ describe('Scripts', () => {
     const mockBBFunction = (n, e) => {
       blockName = n;
       blockObj = e;
-
+      captionP.children[1] = document.createElement('p');
+      blockObj.elems = [picture, captionP];
       return document.createElement('myblock');
     };
 
@@ -249,7 +254,7 @@ describe('Scripts', () => {
 
     expect(blockName).to.equal('image-collage');
     expect(blockObj.elems[0]).to.equal(picture);
-    expect(blockObj.elems[1].children[1]).to.equal(emChild);
+    expect(blockObj.elems[1].children[1].localName).to.equal('p');
 
     expect(enclosingDiv.lastChild.localName).to
       .equal('myblock', 'Should have appended the block to the section');
@@ -275,6 +280,10 @@ describe('Scripts', () => {
     picture.nextElementSibling = em;
     parentP.parentElement = enclosingDiv;
 
+    em.remove = () => {
+      delete picture.nextElementSibling;
+    };
+
     const mockdoc = {};
     mockdoc.querySelectorAll = () => [picture];
 
@@ -283,7 +292,8 @@ describe('Scripts', () => {
     const mockBBFunction = (n, e) => {
       blockName = n;
       blockObj = e;
-
+      em.children = document.createElement('p');
+      blockObj.elems = [picture, em];
       return document.createElement('myblock');
     };
 
@@ -292,9 +302,9 @@ describe('Scripts', () => {
     expect(blockName).to.equal('image-collage');
     expect(newChild.classList.contains('boxy-col-1')).to
       .be.true;
-    const [actualPic, actualEM] = blockObj.elems;
+    const [actualPic, actualCaption] = blockObj.elems;
     expect(actualPic).to.equal(picture);
-    expect(actualEM).to.equal(em);
+    expect(actualCaption).to.equal(em);
   });
 
   it('No Image Collage autoblock when no <em>', async () => {
