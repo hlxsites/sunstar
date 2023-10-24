@@ -685,7 +685,7 @@ main .section.spaced li {
 
 main .section.spaced>.section-container {
   max-width: 100%;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 /* section - contacts and links from global-network */
@@ -765,10 +765,6 @@ main .section.narrower {
   margin: auto;
   margin-block-end: 3rem;
   max-width: 45rem;
-}
-
-main .section.narrower.spaced {
-  padding: 0;
 }
 
 /* section - static */
