@@ -239,7 +239,7 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   // fetch nav content
   const navMeta = getMetadata('nav');
-  const navPath = navMeta || (getLanguage() === 'en' ? '/_drafts/himanshu/nav' : `/${getLanguage()}/nav`);
+  const navPath = navMeta || (getLanguage() === 'en' ? '/nav' : `/${getLanguage()}/nav`);
   const resp = await fetch(`${navPath}.plain.html`);
   const navTreeResp = await fetch(`/nav-tree.json?sheet=${getLanguage()}`);
   const navTreeJson = await navTreeResp.json();
