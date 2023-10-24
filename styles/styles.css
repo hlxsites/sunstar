@@ -1112,6 +1112,10 @@ main .section.padded .section-container {
     min-height: unset;
   }
 
+  main .section.spaced>.section-container {
+    padding: 0 1rem;
+  }
+
   /* END Section Styles END */
 }
 
