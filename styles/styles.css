@@ -178,21 +178,21 @@ h1 {
 }
 
 h2 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-mxl);
   font-weight: 500;
   line-height: 1.3em;
   margin: 3.5rem 0 2rem;
 }
 
 h3 {
-  font-size: var(--heading-font-size-ms);
+  font-size: var(--heading-font-size-m);
   font-weight: 500;
   line-height: 1.3em;
   margin: 2.5rem 0 1rem;
 }
 
 h4 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-ms);
   margin: 2em 0 0.5rem;
 }
 
@@ -910,16 +910,6 @@ main .section.padded .section-container {
 
 
 @media (min-width:62rem) {
-  h2 {
-    font-size: var(--heading-font-size-xl);
-    font-weight: var(--font-weight-small);
-    margin: 0 auto 3rem;
-  }
-
-  h3 {
-    font-size: var(--heading-font-size-m);
-  }
-
   .mobile {
     display: none;
   }

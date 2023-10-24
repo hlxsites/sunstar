@@ -1,7 +1,7 @@
 .block.quote {
   border-left: 0.25rem solid var(--black);
-  margin-bottom: 2.5rem;
-  margin-top: 2.5rem;
+  margin-bottom: 6rem;
+  margin-top: 6rem;
   padding-left: 2rem;
   color: var(--primary);
   position: relative;
