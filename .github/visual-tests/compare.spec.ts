@@ -59,7 +59,10 @@ async function loadAndScreenshot(page: Page, url: string, testPath: string, suff
 
   return await page.screenshot({
     path: getScreenshotPath(testPath, suffix),
-    fullPage: true
+    fullPage: true,
+
+    // The career carousel is shuffled so exclude from the compare
+    mask: [page.locator('div.career-carousel > div.career-slider')]
   });
 }
 
