@@ -60,7 +60,7 @@ async function loadAndScreenshot(page: Page, url: string, testPath: string, suff
   return await page.screenshot({
     path: getScreenshotPath(testPath, suffix),
     fullPage: true,
-    mask: page.locator('div.career-carousel')
+    mask: [page.locator('div.career-carousel')]
   });
 }
 
