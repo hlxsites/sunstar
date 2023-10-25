@@ -712,7 +712,9 @@ export function addPagingWidget(
 
 export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
   const placeholders = await fetchPlaceholders(locale);
-  await loadScript('/ext-libs/jslinq/jslinq.min.js');
+  if (!window.jslinq) {
+    await loadScript('/ext-libs/jslinq/jslinq.min.js');
+  }
   const sheetName = sheet ? `sheet=${sheet}` : '';
   const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
   const results = await tagDetails.json();
