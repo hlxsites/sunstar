@@ -27,7 +27,6 @@ main .hero-horiz-tabs-nav {
 main .hero-horizontal-tabs.block {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
 }
 
 main div.tab-item {
