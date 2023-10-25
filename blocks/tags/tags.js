@@ -18,11 +18,11 @@ export default async function decorate(block) {
   const tags = await fetchTagsOrCategories(ids, 'tags', type, locale);
 
   if (tags.length) {
+    const typeKey = type
+      .toLowerCase().split(' ')
+      .filter(Boolean)
+      .join('-');
     tags.forEach((tag) => {
-      const typeKey = type
-        .toLowerCase().split(' ')
-        .filter(Boolean)
-        .join('-');
       const prefix = locale === 'en' ? '/' : `/${locale}/`;
       const hrefVal = `${prefix}${typeKey}/tag?feed-tags=${tag.id}`;
       const a = document.createElement('a');

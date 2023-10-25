@@ -59,13 +59,13 @@ export default async function decorate(block) {
 
     const socialContainer = block.closest('.section.social-container>.section-container');
     const firstH1 = socialContainer?.querySelector('h1');
+    const typeKey = type
+      .toLowerCase().split(' ')
+      .filter(Boolean)
+      .join('-');
 
     if (firstH1) {
       const locale = getLanguage();
-      const typeKey = type
-        .toLowerCase().split(' ')
-        .filter(Boolean)
-        .join('-');
       const prefix = locale === 'en' ? '/' : `/${locale}/`;
       const hrefVal = `${prefix}${typeKey}/${categoryMetadata}`;
       const categories = await fetchTagsOrCategories([categoryMetadata], 'categories', type, locale);
