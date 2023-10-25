@@ -53,6 +53,7 @@ async function searchPages(placeholders, term, page) {
   const sheet = `${getLanguage()}-search`;
 
   const json = await fetchIndex('query-index', sheet);
+  console.log(json);
   fixExcelFilterZeroes(json.data);
 
   const resultsPerPage = 10;
@@ -72,11 +73,13 @@ async function searchPages(placeholders, term, page) {
   const curPage = result.slice(startResult, startResult + resultsPerPage);
 
   curPage.forEach((line) => {
+    let searchTitle;
     const res = document.createElement('div');
     res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
-    const searchTitle = line.pagename || line.breadcrumbtitle || line.title;
+    (line.pagename === "Newsroom") ?  searchTitle = line.breadcrumbtitle : searchTitle = line.pagename;
+    // const searchTitle = line.pagename || line.breadcrumbtitle || line.title;
     setResultValue(link, searchTitle, term);
     link.href = line.path;
     const path = line.path || '';
@@ -85,7 +88,7 @@ async function searchPages(placeholders, term, page) {
     let childSpan;
 
     if (parentPath) {
-      if (line.path.indexOf('/news/') !== -1) {
+      if (line.path.indexOf('/newsroom/') !== -1) {
         // We are directly showing placeholder text for news pages.
         parentSpan = document.createElement('span');
         parentSpan.textContent = placeholders['news-page-title-text'];
@@ -101,11 +104,10 @@ async function searchPages(placeholders, term, page) {
 
     if (path) {
       const selfFiltered = json.data.filter((x) => x.path === path);
-
-      if (selfFiltered && selfFiltered.length && selfFiltered[0].newsdate) {
+      if (selfFiltered && selfFiltered.length && selfFiltered[0].publisheddate) {
         childSpan = document.createElement('span');
         // eslint-disable-next-line max-len
-        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].newsdate)), getLanguage());
+        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].publisheddate)), getLanguage());
       }
     }
 
@@ -159,7 +161,6 @@ export default async function decorate(
     curLocation.pathname,
     resetLanguageCache,
   ));
-
   block.innerHTML = '';
   block.append(getSearchWidget(placeholders, searchTerm, true));
 
