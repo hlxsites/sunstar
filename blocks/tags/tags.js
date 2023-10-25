@@ -10,7 +10,7 @@ export default async function decorate(block) {
   let ids = [];
   const type = getMetadata('type') || '';
 
-  if (!block.classList.contains('all')) {
+  if (!block.classList.contains('all') && metadataTag) {
     ids = metadataTag.toLowerCase().split(',').map((tag) => tag.trim());
   }
 
