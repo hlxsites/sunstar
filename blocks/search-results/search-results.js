@@ -53,7 +53,6 @@ async function searchPages(placeholders, term, page) {
   const sheet = `${getLanguage()}-search`;
 
   const json = await fetchIndex('query-index', sheet);
-  console.log(json);
   fixExcelFilterZeroes(json.data);
 
   const resultsPerPage = 10;
@@ -78,8 +77,8 @@ async function searchPages(placeholders, term, page) {
     res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
-    (line.pagename === "Newsroom") ?  searchTitle = line.breadcrumbtitle : searchTitle = line.pagename;
-    // const searchTitle = line.pagename || line.breadcrumbtitle || line.title;
+    if (line.pagename === 'Newsroom') searchTitle = line.breadcrumbtitle;
+    else searchTitle = line.pagename;
     setResultValue(link, searchTitle, term);
     link.href = line.path;
     const path = line.path || '';
