@@ -42,12 +42,27 @@ jobs:
           path: .github/visual-tests/screenshots/*
           name: screenshots
 
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'visual differences detected'
+
       - name: Comment on Pull Request
-        if: env.SUMMARY != ''
+        if: env.SUMMARY != '' && steps.find-comment.outputs.comment-id == ''
         uses: peter-evans/create-or-update-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.number }}
           body: ${{ env.SUMMARY }}
-#        edit-mode: replace
-#        comment-id: ${{ steps.find-comment.outputs.comment-id }}
+         
+      - name: Update comment
+        if: env.SUMMARY != '' && steps.find-comment.outputs.comment-id != ''
+        uses: peter-evans/update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: ${{ env.SUMMARY }}
+          edit-mode: replace
