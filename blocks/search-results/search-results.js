@@ -78,7 +78,7 @@ async function searchPages(placeholders, term, page) {
     const header = document.createElement('h3');
     const link = document.createElement('a');
     if (line.pagename === 'Newsroom') searchTitle = line.breadcrumbtitle;
-    else searchTitle = line.pagename;
+    else searchTitle = line.pagename || line.title;
     setResultValue(link, searchTitle, term);
     link.href = line.path;
     const path = line.path || '';
