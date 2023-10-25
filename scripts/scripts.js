@@ -103,56 +103,10 @@ function buildModalFragmentBlock(main) {
   }
 }
 
-/**
- * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
- * the from and to indexes, separating the elements from-to into
- * a separate div on the same level and putting the remaining elements in new divs surrounding it.
- * @param {HTMLElement} div The element to work on.
- * @param {number} from The index from from which to put element into the middle div.
- * @param {number} to The index up-to-but-not-including the element that marks then end of the
- * middle div.
- * @returns Returns the middle div.
- */
-export function splitChildDiv(div, from, to) {
-  // run backwards because moving element will delete them from the original
-
-  let afterDiv;
-  if (to < div.children.length - 1) {
-    afterDiv = document.createElement('div');
-    for (let i = div.children.length - 1; i >= to; i -= 1) {
-      afterDiv.prepend(div.children[i]);
-    }
-  }
-
-  const midDiv = document.createElement('div');
-  for (let i = to - 1; i >= from; i -= 1) {
-    midDiv.prepend(div.children[i]);
-  }
-
-  let beforeDiv;
-  if (from > 0) {
-    beforeDiv = document.createElement('div');
-    for (let i = from - 1; i >= 0; i -= 1) {
-      beforeDiv.prepend(div.children[i]);
-    }
-  }
-
-  if (beforeDiv) {
-    div.parentElement.insertBefore(beforeDiv, div);
-  }
-  div.parentElement.insertBefore(midDiv, div);
-  if (afterDiv) {
-    div.parentElement.insertBefore(afterDiv, div);
-  }
-  div.parentElement.removeChild(div);
-
-  return midDiv;
-}
-
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   const captionText = caption.textContent;
   const captionP = document.createElement('p');
-  captionP.textContent = captionText;
+  captionP.innerHTML = captionText;
   caption.remove();
   const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
