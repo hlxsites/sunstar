@@ -3,8 +3,8 @@ import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 /* eslint-disable no-console */
 
-function fetchPosterURL($poster) {
-  const srcURL = new URL($poster.src);
+function fetchPosterURL(poster) {
+  const srcURL = new URL(poster.src);
   const srcUSP = new URLSearchParams(srcURL.search);
   srcUSP.set('format', 'webply');
   srcUSP.set('width', 750);
@@ -15,15 +15,15 @@ function decorateVideo(mediaRow, target) {
   const mediaDiv = document.createElement('div');
   mediaDiv.classList.add('hero-banner-media-section');
   const videoTag = document.createElement('video');
-  const $poster = mediaRow.querySelector('img');
-  const $a = mediaRow.querySelector('a');
-  const videoURL = $a.href;
+  const poster = mediaRow.querySelector('img');
+  const a = mediaRow.querySelector('a');
+  const videoURL = a.href;
   videoTag.toggleAttribute('autoplay', true);
   videoTag.toggleAttribute('muted', true);
   videoTag.toggleAttribute('playsinline', true);
   videoTag.toggleAttribute('loop', true);
-  if ($poster) {
-    videoTag.setAttribute('poster', fetchPosterURL($poster));
+  if (poster) {
+    videoTag.setAttribute('poster', fetchPosterURL(poster));
   }
   const source = document.createElement('source');
   source.setAttribute('src', `${videoURL}`);
@@ -48,19 +48,21 @@ function decorateBackGroundImage(mediaRow, target) {
   target.appendChild(mediaDiv);
 }
 
-function decorateTextContent(headingRow, target, placeholders) {
+function decorateTextContent(headingRow, target, placeholders, overlap) {
   headingRow.classList.add('hero-banner-text-container');
   let textDiv = headingRow.querySelector('div');
   const heroBannerWrapper = document.createElement('div');
 
-  if (textDiv.querySelector('p') === null) {
-    textDiv = textDiv.nextElementSibling;
-    headingRow.classList.add('right-text');
-    heroBannerWrapper.classList.add('right-text');
-  } else {
-    textDiv.classList.add('left-text');
-    headingRow.classList.add('left-text');
-    heroBannerWrapper.classList.add('left-text');
+  if (overlap) {
+    if (textDiv.querySelector('p') === null) {
+      textDiv = textDiv.nextElementSibling;
+      headingRow.classList.add('right-text');
+      heroBannerWrapper.classList.add('right-text');
+    } else {
+      textDiv.classList.add('left-text');
+      headingRow.classList.add('left-text');
+      heroBannerWrapper.classList.add('left-text');
+    }
   }
 
   textDiv.classList.add('hero-banner-text-wrapper');
@@ -96,24 +98,26 @@ function decorateTextContent(headingRow, target, placeholders) {
   target.appendChild(heroBannerMainDiv);
 }
 
-export default async function decorate($block) {
+export default async function decorate(block) {
   const placeholders = await fetchPlaceholders(getLanguage());
 
-  const $rows = [...$block.children];
-  const $mediaRow = $rows.at(0);
-  const $contentRow = $rows.at(1);
+  const rows = [...block.children];
+  const mediaRow = rows.at(0);
+  const contentRow = rows.at(1);
 
-  if ($mediaRow) {
-    if ($mediaRow.querySelector('a') !== null) {
-      decorateVideo($mediaRow, $block);
+  const overlap = block.classList.contains('overlap');
+
+  if (mediaRow) {
+    if (mediaRow.querySelector('a') !== null) {
+      decorateVideo(mediaRow, block);
     } else {
-      decorateBackGroundImage($mediaRow, $block);
+      decorateBackGroundImage(mediaRow, block);
     }
   }
-  if ($contentRow) {
-    decorateTextContent($contentRow, $block, placeholders);
+  if (contentRow) {
+    decorateTextContent(contentRow, block, placeholders, overlap);
   }
-  if ($block.classList.contains('overlap')) {
-    $block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
+  if (overlap) {
+    block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
   }
 }
