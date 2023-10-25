@@ -24,6 +24,8 @@ header nav > ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 header .nav-wrapper {
@@ -38,6 +40,8 @@ header nav {
 
 header ul li {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 header .social {
@@ -45,6 +49,8 @@ header .social {
 }
 
 header .social > ul {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,6 +58,8 @@ header .social > ul {
 
 
 header .social > ul > li {
+  padding: 0;
+  margin: 0;
   margin-right: 0.5rem;
   display: flex;
 }
@@ -62,6 +70,10 @@ header .picker-item > a {
   color: var(--white);
   padding: 11px 0 11px 32px;
   display: block;
+}
+
+header nav.nav-middle p {
+  margin: 0;
 }
 
 header nav.nav-middle a {
@@ -132,10 +144,14 @@ header .website-picker {
 }
 
 header nav.nav-top > ul {
+  padding: 0;
+  margin: 0;
   display: flex;
 }
 
 header nav.nav-top > ul > li {
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
 }
@@ -728,6 +744,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
   }
 
   header nav.nav-bottom .menu-level-1-item {
+    padding: 0;
     padding-right: 1.2rem;
     position: static;
     border-bottom: 1px solid var(--transparent-white-color);
