@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-expressions */
-/* global describe before it */
+/* global describe it beforeEach before */
 
 import { expect } from '@esm-bundle/chai';
 import { readFile } from '@web/test-runner-commands';
+import sinon from 'sinon';
 
 const scripts = {};
+const index = JSON.parse(await readFile({ path: './tags_categories.json' }));
 
 document.write(await readFile({ path: './tags.plain.html' }));
 
@@ -18,9 +20,29 @@ describe('Tags Block', () => {
       });
   });
 
+  beforeEach(async () => {
+    await sinon.stub(window, 'fetch').callsFake((v) => {
+      const queryIndex = '/tags-categories.json';
+      if (v.startsWith(queryIndex)) {
+        return {
+          ok: true,
+          json: () => index,
+        };
+      }
+      return {
+        ok: false,
+        json: () => ({
+          limit: 0, offset: 0, total: 0, data: [],
+        }),
+        text: () => '',
+      };
+    });
+  });
+
   it('Count of Tags should be 2', async () => {
     const placeholders = {
-      'covid-19-href': 'aaaadad',
+      'covid-19': 'aaaadad',
+      'global-healthy-thinking-report': 'adadadad',
     };
     window.placeholders = {
       'translation-loaded': {},
