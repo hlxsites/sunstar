@@ -50,9 +50,21 @@ function decorateBackGroundImage(mediaRow, target) {
 
 function decorateTextContent(headingRow, target, placeholders) {
   headingRow.classList.add('hero-banner-text-container');
-  const firstDiv = headingRow.querySelector('div');
-  firstDiv.classList.add('hero-banner-text-wrapper');
-  const pElement = firstDiv.querySelector('p');
+  let textDiv = headingRow.querySelector('div');
+  const heroBannerWrapper = document.createElement('div');
+
+  if (textDiv.querySelector('p') === null) {
+    textDiv = textDiv.nextElementSibling;
+    headingRow.classList.add('right-text');
+    heroBannerWrapper.classList.add('right-text');
+  } else {
+    textDiv.classList.add('left-text');
+    headingRow.classList.add('left-text');
+    heroBannerWrapper.classList.add('left-text');
+  }
+
+  textDiv.classList.add('hero-banner-text-wrapper');
+  const pElement = textDiv.querySelector('p');
   if (target.classList.contains('careers')) {
     const linkedin = document.createElement('a');
     linkedin.innerText = placeholders['career-apply-linkedin'];
@@ -64,7 +76,7 @@ function decorateTextContent(headingRow, target, placeholders) {
 
     pElement.append(linkedin);
   } else if (pElement && pElement.childElementCount === 1 && pElement.firstElementChild.tagName === 'A') {
-    firstDiv.removeChild(pElement);
+    textDiv.removeChild(pElement);
     const buttonDiv = document.createElement('div');
     buttonDiv.classList.add('hero-banner-button-container');
     const aElement = pElement.querySelector('a');
@@ -75,7 +87,7 @@ function decorateTextContent(headingRow, target, placeholders) {
     buttonDiv.appendChild(spanElement);
     headingRow.appendChild(buttonDiv);
   }
-  const heroBannerWrapper = document.createElement('div');
+
   heroBannerWrapper.classList.add('hero-banner-heading-container');
   heroBannerWrapper.appendChild(headingRow);
   const heroBannerMainDiv = document.createElement('div');
@@ -90,6 +102,7 @@ export default async function decorate($block) {
   const $rows = [...$block.children];
   const $mediaRow = $rows.at(0);
   const $contentRow = $rows.at(1);
+
   if ($mediaRow) {
     if ($mediaRow.querySelector('a') !== null) {
       decorateVideo($mediaRow, $block);
