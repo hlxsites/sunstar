@@ -63,3 +63,6 @@ indices:
       career-jobtitle:
         select: main .hero-career
         value: match(el, '.*?\n?Title\n([^\n]+)')
+      pagetype:
+        select: head > meta[name="pagetype"]
+        value: attribute(el, "content")

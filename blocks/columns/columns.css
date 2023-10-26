@@ -225,7 +225,7 @@
   /* both autoblocking options for bottom caption */
 .columns.history div.image-collage.autoblocked picture ~ em,
 .columns.history div.image-collage.autoblocked picture ~ p {
-  color: var(--transparent-grey-color-2);
+  color: var(--steel-blue);
   font-size: var(--body-font-size-s);
   margin: 1rem 0;
   text-align: center;

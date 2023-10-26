@@ -8,7 +8,7 @@
 }
 
 .hero-banner .hero-banner-media-section {
-    height: 10rem;
+    height: 14.75rem;
     position: relative;
     width: 100%;
     background-position: center;
@@ -27,7 +27,8 @@
 .hero-banner img {
     width: 100%;
     object-fit: cover;
-    min-height: 10rem;
+    height: 22.5rem;
+    object-position: 80% 0;
 }
 
 .hero-banner .hero-banner-heading-section {
@@ -175,6 +176,7 @@
     .hero-banner img
     {
         min-height: 100%;
+        object-position: unset;
     }
 
     .hero-banner .hero-banner-heading-section {
@@ -248,6 +250,10 @@
         padding: 3rem 2rem;
         width: 24.25rem;
         height: 26rem;
+    }
+
+    .hero-banner.overlap .hero-banner-text-wrapper {
+        padding-left: unset;
     }
 
     .hero-banner.overlap .hero-banner-text-wrapper h2{

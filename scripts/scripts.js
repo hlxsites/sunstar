@@ -13,6 +13,7 @@ import {
   loadCSS,
   getMetadata,
   isInternalPage,
+  fetchPlaceholders,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -103,54 +104,12 @@ function buildModalFragmentBlock(main) {
   }
 }
 
-/**
- * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
- * the from and to indexes, separating the elements from-to into
- * a separate div on the same level and putting the remaining elements in new divs surrounding it.
- * @param {HTMLElement} div The element to work on.
- * @param {number} from The index from from which to put element into the middle div.
- * @param {number} to The index up-to-but-not-including the element that marks then end of the
- * middle div.
- * @returns Returns the middle div.
- */
-export function splitChildDiv(div, from, to) {
-  // run backwards because moving element will delete them from the original
-
-  let afterDiv;
-  if (to < div.children.length - 1) {
-    afterDiv = document.createElement('div');
-    for (let i = div.children.length - 1; i >= to; i -= 1) {
-      afterDiv.prepend(div.children[i]);
-    }
-  }
-
-  const midDiv = document.createElement('div');
-  for (let i = to - 1; i >= from; i -= 1) {
-    midDiv.prepend(div.children[i]);
-  }
-
-  let beforeDiv;
-  if (from > 0) {
-    beforeDiv = document.createElement('div');
-    for (let i = from - 1; i >= 0; i -= 1) {
-      beforeDiv.prepend(div.children[i]);
-    }
-  }
-
-  if (beforeDiv) {
-    div.parentElement.insertBefore(beforeDiv, div);
-  }
-  div.parentElement.insertBefore(midDiv, div);
-  if (afterDiv) {
-    div.parentElement.insertBefore(afterDiv, div);
-  }
-  div.parentElement.removeChild(div);
-
-  return midDiv;
-}
-
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
-  const newBlock = buildBlockFunction('image-collage', { elems: [picture, caption] });
+  const captionText = caption.textContent;
+  const captionP = document.createElement('p');
+  captionP.innerHTML = captionText;
+  caption.remove();
+  const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
 }
@@ -707,6 +666,22 @@ export function addPagingWidget(
   }
 
   div.appendChild(nav);
+}
+
+export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
+  const placeholders = await fetchPlaceholders(locale);
+  if (!window.jslinq) {
+    await loadScript('/ext-libs/jslinq/jslinq.min.js');
+  }
+  const sheetName = sheet ? `sheet=${sheet}` : '';
+  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
+  const results = await tagDetails.json();
+  const { jslinq } = window;
+
+  // eslint-disable-next-line max-len
+  return jslinq(results.data).where((ele) => (!ids.length || ids.indexOf(ele.Key) > -1) && (!type || ele.Type === type))
+    .toList()
+    .map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
 }
 
 export function wrapImgsInLinks(container) {

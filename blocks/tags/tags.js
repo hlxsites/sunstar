@@ -1,47 +1,42 @@
-import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
-import { getLanguage } from '../../scripts/scripts.js';
+import { getMetadata } from '../../scripts/lib-franklin.js';
+import { getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 /**
 * decorates the tags block
 * @param {Element} block The social block element
 */
+export default async function decorate(block) {
+  const metadataTag = getMetadata('article:tag') || [];
+  let ids = [];
+  const type = getMetadata('type') || '';
 
-const getModifiedVal = (item) => {
-  if (item) {
-    return item.trim().toLowerCase()
-      .split(' ')
+  if (!block.classList.contains('all') && metadataTag) {
+    ids = metadataTag.toLowerCase().split(',').map((tag) => tag.trim());
+  }
+
+  const locale = getLanguage();
+  const tags = await fetchTagsOrCategories(ids, 'tags', type, locale);
+
+  if (tags.length) {
+    const typeKey = type
+      .toLowerCase().split(' ')
       .filter(Boolean)
       .join('-');
-  }
-  return '';
-};
-
-export default async function decorate(block) {
-  const tags = getMetadata('article:tag');
-  const placeholders = await fetchPlaceholders(getLanguage());
-
-  if (placeholders && tags) {
-    const newMap = {};
-    Object.keys(placeholders).forEach((entry) => {
-      const newEntry = getModifiedVal(entry);
-      newMap[newEntry] = placeholders[entry];
-    });
-
-    tags.split(', ').forEach((tag) => {
-      const newTag = getModifiedVal(tag);
-      const val = newMap[`${newTag}-href`] || '#';
+    tags.forEach((tag) => {
+      const prefix = locale === 'en' ? '/' : `/${locale}/`;
+      const hrefVal = `${prefix}${typeKey}/tag?feed-tags=${tag.id}`;
       const a = document.createElement('a');
-      a.href = val;
-      a.textContent = tag;
+      a.href = hrefVal || '#';
+      a.textContent = tag.name || tag.id;
       a.classList.add('button', 'primary');
       block.appendChild(a);
     });
+  }
 
-    const tagsSectionContainer = block.closest('.section.tags-container>.section-container');
-    const p = tagsSectionContainer?.querySelector('p');
+  const tagsSectionContainer = block.closest('.section.tags-container>.section-container');
+  const p = tagsSectionContainer?.querySelector('p');
 
-    if (p) {
-      tagsSectionContainer.classList.add('para-present');
-    }
+  if (p) {
+    tagsSectionContainer.classList.add('para-present');
   }
 }
