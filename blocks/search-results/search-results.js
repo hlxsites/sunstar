@@ -72,13 +72,14 @@ async function searchPages(placeholders, term, page) {
   const curPage = result.slice(startResult, startResult + resultsPerPage);
 
   curPage.forEach((line) => {
+    console.log(line);
     let searchTitle;
     const res = document.createElement('div');
     res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
-    if (line.pagename === 'Newsroom') searchTitle = line.breadcrumbtitle;
-    else searchTitle = line.pagename || line.breadcrumbtitle || line.title;
+    if (line.type === 'Newsroom') searchTitle = line.breadcrumbtitle || line.title || line.type;
+    else searchTitle = line.title || line.breadcrumbtitle || line.type;
     setResultValue(link, searchTitle, term);
     link.href = line.path;
     const path = line.path || '';
@@ -87,7 +88,7 @@ async function searchPages(placeholders, term, page) {
     let childSpan;
 
     if (parentPath) {
-      if (line.path.indexOf('/newsroom/') !== -1) {
+      if (line.type === 'Newsroom') {
         // We are directly showing placeholder text for news pages.
         parentSpan = document.createElement('span');
         parentSpan.textContent = placeholders['news-page-title-text'];
