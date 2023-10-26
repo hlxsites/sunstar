@@ -52,14 +52,14 @@ jobs:
 
       - name: Delete comment if existing
         if: steps.find-comment.outputs.comment-id != ''
-        uses: detomarco/delete-comment@v1
+        uses: detomarco/delete-comment@main
         id: delete-comment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
 
       - name: Comment on Pull Request
-        if: env.SUMMARY != '' && steps.find-comment.outputs.comment-id == ''
+        if: env.SUMMARY != ''
         uses: peter-evans/create-or-update-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
