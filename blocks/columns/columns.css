@@ -463,7 +463,7 @@
     display: none;
   }
 
-  .columns.collapse > div > div > div {
+  .columns > div > div > div {
     width: auto;
   }
 }
