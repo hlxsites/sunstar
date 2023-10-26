@@ -224,41 +224,39 @@
   }
 }
 
-@media (max-width: 61rem) {
-  .columns.collapse.top-down.columns-2-cols {
-    max-width: 100%;
-  }
+.columns.collapse.top-down.columns-2-cols {
+  max-width: 100%;
+}
 
-  .columns.plain-links.collapse > div > div {
-    width: 100%;
-  }
+.columns.plain-links.collapse > div > div {
+  width: 100%;
+}
 
-  .columns.plain-links.collapse:not(.continuation) > div > div:first-child {
-    margin-top: 3rem;
-  }
+.columns.plain-links.collapse:not(.continuation) > div > div:first-child {
+  margin-top: 3rem;
+}
 
-  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
-    margin-top: 0;
-  }
+.columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+  margin-top: 0;
+}
 
-  .columns.plain-links.collapse > div h6::after {
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 10px;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%) rotate(0deg);
-    background-image: url("/icons/arrow-down.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    transition: ease 0.2s;
-  }
+.columns.plain-links.collapse > div h6::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 10px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(0deg);
+  background-image: url("/icons/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: ease 0.2s;
+}
 
-  .columns.plain-links.collapse > div h6.active::after {
-    transform: translateY(-50%) rotate(-180deg);
-  }
+.columns.plain-links.collapse > div h6.active::after {
+  transform: translateY(-50%) rotate(-180deg);
 }
 
 .columns.plain-links > div li {
@@ -277,10 +275,6 @@
   font-weight: var(--font-weight-medium);
   background-color: unset;
   color: var(--secondary);
-}
-
-.columns.plain-links.collapse ul {
-  display: none;
 }
 
 .columns.plain-links.collapse ul.active {
@@ -318,6 +312,10 @@
   .columns > div {
     flex-direction: unset;
     gap: 3rem;
+  }
+
+  .collapse > div {
+    flex-direction: column;
   }
 
   .columns.history picture {
@@ -361,7 +359,7 @@
   }
 
   .columns.plain-links.collapse ul {
-    display: block;
+    display: none;
   }
 
   .columns:not(.history) .non-singleton-img-wrapper img {
@@ -437,5 +435,15 @@
 
   main .columns.history.invert-image-order-in-narrow-view > div {
     flex-direction: row;
+  }
+}
+
+@media (max-width: 61rem){
+  .columns.plain-links.collapse ul {
+    display: none;
+  }
+
+  .columns.collapse > div > div > div {
+    width: auto;
   }
 }

@@ -32,12 +32,14 @@ export default function decorate(block) {
   const text = getText(block);
   const tabs = createTabs(block, text);
 
+  if (tabs.length !== 1) {
   // move the tab riders in front
-  const wrapper = block.parentElement;
-  const container = wrapper.parentElement;
-  container.insertBefore(wrapper, container.firstElementChild);
+    const wrapper = block.parentElement;
+    const container = wrapper.parentElement;
+    container.insertBefore(wrapper, container.firstElementChild);
 
-  addTabs(tabs, block);
+    addTabs(tabs, block);
+  }
 
   if (image) {
     block.append(image);
