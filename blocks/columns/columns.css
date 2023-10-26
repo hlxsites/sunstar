@@ -66,12 +66,6 @@
   align-items: center;
 }
 
-.columns.history picture {
-  display: block;
-  margin: 0 auto 2rem;
-  width: 17rem;
-}
-
 .columns p.button-container {
   display: flex;
   align-items: flex-start;
@@ -169,6 +163,15 @@
   margin-left: 0;
 }
 
+.columns.text-layout > div > div h2 {
+  font-size: var(--heading-font-size-mxl);
+  margin: 0;
+}
+
+.columns.text-layout > div > div > div {
+  font-size: var(--body-font-size-l);
+}
+
 .columns.history.invert-image-order-in-narrow-view > div {
   flex-direction: column-reverse;
 }
@@ -200,22 +203,39 @@
   gap: 0;
 }
 
-  /* both autoblocking options for bottom caption */
-.columns.history div.image-collage.autoblocked picture ~ em,
-.columns.history div.image-collage.autoblocked picture ~ p {
-  color: var(--transparent-grey-color-2);
-  font-size: var(--body-font-size-s);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.columns.text-and-image-in-column > div div.non-singleton-img {
+  margin: 0;
+}
+
+.columns.text-and-image-in-column > div div.non-singleton-img p{
   text-align: center;
 }
 
+.columns.text-and-image-in-column > div div.non-singleton-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+  /* both autoblocking options for bottom caption */
+.columns.history div.image-collage.autoblocked picture ~ em,
+.columns.history div.image-collage.autoblocked picture ~ p {
+  color: var(--steel-blue);
+  font-size: var(--body-font-size-s);
+  margin: 1rem 0;
+  text-align: center;
+}
 
 .columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type,
 .columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
+}
+
+.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type picture,
+.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type picture {
+  margin: 0 auto 2rem;
 }
 
 @media (min-width: 62rem) {
@@ -329,7 +349,7 @@
   /* picture in column with text */
   .columns.history p ~ div > div.image-collage.autoblocked picture {
     display: table;
-    width: auto;
+    width: 100%;
   }
 
   .columns > div .columns-img-col {

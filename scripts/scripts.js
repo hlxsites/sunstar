@@ -13,6 +13,7 @@ import {
   loadCSS,
   getMetadata,
   isInternalPage,
+  fetchPlaceholders,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -28,12 +29,16 @@ const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP c
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
-const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'ja']);
+const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'jp']);
 
 const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
 
 let language;
+
+// search for at most these many sections to find the first one that can have top spacing
+// ideally the first section would get the top spacing, but breadcrumb, hero etc do not get spacing
+const LAST_POSSIBLE_TOP_SPACING_SECTION = 3;
 
 export function getLanguageFromPath(pathname, resetCache = false) {
   if (resetCache) {
@@ -99,54 +104,12 @@ function buildModalFragmentBlock(main) {
   }
 }
 
-/**
- * Split children of this div up into 1, 2 or 3 separate divs with cut points as specified in
- * the from and to indexes, separating the elements from-to into
- * a separate div on the same level and putting the remaining elements in new divs surrounding it.
- * @param {HTMLElement} div The element to work on.
- * @param {number} from The index from from which to put element into the middle div.
- * @param {number} to The index up-to-but-not-including the element that marks then end of the
- * middle div.
- * @returns Returns the middle div.
- */
-export function splitChildDiv(div, from, to) {
-  // run backwards because moving element will delete them from the original
-
-  let afterDiv;
-  if (to < div.children.length - 1) {
-    afterDiv = document.createElement('div');
-    for (let i = div.children.length - 1; i >= to; i -= 1) {
-      afterDiv.prepend(div.children[i]);
-    }
-  }
-
-  const midDiv = document.createElement('div');
-  for (let i = to - 1; i >= from; i -= 1) {
-    midDiv.prepend(div.children[i]);
-  }
-
-  let beforeDiv;
-  if (from > 0) {
-    beforeDiv = document.createElement('div');
-    for (let i = from - 1; i >= 0; i -= 1) {
-      beforeDiv.prepend(div.children[i]);
-    }
-  }
-
-  if (beforeDiv) {
-    div.parentElement.insertBefore(beforeDiv, div);
-  }
-  div.parentElement.insertBefore(midDiv, div);
-  if (afterDiv) {
-    div.parentElement.insertBefore(afterDiv, div);
-  }
-  div.parentElement.removeChild(div);
-
-  return midDiv;
-}
-
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
-  const newBlock = buildBlockFunction('image-collage', { elems: [picture, caption] });
+  const captionText = caption.textContent;
+  const captionP = document.createElement('p');
+  captionP.innerHTML = captionText;
+  caption.remove();
+  const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
 }
@@ -310,6 +273,33 @@ export function getWindowSize() {
     height: windowHeight,
   };
 }
+
+/**
+ * We look for the first section that does not contain any of the excluded classes
+ * and add the auto-top-spacing class to it.
+ *
+ * Once we find this section, OR we reach the LAST_POSSIBLE_TOP_SPACING_SECTION (=== 3)
+ * we break out of the loop to not add spacing to other sections as well.
+ */
+export function addTopSpacingStyleToFirstMatchingSection(main) {
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const sections = [...main.querySelectorAll(':scope > div')];
+  let added = false;
+
+  sections.every((section) => {
+    if (added || sections.indexOf(section) === LAST_POSSIBLE_TOP_SPACING_SECTION) return false;
+    const sectionClasses = [...section.classList];
+    const matchesExcluded = excludedClasses.filter((excluded) => sectionClasses.includes(excluded));
+    const incompatible = matchesExcluded.length > 0;
+    if (!incompatible) {
+      section.classList.add('auto-top-spacing');
+      added = true;
+      return false;
+    }
+    return true;
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -323,6 +313,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  addTopSpacingStyleToFirstMatchingSection(main);
 }
 
 function decoratePageStyles() {
@@ -578,6 +569,20 @@ export async function loadScript(url, attrs = {}) {
   return loadingPromise;
 }
 
+/**
+ * Shuffles the contents of any array.
+ *
+ * @param {array} arr Any array. This array is modified in-place.
+ * @returns The array. It's the same array as passed in, not a copy.
+ */
+export function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
   const index = await fetchIndex('query-index', sheet);
@@ -661,6 +666,22 @@ export function addPagingWidget(
   }
 
   div.appendChild(nav);
+}
+
+export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
+  const placeholders = await fetchPlaceholders(locale);
+  if (!window.jslinq) {
+    await loadScript('/ext-libs/jslinq/jslinq.min.js');
+  }
+  const sheetName = sheet ? `sheet=${sheet}` : '';
+  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
+  const results = await tagDetails.json();
+  const { jslinq } = window;
+
+  // eslint-disable-next-line max-len
+  return jslinq(results.data).where((ele) => (!ids.length || ids.indexOf(ele.Key) > -1) && (!type || ele.Type === type))
+    .toList()
+    .map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
 }
 
 export function wrapImgsInLinks(container) {

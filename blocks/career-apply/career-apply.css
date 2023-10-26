@@ -2,6 +2,10 @@
     background-color: var(--primary);
 }
 
+.career-apply-wrapper:has(.inverted) {
+    background-color: var(--white);
+}
+
 .career-apply {
     color: var(--white);
     text-align: left;
@@ -16,9 +20,17 @@
     margin-bottom: 1rem;
 }
 
+.career-apply.inverted h2 {
+    color: var(--primary)
+}
+
 .career-apply p {
     line-height: 24px;
     margin-bottom: 1.5rem;
+}
+
+.career-apply.inverted p {
+    color: var(--light-black)
 }
 
 .career-apply .button-container {
@@ -38,6 +50,12 @@
 
 .career-apply a.button.primary.linkedin:hover {
     opacity: 0.7;
+}
+
+.career-apply.inverted a.button.primary.linkedin {
+    background-color: var(--white);
+    border-color: var(--secondary);
+    color: var(--secondary);
 }
 
 .career-apply span.icon-linkedin {

@@ -9,6 +9,10 @@
   border-collapse: collapse;
   font-size: var(--body-font-size-s);
 }
+
+.standardtable table tr {
+  display: table-row;
+}
   
 @media (min-width: 62rem) {
   .standardtable table {

@@ -703,7 +703,7 @@ export function getFormattedDate(date, locale = 'en') {
         return `${month} ${day}, ${year}`;
       },
     },
-    ja: {
+    jp: {
       locale: 'ja-JP',
       options: { year: 'numeric', month: '2-digit', day: 'numeric' },
       format: (formattedDate) => {
