@@ -18,6 +18,8 @@ main div.tab-item.active {
 }
 
 main .tabs nav ul {
+    padding: 0;
+    margin: 0;
     list-style: none;
     display: flex;
     text-wrap: nowrap;
@@ -26,6 +28,8 @@ main .tabs nav ul {
 }
 
 main .tabs nav ul li {
+    padding: 0;
+    margin: 0;
     margin-bottom: 0;
 }
 
