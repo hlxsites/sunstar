@@ -249,14 +249,14 @@ export default {
       const firstH6 = document.querySelector('h6.rabel');
 
       if (firstH6) {
-        metadataDetails.Category = firstH6.textContent;
+        metadataDetails.Category = firstH6.textContent.toLowerCase().split(' ').filter(Boolean).join('-');
       }
     }
 
     const tags = document.querySelectorAll('.tag-pill');
 
     if (tags && tags.length) {
-      metadataDetails.Tags = [...tags].map((x) => x.textContent.trim()).join(', ');
+      metadataDetails.Tags = [...tags].map((x) => x.textContent.toLowerCase().split(' ').filter(Boolean).join('-')).join(', ');
     }
 
     params.preProcessMetadata = metadataDetails;
