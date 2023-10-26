@@ -4,7 +4,7 @@ import {
   fixExcelFilterZeroes,
   getLanguage,
   getSearchWidget,
-  addPagingWidget,
+  addCustomPagingWidget,
 } from '../../scripts/scripts.js';
 
 export function getSearchParams(searchParams) {
@@ -72,7 +72,6 @@ async function searchPages(placeholders, term, page) {
   const curPage = result.slice(startResult, startResult + resultsPerPage);
 
   curPage.forEach((line) => {
-    console.log(line);
     let searchTitle;
     const res = document.createElement('div');
     res.classList.add('search-result');
@@ -141,8 +140,7 @@ async function searchPages(placeholders, term, page) {
 
   const totalResults = result.length;
   const totalPages = Math.ceil(totalResults / resultsPerPage);
-
-  addPagingWidget(div, page, totalPages);
+  addCustomPagingWidget(div, page, totalPages);
 
   return div.children;
 }

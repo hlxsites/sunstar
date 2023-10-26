@@ -667,6 +667,107 @@ export function addPagingWidget(
   div.appendChild(nav);
 }
 
+export function addCustomPagingWidget(
+  div,
+  curpage,
+  totalPages,
+  doc = document,
+  curLocation = window.location,
+) {
+  const queryParams = new URLSearchParams(curLocation.search);
+  const nav = doc.createElement('ul');
+  nav.classList.add('pagination');
+  const paginationLimit = 5;
+
+  if (totalPages > 1) {
+    const lt = doc.createElement('li');
+    lt.classList.add('page');
+    lt.classList.add('prev');
+    const lta = doc.createElement('a');
+    if (curpage === 0) {
+      lt.classList.add('disabled');
+    } else {
+      queryParams.set('pg', curpage - 1);
+      lta.href = `${curLocation.pathname}?${queryParams}`;
+    }
+    lt.appendChild(lta);
+    nav.appendChild(lt);
+
+    const threeDotsAfter = doc.createElement('li');
+    const ata = doc.createElement('a');
+    ata.innerText = '...';
+    threeDotsAfter.appendChild(ata);
+
+    const threeDotsBefore = doc.createElement('li');
+    const atb = doc.createElement('a');
+    atb.innerText = '...';
+    threeDotsBefore.appendChild(atb);
+
+    for (let i = 0; i < totalPages; i += 1) {
+      const numli = doc.createElement('li');
+      if (i === curpage) {
+        numli.classList.add('active');
+      }
+      if (i === 1) {
+        threeDotsBefore.classList.add('notvisible');
+        nav.appendChild(threeDotsBefore);
+      }
+      const a = doc.createElement('a');
+      a.innerText = i + 1;
+
+      queryParams.set('pg', i);
+      a.href = `${curLocation.pathname}?${queryParams}`;
+      numli.appendChild(a);
+
+      if (totalPages > paginationLimit) {
+        if (i > (paginationLimit - 1) && i < (totalPages - 1) && curpage < (paginationLimit - 1)) {
+          numli.classList.add('notvisible');
+        }
+        if (i === (totalPages - 1)) {
+          nav.appendChild(threeDotsAfter);
+        }
+      }
+
+      nav.appendChild(numli);
+      console.log(nav);
+    }
+
+    const rt = doc.createElement('li');
+    rt.classList.add('page');
+    rt.classList.add('next');
+    const rta = doc.createElement('a');
+    if (curpage === totalPages - 1) {
+      rt.classList.add('disabled');
+    } else {
+      queryParams.set('pg', curpage + 1);
+      rta.href = `${curLocation.pathname}?${queryParams}`;
+    }
+
+    rt.appendChild(rta);
+    nav.appendChild(rt);
+  }
+
+  if (curpage > (paginationLimit - 2)) {
+    nav.querySelector('.prev.page').nextElementSibling.nextElementSibling.classList.remove('notvisible');
+    const currentElement = nav.querySelector('.active');
+    let elementForward = currentElement.nextElementSibling.nextElementSibling;
+    while (elementForward) {
+      elementForward.classList.add('notvisible');
+      elementForward = elementForward.nextElementSibling;
+      if (elementForward.innerText === '...') break;
+    }
+    // eslint-disable-next-line
+    let elementBefore = currentElement.previousElementSibling.previousElementSibling.previousElementSibling;
+    while (elementBefore) {
+      elementBefore.classList.add('notvisible');
+      elementBefore = elementBefore.previousElementSibling;
+      if (elementBefore.innerText === '...') break;
+    }
+  }
+
+  div.appendChild(nav);
+}
+
 export function wrapImgsInLinks(container) {
   const pictures = container.querySelectorAll('p picture');
   pictures.forEach((pic) => {
