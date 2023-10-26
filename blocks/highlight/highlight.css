@@ -4,6 +4,11 @@
   flex-direction: column;
 }
 
+.block.highlight a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
 .block.highlight > * {
   flex: 1;
 }
@@ -12,6 +17,18 @@
   font-size: var(--body-font-size-xs);
   font-weight: var(--font-weight-medium);
   padding-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.block.highlight .title {
+  font-size: var(--body-font-size-l);
+  font-weight: var(--font-weight-bold);
+  padding-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.block.highlight a:hover .title{
+  text-decoration: underline;
 }
 
 .block.highlight > .others {

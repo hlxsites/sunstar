@@ -1,14 +1,3 @@
-/*
-<div>
-    <div></div>
-    <div>
-        <div></div>
-        <div></div>
-        <div></div>
-        ...
-    </div>
-</div>
-*/
 export default async function decorate(block) {
   let spotlight = document.createElement('div');
   spotlight.classList.add('spotlight');
