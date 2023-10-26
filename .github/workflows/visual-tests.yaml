@@ -50,6 +50,14 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: 'visual differences detected'
 
+      - name: Delete comment if existing
+        if: steps.find-comment.outputs.comment-id != ''
+        uses: detomarco/delete-comment@v1
+        id: delete-comment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+
       - name: Comment on Pull Request
         if: env.SUMMARY != '' && steps.find-comment.outputs.comment-id == ''
         uses: peter-evans/create-or-update-comment@v3
@@ -57,13 +65,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.number }}
           body: ${{ env.SUMMARY }}
-         
-      - name: Update comment
-        if: env.SUMMARY != '' && steps.find-comment.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          body: ${{ env.SUMMARY }}
-          edit-mode: replace
 
