@@ -225,9 +225,15 @@ h5 {
 h6 {
   font-size: var(--heading-font-size-xxxs);
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--secondary);
   font-weight: var(--font-weight-bold);
+}
+
+h6+h1,
+h6+h2,
+h6+h3 {
+  margin-top: 0;
 }
 
 p {
