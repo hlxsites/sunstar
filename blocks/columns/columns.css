@@ -111,12 +111,6 @@
   display: block;
 }
 
-.columns > div > div h2,
-.columns > div > div h3,
-.columns > div > div h4 {
-  margin: 1.5rem 0;
-}
-
 .columns > div > div p {
   margin-top: 0;
 }
