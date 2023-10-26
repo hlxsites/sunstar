@@ -25,6 +25,7 @@
   transition: none;
 }
 
+
 .carousel .text-item {
   padding: 1.5rem 1rem 5.5rem;
   opacity: 0;
@@ -294,6 +295,11 @@ main .section.carousel-container {
   .carousel .text-item {
     width: 30rem;
   }
+
+  .carousel.small .text-item {
+    width: 35rem;
+  }
+
 
   .carousel .control-container {
     width: 100%;
