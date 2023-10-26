@@ -1162,6 +1162,10 @@ main .section.padded .section-container {
     font-size: var(--heading-font-size-ms);
     margin: 2rem 0 0.5rem;
   }
+
+  h6 {
+    font-size: var(--heading-font-size-xxs);
+  }
   
   p,
   dl,

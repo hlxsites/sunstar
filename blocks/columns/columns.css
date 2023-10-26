@@ -36,7 +36,7 @@
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-medium);
   line-height: 1.3em;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 1rem;
 }
 
 .columns h6 {
@@ -315,9 +315,9 @@
   .columns h2,
   .columns:not(.no-buttons) h3,
   .columns:not(.no-buttons) h4 {
-    font-size: var(--heading-font-size-xl);
+    font-size: var(--heading-font-size-mxl);
     font-weight: var(--font-weight-small);
-    margin: 0 auto 3rem;
+    margin: 0 auto 1.5rem;
   }
 
   .columns h6 {
