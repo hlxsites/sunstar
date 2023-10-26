@@ -509,6 +509,8 @@ header .nav-bottom .other-items .mobile-lang-picker {
 }
 
 header .nav-bottom .other-items .mobile-lang-picker > ul {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -649,6 +651,8 @@ header > div > nav.nav-bottom.open > ul > li.other-items > li.mobile-website-pic
 }
 
 header > div > nav.nav-bottom.open > ul > li.other-items > li.mobile-website-picker > ul {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
