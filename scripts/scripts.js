@@ -419,7 +419,7 @@ export function fixExcelFilterZeroes(data) {
   });
 }
 
-export async function fetchIndex(indexFile, sheet, pageSize = 500) {
+export async function fetchIndex(indexFile, sheet, pageSize = 1000) {
   const idxKey = indexFile.concat(sheet || '');
 
   const handleIndex = async (offset) => {
