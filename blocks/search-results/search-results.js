@@ -4,7 +4,7 @@ import {
   fixExcelFilterZeroes,
   getLanguage,
   getSearchWidget,
-  addCustomPagingWidget,
+  addPagingWidget,
 } from '../../scripts/scripts.js';
 
 export function getSearchParams(searchParams) {
@@ -140,8 +140,66 @@ async function searchPages(placeholders, term, page) {
 
   const totalResults = result.length;
   const totalPages = Math.ceil(totalResults / resultsPerPage);
-  addCustomPagingWidget(div, page, totalPages);
+  addPagingWidget(div, page, totalPages);
+  const paginationblock = div.querySelector('ul');
+  const paginationLimit = 5;
+  if (totalPages > paginationLimit) {
+    const threeDotsAfter = document.createElement('li');
+    const ata = document.createElement('a');
+    ata.innerText = '...';
+    threeDotsAfter.appendChild(ata);
 
+    const threeDotsBefore = document.createElement('li');
+    const atb = document.createElement('a');
+    atb.innerText = '...';
+    threeDotsBefore.appendChild(atb);
+
+    const firstElement = paginationblock.querySelector('.prev.page').nextElementSibling;
+    const lastElement =  paginationblock.querySelector('.next.page').previousElementSibling;
+    firstElement.after(threeDotsBefore);
+    lastElement.before(threeDotsAfter);
+
+    if (page < (paginationLimit - 1)) {
+      firstElement.nextElementSibling.classList.add('notvisible');
+      const currentElement = paginationblock.querySelector('.active');
+      if (page === 0) {
+        var elementForward = currentElement.nextElementSibling.nextElementSibling.nextElementSibling;
+      } else {
+        var elementForward = currentElement.nextElementSibling.nextElementSibling;
+      }
+      while (elementForward) {
+        elementForward.classList.add('notvisible');
+        elementForward = elementForward.nextElementSibling;
+        if (elementForward.innerText === '...') break;
+      }
+    }
+    
+    if (page > (paginationLimit - 2) && (page < (totalPages - 3))) {
+      const currentElement = paginationblock.querySelector('.active');
+      let elementForward = currentElement.nextElementSibling.nextElementSibling;
+      while (elementForward) {
+        elementForward.classList.add('notvisible');
+        elementForward = elementForward.nextElementSibling;
+        if (elementForward.innerText === '...') break;
+      }
+      let elementBefore = currentElement.previousElementSibling.previousElementSibling.previousElementSibling;
+      while (elementBefore) {
+        elementBefore.classList.add('notvisible');
+        elementBefore = elementBefore.previousElementSibling;
+        if (elementBefore.innerText === '...') break;
+      }
+    }
+    else if (page > (totalPages - 4)) {
+      const currentElement = paginationblock.querySelector('.active');
+      lastElement.previousElementSibling.classList.add('notvisible');
+      let elementBefore = currentElement.previousElementSibling.previousElementSibling.previousElementSibling;
+      while (elementBefore) {
+        elementBefore.classList.add('notvisible');
+        elementBefore = elementBefore.previousElementSibling;
+        if (elementBefore.innerText === '...') break;
+      }
+    }
+  }
   return div.children;
 }
 
