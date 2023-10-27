@@ -419,7 +419,7 @@ export function fixExcelFilterZeroes(data) {
   });
 }
 
-export async function fetchIndex(indexFile, sheet, pageSize = 1000) {
+export async function fetchIndex(indexFile, sheet, pageSize = 500) {
   const idxKey = indexFile.concat(sheet || '');
 
   const handleIndex = async (offset) => {
@@ -427,7 +427,6 @@ export async function fetchIndex(indexFile, sheet, pageSize = 1000) {
 
     const resp = await fetch(`/${indexFile}.json?limit=${pageSize}&offset=${offset}${sheetParam}`);
     const json = await resp.json();
-
     const newIndex = {
       complete: (json.limit + json.offset) === json.total,
       offset: json.offset + pageSize,
@@ -585,11 +584,11 @@ export function shuffleArray(arr) {
 
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
-  const index = await fetchIndex('query-index', sheet);
+  let index = await fetchIndex('query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
-    await fetchIndex('query-index', sheet);
+    index = await fetchIndex('query-index', sheet);
   }
   const { jslinq } = window;
   return jslinq(index.data);
