@@ -15,13 +15,14 @@
   margin-bottom: 1.5rem;
 }
 
-.columns.invert-image-order-in-narrow-view {
+.columns.invert-image-order-in-narrow-view,
+.columns.invert-even-col-in-narrow-view {
   margin-bottom: 0;
 }
 
 .columns > div {
   display: flex;
-  align-items: flex-start;
+  align-items: normal;
   flex-direction: column;
   gap: 1em;
 }
@@ -43,6 +44,20 @@
   margin-top: 2rem;
 }
 
+.columns a.video-modal::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background: url("../../icons/play.svg") no-repeat center;
+  background-size: cover;
+  height: 5.25rem;
+  width: 5.25rem;
+  transform: translate(250%, -250%);
+  top:50%;
+  left:50%;
+  border-radius: 50%;
+}
+
 .columns.history h6 {
   color: var(--transparent-grey-color-2);
   font-size: var(--heading-font-size-mxs);
@@ -52,6 +67,10 @@
 
 .columns.history strong {
   font-size: var(--heading-font-size-ms);
+}
+
+.columns.plain-links a.button {
+  padding: 0;
 }
 
 .columns > div > div {
@@ -88,15 +107,15 @@
   left: 0.3rem;
 }
 
-.columns > div > .columns-img-col {
+.columns > div > .img-col {
   order: 0;
 }
 
-.columns.invert-image-order-in-narrow-view > div .columns-img-col {
+.columns.invert-image-order-in-narrow-view > div .img-col {
   order: 2;
 }
 
-.columns .non-singleton-img-wrapper img {
+.columns .text-col-wrapper img {
   width: 100%;
   height: auto;
   vertical-align: middle;
@@ -107,7 +126,7 @@
   height: 100%;
 }
 
-.columns > div > .columns-img-col img {
+.columns > div > .img-col img {
   display: block;
 }
 
@@ -121,7 +140,7 @@
   margin-top: 0;
 }
 
-.columns:not(.history) > div div.non-singleton-img {
+.columns:not(.history) > div div.text-col {
   margin: 0 1rem;
 }
 
@@ -136,7 +155,7 @@
   align-items: stretch;
 }
 
-.columns.constrain-width > div > div.columns-img-col {
+.columns.constrain-width > div > div.img-col {
   margin: 0 1rem;
 }
 
@@ -172,7 +191,8 @@
   font-size: var(--body-font-size-l);
 }
 
-.columns.history.invert-image-order-in-narrow-view > div {
+.columns.history.invert-image-order-in-narrow-view > div,
+.columns.invert-even-col-in-narrow-view > div:nth-child(even) {
   flex-direction: column-reverse;
 }
 
@@ -203,15 +223,15 @@
   gap: 0;
 }
 
-.columns.text-and-image-in-column > div div.non-singleton-img {
+.columns.text-and-image-in-column > div div.text-col {
   margin: 0;
 }
 
-.columns.text-and-image-in-column > div div.non-singleton-img p{
+.columns.text-and-image-in-column > div div.text-col p{
   text-align: center;
 }
 
-.columns.text-and-image-in-column > div div.non-singleton-img img{
+.columns.text-and-image-in-column > div div.text-col img{
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -226,15 +246,15 @@
   text-align: center;
 }
 
-.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type,
-.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type {
+.columns.history div.image-collage.autoblocked div.text-col:last-of-type,
+.columns.history div.image-collage.autoblocked div.img-col:last-of-type {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type picture,
-.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type picture {
+.columns.history div.image-collage.autoblocked div.text-col:last-of-type picture,
+.columns.history div.image-collage.autoblocked div.img-col:last-of-type picture {
   margin: 0 auto 2rem;
 }
 
@@ -278,6 +298,12 @@
 
   .columns.plain-links.collapse > div h6.active::after {
     transform: translateY(-50%) rotate(-180deg);
+  }
+
+  .columns a.video-modal::after {
+    transform: translate(250%, -250%);
+    top: unset;
+    left: unset;
   }
 }
 
@@ -330,6 +356,12 @@
     gap: 2rem;
     width: unset;
   }
+  
+  .columns a.video-modal::after {
+    transform: translate(200%, -200%);
+    top:unset;
+    left:unset;
+  }
 
   .columns a.button.primary {
     min-width: 11rem;
@@ -346,7 +378,7 @@
     width: 100%;
   }
 
-  .columns > div .columns-img-col {
+  .columns > div .img-col {
     order: unset;
   }
 
@@ -363,7 +395,8 @@
     gap: 2rem;
   }
 
-  .columns.invert-image-order-in-narrow-view > div .columns-img-col {
+  .columns.invert-image-order-in-narrow-view > div .img-col,
+  .columns.invert-even-col-in-narrow-view > div:nth-child(even) .img-col {
     order: unset;
   }
 
@@ -376,7 +409,7 @@
     display: block;
   }
 
-  .columns:not(.history) .non-singleton-img-wrapper img {
+  .columns:not(.history) .text-col-wrapper img:not(.video-modal) {
     height: 3.125rem;
     width: unset;
   }
@@ -406,33 +439,33 @@
     gap: 1rem;
   }
 
-  main .block.columns.machine-parts .columns-img-col {
+  main .block.columns.machine-parts .img-col {
     flex: auto;
     flex-basis: auto;
   }
 
-  main .block.columns.machine-parts .non-singleton-img h1,
-  main .block.columns.machine-parts .non-singleton-img h2,
-  main .block.columns.machine-parts .non-singleton-img h3,
-  main .block.columns.machine-parts .non-singleton-img h4,
-  main .block.columns.machine-parts .non-singleton-img h5,
-  main .block.columns.machine-parts .non-singleton-img h6 {
+  main .block.columns.machine-parts .text-col h1,
+  main .block.columns.machine-parts .text-col h2,
+  main .block.columns.machine-parts .text-col h3,
+  main .block.columns.machine-parts .text-col h4,
+  main .block.columns.machine-parts .text-col h5,
+  main .block.columns.machine-parts .text-col h6 {
     text-align: left;
     text-transform: none;
   }
 
-  main .block.columns.machine-parts .non-singleton-img p {
+  main .block.columns.machine-parts .text-col p {
     margin-bottom: 1.5rem;
   }
 
-  main .block.columns.machine-parts .non-singleton-img h6 {
+  main .block.columns.machine-parts .text-col h6 {
     font-size: var(--heading-font-size-xs);
     margin-bottom: 1rem;
     letter-spacing: 0.05em;
     color: var(--light-black);
   }
 
-  main .block.columns.machine-parts .non-singleton-img a {
+  main .block.columns.machine-parts .text-col a {
     margin-bottom: 14px;
     line-height: 1;
     display: inline-block;
@@ -442,12 +475,21 @@
     text-decoration: none;
   }
 
-  main .block.columns.machine-parts .non-singleton-img a > strong {
+  main .block.columns.machine-parts .text-col a > strong {
     color: var(--light-black);
     margin-right: 1rem;
   }
 
-  main .columns.history.invert-image-order-in-narrow-view > div {
+  main .columns.history.invert-image-order-in-narrow-view > div,
+  main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
     flex-direction: row;
+  }
+}
+
+@media (min-width: 77rem) {
+  .columns a.video-modal::after {
+    transform: translate(250%, -250%);
+    top:unset;
+    left:unset;
   }
 }

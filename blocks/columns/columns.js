@@ -28,7 +28,7 @@ export default function decorate(block) {
           if (picWrapper && picWrapper.children.length === pics.length) {
             // pictures (either wrapped in achors, or otherwise)
             // are only content in the column
-            picWrapper.classList.add('columns-img-col');
+            picWrapper.classList.add('img-col');
           }
         }
       }
@@ -37,13 +37,39 @@ export default function decorate(block) {
 
   // decorate columns with non-singleton-image content
   [...block.children].forEach((row) => {
-    const cells = row.querySelectorAll('div:not(.columns-img-col)');
+    const cells = row.querySelectorAll('div:not(.img-col)');
     if (cells.length) {
       [...cells].forEach((content) => {
-        content.classList.add('non-singleton-img');
+        content.classList.add('text-col');
         const contentWrapper = document.createElement('div');
-        contentWrapper.classList.add('non-singleton-img-wrapper');
+        contentWrapper.classList.add('text-col-wrapper');
         const contentParent = content.parentElement;
+
+        // add video modal support if there is an anchor tag after the picture
+        if (content.querySelector('picture') && content.querySelector('a')) {
+          content.classList.remove('text-col');
+          contentWrapper.classList.remove('text-col-wrapper');
+          content.classList.add('img-col');
+          contentWrapper.classList.add('img-col-wrapper');
+
+          // add the picture inside the anchor tag and remove the text
+          const anchor = content.querySelector('a');
+          anchor.textContent = '';
+          anchor.classList.add('video-modal');
+          const picture = content.querySelector('picture');
+          picture.classList.add('video-modal');
+          anchor.appendChild(picture);
+
+          // remove empty paragraphs
+          content.querySelectorAll('p').forEach((p) => {
+            if (!p.querySelector('a')) {
+              p.remove();
+            }
+          });
+
+          picture.querySelector('img').classList.add('video-modal');
+        }
+
         contentParent.insertBefore(contentWrapper, content);
         contentWrapper.appendChild(content);
         if (textOnlyColBlock) {
