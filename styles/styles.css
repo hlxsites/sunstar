@@ -219,7 +219,7 @@ ol li {
 
 
 h5 {
-  font-size: var(--heading-font-size-s)
+  font-size: var(--heading-font-size-xxs)
 }
 
 h6 {
@@ -233,6 +233,12 @@ h6 {
 h6+h1,
 h6+h2,
 h6+h3 {
+  margin-top: 0;
+}
+
+h5+h1,
+h5+h2,
+h5+h3 {
   margin-top: 0;
 }
 
@@ -1161,6 +1167,10 @@ main .section.padded .section-container {
   h4 {
     font-size: var(--heading-font-size-ms);
     margin: 2rem 0 0.5rem;
+  }
+
+  h5 {
+    font-size: var(--heading-font-size-xs);
   }
 
   h6 {
