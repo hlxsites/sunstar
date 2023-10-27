@@ -898,6 +898,11 @@ main .section.padded .section-container {
   box-sizing: border-box;
 }
 
+main .section.padded-inline .section-container {
+  padding-inline: 1rem;
+  box-sizing: border-box;
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
