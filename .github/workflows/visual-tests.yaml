@@ -42,6 +42,22 @@ jobs:
           path: .github/visual-tests/screenshots/*
           name: screenshots
 
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.number }}
+          comment-author: 'github-actions[bot]'
+          body-regex: 'visual differences? detected'
+
+      - name: Delete comment if existing
+        if: steps.find-comment.outputs.comment-id != ''
+        uses: detomarco/delete-comment@main
+        id: delete-comment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+
       - name: Comment on Pull Request
         if: env.SUMMARY != ''
         uses: peter-evans/create-or-update-comment@v3
@@ -49,5 +65,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.number }}
           body: ${{ env.SUMMARY }}
-#        edit-mode: replace
-#        comment-id: ${{ steps.find-comment.outputs.comment-id }}
+

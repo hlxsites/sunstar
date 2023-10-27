@@ -5,9 +5,19 @@ Fixes #<gh-issue-id>
 Test URLs:
 - Original: https://www.sunstar.com/<path>
 - Before: https://main--sunstar--hlxsites.hlx.live/<path>
-- After: https://<branch>--sunstar--hlxsites.hlx.live/<path>
+- After: https://$branch--sunstar--hlxsites.hlx.live/<path>
+
+- [ ] New Blocks introduced in this PR
+      If yes, please provide details below
+
+Block Name    | Documentation
+------------- | -------------
+ For e.g. cards | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=0)
 
 
-- [ ]  **If you are adding a new block or a variation to an existing block**, please fill below:
 
-  Block library path: https://<branch>--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/<your-block>&index=0
+- [ ] New variations introduced in this PR
+
+Variation Name    | Documentation
+------------- | -------------
+ For e.g. cards (grid)  | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=2)
