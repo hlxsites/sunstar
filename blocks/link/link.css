@@ -46,6 +46,13 @@
 }
 
 
+.block.link.download a::after {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
+
 @media (min-width:62rem) {
   .block.link.large-button a {
       font-size: 1.5rem;
@@ -56,3 +63,4 @@
   }
 
 }
+
