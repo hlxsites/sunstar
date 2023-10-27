@@ -59,7 +59,7 @@
 }
 
 .columns > div > div > div {
-  width: 100%
+  width: 100%;
 }
 
 .columns.history > div {
@@ -120,7 +120,6 @@
 .columns > div > div p {
   margin-top: 0;
 }
-
 
 .columns:not(.history) > div div.non-singleton-img {
   margin: 0 1rem;
@@ -212,17 +211,17 @@
   margin: 0;
 }
 
-.columns.text-and-image-in-column > div div.non-singleton-img p{
+.columns.text-and-image-in-column > div div.non-singleton-img p {
   text-align: center;
 }
 
-.columns.text-and-image-in-column > div div.non-singleton-img img{
+.columns.text-and-image-in-column > div div.non-singleton-img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-  /* both autoblocking options for bottom caption */
+/* both autoblocking options for bottom caption */
 .columns.history div.image-collage.autoblocked picture ~ em,
 .columns.history div.image-collage.autoblocked picture ~ p {
   color: var(--steel-blue);
@@ -231,15 +230,25 @@
   text-align: center;
 }
 
-.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type,
-.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type {
+.columns.history
+  div.image-collage.autoblocked
+  div.non-singleton-img:last-of-type,
+.columns.history
+  div.image-collage.autoblocked
+  div.columns-img-col:last-of-type {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.columns.history div.image-collage.autoblocked div.non-singleton-img:last-of-type picture,
-.columns.history div.image-collage.autoblocked div.columns-img-col:last-of-type picture {
+.columns.history
+  div.image-collage.autoblocked
+  div.non-singleton-img:last-of-type
+  picture,
+.columns.history
+  div.image-collage.autoblocked
+  div.columns-img-col:last-of-type
+  picture {
   margin: 0 auto 2rem;
 }
 
@@ -262,7 +271,9 @@
     margin-top: 3rem;
   }
 
-  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
+    > div
+    > div:first-child {
     margin-top: 0;
   }
 

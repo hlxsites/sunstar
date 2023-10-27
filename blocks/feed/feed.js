@@ -116,7 +116,7 @@ export default async function decorate(block) {
   const category = (blockCfg.category ?? getMetadataNullable('category' ?? queryParams.get('feed-category')))?.trim().toLowerCase();
   const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? queryParams.get('feed-tags'))?.trim().toLowerCase();
   const omitPageTypes = (blockCfg['omit-page-types'] ?? getMetadataNullable('omit-page-types')
-  ?? queryParams.get('feed-omit-page-types'))?.trim().toLowerCase();
+    ?? queryParams.get('feed-omit-page-types'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
   const results = queryObj.where(function filterElements(el) {
     const elType = (el.type ?? '').trim().toLowerCase();

@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-.block.highlight a:hover .title{
+.block.highlight a:hover .title {
   text-decoration: underline;
 }
 
@@ -42,7 +42,7 @@
 .block.highlight > .others > .other {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #3C465033;
+  border-bottom: 1px solid #3c465033;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
   gap: 1rem;
@@ -56,13 +56,13 @@
 }
 
 .block.highlight > .others picture > img {
-    width: 100%; /* Cover the full width of the container */
-    height: 100%; /* Cover the full height of the container */
-    object-fit: cover; /* Maintain aspect ratio while covering the container */
-    position: absolute; /* Position the image absolutely inside the container */
-    top: 0;
-    left: 0;
-  }
+  width: 100%; /* Cover the full width of the container */
+  height: 100%; /* Cover the full height of the container */
+  object-fit: cover; /* Maintain aspect ratio while covering the container */
+  position: absolute; /* Position the image absolutely inside the container */
+  top: 0;
+  left: 0;
+}
 
 @media (min-width: 62rem) {
   .block.highlight {
