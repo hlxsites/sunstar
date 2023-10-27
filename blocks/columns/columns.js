@@ -50,6 +50,7 @@ export default function decorate(block) {
           content.classList.remove('text-col');
           contentWrapper.classList.remove('text-col-wrapper');
           content.classList.add('img-col');
+          content.classList.add('video-modal');
           contentWrapper.classList.add('img-col-wrapper');
 
           // add the picture inside the anchor tag and remove the text

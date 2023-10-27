@@ -22,7 +22,7 @@
 
 .columns > div {
   display: flex;
-  align-items: normal;
+  align-items: flex-start;
   flex-direction: column;
   gap: 1em;
 }
@@ -42,20 +42,6 @@
 
 .columns h6 {
   margin-top: 2rem;
-}
-
-.columns a.video-modal::after {
-  display: block;
-  position: absolute;
-  content: '';
-  background: url("../../icons/play.svg") no-repeat center;
-  background-size: cover;
-  height: 5.25rem;
-  width: 5.25rem;
-  transform: translate(250%, -250%);
-  top:50%;
-  left:50%;
-  border-radius: 50%;
 }
 
 .columns.history h6 {
@@ -190,6 +176,23 @@
   flex-direction: column-reverse;
 }
 
+.columns div.img-col.video-modal p {
+  position: relative;
+}
+
+.columns div.img-col.video-modal p::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background: url("../../icons/play.svg") no-repeat center;
+  background-size: cover;
+  height: 5.25rem;
+  width: 5.25rem;
+  border-radius: 50%;
+  top: calc(50% - 5.25rem / 2);
+  left: calc(50% - 5.25rem / 2);
+}
+
 .columns.plain-links > div > div p:last-of-type {
   margin-bottom: 0;
 }
@@ -293,12 +296,6 @@
   .columns.plain-links.collapse > div h6.active::after {
     transform: translateY(-50%) rotate(-180deg);
   }
-
-  .columns a.video-modal::after {
-    transform: translate(250%, -250%);
-    top: unset;
-    left: unset;
-  }
 }
 
 .columns.plain-links > div li {
@@ -349,12 +346,6 @@
     align-items: center;
     gap: 2rem;
     width: unset;
-  }
-  
-  .columns a.video-modal::after {
-    transform: translate(200%, -200%);
-    top:unset;
-    left:unset;
   }
 
   .columns a.button.primary {
@@ -477,13 +468,5 @@
   main .columns.history.invert-image-order-in-narrow-view > div,
   main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
     flex-direction: row;
-  }
-}
-
-@media (min-width: 77rem) {
-  .columns a.video-modal::after {
-    transform: translate(250%, -250%);
-    top:unset;
-    left:unset;
   }
 }
