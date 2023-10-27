@@ -46,7 +46,6 @@ export default function decorate(block) {
           // add the picture inside the anchor tag and remove the text
           anchor.textContent = '';
           anchor.classList.add('video-modal');
-          picture.classList.add('video-modal');
           anchor.appendChild(picture);
 
           // remove empty paragraphs
@@ -64,19 +63,21 @@ export default function decorate(block) {
     });
   });
 
-  // decorate columns with non-singleton-image content
+  // decorate columns with text-col content
   [...block.children].forEach((row) => {
-    const cells = row.querySelectorAll('div:not(.img-col):not(.img-col-wrapper)');
+    const cells = row.querySelectorAll('div:not(.img-col)');
     if (cells.length) {
       [...cells].forEach((content) => {
-        content.classList.add('text-col');
-        const contentWrapper = document.createElement('div');
-        contentWrapper.classList.add('text-col-wrapper');
-        const contentParent = content.parentElement;
-        contentParent.insertBefore(contentWrapper, content);
-        contentWrapper.appendChild(content);
-        if (textOnlyColBlock) {
-          content.classList.add('text-only');
+        if (!content.querySelector('picture')) {
+          content.classList.add('text-col');
+          const contentWrapper = document.createElement('div');
+          contentWrapper.classList.add('text-col-wrapper');
+          const contentParent = content.parentElement;
+          contentParent.insertBefore(contentWrapper, content);
+          contentWrapper.appendChild(content);
+          if (textOnlyColBlock) {
+            content.classList.add('text-only');
+          }
         }
       });
     }
