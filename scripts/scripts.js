@@ -13,6 +13,7 @@ import {
   loadCSS,
   getMetadata,
   isInternalPage,
+  fetchPlaceholders,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -665,6 +666,22 @@ export function addPagingWidget(
   }
 
   div.appendChild(nav);
+}
+
+export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
+  const placeholders = await fetchPlaceholders(locale);
+  if (!window.jslinq) {
+    await loadScript('/ext-libs/jslinq/jslinq.min.js');
+  }
+  const sheetName = sheet ? `sheet=${sheet}` : '';
+  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
+  const results = await tagDetails.json();
+  const { jslinq } = window;
+
+  // eslint-disable-next-line max-len
+  return jslinq(results.data).where((ele) => (!ids.length || ids.indexOf(ele.Key) > -1) && (!type || ele.Type === type))
+    .toList()
+    .map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
 }
 
 export function wrapImgsInLinks(container) {
