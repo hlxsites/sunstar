@@ -44,18 +44,19 @@ const extractEmbed = (document) => {
 * Creates a Fragment block from a section
 * @param {HTMLDocument} document The document
 */
-const createFragmentBlockFromSection = (document) => {
+const createFragmentBlockFromSection = (document, url) => {
   const block = [];
   const healthifyThinkingCard = document.querySelector('.related-article');
   const newsPressCard = document.querySelector('.news-featured');
   let section;
   block.push(['Fragment']);
 
+  const { pathname } = new URL(url);
   if (healthifyThinkingCard) {
-    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/related-articles']);
+    block.push([`https://main--sunstar--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/related-articles`]);
     section = healthifyThinkingCard;
   } else if (newsPressCard) {
-    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/featured-articles']);
+    block.push([`https://main--sunstar--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/featured-articles`]);
     section = newsPressCard;
   }
 
@@ -168,7 +169,7 @@ const removeRedundantTag = (document) => {
 const remmoveNewsContactBar = (document) => {
   const newsContactBar = document.querySelector('.news-contact-bar');
 
-  if (newsContactBar) {
+  if (newsContactBar?.querySelector('.side-card')) {
     const block = [];
     block.push(['Fragment']);
     block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/press-contact-download-center']);
@@ -178,7 +179,36 @@ const remmoveNewsContactBar = (document) => {
   }
 };
 
-const customImportLogic = (document) => {
+const createDownloadLinkBlock = (document, url) => {
+  const learnMore = document.querySelector('.ss-learn-more');
+  const learnMoreContainer = learnMore?.querySelector('.ss-learn-more-container');
+  const { pathname } = new URL(url);
+
+  if (learnMoreContainer && pathname.includes('/jp/')) {
+    const li = learnMoreContainer.querySelectorAll('ul>li');
+    learnMoreContainer.remove();
+
+    if (li.length) {
+      li.forEach((ele, index) => {
+        if (index === 0) {
+          const p = document.createElement('p');
+          p.textContent = ele.textContent;
+          learnMore.appendChild(p);
+        } else {
+          const a = ele.querySelector('a');
+          a.href = a.href.replaceAll('wp-content/uploads', 'jp/assets');
+          const block = [];
+          block.push(['Link (Download, no-buttons)']);
+          block.push([a]);
+          const table = WebImporter.DOMUtils.createTable(block, document);
+          learnMore.appendChild(table);
+        }
+      });
+    }
+  }
+};
+
+const customImportLogic = (document, url) => {
   removeRedundantTag(document);
   changeAnchorLinks(document);
   addBreadCrumb(document);
@@ -188,7 +218,8 @@ const customImportLogic = (document) => {
   addQuoteBlock(document);
   fixRelativeLinks(document);
   remmoveNewsContactBar(document);
-  createFragmentBlockFromSection(document);
+  createFragmentBlockFromSection(document, url);
+  createDownloadLinkBlock(document, url);
 };
 
 export default {
@@ -276,7 +307,7 @@ export default {
       'noscript',
     ]);
 
-    customImportLogic(document);
+    customImportLogic(document, url);
     // create the metadata block and append it to the main element
     createMetadata(main, document, params);
 
