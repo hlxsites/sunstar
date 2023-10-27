@@ -31,46 +31,48 @@ export default function decorate(block) {
             picWrapper.classList.add('img-col');
           }
         }
-      }
-    });
-  });
 
-  // decorate columns with non-singleton-image content
-  [...block.children].forEach((row) => {
-    const cells = row.querySelectorAll('div:not(.img-col)');
-    if (cells.length) {
-      [...cells].forEach((content) => {
-        content.classList.add('text-col');
-        const contentWrapper = document.createElement('div');
-        contentWrapper.classList.add('text-col-wrapper');
-        const contentParent = content.parentElement;
-
-        // add video modal support if there is an anchor tag after the picture
-        if (content.querySelector('picture') && content.querySelector('a')) {
-          content.classList.remove('text-col');
-          contentWrapper.classList.remove('text-col-wrapper');
-          content.classList.add('img-col');
-          content.classList.add('video-modal');
+        // add video modal support if there is an anchor (to a video) and a picture
+        const anchor = col.querySelector('a');
+        const picture = col.querySelector('picture');
+        const anchorIsModal = anchor && anchor.classList.contains('video-link');
+        if (picture && anchorIsModal) {
+          const contentWrapper = document.createElement('div');
           contentWrapper.classList.add('img-col-wrapper');
 
+          col.classList.add('img-col');
+          col.classList.add('video-modal');
+
           // add the picture inside the anchor tag and remove the text
-          const anchor = content.querySelector('a');
           anchor.textContent = '';
           anchor.classList.add('video-modal');
-          const picture = content.querySelector('picture');
           picture.classList.add('video-modal');
           anchor.appendChild(picture);
 
           // remove empty paragraphs
-          content.querySelectorAll('p').forEach((p) => {
+          col.querySelectorAll('p').forEach((p) => {
             if (!p.querySelector('a')) {
               p.remove();
             }
           });
 
           picture.querySelector('img').classList.add('video-modal');
+          col.parentElement.insertBefore(contentWrapper, col);
+          contentWrapper.appendChild(col);
         }
+      }
+    });
+  });
 
+  // decorate columns with non-singleton-image content
+  [...block.children].forEach((row) => {
+    const cells = row.querySelectorAll('div:not(.img-col):not(.img-col-wrapper)');
+    if (cells.length) {
+      [...cells].forEach((content) => {
+        content.classList.add('text-col');
+        const contentWrapper = document.createElement('div');
+        contentWrapper.classList.add('text-col-wrapper');
+        const contentParent = content.parentElement;
         contentParent.insertBefore(contentWrapper, content);
         contentWrapper.appendChild(content);
         if (textOnlyColBlock) {
