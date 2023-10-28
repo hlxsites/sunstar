@@ -115,10 +115,6 @@
   margin-top: 0;
 }
 
-.columns:not(.history) > div div.non-singleton-img {
-  margin: 0 1rem;
-}
-
 .columns.history h2 {
   border-bottom: 1px solid var(--primary);
   margin-bottom: 1rem;
@@ -149,10 +145,6 @@
 
 .columns.top-down.columns-3-cols {
   max-width: 1200px;
-}
-
-.columns > div > div:not(.columns-img-col) {
-  padding: 1rem;
 }
 
 .columns.plain-links > div > div,
@@ -213,6 +205,14 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.columns:not(.no-padding) > div > div:not(.columns-img-col) {
+  padding: 1rem;
+}
+
+.columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
+  margin: 0 1rem;
 }
 
 /* both autoblocking options for bottom caption */

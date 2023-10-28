@@ -219,9 +219,8 @@ ol li {
   padding: 0 0 0 0.375rem;
 }
 
-
 h5 {
-  font-size: var(--heading-font-size-xxs)
+  font-size: var(--heading-font-size-xxs);
 }
 
 h6 {
@@ -232,15 +231,15 @@ h6 {
   font-weight: var(--font-weight-bold);
 }
 
-h6+h1,
-h6+h2,
-h6+h3 {
+h6 + h1,
+h6 + h2,
+h6 + h3 {
   margin-top: 0;
 }
 
-h5+h1,
-h5+h2,
-h5+h3 {
+h5 + h1,
+h5 + h2,
+h5 + h3 {
   margin-top: 0;
 }
 
@@ -955,8 +954,7 @@ main .section.padded-inline .section-container {
 
 /* END Keyframes END */
 
-
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .mobile {
     display: none;
   }
@@ -1169,6 +1167,11 @@ main .section.padded-inline .section-container {
   /* section - padded */
   main .section.padded .section-container {
     padding: 2rem;
+  }
+
+  /* section - padded-inline - not applied for wide screens */
+  main .section.padded-inline .section-container {
+    padding-inline: 0;
   }
 
   /* END Section Styles END */
