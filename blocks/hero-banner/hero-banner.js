@@ -100,7 +100,7 @@ export default async function decorate($block) {
   if ($contentRow) {
     decorateTextContent($contentRow, $block, placeholders);
   }
-  if ($block.classList.contains('overlap')) {
+  if ($block.classList && $block.classList.contains('overlap')) {
     $block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
   }
 }

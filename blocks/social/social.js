@@ -70,12 +70,11 @@ export default async function decorate(block) {
       const hrefVal = `${prefix}${typeKey}/${categoryMetadata}`;
       const categories = await fetchTagsOrCategories([categoryMetadata], 'categories', type, locale);
       const category = categories[0];
-      const h4 = document.createElement('h4');
       const a = document.createElement('a');
+      a.classList.add('category-title');
       a.href = hrefVal || '#';
       a.textContent = category?.name ?? categoryMetadata;
-      h4.appendChild(a);
-      firstH1.insertAdjacentElement('beforebegin', h4);
+      firstH1.insertAdjacentElement('beforebegin', a);
     }
 
     decorateAnchors(block);
