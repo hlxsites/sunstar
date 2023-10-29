@@ -5,7 +5,7 @@
   touch-action: manipulation;
 }
 
-.carousel.small{
+.carousel.small {
   background-color: var(--white);
   position: relative;
   left: 25%;
@@ -49,7 +49,7 @@
   object-fit: cover;
 }
 
-.carousel.small img{
+.carousel.small img {
   object-fit:contain;
 }
 
@@ -91,7 +91,7 @@
   margin-bottom: 1.875rem;
 }
 
-.carousel.small p{
+.carousel.small p {
   font-size: 14px;
 }
 
@@ -110,7 +110,7 @@
   overflow: hidden;
 }
 
-.carousel.small .image{
+.carousel.small .image {
   width: 6rem;
   height: 6rem;
   left: unset;
@@ -310,5 +310,10 @@ main .section.carousel-container {
 @media (max-width: 61rem) {
   .carousel.small {
     left: unset;
+  }
+
+  .carousel.small .image {
+    width: auto;
+    height: 14rem;
   }
 }
