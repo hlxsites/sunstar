@@ -17,7 +17,7 @@
 
 .columns > div {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 1em;
   margin-bottom: 4rem;
@@ -53,10 +53,6 @@
 
 .columns > div > div {
   order: 1;
-}
-
-.columns > div > div > div {
-  width: 100%
 }
 
 .columns.history > div {
