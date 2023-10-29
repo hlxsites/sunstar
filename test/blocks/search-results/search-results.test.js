@@ -99,7 +99,7 @@ describe('Search Results', () => {
     expect(res2.nodeName).to.equal('DIV');
     expect(res2.classList.toString()).to.equal('search-result');
     const res2h3 = res2.children[1];
-    expect(res2h3.nodeName).to.equal('H3');
+    expect(res2h3.nodeName).to.equal('P');
     const res2h3a = res2h3.children[0];
     expect(res2h3a.nodeName).to.equal('A');
     expect(res2h3a.href.endsWith('/news/c/')).to.be.true;
