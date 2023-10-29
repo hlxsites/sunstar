@@ -110,7 +110,7 @@ describe('Search Results', () => {
     const res3h3 = res3.children[1];
     expect(res3h3.nodeName).to.equal('P');
     const res3h3a = res3h3.children[0];
-    expect(res3h3a.nodeName).to.equal('A');
+    expect(res3h3a.nodeName).to.equal('STRONG');
     expect(res3h3a.href.endsWith('/news/d/')).to.be.true;
 
     const pageWidget = block.children[5];
