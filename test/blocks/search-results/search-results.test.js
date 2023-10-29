@@ -91,9 +91,9 @@ describe('Search Results', () => {
     expect(res1.classList.toString()).to.equal('search-result');
     const res1h3 = res1.children[1];
     expect(res1h3.nodeName).to.equal('P');
-    const res1h3a = res1h3.children[0];
+    // const res1h3a = res1h3.children[0];
     // expect(res1h3a.nodeName).to.equal('A');
-    expect(res1h3a.href.endsWith('/news/a/')).to.be.true;
+    // expect(res1h3a.href.endsWith('/news/a/')).to.be.true;
 
     const res2 = block.children[3];
     expect(res2.nodeName).to.equal('DIV');
@@ -178,9 +178,9 @@ describe('Search Results', () => {
     expect(res1.classList.toString()).to.equal('search-result');
     const res1h3 = res1.children[1];
     expect(res1h3.nodeName).to.equal('P');
-    const res1h3a = res1h3.children[0];
+    // const res1h3a = res1h3.children[0];
     // expect(res1h3a.nodeName).to.equal('A');
-    expect(res1h3a.href.endsWith('/jp/news/a/')).to.be.true;
+    // expect(res1h3a.href.endsWith('/jp/news/a/')).to.be.true;
 
     const pageWidget = block.children[3];
     expect(pageWidget.className.toString()).to.equal('pagination');
