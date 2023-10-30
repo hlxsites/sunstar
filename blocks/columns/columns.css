@@ -55,10 +55,6 @@
   order: 1;
 }
 
-.columns > div > div > div {
-  width: 100%;
-}
-
 .columns.history > div {
   align-items: center;
 }
