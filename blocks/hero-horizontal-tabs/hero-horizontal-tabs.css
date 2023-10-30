@@ -100,10 +100,17 @@ main .hero-horiz-tabs-img picture > img {
 }
 
 main .hero-horizontal-tabs nav ul {
+  padding: 0;
+  margin: 0;
   list-style: none;
   display: flex;
   align-items: flex-end;
   text-wrap: nowrap;
+}
+
+main .hero-horizontal-tabs nav ul li {
+  padding: 0;
+  margin: 0;
 }
 
 main .hero-horizontal-tabs nav button {

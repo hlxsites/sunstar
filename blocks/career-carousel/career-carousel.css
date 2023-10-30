@@ -129,7 +129,7 @@
   align-items: center;
   margin-top: 3.125rem;
   margin-bottom: 2.5rem;
-  margin-inline: auto;
+  margin-left: calc(50% - 4rem);
 }
 
 .career-carousel .career-slides-nav span {

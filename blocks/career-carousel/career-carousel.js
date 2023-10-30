@@ -1,5 +1,5 @@
-import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
-import { fetchIndex, shuffleArray } from '../../scripts/scripts.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchIndex, getLanguage, shuffleArray } from '../../scripts/scripts.js';
 
 export function filterIncompleteEntries(json) {
   return json.data.filter((e) => e.image !== '' && e['career-quote'] !== '0' && e['career-jobtitle'] !== '0');
@@ -45,8 +45,13 @@ export function scrollToAdjacent(spans, slideDivs, slides, next, doc) {
   );
 }
 
+const MAX_BUTTONS = 10;
 export default async function decorate(block) {
-  const json = await fetchIndex('query-index', 'career-testimonials');
+  const lang = getLanguage();
+  const placeholders = await fetchPlaceholders(lang);
+
+  const idxPrefix = lang === 'en' ? '' : `${lang}-`;
+  const json = await fetchIndex('query-index', `${idxPrefix}career-testimonials`);
   const data = shuffleArray(filterIncompleteEntries(json));
 
   const careerSlider = document.createElement('div');
@@ -80,7 +85,7 @@ export default async function decorate(block) {
     a.append(role);
 
     const link = document.createElement('button');
-    link.textContent = 'Read More '; // TODO
+    link.textContent = placeholders['career-carousel-readmore'];
     const arrow = document.createElement('img');
     arrow.src = '/icons/angle-right-blue.svg';
     arrow.alt = 'Go to testimonial';
@@ -100,7 +105,7 @@ export default async function decorate(block) {
   navButtons.classList.add('career-slides-nav');
 
   const buttons = [];
-  for (let i = 0; i < data.length; i += 1) {
+  for (let i = 0; i < data.length && i < MAX_BUTTONS; i += 1) {
     const prevDiv = i > 0 ? slideDivs[i - 1] : null;
 
     const s = document.createElement('span');

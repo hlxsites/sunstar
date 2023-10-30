@@ -17,6 +17,7 @@ main .toc-wrapper {
 }
 
 main .toc.block ul {
+    padding: 0;
     width: 15rem;
     background: var(--white);
     margin: 0;
@@ -25,6 +26,7 @@ main .toc.block ul {
 }
 
 main .toc.block ul li {
+    margin: 0;
     border-top: none;
     margin-bottom: 1rem;
     padding: 0 1rem;
@@ -57,16 +59,17 @@ main .toc-container .section-container .toc.flat ul {
     justify-content: center;
     padding-left: 0;
     width: 100%;
+    container-type: inline-size;
 }
 
 main .toc-container .section-container .toc.flat ul li {
-    padding: 5px 1rem;
+    padding: 4px 1rem;
     color: var(--secondary);
     border-right: 1px solid var(--overlay-background-color);
 }
 
 main .toc-container .section-container .toc.flat ul li:last-child {
-    border-right: none;
+    border: none;
 }
 
 main .toc-container .section-container .toc.flat ul li a {
@@ -111,6 +114,8 @@ main .section:not([id='']) {
         margin-bottom: unset;
     }
 
+    
+
     main .toc.block ul li:last-child {
         border-bottom: 1px solid var(--overlay-background-color);
     }
@@ -127,6 +132,10 @@ main .section:not([id='']) {
 
     main .toc.block.flat ul li:last-child {
         border-bottom: unset;
+    }
+
+    main .toc-container .section-container .toc.flat ul li {
+        padding: 4px 2rem;
     }
 
     main .main-content h2 {

@@ -65,6 +65,7 @@
     text-transform: capitalize;
     color: var(--text-color);
     margin-bottom: 0;
+    font-size: var(--heading-font-size-xxs);
 }
 
 .network-item div.network-item-text h6:not(:first-of-type) {
