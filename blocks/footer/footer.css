@@ -39,6 +39,8 @@ footer .footer-top a {
 }
 
 footer .footer-top-item:last-of-type li {
+  margin: 0;
+  padding: 0;
   display: block;
   font-size: var(--body-font-size-m);
   margin-bottom: 1.5rem;
@@ -55,6 +57,8 @@ footer .footer-top-item:last-of-type h5 {
 }
 
 footer .footer-top ul {
+  margin: 0;
+  padding: 0;
   margin-bottom: 1.75rem;
 }
 
@@ -132,6 +136,8 @@ footer .icon-link-white {
   }
 
   footer .footer-top ul>li {
+    margin: 0;
+    padding: 0;
     display: block;
     font-size: 0.813rem;
     margin-bottom: 0.625rem;

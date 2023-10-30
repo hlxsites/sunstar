@@ -1,15 +1,5 @@
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
-import { decorateAnchors, getLanguage } from '../../scripts/scripts.js';
-
-const getModifiedVal = (item) => {
-  if (item) {
-    return item.trim().toLowerCase()
-      .split(' ')
-      .filter(Boolean)
-      .join('-');
-  }
-  return '';
-};
+import { getMetadata } from '../../scripts/lib-franklin.js';
+import { decorateAnchors, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 /**
  * decorates the social block
@@ -41,6 +31,9 @@ export default async function decorate(block) {
   } else {
     const childs = Array.from(block.children);
     const spanWithImg = [];
+    let categoryMetadata = getMetadata('category') || '';
+    categoryMetadata = categoryMetadata.trim().toLowerCase();
+    const type = getMetadata('type') || '';
 
     childs.forEach((x) => {
       const a = x.querySelector('a');
@@ -65,34 +58,25 @@ export default async function decorate(block) {
     });
 
     const socialContainer = block.closest('.section.social-container>.section-container');
-    const firstP = socialContainer?.querySelector('p');
+    const firstH1 = socialContainer?.querySelector('h1');
+    const typeKey = type
+      .toLowerCase().split(' ')
+      .filter(Boolean)
+      .join('-');
 
-    if (firstP?.nextElementSibling?.tagName === 'H1') {
-      const innerSpan = document.createElement('span');
-      innerSpan.textContent = firstP.textContent;
-      innerSpan.classList.add('tag-name');
-      firstP.replaceWith(innerSpan);
-    }
-
-    const firstH4 = socialContainer?.querySelector('h4');
-
-    if (firstH4?.nextElementSibling?.tagName === 'H1') {
-      const { textContent } = firstH4;
-      const placeholders = await fetchPlaceholders(getLanguage());
-      const newMap = {};
-      Object.keys(placeholders).forEach((entry) => {
-        const newEntry = getModifiedVal(entry);
-        newMap[newEntry] = placeholders[entry];
-      });
-
-      const modifiedTextContent = getModifiedVal(textContent);
-      const val = newMap[`${modifiedTextContent}-href`] || '#';
+    if (firstH1) {
+      const locale = getLanguage();
+      const prefix = locale === 'en' ? '/' : `/${locale}/`;
+      const hrefVal = `${prefix}${typeKey}/${categoryMetadata}`;
+      const categories = await fetchTagsOrCategories([categoryMetadata], 'categories', type, locale);
+      const category = categories[0];
       const a = document.createElement('a');
-      a.href = val;
-      a.textContent = textContent;
-      firstH4.innerHTML = '';
-      firstH4.appendChild(a);
+      a.classList.add('category-title');
+      a.href = hrefVal || '#';
+      a.textContent = category?.name ?? categoryMetadata;
+      firstH1.insertAdjacentElement('beforebegin', a);
     }
+
     decorateAnchors(block);
   }
 }

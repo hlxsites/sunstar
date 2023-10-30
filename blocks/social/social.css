@@ -110,9 +110,6 @@ main .section.social-container h1 + p {
 main .section.social-container h4 {
   color: var(--light-black);
   margin-bottom: 0.5rem;
-  letter-spacing: 0.05rem;
-  font-size: var(--heading-font-size-xxs);
-  font-weight: var(--font-weight-bold);
 }
 
 main .section.social-container .section-container ul {
@@ -161,6 +158,10 @@ div.social-container h3 {
 
 .block.social.general a:hover {
   transform: scale(1.1);
+}
+
+main .section.social-container a.category-title {
+  font-weight:  var(--font-weight-bold);
 }
 
 @media (min-width: 62rem) {
