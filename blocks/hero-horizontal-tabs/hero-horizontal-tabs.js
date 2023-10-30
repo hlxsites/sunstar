@@ -31,14 +31,14 @@ export default function decorate(block) {
   const image = getImage(block);
   const text = getText(block);
   const tabs = createTabs(block, text);
-
+  if(tabs){
   // move the tab riders in front
   const wrapper = block.parentElement;
   const container = wrapper.parentElement;
   container.insertBefore(wrapper, container.firstElementChild);
 
   addTabs(tabs, block);
-
+  }
   if (image) {
     block.append(image);
   } else {
