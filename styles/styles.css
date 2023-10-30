@@ -896,10 +896,6 @@ main .section.bg-primary .section-container {
   padding-bottom: 1rem;
 }
 
-main .section.newsroom .section-container {
-  margin-top: 0;
-}
-
 /* Keep the bg-primary styles together */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.bg-primary h1,
