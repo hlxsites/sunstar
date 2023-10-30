@@ -855,7 +855,7 @@ main .section.no-margin-top {
 }
 
 /* section - no-margin-top for newsroom */
-main .section.no-margin-top .section-container {
+main .section.newsroom .section-container {
   margin-top: 0;
 }
 
@@ -917,6 +917,10 @@ main .section.bg-primary h6 {
   color: var(--white);
   padding-top: 3rem;
   margin-bottom: 0;
+}
+
+main .section.newsroom h4 {
+  color: #89d1e1;
 }
 
 main .section.bg-primary p {
