@@ -849,6 +849,11 @@ main .section.no-margin-bottom {
   margin-bottom: 0;
 }
 
+/* section - no margin-top */
+main .section.no-margin-top {
+  margin-top: 0;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
