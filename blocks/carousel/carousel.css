@@ -92,7 +92,7 @@
 }
 
 .carousel.small p {
-  font-size: 14px;
+  font-size: var(--font-size-small);
 }
 
 .carousel h2 {
