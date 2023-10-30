@@ -2,7 +2,7 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock,
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex } from '../../scripts/scripts.js';
+import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -104,7 +104,7 @@ export default async function decorate(block) {
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
-  const queryObj = await queryIndex();
+  const queryObj = await queryIndex(`${getLanguage()}-search`);
 
   // Get the query string, which includes the leading "?" character
   const queryString = window.location.search;
