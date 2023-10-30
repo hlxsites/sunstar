@@ -849,11 +849,6 @@ main .section.no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* section - no margin-top */
-main .section.no-margin-top {
-  margin-top: 0;
-}
-
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
@@ -899,6 +894,10 @@ main .section.bg-primary,
 main .section.bg-primary .section-container {
   background-color: var(--primary);
   padding-bottom: 1rem;
+}
+
+main .section.newsroom .section-container {
+  margin-top: 0;
 }
 
 /* Keep the bg-primary styles together */
