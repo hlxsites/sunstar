@@ -826,11 +826,6 @@ main .section.static .section-container {
   margin-bottom: 5rem;
 }
 
-/* section - no-padding-top for newsroom h1 */
-main .section.newsroom h1 {
-  padding-top: 0;
-}
-
 main .section.static .section-container h1 {
   font-size: var(--heading-font-size-l);
   margin: 3rem 0 2rem;
@@ -923,6 +918,11 @@ main .section.bg-primary h6 {
   color: var(--white);
   padding-top: 3rem;
   margin-bottom: 0;
+}
+
+/* section - no-padding-top for newsroom h1 */
+main .section.bg-primary.newsroom h1 {
+  padding-top: 0;
 }
 
 main .section.newsroom h4 {
