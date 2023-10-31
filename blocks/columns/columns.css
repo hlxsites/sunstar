@@ -169,7 +169,7 @@
   position: relative;
 }
 
-.columns div.img-col.video-modal p::after {
+.columns div.img-col.video-modal a::after {
   display: block;
   position: absolute;
   content: '';
