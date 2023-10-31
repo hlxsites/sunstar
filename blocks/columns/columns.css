@@ -406,7 +406,7 @@
     display: block;
   }
 
-  .columns:not(.history) .text-col-wrapper img:not(.video-modal) {
+  .columns:not(.history, .text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
     height: 3.125rem;
     width: unset;
   }
