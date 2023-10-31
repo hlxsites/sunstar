@@ -16,7 +16,8 @@ export default function decorate(block) {
   }
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
-  const textOnlyColBlock = !block.querySelector('picture');
+  const videoAnchor = [...block.querySelectorAll('a')].filter((a) => a.href.includes('.mp4'));
+  const textOnlyColBlock = !block.querySelector('picture') && !videoAnchor.length;
 
   // setup image columns
   [...block.children].forEach((row) => {
@@ -29,6 +30,19 @@ export default function decorate(block) {
             // pictures (either wrapped in achors, or otherwise)
             // are only content in the column
             picWrapper.classList.add('columns-img-col');
+          }
+        }
+        if (videoAnchor.length) {
+          const videoWrapper = videoAnchor[0].parentElement;
+          if (videoWrapper) {
+            videoWrapper.classList.add('columns-img-col');
+            videoWrapper.removeAttribute('button-container');
+            const video = document.createElement('video');
+            video.src = videoAnchor[0].href;
+            video.setAttribute('loop', '');
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            videoWrapper.replaceChild(video, videoAnchor[0]);
           }
         }
       }
