@@ -39,9 +39,9 @@ export default function decorate(block) {
             videoWrapper.removeAttribute('button-container');
             const video = document.createElement('video');
             video.src = videoAnchor[0].href;
-            video.setAttribute('autoplay', '');
             video.setAttribute('muted', '');
             video.setAttribute('loop', '');
+            video.setAttribute('autoplay', '');
             videoWrapper.replaceChild(video, videoAnchor[0]);
           }
         }
