@@ -179,7 +179,9 @@ const remmoveNewsContactBar = (document) => {
   }
 };
 
-const createDownloadLinkBlock = (document, url) => {
+const addLeadingZero = (number) => (number < 10 ? `0${number}` : number);
+
+const createDownloadLinkBlock = (document, url, params) => {
   const learnMore = document.querySelector('.ss-learn-more');
   const learnMoreContainer = learnMore?.querySelector('.ss-learn-more-container');
   const { pathname } = new URL(url);
@@ -196,19 +198,51 @@ const createDownloadLinkBlock = (document, url) => {
           learnMore.appendChild(p);
         } else {
           const a = ele.querySelector('a');
-          a.href = a.href.replaceAll('wp-content/uploads', 'jp/assets');
-          const block = [];
-          block.push(['Link (Download, no-buttons)']);
-          block.push([a]);
-          const table = WebImporter.DOMUtils.createTable(block, document);
-          learnMore.appendChild(table);
+          if (a?.href) {
+            a.href = a.href.replaceAll('wp-content/uploads', 'jp/assets');
+
+            if (params.preProcessMetadata?.PublishedDate) {
+              const tempArr = a.href.split('/');
+              const datePublished = new Date(params.preProcessMetadata.PublishedDate);
+              const name = `${datePublished.getFullYear()}${addLeadingZero(datePublished.getMonth() + 1)}${addLeadingZero(datePublished.getDate())}`;
+              tempArr[tempArr.length - 1] = name;
+              a.href = tempArr.join('/');
+            }
+
+            const block = [];
+            block.push(['Link (Download, No Buttons)']);
+            block.push([a]);
+            const table = WebImporter.DOMUtils.createTable(block, document);
+            learnMore.appendChild(table);
+          }
         }
       });
     }
   }
 };
 
-const customImportLogic = (document, url) => {
+/**
+ * Creates a column block from a section if it contains two columns _only_
+ * @param {HTMLDocument} document The document
+ */
+function createColumnBlockFromSection(document) {
+  const columnSections = document.querySelectorAll('.wp-block-columns');
+  if (columnSections.length) {
+    columnSections.forEach((section) => {
+      const text = section.querySelector('a') ? 'Columns (No Padding, No Buttons)' : 'Columns (No Padding)';
+      const block = [[text]];
+      const columnItem = [];
+      section.querySelectorAll('.wp-block-column').forEach((column) => {
+        columnItem.push(column);
+      });
+      block.push(columnItem);
+      const table = WebImporter.DOMUtils.createTable(block, document);
+      section.replaceWith(table);
+    });
+  }
+}
+
+const customImportLogic = (document, url, params) => {
   removeRedundantTag(document);
   changeAnchorLinks(document);
   addBreadCrumb(document);
@@ -219,7 +253,8 @@ const customImportLogic = (document, url) => {
   fixRelativeLinks(document);
   remmoveNewsContactBar(document);
   createFragmentBlockFromSection(document, url);
-  createDownloadLinkBlock(document, url);
+  createDownloadLinkBlock(document, url, params);
+  createColumnBlockFromSection(document);
 };
 
 export default {
@@ -307,7 +342,7 @@ export default {
       'noscript',
     ]);
 
-    customImportLogic(document, url);
+    customImportLogic(document, url, params);
     // create the metadata block and append it to the main element
     createMetadata(main, document, params);
 
