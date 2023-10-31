@@ -589,10 +589,6 @@ header .mega-container .left-content-container .mega-sub-menu .menu-level-2 a.li
   border-top: 1px solid #ffffff1f;
 }
 
-header .mega-container .left-content-container .mega-sub-menu .menu-level-2 a.link:last-child::before {
-  height: 100%
-}
-
 header .mega-container .left-content-container .mega-sub-menu .menu-level-2 a.link:hover {
   color: var(--muted-text);
 }
