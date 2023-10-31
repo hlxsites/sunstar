@@ -2,10 +2,6 @@
   margin: 2rem 0;
 }
 
-.columns *:last-child {
-  margin-bottom: 0;
-}
-
 .columns p,
 .columns dl,
 .columns ol,
@@ -22,9 +18,10 @@
 
 .columns > div {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 1em;
+  margin-bottom: 4rem;
 }
 
 .columns:not(.native-image-sizes) img {
@@ -63,16 +60,12 @@
   order: 1;
 }
 
-.columns > div > div > div {
-  width: 100%
-}
-
 .columns.history > div {
   align-items: center;
 }
 
 .columns p.button-container {
-  display: flex;
+  display: inline;
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
@@ -118,10 +111,6 @@
 
 .columns > div > div p {
   margin-top: 0;
-}
-
-.columns:not(.history) > div div.text-col {
-  margin: 0 1rem;
 }
 
 .columns.history h2 {
@@ -224,17 +213,25 @@
   margin: 0;
 }
 
-.columns.text-and-image-in-column > div div.text-col p{
+.columns.text-and-image-in-column > div div.text-col p {
   text-align: center;
 }
 
-.columns.text-and-image-in-column > div div.text-col img{
+.columns.text-and-image-in-column > div div.text-col img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-  /* both autoblocking options for bottom caption */
+.columns:not(.no-padding) > div > div:not(.columns-img-col) {
+  padding: 1rem;
+}
+
+.columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
+  margin: 0 1rem;
+}
+
+/* both autoblocking options for bottom caption */
 .columns.history div.image-collage.autoblocked picture ~ em,
 .columns.history div.image-collage.autoblocked picture ~ p {
   color: var(--steel-blue);
@@ -243,15 +240,27 @@
   text-align: center;
 }
 
-.columns.history div.image-collage.autoblocked div.text-col:last-of-type,
-.columns.history div.image-collage.autoblocked div.img-col:last-of-type {
+
+.columns.history
+  div.image-collage.autoblocked
+  div.text-col:last-of-type,
+.columns.history
+  div.image-collage.autoblocked
+  div.img-col:last-of-type {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.columns.history div.image-collage.autoblocked div.text-col:last-of-type picture,
-.columns.history div.image-collage.autoblocked div.img-col:last-of-type picture {
+
+.columns.history
+  div.image-collage.autoblocked
+  div.text-col:last-of-type
+  picture,
+.columns.history
+  div.image-collage.autoblocked
+  div.img-col:last-of-type
+  picture {
   margin: 0 auto 2rem;
 }
 
@@ -274,7 +283,9 @@
     margin-top: 3rem;
   }
 
-  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
+    > div
+    > div:first-child {
     margin-top: 0;
   }
 
@@ -355,6 +366,7 @@
   .columns > div {
     flex-direction: unset;
     gap: 3rem;
+    margin-bottom: 7.5rem;
   }
 
   /* picture in column with text */

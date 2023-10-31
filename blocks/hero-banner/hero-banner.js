@@ -117,7 +117,11 @@ export default async function decorate(block) {
   if (contentRow) {
     decorateTextContent(contentRow, block, placeholders, overlap);
   }
-  if (overlap) {
-    block.closest('.section.full-width.hero-banner-container').classList.add('overlap');
+
+  if (block.classList && block.classList.contains('overlap')) {
+    const cb = block.closest('.section.full-width.hero-banner-container');
+    if (cb) {
+      cb.classList.add('overlap');
+    }
   }
 }

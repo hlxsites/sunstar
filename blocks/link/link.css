@@ -6,7 +6,7 @@
 
 .block.link.arrow a::after {
   content: url("../../icons/angle-right-blue.svg");
-  position:relative;
+  position: relative;
   left: 0.3rem;
   top: 0.5rem;
 }
@@ -35,6 +35,16 @@
   border-color: var(--dark-cyan-color);
 }
 
+.block.link ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.block.link ul > * {
+  flex-grow: 1;
+}
+
 .block.link.download a::after {
   content: url("../../icons/download.svg");
   position: relative;
@@ -42,8 +52,12 @@
   top: 0.05rem;
 }
 
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .block.link.large-button a {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .block.link ul {
+    flex-direction: row;
   }
 }
