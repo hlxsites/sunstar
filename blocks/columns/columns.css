@@ -2,10 +2,6 @@
   margin: 2rem 0;
 }
 
-.columns *:last-child {
-  margin-bottom: 0;
-}
-
 .columns p,
 .columns dl,
 .columns ol,
@@ -21,9 +17,10 @@
 
 .columns > div {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   gap: 1em;
+  margin-bottom: 4rem;
 }
 
 .columns:not(.native-image-sizes) img {
@@ -58,16 +55,12 @@
   order: 1;
 }
 
-.columns > div > div > div {
-  width: 100%;
-}
-
 .columns.history > div {
   align-items: center;
 }
 
 .columns p.button-container {
-  display: flex;
+  display: inline;
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
@@ -348,6 +341,7 @@
   .columns > div {
     flex-direction: unset;
     gap: 3rem;
+    margin-bottom: 7.5rem;
   }
 
   /* picture in column with text */
