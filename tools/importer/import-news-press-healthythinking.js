@@ -203,9 +203,10 @@ const createDownloadLinkBlock = (document, url, params) => {
 
             if (params.preProcessMetadata?.PublishedDate) {
               const tempArr = a.href.split('/');
+              const extension = tempArr[tempArr.length - 1].split('.').pop();
               const datePublished = new Date(params.preProcessMetadata.PublishedDate);
               const name = `${datePublished.getFullYear()}${addLeadingZero(datePublished.getMonth() + 1)}${addLeadingZero(datePublished.getDate())}`;
-              tempArr[tempArr.length - 1] = name;
+              tempArr[tempArr.length - 1] = `${name}.${extension}`;
               a.href = tempArr.join('/');
             }
 
