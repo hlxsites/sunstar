@@ -163,11 +163,6 @@ async function searchPages(placeholders, term, page) {
     if (page < (paginationLimit - 1)) {
       firstElement.nextElementSibling.classList.add('notvisible');
       const currentElement = paginationblock.querySelector('.active');
-      // if (page === 0) {
-      //   elementForward = currentElement.nextElementSibling.nextElementSibling.nextElementSibling;
-      // } else {
-      //   elementForward = currentElement.nextElementSibling.nextElementSibling;
-      // }
       // eslint-disable-next-line max-len
       elementForward = (page === 0) ? currentElement.nextElementSibling.nextElementSibling.nextElementSibling : currentElement.nextElementSibling.nextElementSibling;
       while (elementForward) {
