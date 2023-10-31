@@ -68,7 +68,7 @@ export default function decorate(block) {
     const cells = row.querySelectorAll('div:not(.img-col)');
     if (cells.length) {
       [...cells].forEach((content) => {
-        if (!content.querySelector(':not(.img-col-wrapper)')) {
+        if (!content.querySelector('div:not(.img-col-wrapper)')) {
           content.classList.add('text-col');
           const contentWrapper = document.createElement('div');
           contentWrapper.classList.add('text-col-wrapper');
