@@ -826,6 +826,11 @@ main .section.static .section-container {
   margin-bottom: 5rem;
 }
 
+/* section - no-padding-top for newsroom h1 */
+main .section.newsroom h1 {
+  padding-top: 0;
+}
+
 main .section.static .section-container h1 {
   font-size: var(--heading-font-size-l);
   margin: 3rem 0 2rem;
@@ -886,6 +891,7 @@ main .section.thank-you p {
   line-height: 1.5em;
   font-weight: var(--font-weight-medium);
 }
+
 
 /* section - dark-blue */
 main .section.dark,
