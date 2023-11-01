@@ -76,17 +76,24 @@ export default async function decorate(block) {
     .orderByDescending((el) => (blockCfg.sort ? parseInt(el[blockCfg.sort.trim().toLowerCase()], 10) : el.path))
     .toList()
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2007); });
-  console.log(results);
   block.innerHTML = '';
   const blockType = 'highlight';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
+  console.log(builtBlock);
 
   [...block.classList].forEach((item) => {
     if (item !== 'feed') {
       builtBlock.classList.add(item);
     }
   });
+  const filterDiv = document.createElement('div');
+  const div1 = document.createElement('div');
+  const div2 = document.createElement('div');
+  div1.innerText = 'Year';
+  div2.innerText = 'Filter';
+  filterDiv.appendChild(div1);
+  filterDiv.appendChild(div2);
 
   if (block.parentNode) {
     block.parentNode.replaceChild(builtBlock, block);
@@ -94,5 +101,6 @@ export default async function decorate(block) {
 
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
+  builtBlock.before(filterDiv);
   return builtBlock;
 }

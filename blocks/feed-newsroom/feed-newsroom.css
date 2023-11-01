@@ -1,1 +1,30 @@
 /* eslint no-empty: "info" */
+
+main .feed-newsroom-wrapper > div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 100px;
+    margin: 50px;
+}
+
+main .feed-newsroom-wrapper > div:first-child > div {
+    min-width: 6rem;
+    background: var(--white);
+    color: var(--secondary);
+    padding: 6px 15px;
+    height: 32px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+    font-size: var(--body-font-size-l);
+    border: 1px solid #007CAD;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+main .feed-newsroom-wrapper > div:first-child > div:first-child {
+    border: 0;
+}
+
+
+
