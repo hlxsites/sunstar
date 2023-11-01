@@ -81,11 +81,8 @@
         font-size: var(--heading-font-size-mxl);
     }
 
-    .career-apply p {
-        margin-bottom: 0;
-    }
-
     .career-apply .button-container {
+        margin-bottom: 0;
         flex-direction: row;
     }
 
