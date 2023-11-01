@@ -43,6 +43,8 @@ export default function decorate(block) {
             video.setAttribute('loop', '');
             video.setAttribute('autoplay', '');
             videoWrapper.replaceChild(video, videoAnchor[0]);
+            video.muted = true;
+            video.play();
           }
         }
       }
