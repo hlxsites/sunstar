@@ -63,3 +63,8 @@ main .block.text.alert {
   font-weight: bolder;
   margin-bottom: 1rem;
 }
+
+main .block.text.border {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
