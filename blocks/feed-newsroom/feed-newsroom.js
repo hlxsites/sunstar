@@ -13,7 +13,6 @@ const resultParsers = {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
-      console.log(fields);
       const row = [];
       let cardImage;
       const cardBody = fields.includes('path') ? document.createElement('a') : document.createElement('div');
@@ -63,9 +62,7 @@ function getMetadataNullable(key) {
    */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  console.log(blockCfg);
   const queryObj = await queryIndex(`${getLanguage()}-search`);
-  console.log(queryObj);
 
   const omitPageTypes = getMetadataNullable('omit-page-types');
   // eslint-disable-next-line prefer-arrow-callback
