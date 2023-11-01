@@ -28,7 +28,7 @@
   order: 1;
 }
 
-.columns:not(.no-margin) > div {
+.columns.small-margin > div {
   margin-bottom: 0;
 }
 
@@ -367,7 +367,13 @@
     min-width: 11rem;
   }
 
-  .columns > div {
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+    flex-basis: 50%;
+  }
+
+  .columns:not(.small-margin) > div {
     flex-direction: unset;
     gap: 3rem;
     margin-bottom: 7.5rem;
@@ -381,12 +387,6 @@
 
   .columns > div .img-col {
     order: unset;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-    flex-basis: 50%;
   }
 
   .columns.history > div {
