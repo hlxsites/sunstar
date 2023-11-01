@@ -76,6 +76,10 @@
         margin-bottom: 5rem;
     }
 
+    .career-apply p {
+        margin-bottom: 3.125rem;
+    }
+
     .career-apply h2 {
         margin-top: 0;
         font-size: var(--heading-font-size-mxl);
