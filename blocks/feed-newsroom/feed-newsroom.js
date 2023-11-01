@@ -7,46 +7,7 @@ import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
 const resultParsers = {
-// Parse results into a cards block
-  cards: (results, blockCfg) => {
-    const blockContents = [];
-    results.forEach((result) => {
-      const fields = blockCfg.fields.split(',');
-      const row = [];
-      let cardImage;
-      const cardBody = document.createElement('div');
-      fields.forEach((field) => {
-        const fieldName = field.trim().toLowerCase();
-        if (fieldName === 'image') {
-          cardImage = createOptimizedPicture(result[fieldName]);
-        } else {
-          const div = document.createElement('div');
-          if (fieldName === 'publisheddate') {
-            div.classList.add('date');
-            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
-          } else if (fieldName === 'title') {
-            div.classList.add('title');
-            div.textContent = result[fieldName];
-          } else {
-            div.textContent = result[fieldName];
-          }
-          cardBody.appendChild(div);
-        }
-      });
-      if (cardImage) {
-        row.push(cardImage);
-      }
-
-      if (cardBody) {
-        const path = document.createElement('a');
-        path.href = result.path;
-        cardBody.prepend(path);
-        row.push(cardBody);
-      }
-      blockContents.push(row);
-    });
-    return blockContents;
-  },
+// Parse results into a highlight block
 
   highlight: (results, blockCfg) => {
     const blockContents = [];
