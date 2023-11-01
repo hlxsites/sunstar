@@ -24,6 +24,14 @@
   margin-bottom: 4rem;
 }
 
+.columns > div > div {
+  order: 1;
+}
+
+.columns:not(.no-margin) > div {
+  margin-bottom: 0;
+}
+
 .columns:not(.native-image-sizes) img {
   width: 100%;
 }
@@ -54,10 +62,6 @@
 
 .columns.plain-links a.button {
   padding: 0;
-}
-
-.columns > div > div {
-  order: 1;
 }
 
 .columns.history > div {
