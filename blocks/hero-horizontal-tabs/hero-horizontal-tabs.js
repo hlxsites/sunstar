@@ -41,7 +41,7 @@ export default function decorate(block) {
   } else {
     block.firstElementChild.remove();
     const divs = document.querySelectorAll('div'); // Select all div elements
-    divs.forEach(div => {
+    divs.forEach((div) => {
       if (div.textContent.trim() === 'Contents') {
         div.remove(); // Remove the div with the exact text content "Contents"
       }
