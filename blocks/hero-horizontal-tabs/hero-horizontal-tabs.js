@@ -38,6 +38,14 @@ export default function decorate(block) {
   container.insertBefore(wrapper, container.firstElementChild);
 
   addTabs(tabs, block);
+  } else {
+    block.firstElementChild.remove();
+    const divs = document.querySelectorAll('div'); // Select all div elements
+    divs.forEach(div => {
+      if (div.textContent.trim() === 'Contents') {
+        div.remove(); // Remove the div with the exact text content "Contents"
+      }
+    });
   }
   if (image) {
     block.append(image);
