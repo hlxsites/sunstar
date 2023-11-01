@@ -498,6 +498,12 @@ main .block {
   margin-right: auto;
 }
 
+main .block.border {
+  border: 1px solid;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 main img {
   max-width: 100%;
   width: auto;

@@ -24,10 +24,6 @@ main .table .table-item div {
     background-color: var(--white);
 }
 
-main .table.left-align .table-item div {
-  text-align: left;
-}
-
 main .section .table.block p.table-annotation {
     margin-bottom: 1.5rem;
 }

@@ -33,7 +33,6 @@ function buildMutipleTables(block) {
 }
 
 export default async function decorate(block) {
-  const noHead = block.classList.contains('no-head');
   const tableDiv = document.createElement('div');
   tableDiv.classList.add('table-item');
   const tableTitle = document.createElement('h3');
@@ -53,7 +52,7 @@ export default async function decorate(block) {
       }
       [...child.children].forEach((childDiv, x) => {
         if (x) {
-          if (i === 2 && !noHead) childDiv.classList.add('table-head');
+          if (i === 2) childDiv.classList.add('table-head');
           tableDiv.append(childDiv);
         }
       });

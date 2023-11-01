@@ -243,26 +243,25 @@ function createColumnBlockFromSection(document) {
   }
 }
 
-const createTableBlock = (document) => {
+const createTextBlock = (document) => {
   const sectionTables = document.querySelectorAll('.wp-block-table');
 
   if (sectionTables.length) {
     sectionTables.forEach((sectionTable) => {
-      const td = sectionTable.querySelector('td');
-      const text = 'Table (No Head, No Buttons, Left Align)';
-      const block = [[text], ['Title', ''], ['Annotation', '']];
-      const lastEle = ['Table'];
+      const tds = sectionTable.querySelectorAll('td');
+      if (tds.length === 1) {
+        const td = tds[0];
+        const text = 'Text (Border, No Buttons)';
+        const block = [[text]];
+        const brs = Array.from(td.querySelectorAll('br'));
+        brs.forEach((br) => {
+          br.remove();
+        });
 
-      const brs = Array.from(td.querySelectorAll('br'));
-
-      brs.forEach((br) => {
-        br.remove();
-      });
-
-      lastEle.push(td.innerHTML);
-      block.push(lastEle);
-      const table = WebImporter.DOMUtils.createTable(block, document);
-      sectionTable.replaceWith(table);
+        block.push([td.innerHTML]);
+        const table = WebImporter.DOMUtils.createTable(block, document);
+        sectionTable.replaceWith(table);
+      }
     });
   }
 };
@@ -280,7 +279,7 @@ const customImportLogic = (document, url, params) => {
   createFragmentBlockFromSection(document, url);
   createDownloadLinkBlock(document, url, params);
   createColumnBlockFromSection(document);
-  createTableBlock(document);
+  createTextBlock(document);
 };
 
 export default {
