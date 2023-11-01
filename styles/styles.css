@@ -1220,6 +1220,10 @@ main .section.padded-inline .section-container {
     font-size: var(--heading-font-size-xxs);
   }
 
+  p.lead {
+    font-size: 1.375rem;
+  }
+
   p,
   dl,
   ol,

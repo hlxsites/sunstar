@@ -63,3 +63,14 @@ main .block.text.alert {
   font-weight: bolder;
   margin-bottom: 1rem;
 }
+
+main .block.text.lead {
+  font-size: 1.25rem;
+}
+
+
+@media (min-width: 77rem) {
+  main .block.text.lead {
+    font-size: 1.375rem;
+  }
+}
