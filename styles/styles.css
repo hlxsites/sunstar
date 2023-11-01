@@ -250,6 +250,10 @@ p {
   text-size-adjust: 100%;
 }
 
+p.lead {
+  font-size: 1.25rem;
+}
+
 hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
