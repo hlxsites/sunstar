@@ -198,7 +198,7 @@ const createDownloadLinkBlock = (document, url, params) => {
           learnMore.appendChild(p);
         } else {
           const a = ele.querySelector('a');
-          if (a?.href) {
+          if (a?.href && a.href.includes('.pdf')) {
             a.href = a.href.replaceAll('wp-content/uploads', 'jp/assets');
 
             if (params.preProcessMetadata?.PublishedDate) {
@@ -243,6 +243,30 @@ function createColumnBlockFromSection(document) {
   }
 }
 
+const createTableBlock = (document) => {
+  const sectionTables = document.querySelectorAll('.wp-block-table');
+
+  if (sectionTables.length) {
+    sectionTables.forEach((sectionTable) => {
+      const td = sectionTable.querySelector('td');
+      const text = 'Table (No Head, No Buttons, Left Align)';
+      const block = [[text], ['Title', ''], ['Annotation', '']];
+      const lastEle = ['Table'];
+
+      const brs = Array.from(td.querySelectorAll('br'));
+
+      brs.forEach((br) => {
+        br.remove();
+      });
+
+      lastEle.push(td.innerHTML);
+      block.push(lastEle);
+      const table = WebImporter.DOMUtils.createTable(block, document);
+      sectionTable.replaceWith(table);
+    });
+  }
+};
+
 const customImportLogic = (document, url, params) => {
   removeRedundantTag(document);
   changeAnchorLinks(document);
@@ -256,6 +280,7 @@ const customImportLogic = (document, url, params) => {
   createFragmentBlockFromSection(document, url);
   createDownloadLinkBlock(document, url, params);
   createColumnBlockFromSection(document);
+  createTableBlock(document);
 };
 
 export default {
