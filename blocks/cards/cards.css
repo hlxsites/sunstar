@@ -73,8 +73,6 @@ main .block.cards {
   padding: 20px;
 }
 
-
-
 .cards.info-points .cards-card-body {
   text-align: center;
 }
@@ -87,10 +85,6 @@ main .block.cards {
 
 .cards.large-text .cards-card-body .date {
   font-size: var(--body-font-size-xs);
-}
-
-.cards .cards-card-body:last-child {
-  margin-bottom: 0;
 }
 
 .cards.large-text .cards-card-body .title {
@@ -124,6 +118,10 @@ main .block.cards {
 .cards .cards-card-body div {
   height: 100%;
   margin: 0;
+}
+
+.cards .cards-card-body div:last-child {
+  margin-bottom: 0;
 }
 
 /* Styles for features-items cards */
@@ -337,9 +335,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   .cards .cards-card-body {
     width: initial;
     margin: 0;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 
   .cards .cards-card-image {
@@ -389,9 +384,9 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 @media screen and (min-width: 77rem) {
   .cards.grid > ul {
-      grid-template-columns: repeat(auto-fill, 21.875rem);
-      justify-content: space-between;
-      grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, 21.875rem);
+    justify-content: space-between;
+    grid-gap: 3rem;
   }
 
   .cards > ul > li {
