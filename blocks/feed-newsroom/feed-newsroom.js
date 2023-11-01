@@ -52,6 +52,7 @@ const resultParsers = {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
+      console.log(fields);
       const row = [];
       let cardImage;
       const cardBody = fields.includes('path') ? document.createElement('a') : document.createElement('div');
@@ -119,7 +120,7 @@ export default async function decorate(block) {
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2007); });
   console.log(results);
   block.innerHTML = '';
-  const blockType = 'cards';
+  const blockType = 'highlight';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
 
