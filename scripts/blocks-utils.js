@@ -116,9 +116,9 @@ export function setMetaTag(tagType, propertyKey, propertyValue, url) {
   }
 }
 
-export function setOgImages(picture) {
-  if (picture && picture.outerHTML) {
-    const imageUrl = window.location.origin + picture.outerHTML.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
+export function setOgImages(imageThumbnail) {
+  if (imageThumbnail && imageThumbnail.outerHTML) {
+    const imageUrl = window.location.origin + imageThumbnail.outerHTML.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
       .map((x) => x.replace(/.*src="([^"]*)".*/, '$1'));
     if (imageUrl) {
       const OgTags = ['og:image', 'og:image:secure_url'];
