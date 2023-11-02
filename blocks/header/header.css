@@ -888,6 +888,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
     background-position: left center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
   }
   
   .header .mega-container .right-content img {
