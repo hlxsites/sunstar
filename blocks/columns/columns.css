@@ -2,6 +2,10 @@
   margin: 2rem 0;
 }
 
+.columns.small-margin {
+  margin: 0;
+}
+
 .columns p,
 .columns dl,
 .columns ol,
@@ -356,6 +360,12 @@
     margin-top: unset;
   }
 
+  .columns > div {
+    flex-direction: unset;
+    gap: 3rem;
+    margin-bottom: 7.5rem;
+  }
+
   .columns p.button-container {
     flex-direction: row;
     align-items: center;
@@ -373,10 +383,8 @@
     flex-basis: 50%;
   }
 
-  .columns:not(.small-margin) > div {
-    flex-direction: unset;
-    gap: 3rem;
-    margin-bottom: 7.5rem;
+  .columns.small-margin > div {
+    margin-bottom: 0;
   }
 
   /* picture in column with text */
