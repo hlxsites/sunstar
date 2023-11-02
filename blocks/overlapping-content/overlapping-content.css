@@ -47,7 +47,7 @@
   position: relative;
 }
 
-.overlapping-content .overlapping-content-item > div > div > div:last-child {
+.overlapping-content .overlapping-content-item > div > div > div > :last-child {
   margin-bottom: 0;
 }
 
