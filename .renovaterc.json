@@ -1,4 +1,4 @@
 {
   "extends": ["config:recommended"],
-  "prBodyNotes": ["Test URLs:\r\n- Original: https:\/\/www.sunstar.com\r\n- Before: https:\/\/main--sunstar--hlxsites.hlx.live\r\n- After: https:\/\/{{{branchName}}}--sunstar--hlxsites.hlx.live"]
+  "prFooter": ["Test URLs:\r\n- Original: https:\/\/www.sunstar.com\r\n- Before: https:\/\/main--sunstar--hlxsites.hlx.live\r\n- After: https:\/\/{{{branchName}}}--sunstar--hlxsites.hlx.live"]
 }
