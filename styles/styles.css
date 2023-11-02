@@ -66,6 +66,7 @@
   --muted-text-block-color: #abb8c3;
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
+  --primary-08-transparency: #00587ccc;
 
   /* fonts */
   --body-font-family: "Noto Sans";
@@ -181,7 +182,7 @@ h1 {
 
 h2 {
   font-size: var(--heading-font-size-m);
-  margin: 3rem 0 1.5rem;
+  margin: 0 0 1.5rem;
   font-weight: 500;
   line-height: 1.3em;
 }
@@ -498,6 +499,10 @@ main .block {
   margin-right: auto;
 }
 
+main .block.border {
+  border: 1px solid;
+}
+
 main img {
   max-width: 100%;
   width: auto;
@@ -541,6 +546,10 @@ main .section.bold-headings h6 {
 }
 
 /* section - centered */
+.section.centered {
+  padding-inline: 1rem;
+}
+
 .section.centered div {
   align-items: center;
   text-align: center;

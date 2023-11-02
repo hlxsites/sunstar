@@ -156,13 +156,26 @@
     width: 2.125rem;
 }
 
-@media (min-width: 62rem){
+@media (min-width: 48rem) {
+    .hero-banner .hero-banner-text-container::before:not(.right-text) {
+        content: "";
+        background: var(--primary);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 100%;
+    }
+}
+
+@media (min-width: 62rem) {
     .section.full-width.hero-banner-container {
         position: relative;
         height: 32rem;
         margin-bottom: 8.625rem;
     }
 
+    /* TODO refactor to work on firefox as well */
     .section.full-width.hero-banner-container:has(.hero-banner.careers) {
         height: 36.4rem;
     }
@@ -245,6 +258,10 @@
         top: unset;
     }
 
+    .hero-banner.overlap .hero-banner-heading-container.right-text {
+        left: calc(100vw - 82.875rem / 3);
+    }
+
     .hero-banner.overlap .hero-banner-text-container {
         display: block;
         padding: 3rem 2rem;
@@ -254,6 +271,11 @@
 
     .hero-banner.overlap .hero-banner-text-wrapper {
         padding-left: unset;
+    }
+
+    .hero-banner.overlap.opaque .hero-banner-text-container {
+        background: var(--primary-08-transparency);
+        backdrop-filter: blur(10px);
     }
 
     .hero-banner.overlap .hero-banner-text-wrapper h2{
@@ -285,18 +307,6 @@
     }
 }
 
-@media (min-width: 48rem) {
-    .hero-banner .hero-banner-text-container::before {
-        content: "";
-        background: var(--primary);
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        right: 100%;
-    }
-}
-
 @media (min-width: 77rem) {
     .hero-banner .hero-banner-heading-section{
         padding-left: 0;
@@ -323,6 +333,11 @@
 
     .hero-banner.overlap .hero-banner-heading-container {
         padding-left: calc(50vw - 82.875rem / 2);
+    }
+
+    .hero-banner.overlap .hero-banner-heading-container.right-text {
+        padding-left: calc(100vw - 82.875rem / 2);
+        left: 0;
     }
 
     .section.full-width.hero-banner-container.overlap {

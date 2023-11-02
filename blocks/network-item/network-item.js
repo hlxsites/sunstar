@@ -11,7 +11,7 @@
  */
 
 import { readBlockConfig, fetchPlaceholders } from '../../scripts/lib-franklin.js';
-import { getNamedValueFromTable, getLanguage } from '../../scripts/scripts.js';
+import { getNamedValueFromTable, getLanguage, decorateExternalAnchors } from '../../scripts/scripts.js';
 
 function addTagColors(tagDiv) {
   if (tagDiv.innerText === 'Oral Care' || tagDiv.innerText === 'Mouth & Body') {
@@ -47,6 +47,7 @@ function createWebsiteDiv(website, placeholders) {
   const websiteA = document.createElement('a');
   websiteA.href = website;
   websiteA.innerText = placeholders['network-item-website-text'];
+  decorateExternalAnchors([websiteA]);
   websiteDiv.append(websiteA);
   return websiteDiv;
 }
