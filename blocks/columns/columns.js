@@ -35,8 +35,8 @@ export default function decorate(block) {
         if (videoAnchor.length) {
           const videoWrapper = videoAnchor[0].parentElement;
           if (videoWrapper) {
-            videoWrapper.classList.add('columns-img-col');
-            videoWrapper.removeAttribute('button-container');
+            videoWrapper.classList.add('img-col');
+            videoWrapper.classList.remove('button-container');
             const video = document.createElement('video');
             video.src = videoAnchor[0].href;
             video.setAttribute('muted', '');

@@ -264,7 +264,7 @@
   margin: 0 auto 2rem;
 }
 
-div.button-container.columns-img-col > video {
+div.img-col > video {
   width: 100%;
 }
 
@@ -486,14 +486,14 @@ div.button-container.columns-img-col > video {
     flex-direction: row;
   }
 
-  div.button-container.columns-img-col > video {
+  div.img-col > video {
     height: 337px;
     width: 337px;
   }
 }
 
 @media (min-width: 77rem) {
-  div.button-container.columns-img-col > video {
+  div.img-col > video {
     height: 469px;
     width: 469px;
   }
