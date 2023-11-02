@@ -208,7 +208,7 @@
 }
 
 .columns:not(.no-padding) > div > div:not(.columns-img-col) {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
@@ -308,8 +308,17 @@
   color: var(--secondary);
 }
 
+.columns.plain-links.collapse ul {
+  display:none;
+}
+
 .columns.plain-links.collapse ul.active {
   display: block;
+}
+
+.columns > div > div > div {
+  width: auto;
+  margin: 0 1rem;
 }
 
 .columns-container.backgroundimage .backgroundimage {
@@ -466,15 +475,5 @@
 
   main .columns.history.invert-image-order-in-narrow-view > div {
     flex-direction: row;
-  }
-}
-
-@media (max-width: 61rem){
-  .columns.plain-links.collapse ul {
-    display: none;
-  }
-
-  .columns > div > div > div {
-    width: auto;
   }
 }
