@@ -66,6 +66,7 @@
   --muted-text-block-color: #abb8c3;
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
+  --primary-08-transparency: #00587ccc;
 
   /* fonts */
   --body-font-family: "Noto Sans";
@@ -501,6 +502,10 @@ main blockquote p::after {
 main .block {
   margin-left: auto;
   margin-right: auto;
+}
+
+main .block.border {
+  border: 1px solid;
 }
 
 main img {

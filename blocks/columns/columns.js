@@ -16,7 +16,8 @@ export default function decorate(block) {
   }
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
-  const textOnlyColBlock = !block.querySelector('picture');
+  const videoAnchor = [...block.querySelectorAll('a')].filter((a) => a.href.includes('.mp4'));
+  const textOnlyColBlock = !block.querySelector('picture') && !videoAnchor.length;
 
   // setup image columns
   [...block.children].forEach((row) => {
@@ -28,26 +29,71 @@ export default function decorate(block) {
           if (picWrapper && picWrapper.children.length === pics.length) {
             // pictures (either wrapped in achors, or otherwise)
             // are only content in the column
-            picWrapper.classList.add('columns-img-col');
+            picWrapper.classList.add('img-col');
           }
+        }
+        if (videoAnchor.length) {
+          const videoWrapper = videoAnchor[0].parentElement;
+          if (videoWrapper) {
+            videoWrapper.classList.add('img-col');
+            videoWrapper.classList.remove('button-container');
+            const video = document.createElement('video');
+            video.src = videoAnchor[0].href;
+            video.setAttribute('muted', '');
+            video.setAttribute('loop', '');
+            video.setAttribute('autoplay', '');
+            videoWrapper.replaceChild(video, videoAnchor[0]);
+            video.muted = true;
+            video.play();
+          }
+        }
+
+        // add video modal support if there is an anchor (to a video) and a picture
+        const anchor = col.querySelector('a');
+        const picture = col.querySelector('picture');
+        const anchorIsModal = anchor && anchor.classList.contains('video-link');
+        if (picture && anchorIsModal) {
+          const contentWrapper = document.createElement('div');
+          contentWrapper.classList.add('img-col-wrapper');
+
+          col.classList.add('img-col');
+          col.classList.add('video-modal');
+
+          // add the picture inside the anchor tag and remove the text
+          anchor.textContent = '';
+          anchor.classList.add('video-modal');
+          anchor.appendChild(picture);
+
+          // remove empty paragraphs
+          col.querySelectorAll('p').forEach((p) => {
+            if (!p.querySelector('a')) {
+              p.remove();
+            }
+          });
+
+          picture.querySelector('img').classList.add('video-modal');
+          col.parentElement.insertBefore(contentWrapper, col);
+          contentWrapper.appendChild(col);
         }
       }
     });
   });
 
-  // decorate columns with non-singleton-image content
+  // decorate columns with text-col content
   [...block.children].forEach((row) => {
-    const cells = row.querySelectorAll('div:not(.columns-img-col)');
+    const cells = row.querySelectorAll('div:not(.img-col)');
     if (cells.length) {
       [...cells].forEach((content) => {
-        content.classList.add('non-singleton-img');
-        const contentWrapper = document.createElement('div');
-        contentWrapper.classList.add('non-singleton-img-wrapper');
-        const contentParent = content.parentElement;
-        contentParent.insertBefore(contentWrapper, content);
-        contentWrapper.appendChild(content);
-        if (textOnlyColBlock) {
-          content.classList.add('text-only');
+        if (!content.querySelector('div:not(.img-col-wrapper)')) {
+          content.classList.add('text-col');
+          const contentWrapper = document.createElement('div');
+          contentWrapper.classList.add('text-col-wrapper');
+          const contentParent = content.parentElement;
+          contentParent.insertBefore(contentWrapper, content);
+          contentWrapper.appendChild(content);
+          if (textOnlyColBlock) {
+            content.classList.add('text-only');
+          }
         }
       });
     }
