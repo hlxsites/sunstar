@@ -3,6 +3,7 @@ import {
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex, getLanguage } from '../../scripts/scripts.js';
+import { setOgImages, setMetaTag } from '../../scripts/blocks-utils.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -112,9 +113,10 @@ export default async function decorate(block) {
   // Parse the query string into an object
   const queryParams = new URLSearchParams(queryString);
 
+  const feedTags = queryParams.get('feed-tags');
   const type = (blockCfg.type ?? getMetadataNullable('type') ?? queryParams.get('feed-type'))?.trim().toLowerCase();
   const category = (blockCfg.category ?? getMetadataNullable('category' ?? queryParams.get('feed-category')))?.trim().toLowerCase();
-  const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? queryParams.get('feed-tags'))?.trim().toLowerCase();
+  const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? feedTags)?.trim().toLowerCase();
   const omitPageTypes = (blockCfg['omit-page-types'] ?? getMetadataNullable('omit-page-types')
     ?? queryParams.get('feed-omit-page-types'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback
@@ -141,6 +143,11 @@ export default async function decorate(block) {
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
+  if (feedTags && blockContents.length && blockContents[0][0]) {
+    setOgImages(blockContents[0][0]);
+    setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
+    setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
+  }
 
   [...block.classList].forEach((item) => {
     if (item !== 'feed') {

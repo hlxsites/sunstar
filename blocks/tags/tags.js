@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/lib-franklin.js';
 import { getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
+import { setTagPageTitles } from '../../scripts/blocks-utils.js';
 
 /**
 * decorates the tags block
@@ -17,6 +18,10 @@ export default async function decorate(block) {
   const locale = getLanguage();
   const tags = await fetchTagsOrCategories(ids, 'tags', type, locale);
 
+  const queryString = window.location.search;
+  const queryParams = new URLSearchParams(queryString);
+  const feedTags = queryParams.get('feed-tags');
+
   if (tags.length) {
     const typeKey = type
       .toLowerCase().split(' ')
@@ -30,6 +35,9 @@ export default async function decorate(block) {
       a.textContent = tag.name || tag.id;
       a.classList.add('button', 'primary');
       block.appendChild(a);
+      if (block.classList.contains('tagpage') && feedTags && feedTags.trim() === tag.id) {
+        setTagPageTitles(tag.name);
+      }
     });
   }
 
