@@ -178,13 +178,15 @@ main .table.text-table table tr td {
 
 main .table.text-table table tr td h4 {
     color: var(--text-color);
-    font-size: var(--heading-font-size-s);
+    font-size: var(--heading-font-size-ms);
     font-weight: var(--font-weight-bold);
     line-height: 1.7em;
+    margin: unset;
 }
 
 main .table.text-table table tr td p {
     font-size: var(--body-font-size-s);
+    margin: unset;
 }
 
 main .table.text-table table tr td a {

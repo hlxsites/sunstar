@@ -3,10 +3,6 @@ import {
   MODAL_FRAGMENTS_ANCHOR_SELECTOR,
 } from '../../scripts/scripts.js';
 
-// This variable contains the copy of already generated wrapper
-// and will be used when we are removing the modal on close button click.
-let globalmodalWrapper;
-
 function getModalId(path) {
   const segments = path.split('/');
   return `#${segments.pop()}-modal`;
@@ -15,9 +11,6 @@ function getModalId(path) {
 const openModal = async (a, url, block, hasSearchParam = false) => {
   a.addEventListener('click', async (e) => {
     e.preventDefault();
-    if (globalmodalWrapper) {
-      block.append(globalmodalWrapper);
-    }
 
     const path = new URL(url).pathname;
     const modalId = getModalId(path);
@@ -49,7 +42,6 @@ const openModal = async (a, url, block, hasSearchParam = false) => {
       wrapper.append(modal);
       block.append(wrapper);
       wrapper.classList.add('visible');
-      globalmodalWrapper = wrapper;
       const close = modal.querySelector('.modal-close');
       close.addEventListener('click', () => {
         wrapper.remove();
