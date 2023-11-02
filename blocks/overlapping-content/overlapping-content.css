@@ -6,6 +6,13 @@
   margin: auto 1rem;
 }
 
+
+
+.overlapping-content .overlapping-content-item h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
 .overlapping-content.edge-to-edge-on-narrow .overlapping-content-item {
   margin: auto 0;
 }
@@ -40,6 +47,10 @@
   position: relative;
 }
 
+.overlapping-content .overlapping-content-item > div > div > div:last-child {
+  margin-bottom: 0;
+}
+
 .overlapping-content > div.background .background-wrapper {
   background: var(--primary);
   padding: 1.5rem;
@@ -61,6 +72,11 @@
 @media (min-width: 62rem) {
   .overlapping-content .overlapping-content-item {
     margin: auto 0;
+  }
+
+  .overlapping-content .overlapping-content-item h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 
   .overlapping-content > div {
