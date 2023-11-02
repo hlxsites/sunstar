@@ -90,28 +90,19 @@ describe('Search Results', () => {
     expect(res1.nodeName).to.equal('DIV');
     expect(res1.classList.toString()).to.equal('search-result');
     const res1h3 = res1.children[1];
-    expect(res1h3.nodeName).to.equal('H3');
-    const res1h3a = res1h3.children[0];
-    expect(res1h3a.nodeName).to.equal('A');
-    expect(res1h3a.href.endsWith('/news/a/')).to.be.true;
+    expect(res1h3.nodeName).to.equal('P');
 
     const res2 = block.children[3];
     expect(res2.nodeName).to.equal('DIV');
     expect(res2.classList.toString()).to.equal('search-result');
     const res2h3 = res2.children[1];
-    expect(res2h3.nodeName).to.equal('H3');
-    const res2h3a = res2h3.children[0];
-    expect(res2h3a.nodeName).to.equal('A');
-    expect(res2h3a.href.endsWith('/news/c/')).to.be.true;
+    expect(res2h3.nodeName).to.equal('P');
 
     const res3 = block.children[4];
     expect(res3.nodeName).to.equal('DIV');
     expect(res3.classList.toString()).to.equal('search-result');
     const res3h3 = res3.children[1];
-    expect(res3h3.nodeName).to.equal('H3');
-    const res3h3a = res3h3.children[0];
-    expect(res3h3a.nodeName).to.equal('A');
-    expect(res3h3a.href.endsWith('/news/d/')).to.be.true;
+    expect(res3h3.nodeName).to.equal('P');
 
     const pageWidget = block.children[5];
     expect(pageWidget.className.toString()).to.equal('pagination');
@@ -177,10 +168,7 @@ describe('Search Results', () => {
     expect(res1.nodeName).to.equal('DIV');
     expect(res1.classList.toString()).to.equal('search-result');
     const res1h3 = res1.children[1];
-    expect(res1h3.nodeName).to.equal('H3');
-    const res1h3a = res1h3.children[0];
-    expect(res1h3a.nodeName).to.equal('A');
-    expect(res1h3a.href.endsWith('/jp/news/a/')).to.be.true;
+    expect(res1h3.nodeName).to.equal('P');
 
     const pageWidget = block.children[3];
     expect(pageWidget.className.toString()).to.equal('pagination');

@@ -82,6 +82,7 @@
   margin-top: 50px;
   margin-bottom: 100px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .search-results .pagination a {
@@ -89,6 +90,10 @@
   font-size: var(--font-size-small);
   color: var(--secondary);
   padding: 7px 20px;
+}
+
+.search-results .pagination .notvisible {
+  display: none;
 }
 
 .search-results .pagination li:nth-of-type(2) a {
