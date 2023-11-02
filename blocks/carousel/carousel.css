@@ -7,8 +7,7 @@
 
 .carousel.small {
   background-color: var(--white);
-  position: relative;
-  left: 25%;
+  left: unset;
 }
 
 .carousel .image-item {
@@ -40,7 +39,6 @@
 
 .carousel.small .text{
   color:var(--black);
-  padding-top: 6.5rem;
 }
 
 .carousel img {
@@ -50,7 +48,10 @@
 }
 
 .carousel.small img {
+  height: 6rem;
+  width: 6rem;
   object-fit:contain;
+  margin-left: 1rem;
 }
 
 .carousel .carousel-items-container {
@@ -111,8 +112,6 @@
 }
 
 .carousel.small .image {
-  width: 6rem;
-  height: 6rem;
   left: unset;
 }
 
@@ -252,6 +251,15 @@ main .section.carousel-container {
     height: unset;
   }
 
+  .carousel.small {
+    position: relative;
+    left: 25%;
+  }
+
+  .carousel.small .text{
+    padding-top: 6.5rem;
+  }
+
   .carousel .image {
     left: calc(50% - 3.875rem);
     height: 28.125rem;
@@ -304,16 +312,5 @@ main .section.carousel-container {
 
   .carousel .control-container {
     width: 100%;
-  }
-}
-
-@media (max-width: 61rem) {
-  .carousel.small {
-    left: unset;
-  }
-
-  .carousel.small .image {
-    width: auto;
-    height: 14rem;
   }
 }
