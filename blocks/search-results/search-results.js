@@ -53,9 +53,7 @@ async function searchPages(placeholders, term, page) {
   const sheet = `${getLanguage()}-search`;
 
   const json = await fetchIndex('query-index', sheet);
-  console.log(json);
   fixExcelFilterZeroes(json.data);
-  console.log(json.data);
 
   const resultsPerPage = 10;
   const startResult = page * resultsPerPage;
