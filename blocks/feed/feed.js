@@ -143,11 +143,13 @@ export default async function decorate(block) {
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
-  const imageThumbnail = blockContents[0][0];
-  if (feedTags && blockContents.length && imageThumbnail) {
-    setOgImages(imageThumbnail);
-    setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
-    setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
+  if (feedTags && blockContents.length) {
+    const imageThumbnail = blockContents[0][0];
+    if (imageThumbnail) {
+      setOgImages(imageThumbnail);
+      setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
+      setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
+    }
   }
 
   [...block.classList].forEach((item) => {
