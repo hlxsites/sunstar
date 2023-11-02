@@ -59,7 +59,8 @@
 }
 
 .columns > div > div > div {
-  width: 100%;
+  width: auto;
+  margin: 0 1rem;
 }
 
 .columns.history > div {
@@ -314,11 +315,6 @@
 
 .columns.plain-links.collapse ul.active {
   display: block;
-}
-
-.columns > div > div > div {
-  width: auto;
-  margin: 0 1rem;
 }
 
 .columns-container.backgroundimage .backgroundimage {
