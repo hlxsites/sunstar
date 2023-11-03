@@ -190,7 +190,7 @@
   left: calc(50% - 5.25rem / 2);
 }
 
-.columns.plain-links > div > div p:last-of-type {
+.columns > div > div *:last-of-type {
   margin-bottom: 0;
 }
 
