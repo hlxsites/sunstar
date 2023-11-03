@@ -379,7 +379,8 @@ main pre {
 .icon.icon-angle-right-blue-bg {
   background-image: url("/icons/angle-right-blue.svg");
   vertical-align: middle;
-  width: 0.4rem;
+  width: 0.5rem;
+  height: 0.75rem;
   margin-inline-start: 0.6rem;
 }
 
