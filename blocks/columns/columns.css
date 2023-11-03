@@ -399,10 +399,6 @@ div.img-col > video {
     margin-bottom: 0;
   }
 
-  .collapse > div {
-    flex-direction: column;
-  }
-
   .columns.history picture {
     margin: 0 auto 2rem;
   }
