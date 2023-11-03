@@ -32,6 +32,11 @@
   order: 1;
 }
 
+.columns > div > div > div {
+  width: auto;
+  margin: 0 1rem;
+}
+
 .columns.small-margin > div {
   margin-bottom: 0;
 }
@@ -66,15 +71,6 @@
 
 .columns.plain-links a.button {
   padding: 0;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > div > div {
-  width: auto;
-  margin: 0 1rem;
 }
 
 .columns.history > div {
@@ -387,6 +383,10 @@ div.img-col > video {
 
   .columns a.button.primary {
     min-width: 11rem;
+  }
+
+  .collapse > div {
+    flex-direction: column;
   }
 
   .columns > div > div {
