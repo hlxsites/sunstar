@@ -508,6 +508,10 @@ main .block.border {
   border: 1px solid;
 }
 
+main .block.centre-align {
+  text-align: center;
+}
+
 main img {
   max-width: 100%;
   width: auto;
@@ -938,6 +942,10 @@ main .section.padded .section-container {
 main .section.padded-inline .section-container {
   padding-inline: 1rem;
   box-sizing: border-box;
+}
+
+main .block.centre-align>div {
+  margin: auto;
 }
 
 /* END Section Styles END */

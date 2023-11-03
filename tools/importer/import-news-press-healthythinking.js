@@ -230,7 +230,7 @@ function createColumnBlockFromSection(document) {
   const columnSections = document.querySelectorAll('.wp-block-columns');
   if (columnSections.length) {
     columnSections.forEach((section) => {
-      const text = section.querySelector('a') ? 'Columns (No Padding, No Buttons, Small margin)' : 'Columns (No Padding, Small Margin)';
+      const text = section.querySelector('a') ? 'Columns (No Buttons, Small margin)' : 'Columns (Small Margin)';
       const block = [[text]];
       const columnItem = [];
       section.querySelectorAll('.wp-block-column').forEach((column) => {

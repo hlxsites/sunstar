@@ -40,6 +40,10 @@ main .image-collage img {
   width: calc(100vw - 2rem);
 }
 
+main .image-collage.centre-align img {
+  width: unset;
+}
+
 main .image-collage.wide img {
 padding: 2.5rem 1rem;
 }
@@ -123,6 +127,11 @@ image-collage.medium {
   main .image-collage.boxy-col-2::after {
     content: "";
     flex: 0 0 calc(100% / 2 - 2rem);
+  }
+
+  main .image-collage.centre-align.boxy-col-1::after {
+    content: unset;
+    flex: unset;
   }
 
   main .image-collage.boxy-col-3::after {
