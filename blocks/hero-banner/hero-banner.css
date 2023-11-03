@@ -100,13 +100,17 @@
     margin: 1rem auto;
 }
 
-.hero-banner.text-with-no-background-desktop p {
+.hero-banner.text-with-no-background .hero-banner-media-section {
+    height: 21rem;
+}
+
+.hero-banner.text-with-no-background p {
     font-size: 14px;
     line-height: 1.5;
 }
 
-.hero-banner.text-with-no-background-desktop .hero-banner-text-wrapper p img {
-    max-width: 141px;
+.hero-banner.text-with-no-background .hero-banner-text-wrapper p img {
+    max-width: 8.8rem;
     height: auto;
     float: right;
 }
@@ -271,7 +275,11 @@
         margin-left: unset;
     }
 
-    .hero-banner.text-with-no-background-desktop .hero-banner-text-container {
+    .hero-banner.text-with-no-background .hero-banner-media-section {
+        height:34rem;
+    }
+
+    .hero-banner.text-with-no-background .hero-banner-text-container {
         background-color: unset;
     }
 
