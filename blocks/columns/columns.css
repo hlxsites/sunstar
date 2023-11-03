@@ -163,6 +163,11 @@
   margin-left: 0;
 }
 
+
+.columns > div > div:not(.columns-img-col) {
+  padding: 1rem 0;
+}
+
 .columns.text-layout > div > div h2 {
   font-size: var(--heading-font-size-mxl);
   margin: 0;
@@ -233,10 +238,6 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.columns:not(.no-padding) > div > div:not(.columns-img-col) {
-  padding: 1rem 0;
 }
 
 .columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
@@ -517,6 +518,10 @@ div.img-col > video {
   div.img-col > video {
     height: 337px;
     width: 337px;
+  }
+
+  .columns:not(.no-padding) > div > div:not(.columns-img-col) {
+    padding: 1rem 0;
   }
 }
 
