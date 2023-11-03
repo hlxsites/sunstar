@@ -22,7 +22,7 @@
 
 .columns > div {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   gap: 1em;
   margin-bottom: 4rem;
@@ -370,6 +370,7 @@ div.img-col > video {
 
   .columns > div {
     flex-direction: unset;
+    align-items: center;
     gap: 3rem;
     margin-bottom: 7.5rem;
   }
