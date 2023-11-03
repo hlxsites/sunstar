@@ -72,6 +72,8 @@
   .block.highlight > .others {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: unset;
   }
 
   .block.highlight > .others > .other {
