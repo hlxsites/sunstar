@@ -2,6 +2,10 @@
   margin: 2rem 0;
 }
 
+.columns.small-margin {
+  margin: 2rem 0 0;
+}
+
 .columns p,
 .columns dl,
 .columns ol,
@@ -22,6 +26,14 @@
   flex-direction: column;
   gap: 1em;
   margin-bottom: 4rem;
+}
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns.small-margin > div {
+  margin-bottom: 0;
 }
 
 .columns:not(.native-image-sizes) img {
@@ -360,6 +372,12 @@ div.img-col > video {
     margin-top: unset;
   }
 
+  .columns > div {
+    flex-direction: unset;
+    gap: 3rem;
+    margin-bottom: 7.5rem;
+  }
+
   .columns p.button-container {
     flex-direction: row;
     align-items: center;
@@ -371,10 +389,14 @@ div.img-col > video {
     min-width: 11rem;
   }
 
-  .columns > div {
-    flex-direction: unset;
-    gap: 3rem;
-    margin-bottom: 7.5rem;
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+    flex-basis: 50%;
+  }
+
+  .columns.small-margin > div {
+    margin-bottom: 0;
   }
 
   .collapse > div {
@@ -397,12 +419,6 @@ div.img-col > video {
 
   .columns > div .img-col {
     order: unset;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-    flex-basis: 50%;
   }
 
   .columns.history > div {

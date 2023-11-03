@@ -16,11 +16,12 @@ main .block.cards {
 }
 
 .cards > ul > li {
+  padding: 0;
   box-sizing: border-box;
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
   align-items: center;
   text-align: left;
   flex: 1;
@@ -32,9 +33,9 @@ main .block.cards {
 }
 
 .cards > ul > li .date {
-  font-size: var(--body-font-size-xs);
-  font-weight: var(--font-weight-medium);
-  padding-bottom: 0.5rem;
+  font-size: var(--body-font-size-s);
+  padding-bottom: 0.25rem;
+  color: var(--gray);
 }
 
 .cards > ul > li > a.button {
@@ -69,7 +70,7 @@ main .block.cards {
   margin: 0 auto;
   text-align: left;
   color: var(--light-black);
-  padding: 10px 10px 0;
+  padding: 20px;
 }
 
 .cards.info-points .cards-card-body {
@@ -78,6 +79,8 @@ main .block.cards {
 
 .cards .cards-card-body .title {
   margin-bottom: 1rem;
+  font-size: var(--body-font-size-l);
+  color: var(--gray-dark);
 }
 
 .cards.large-text .cards-card-body .date {
@@ -115,6 +118,10 @@ main .block.cards {
 .cards .cards-card-body div {
   height: 100%;
   margin: 0;
+}
+
+.cards .cards-card-body div:last-child {
+  margin-bottom: 0;
 }
 
 /* Styles for features-items cards */
@@ -328,9 +335,6 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   .cards .cards-card-body {
     width: initial;
     margin: 0;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 
   .cards .cards-card-image {
@@ -380,9 +384,9 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
 @media screen and (min-width: 77rem) {
   .cards.grid > ul {
-      grid-template-columns: repeat(auto-fill, 21.875rem);
-      justify-content: space-between;
-      grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, 21.875rem);
+    justify-content: space-between;
+    grid-gap: 3rem;
   }
 
   .cards > ul > li {
