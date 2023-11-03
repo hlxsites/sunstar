@@ -6,7 +6,7 @@ footer {
 }
 
 footer.appear {
-  visibility: visible;
+  /* visibility: visible; */
 }
 
 footer p {
