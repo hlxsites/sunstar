@@ -1188,7 +1188,7 @@ main .section.padded-inline .section-container {
     padding-inline: 0;
   }
 
-  main.section.full-width.columns-container .section-container {
+  main.section.full-width.columns-container > .section-container {
     max-width: 1200px;
   }
 
