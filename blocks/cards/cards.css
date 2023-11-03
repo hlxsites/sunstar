@@ -255,7 +255,6 @@ main .nolink .cards > ul > li .cards-card-image {
   justify-content: center;
   overflow: hidden;
   flex-shrink: 0;
-  margin: inherit;
   border: 1px solid #3C46501A;
 }
 
