@@ -53,10 +53,6 @@
   margin: 0 auto 1rem;
 }
 
-.columns h6 {
-  margin-top: 2rem;
-}
-
 .columns.history h6 {
   color: var(--transparent-grey-color-2);
   font-size: var(--heading-font-size-mxs);
@@ -163,11 +159,6 @@
   margin-left: 0;
 }
 
-
-.columns > div > div:not(.columns-img-col) {
-  padding: 1rem 0;
-}
-
 .columns.text-layout > div > div h2 {
   font-size: var(--heading-font-size-mxl);
   margin: 0;
@@ -228,6 +219,7 @@
 
 .columns.text-and-image-in-column > div div.text-col {
   margin: 0;
+  padding: 0 1rem;
 }
 
 .columns.text-and-image-in-column > div div.text-col p {
@@ -293,6 +285,10 @@ div.img-col > video {
 
 .columns.plain-links.collapse > div > div {
   width: 100%;
+}
+
+.columns > div > div:not(.columns-img-col) div:not(.img-col) {
+  padding: 2rem 0;
 }
 
 .columns.plain-links.collapse:not(.continuation) > div > div:first-child {
