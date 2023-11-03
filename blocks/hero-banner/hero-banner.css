@@ -98,6 +98,14 @@
 
 .hero-banner-text-wrapper p {
     margin: 1rem auto;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hero-banner .hero-banner-text-wrapper p img {
+    max-width: 141px;
+    height: auto;
+    float: right;
 }
 
 .hero-banner .hero-banner-button-container span {
