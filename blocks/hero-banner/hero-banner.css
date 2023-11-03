@@ -98,11 +98,14 @@
 
 .hero-banner-text-wrapper p {
     margin: 1rem auto;
+}
+
+.hero-banner.text-with-no-background-desktop p {
     font-size: 14px;
     line-height: 1.5;
 }
 
-.hero-banner .hero-banner-text-wrapper p img {
+.hero-banner.text-with-no-background-desktop .hero-banner-text-wrapper p img {
     max-width: 141px;
     height: auto;
     float: right;
@@ -266,6 +269,10 @@
         width: 100%;
         font-size: var(--heading-font-size-xxs);
         margin-left: unset;
+    }
+
+    .hero-banner.text-with-no-background-desktop .hero-banner-text-container {
+        background-color: unset;
     }
 
     .hero-banner.overlap .hero-banner-heading-section {
