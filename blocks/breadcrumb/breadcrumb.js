@@ -4,6 +4,7 @@ import {
   getLanguage,
   getLanguangeSpecificPath,
   fetchTagsOrCategories,
+  setMetaTag,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
@@ -40,6 +41,15 @@ async function getTagPageTitle() {
   return tagPageTitle;
 }
 
+function setTagPageTitle(tagPageTitle) {
+  window.document.title = tagPageTitle;
+  const h1 = document.createElement('h1');
+  h1.textContent = tagPageTitle;
+  document.querySelector('.create-tagpage-title>.section-container>.default-content-wrapper').appendChild(h1);
+  setMetaTag('meta', 'property', 'og:title', tagPageTitle);
+  setMetaTag('meta', 'name', 'twitter:title', tagPageTitle);
+}
+
 async function createAutoBreadcrumb(block, placeholders) {
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
@@ -49,11 +59,15 @@ async function createAutoBreadcrumb(block, placeholders) {
   const urlForIndex = (index) => prependSlash(pathname.split(pathSeparator).slice(1, index + 2).join(pathSeparator));
   const pathSplit = pathname.split(pathSeparator);
   const pageType = getMetadata('pagetype');
-  let tagPageTitle = '';
+  let currentTitle = '';
   if (pageType && pageType.trim().toLowerCase() === 'tagpage') {
-    tagPageTitle = await getTagPageTitle();
+    const tagPageTitle = await getTagPageTitle();
+    if (tagPageTitle !== '') {
+      setTagPageTitle(tagPageTitle);
+      currentTitle = tagPageTitle;
+    }
   }
-  const currentTitle = tagPageTitle !== '' ? tagPageTitle : getMetadata('breadcrumbtitle');
+  currentTitle = currentTitle || getMetadata('breadcrumbtitle');
 
   const breadcrumbs = [
     {
