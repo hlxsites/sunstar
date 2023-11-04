@@ -3,6 +3,7 @@ import {
   fixExcelFilterZeroes,
   getLanguage,
   getLanguangeSpecificPath,
+  fetchTagsOrCategories,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
@@ -22,6 +23,23 @@ function renderBreadcrumb(breadcrumbs) {
   return li;
 }
 
+async function getTagPageTitle() {
+  const type = getMetadata('type') || '';
+  const locale = getLanguage();
+  const tags = await fetchTagsOrCategories([], 'tags', type, locale);
+  const queryString = window.location.search;
+  const queryParams = new URLSearchParams(queryString);
+  const feedTags = queryParams.get('feed-tags');
+  let tagPageTitle = '';
+  if (feedTags && tags.length) {
+    const tag = tags.find((tagItem) => (feedTags.trim() === tagItem.id));
+    if (tag && tag.name) {
+      tagPageTitle = tag.name;
+    }
+  }
+  return tagPageTitle;
+}
+
 async function createAutoBreadcrumb(block, placeholders) {
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
@@ -30,7 +48,12 @@ async function createAutoBreadcrumb(block, placeholders) {
   // eslint-disable-next-line max-len
   const urlForIndex = (index) => prependSlash(pathname.split(pathSeparator).slice(1, index + 2).join(pathSeparator));
   const pathSplit = pathname.split(pathSeparator);
-  const currentTitle = getMetadata('breadcrumbtitle');
+  const pageType = getMetadata('pagetype');
+  let tagPageTitle = '';
+  if (pageType && pageType.trim().toLowerCase() === 'tagpage') {
+    tagPageTitle = await getTagPageTitle();
+  }
+  const currentTitle = tagPageTitle !== '' ? tagPageTitle : getMetadata('breadcrumbtitle');
 
   const breadcrumbs = [
     {
