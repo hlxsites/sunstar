@@ -394,6 +394,7 @@ main table tr {
 
 main table td {
   flex-grow: 1;
+  flex-basis: 0;
 }
 
 main table a {
