@@ -408,10 +408,10 @@ export function setMetaTag(tagType, propertyKey, propertyValue, url) {
  *  og:url
  *  canonical
  */
-function setTagPageMetaImages(main) {
+function setMetaTags(main) {
   const pageType = getMetadata('pagetype');
   if (pageType && pageType.trim().toLowerCase() === 'tagpage') {
-    const images = [...main.querySelectorAll('.fragment-container .cards.block > ul > li img')];
+    const images = [...main.querySelectorAll('.cards.block > ul > li img')];
     const imageTag = images.find((image) => (image.src));
     if (imageTag && imageTag.src) {
       const imageUrl = imageTag.src;
@@ -440,7 +440,7 @@ async function loadLazy(doc) {
   if (!isInternalPage()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
-    setTagPageMetaImages(main);
+    setMetaTags(main);
 
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
     loadFonts();
