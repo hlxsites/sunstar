@@ -62,7 +62,6 @@ export default async function decorate(block) {
 
   const slideDivs = [];
   if (block.children && block.children.length > 0) {
-
     MAX_BUTTONS = block.children.length - 2;
     [...block.children].forEach((row) => {
       const div = document.createElement('div');
