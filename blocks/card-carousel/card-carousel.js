@@ -61,7 +61,7 @@ export default async function decorate(block) {
   careerSlides.classList.add('career-slides');
 
   const slideDivs = [];
-  if(block.children && block.children.length > 0){
+  if (block.children && block.children.length > 0) {
 
     MAX_BUTTONS = block.children.length - 2;
     [...block.children].forEach((row) => {
@@ -69,51 +69,50 @@ export default async function decorate(block) {
       div.classList.add('career-card');
 
       const a = document.createElement('a');
-      a.href = "www.google.com";
+      a.href = hrefVal || '#';
       div.append(a);
       a.innerHTML = row.innerHTML;
 
       careerSlides.append(div);
       slideDivs.push(div);
-  });
-  }
-  else{
-  for (let i = 0; i < data.length; i += 1) {
-    const div = document.createElement('div');
-    div.classList.add('career-card');
-    const a = document.createElement('a');
-    a.href = data[i].path;
-    const pic = createOptimizedPicture(data[i].image, data[i].pagename);
-    a.append(pic);
+    });
+  } else {
+    for (let i = 0; i < data.length; i += 1) {
+      const div = document.createElement('div');
+      div.classList.add('career-card');
+      const a = document.createElement('a');
+      a.href = data[i].path;
+      const pic = createOptimizedPicture(data[i].image, data[i].pagename);
+      a.append(pic);
 
-    const bqc = document.createElement('div');
-    bqc.classList.add('career-card-bqc');
-    const bq = document.createElement('blockquote');
-    bq.textContent = data[i]['career-quote'];
-    bqc.append(bq);
-    a.append(bqc);
+      const bqc = document.createElement('div');
+      bqc.classList.add('career-card-bqc');
+      const bq = document.createElement('blockquote');
+      bq.textContent = data[i]['career-quote'];
+      bqc.append(bq);
+      a.append(bqc);
 
-    const nm = document.createElement('h6');
-    nm.textContent = data[i].pagename;
-    a.append(nm);
+      const nm = document.createElement('h6');
+      nm.textContent = data[i].pagename;
+      a.append(nm);
 
-    const role = document.createElement('p');
-    role.textContent = data[i]['career-jobtitle'];
-    a.append(role);
+      const role = document.createElement('p');
+      role.textContent = data[i]['career-jobtitle'];
+      a.append(role);
 
-    const link = document.createElement('button');
-    link.textContent = placeholders['career-carousel-readmore'];
-    const arrow = document.createElement('img');
-    arrow.src = '/icons/angle-right-blue.svg';
-    arrow.alt = 'Go to testimonial';
-    arrow.classList.add('icon-angle-right-blue');
-    link.append(arrow);
-    a.append(link);
-    div.append(a);
+      const link = document.createElement('button');
+      link.textContent = placeholders['career-carousel-readmore'];
+      const arrow = document.createElement('img');
+      arrow.src = '/icons/angle-right-blue.svg';
+      arrow.alt = 'Go to testimonial';
+      arrow.classList.add('icon-angle-right-blue');
+      link.append(arrow);
+      a.append(link);
+      div.append(a);
 
-    careerSlides.append(div);
-    slideDivs.push(div);
-  }
+      careerSlides.append(div);
+      slideDivs.push(div);
+    }
   }
   careerSlider.append(careerSlides);
 
@@ -152,7 +151,7 @@ export default async function decorate(block) {
   block.append(careerSlider);
   block.append(navBar);
 
-  if(block.children){
+  if (block.children) {
     // Remove all elements preceding the career slider div
     while (careerSlider.previousElementSibling) {
       careerSlider.parentNode.removeChild(careerSlider.previousElementSibling);
