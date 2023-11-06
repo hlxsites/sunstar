@@ -11,6 +11,12 @@
   margin-left: 12rem;
 }
 
+.cards-card-image {
+  height: 12.5rem;
+  margin: 0;
+  padding: 0;
+}
+
 .career .career-slider{
   margin-left: -1rem;
 }
@@ -47,6 +53,13 @@
 
 .card-carousel .career-card:hover {
   box-shadow: #3c465066 0 4px 16px 0;
+}
+
+.cards-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
 }
 
 .card-carousel .career-card a {
@@ -204,17 +217,4 @@ card-carousel.career .career-card a > :not(picture) {
   .card-carousel .career-slides-navbar {
     display: flex;
   }
-}
-
-.cards-card-image {
-  height: 12.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.cards-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 0%;
 }
