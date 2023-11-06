@@ -57,10 +57,34 @@ function getMetadataNullable(key) {
   return meta === '' ? null : meta;
 }
 
+async function loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk) {
+  const currentResults = document.querySelectorAll('.other').length;
+  const slicedResults = results.slice(currentResults, currentResults + chunk);
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
+  const builtBlock = buildBlock(blockType, blockContents);
+  [...block.classList].forEach((item) => {
+    if (item !== 'feed') {
+      builtBlock.classList.add(item);
+    }
+  });
+  await loadBlock(builtBlock);
+  builtBlock.querySelectorAll(':scope > div').forEach((div) => {
+    div.classList.add('other');
+  });
+  const parentBlock = document.querySelector('.block.feed-newsroom > .others');
+  parentBlock.append(...builtBlock.childNodes);
+  if ((results.length - currentResults) > chunk) {
+    parentBlock.append(loadMoreContainer);
+  } else loadMoreContainer.remove();
+}
+
 /**
    * Feed block decorator to build feeds based on block configuration
    */
 export default async function decorate(block) {
+  let slicedResults = 0;
+  let loadMoreContainer = 0;
+  let currentResults = 0;
   const blockCfg = readBlockConfig(block);
   const queryObj = await queryIndex(`${getLanguage()}-search`);
 
@@ -78,15 +102,27 @@ export default async function decorate(block) {
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
   block.innerHTML = '';
   const blockType = 'highlight';
-  const blockContents = resultParsers[blockType](results, blockCfg);
+  const chunk = 100;
+  if (results.length > chunk) {
+    // const factor = Math.trunc(results.length / chunk);
+    currentResults = document.querySelectorAll('.other').length;
+    slicedResults = results.slice(currentResults, currentResults + chunk);
+    loadMoreContainer = document.createElement('div');
+    loadMoreContainer.innerHTML = '<button class="author-list-load-more-button">View more</button>';
+    loadMoreContainer.classList.add('load-more-container');
+    loadMoreContainer.addEventListener('click', () => {
+      loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk);
+    });
+  } else slicedResults = results;
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
-  console.log(builtBlock);
 
   [...block.classList].forEach((item) => {
     if (item !== 'feed') {
       builtBlock.classList.add(item);
     }
   });
+  // Creation of filter and year buttons
   const filterDiv = document.createElement('div');
   const div1 = document.createElement('div');
   const div2 = document.createElement('div');
@@ -102,5 +138,8 @@ export default async function decorate(block) {
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   builtBlock.before(filterDiv);
+  if ((results.length - currentResults) > chunk) {
+    builtBlock.after(loadMoreContainer);
+  } else loadMoreContainer.remove();
   return builtBlock;
 }
