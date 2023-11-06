@@ -114,7 +114,6 @@ export default async function decorate(block) {
       loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk);
     });
   } else slicedResults = results;
-  console.log(slicedResults);
   const blockContents = resultParsers[blockType](slicedResults, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
 
