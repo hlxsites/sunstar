@@ -101,6 +101,8 @@ export default async function decorate(block) {
     .toList()
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
   block.innerHTML = '';
+  const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
+  console.log(uniqYears);
   const blockType = 'highlight';
   const chunk = 15;
   if (results.length > chunk) {
