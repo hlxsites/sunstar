@@ -68,7 +68,8 @@ export default async function decorate(block) {
       div.classList.add('career-card');
 
       const a = document.createElement('a');
-      a.href = '#'; //Todo populate the Link of the stories
+      //Todo populate the Link of the stories
+      a.href = '#'; 
       div.append(a);
       a.innerHTML = row.innerHTML;
 
