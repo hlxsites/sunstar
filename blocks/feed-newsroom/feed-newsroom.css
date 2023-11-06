@@ -32,4 +32,10 @@ main .feed-newsroom-wrapper .load-more-container {
     justify-content: center;
 }
 
+main .feed-newsroom-wrapper button {
+    background-color: #007cad;
+    color: #fff;
+    font-size: var(--body-font-size-m);;
+}
+
 
