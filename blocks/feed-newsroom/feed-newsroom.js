@@ -102,7 +102,7 @@ export default async function decorate(block) {
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
   block.innerHTML = '';
   const blockType = 'highlight';
-  const chunk = 100;
+  const chunk = 15;
   if (results.length > chunk) {
     // const factor = Math.trunc(results.length / chunk);
     currentResults = document.querySelectorAll('.other').length;
