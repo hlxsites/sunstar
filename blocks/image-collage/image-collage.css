@@ -40,6 +40,10 @@ main .image-collage img {
   width: calc(100vw - 2rem);
 }
 
+main .image-collage.centered img {
+  width: unset;
+}
+
 main .image-collage.wide img {
 padding: 2.5rem 1rem;
 }
@@ -93,6 +97,16 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
   flex-direction: column-reverse;
 }
 
+image-collage.medium {
+  font-size: var(--font-size-small);
+  color: #0d66c2;
+}
+
+.medium .icon {
+  width: auto;
+  height: auto;
+}
+
 @media (min-width: 62rem) {
   main .image-collage {
     columns: 2;
@@ -113,6 +127,11 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
   main .image-collage.boxy-col-2::after {
     content: "";
     flex: 0 0 calc(100% / 2 - 2rem);
+  }
+
+  main .image-collage.centered.boxy-col-1::after {
+    content: unset;
+    flex: unset;
   }
 
   main .image-collage.boxy-col-3::after {
@@ -162,5 +181,13 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
   main .image-collage[class*='boxy-col-'].image-with-title > div {
     flex-basis: 100%;
     align-items: flex-start;
+  }
+
+  .image-collage.medium {
+    margin: 1rem;
+  }
+
+  main .center-content.block {
+    margin: 1rem;
   }
 }

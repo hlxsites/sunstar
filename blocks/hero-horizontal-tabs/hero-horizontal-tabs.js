@@ -31,6 +31,7 @@ export default function decorate(block) {
   const image = getImage(block);
   const text = getText(block);
   const tabs = createTabs(block, text);
+
   if (tabs) {
   // move the tab riders in front
     const wrapper = block.parentElement;

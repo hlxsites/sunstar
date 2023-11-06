@@ -378,6 +378,55 @@ export function addFavIcon(href) {
 }
 
 /**
+ * Function to set head meta tags.
+ */
+export function setMetaTag(tagType, propertyKey, propertyValue, url) {
+  const tag = document.querySelector(`${tagType}[${propertyKey}='${propertyValue}']`);
+  if (tag) {
+    if (tagType === 'link') {
+      tag.href = url;
+    } else {
+      tag.content = url;
+    }
+  } else {
+    const meta = document.createElement(tagType);
+    meta.setAttribute(propertyKey, propertyValue);
+    if (tagType === 'link') {
+      meta.href = url;
+    } else {
+      meta.content = url;
+    }
+    document.head.appendChild(meta);
+  }
+}
+
+/**
+ * Function to set following meta tags for tag page
+ *  og:image
+ *  og:image:secure_url
+ *  twitter:image
+ *  og:url
+ *  canonical
+ */
+function setMetaTags(main) {
+  const pageType = getMetadata('pagetype');
+  if (pageType && pageType.trim().toLowerCase() === 'tagpage') {
+    const images = [...main.querySelectorAll('.cards.block > ul > li img')];
+    const imageTag = images.find((image) => (image.src));
+    if (imageTag && imageTag.src) {
+      const imageUrl = imageTag.src;
+      const OgTags = ['og:image', 'og:image:secure_url'];
+      OgTags.forEach((tag) => {
+        setMetaTag('meta', 'property', tag, imageUrl);
+      });
+      setMetaTag('meta', 'name', 'twitter:image', imageUrl);
+    }
+    setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
+    setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
+  }
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -391,6 +440,7 @@ async function loadLazy(doc) {
   if (!isInternalPage()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
+    setMetaTags(main);
 
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
     loadFonts();

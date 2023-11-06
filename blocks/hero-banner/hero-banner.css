@@ -24,11 +24,20 @@
 }
 
 .hero-banner video,
-.hero-banner img {
+.hero-banner img,
+.hero-banner.image-right img {
     width: 100%;
     object-fit: cover;
     height: 22.5rem;
     object-position: 80% 0;
+}
+
+.hero-banner.image-center img {
+    object-position: center;
+}
+
+.hero-banner.image-left img {
+    object-position: 20% 0;
 }
 
 .hero-banner .hero-banner-heading-section {
@@ -186,7 +195,10 @@
     }
 
     .hero-banner video,
-    .hero-banner img
+    .hero-banner img,
+    .hero-banner.image-right img,
+    .hero-banner.image-left img,
+    .hero-banner.image-center img
     {
         min-height: 100%;
         object-position: unset;
@@ -353,5 +365,51 @@
 
     .hero-banner.overlap .hero-banner-media-section {
         height: 43.75rem;
+    }
+}
+
+/* Variation small-box */
+@media (min-width: 62rem) {
+    .hero-banner.overlap.small-box .hero-banner-text-container {
+        height: 23.75rem;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-heading-container.right-text {
+        left: calc(100vw - 90.875rem / 3);
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-text-wrapper {
+        flex-basis: unset;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-text-wrapper h2 {
+        font-size: var(--heading-font-size-m);
+    }
+}
+
+@media (min-width: 77rem) {
+    .section.full-width.hero-banner-container.overlap.hero-small-box {
+        height: 36.25rem;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-media-section {
+        height: 36.25rem;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-text-container {
+        padding: 3rem;
+        margin-top: 3rem;
+        height: 23.75rem;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-heading-container.right-text {
+        left: 0;
+    }
+
+    .hero-banner.overlap.small-box .hero-banner-text-wrapper h2 {
+        font-size: var(--heading-font-size-l);
     }
 }

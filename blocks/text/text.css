@@ -68,3 +68,14 @@ main .block.text.border {
   padding: 0.5rem;
   margin-bottom: 1rem;
 }
+
+main .block.text.lead {
+  font-size: var(--body-font-size-xl);
+}
+
+@media (min-width: 77rem) {
+  main .block.text.lead {
+    font-size: var(--body-font-size-xxl);
+  }
+}
+
