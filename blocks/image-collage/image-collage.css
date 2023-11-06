@@ -40,7 +40,7 @@ main .image-collage img {
   width: calc(100vw - 2rem);
 }
 
-main .image-collage.centre-align img {
+main .image-collage.centered img {
   width: unset;
 }
 
@@ -129,7 +129,7 @@ image-collage.medium {
     flex: 0 0 calc(100% / 2 - 2rem);
   }
 
-  main .image-collage.centre-align.boxy-col-1::after {
+  main .image-collage.centered.boxy-col-1::after {
     content: unset;
     flex: unset;
   }

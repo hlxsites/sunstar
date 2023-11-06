@@ -508,7 +508,7 @@ main .block.border {
   border: 1px solid;
 }
 
-main .block.centre-align {
+main .block.centered {
   text-align: center;
 }
 
@@ -944,7 +944,7 @@ main .section.padded-inline .section-container {
   box-sizing: border-box;
 }
 
-main .block.centre-align>div {
+main .block.centered>div {
   margin: auto;
 }
 
