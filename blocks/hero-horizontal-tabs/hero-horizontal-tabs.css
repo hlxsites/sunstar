@@ -139,6 +139,13 @@ main .hero-horizontal-tabs-wrapper + .section.static {
   margin-bottom: unset;
 }
 
+main .hero-horizontal-tabs a.button.primary.video-link::after {
+  content: url('../../icons/play.svg');
+  position: relative;
+  top: 0.1rem;
+  left: 0.3rem;
+}
+
 @media (min-width:62rem) {
   main .hero-horiz-tabs-panel {
     width: 50%;
