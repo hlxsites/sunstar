@@ -7,6 +7,10 @@
     background-image: url("/assets/careers-mobile-top.jpg");
 }
 
+.hero-banner.story {
+    background-image: url("/assets/careers-mobile-top.jpg");
+}
+
 .hero-banner .hero-banner-media-section {
     height: 14.75rem;
     position: relative;
