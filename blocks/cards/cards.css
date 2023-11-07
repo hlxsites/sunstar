@@ -188,6 +188,7 @@ main .cards.machine-parts .cards-card-image {
   width: 16rem;
   height: 9rem;
   flex-shrink: 0;
+  margin: 0;
 }
 
 main .cards.machine-parts .cards-card-body {
