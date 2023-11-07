@@ -193,6 +193,7 @@
         position: relative;
         min-height: 43.75rem;
         margin-bottom: 8.625rem;
+        background-color: var(--primary);
     }
 
     .hero-banner .hero-banner-media-section {
