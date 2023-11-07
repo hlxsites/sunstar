@@ -153,6 +153,16 @@
   max-width: 1200px;
 }
 
+.columns.esg-view > div {
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-direction: unset;
+}
+
+.columns.esg-view > div > div {
+  flex: 1;
+}
+
 .columns.plain-links > div > div,
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
@@ -220,6 +230,12 @@
 .columns.text-and-image-in-column > div div.text-col {
   margin: 0;
   padding: 0 1rem;
+}
+
+.columns.esg-view > div > div div.text-col {
+  position: relative;
+  padding: unset;
+  margin: unset;
 }
 
 .columns.text-and-image-in-column > div div.text-col p {
@@ -529,5 +545,58 @@ div.img-col > video {
   div.img-col > video {
     height: 469px;
     width: 469px;
+  }
+}
+
+/* ESG View */
+.columns.esg-view em a {
+  display: inline-flex;
+  width: 100%;
+  font-size: 1.25rem;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+  background-color: var(--white);
+  padding: 1rem 0;
+  font-weight: 700;
+  font-style: normal;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.columns.esg-view .button-container {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.columns.esg-view .button-container a {
+  background-color: unset;
+  color: var(--secondary);
+  font-size: 1rem;
+  padding: unset;
+  display: block;
+  margin: 0 -1.25rem;
+}
+
+.columns.esg-view em a:hover {
+  color: var(--white);
+  background-color: var(--link-blue-color);
+  border-color: var(--link-blue-color);
+}
+
+.columns.esg-view .button-container a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 62rem) {
+  .columns.esg-view .button-container a {
+    font-size: 1.25rem;
+    margin: 0 1rem;
   }
 }
