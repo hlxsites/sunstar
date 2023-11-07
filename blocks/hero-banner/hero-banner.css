@@ -285,11 +285,6 @@
         padding-left: unset;
     }
 
-    .hero-banner.overlap.opaque .hero-banner-text-container {
-        background: var(--primary-08-transparency);
-        backdrop-filter: blur(10px);
-    }
-
     .hero-banner.overlap .hero-banner-text-wrapper h2{
         font-size: var(--heading-font-size-l);
         line-height: 2.9375rem;
@@ -348,7 +343,7 @@
     }
 
     .hero-banner.overlap .hero-banner-heading-container.right-text {
-        padding-left: calc(100vw - 82.875rem / 2);
+        padding-left: calc(90vw - 82.875rem / 2);
         left: 0;
     }
 
