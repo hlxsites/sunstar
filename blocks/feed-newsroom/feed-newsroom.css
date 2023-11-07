@@ -19,12 +19,24 @@ main .block.feed-newsroom > .others:first-child {
 main .feed-newsroom-wrapper > div:first-child {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    gap: 100px;
+    justify-content: space-around;
     margin: 50px;
 }
 
-main .feed-newsroom-wrapper>div:first-child>div {
+main .feed-newsroom-wrapper form .filter-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+main .feed-newsroom-wrapper button {
+    background-color: #007cad;
+    color: #fff;
+    font-size: var(--body-font-size-m);;
+}
+
+
+main .feed-newsroom-wrapper form button {
     min-width: 6rem;
     background: var(--white);
     color: var(--secondary);
@@ -33,10 +45,30 @@ main .feed-newsroom-wrapper>div:first-child>div {
     font-weight: 500;
     border-radius: 2px;
     text-align: center;
-    font-size: var(--body-font-size-l);
+    font-size: var(--body-font-size-m);
     border: 1px solid #007CAD;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+main .feed-newsroom-wrapper form span {
+    margin-right: 2rem;
+}
+
+
+main .feed-newsroom-wrapper form select {
+    min-width: 6rem;
+    background: var(--white);
+    color: var(--secondary);
+    padding: 6px 15px;
+    height: 32px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+    border: 0;
+    font-size: var(--body-font-size-m);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 
 main .feed-newsroom-wrapper>div:first-child>div:first-child {
     border: 0;
@@ -48,12 +80,5 @@ main .feed-newsroom-wrapper .load-more-container {
     justify-content: space-between;
     margin-bottom: 10vh;
 }
-
-main .feed-newsroom-wrapper button {
-    background-color: #007cad;
-    color: #fff;
-    font-size: var(--body-font-size-m);;
-}
-
 
 
