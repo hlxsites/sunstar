@@ -78,33 +78,10 @@ async function loadMoreResults(block, blockType, results, blockCfg, loadMoreCont
   } else loadMoreContainer.remove();
 }
 
-/**
-   * Feed block decorator to build feeds based on block configuration
-   */
-export default async function decorate(block) {
+async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv) {
   let slicedResults = 0;
   let loadMoreContainer = 0;
   let currentResults = 0;
-  const blockCfg = readBlockConfig(block);
-  const queryObj = await queryIndex(`${getLanguage()}-search`);
-
-  const omitPageTypes = getMetadataNullable('omit-page-types');
-  // eslint-disable-next-line prefer-arrow-callback
-  const results = queryObj.where(function filterElements(el) {
-    const elPageType = (el.pagetype ?? '').trim().toLowerCase();
-    let match = false;
-    match = (!omitPageTypes || !(omitPageTypes.split(',').includes(elPageType)));
-    return match;
-  })
-  // eslint-disable-next-line
-    .orderByDescending((el) => (blockCfg.sort ? parseInt(el[blockCfg.sort.trim().toLowerCase()], 10) : el.path))
-    .toList()
-    .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
-  block.innerHTML = '';
-  const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
-  console.log(uniqYears);
-  const blockType = 'highlight';
-  const chunk = 15;
   if (results.length > chunk) {
     // const factor = Math.trunc(results.length / chunk);
     currentResults = document.querySelectorAll('.other').length;
@@ -124,24 +101,6 @@ export default async function decorate(block) {
       builtBlock.classList.add(item);
     }
   });
-  // Creation of filter and year buttons
-  const filterDiv = document.createElement('div');
-  // const div1 = document.createElement('div');
-  // const div2 = document.createElement('div');
-  // div1.innerText = 'Year';
-  // div2.innerText = 'Filter';
-  // filterDiv.appendChild(div1);
-  // filterDiv.appendChild(div2);
-  filterDiv.innerHTML = `<form action="#">
-  <div class="filter-nav">
-    <span>
-      <select class="form-control" name="" id="news_year">
-        <option value="">Year</option>
-        <option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option>                  </select>
-    </span>
-    <button data-nonce="8411f43402" data-post_type="news" class="btn btn btn-outline btn-outline-primary btn-filter btn-filter-js" id="news_filter">FILTER</button>
-  </div>
-</form>`;
 
   if (block.parentNode) {
     block.parentNode.replaceChild(builtBlock, block);
@@ -162,4 +121,54 @@ export default async function decorate(block) {
   }
 
   return builtBlock;
+}
+
+/**
+   * Feed block decorator to build feeds based on block configuration
+   */
+export default async function decorate(block) {
+  let searchResults = 0;
+  const chunk = 15;
+  const blockType = 'highlight';
+  const blockCfg = readBlockConfig(block);
+  const queryObj = await queryIndex(`${getLanguage()}-search`);
+
+  const omitPageTypes = getMetadataNullable('omit-page-types');
+  // eslint-disable-next-line prefer-arrow-callback
+  let results = queryObj.where(function filterElements(el) {
+    const elPageType = (el.pagetype ?? '').trim().toLowerCase();
+    let match = false;
+    match = (!omitPageTypes || !(omitPageTypes.split(',').includes(elPageType)));
+    return match;
+  })
+  // eslint-disable-next-line
+    .orderByDescending((el) => (blockCfg.sort ? parseInt(el[blockCfg.sort.trim().toLowerCase()], 10) : el.path))
+    .toList()
+    .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
+  block.innerHTML = '';
+  // Creation of filter and year
+  const filterDiv = document.createElement('div');
+  filterDiv.innerHTML = `<form action="#">
+  <div class="filter-nav">
+    <span>
+      <select class="form-control" name="" id="news_year">
+        <option value="">Year</option>
+        <option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option>                  </select>
+    </span>
+    <button data-nonce="8411f43402" data-post_type="news" class="btn btn btn-outline btn-outline-primary btn-filter btn-filter-js" id="news_filter">FILTER</button>
+  </div>
+</form>`;
+  const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
+  console.log(uniqYears);
+  console.log(results);
+  filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
+    const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
+    console.log(searchYear);
+    console.log(results);
+    searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
+    console.log(searchResults);
+    results = searchResults;
+    // loadResults(block, blockType, results, blockCfg, chunk, filterDiv);
+  });
+  loadResults(block, blockType, results, blockCfg, chunk, filterDiv);
 }
