@@ -1,5 +1,21 @@
 /* eslint no-empty: "info" */
 
+main .section.feed-newsroom-container > .section-container {
+    max-width: 1200px;
+}
+
+main .section.feed-newsroom-container.narrow {
+    max-width: 90rem;
+}
+
+main .block.feed-newsroom {
+    gap: 10vw;
+}
+
+main .block.feed-newsroom > .others:first-child {
+    flex-grow: 3;
+}
+
 main .feed-newsroom-wrapper > div:first-child {
     display: flex;
     flex-direction: row;
@@ -29,7 +45,8 @@ main .feed-newsroom-wrapper>div:first-child>div:first-child {
 main .feed-newsroom-wrapper .load-more-container {
     grid-column: 1/-1;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 10vh;
 }
 
 main .feed-newsroom-wrapper button {
@@ -37,5 +54,6 @@ main .feed-newsroom-wrapper button {
     color: #fff;
     font-size: var(--body-font-size-m);;
 }
+
 
 

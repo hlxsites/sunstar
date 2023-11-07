@@ -143,5 +143,13 @@ export default async function decorate(block) {
   if ((results.length - currentResults) > chunk) {
     builtBlock.after(loadMoreContainer);
   } else loadMoreContainer.remove();
+
+  // In order to place fragment block to the right side of the page
+  const feedNewsroom = builtBlock.parentElement.parentElement.parentElement;
+  if (feedNewsroom.nextElementSibling.classList.contains('fragment-container')) {
+    feedNewsroom.nextElementSibling.lastChild.classList.add('others');
+    builtBlock.append(...feedNewsroom.nextElementSibling.childNodes);
+  }
+
   return builtBlock;
 }
