@@ -97,7 +97,7 @@ main .form select:focus {
 }
 
 main .form-select-wrapper div {
-  font-size: small;
+  font-size: var(--body-font-size-s);
 }
 
 main .form .invalid>input:hover,
