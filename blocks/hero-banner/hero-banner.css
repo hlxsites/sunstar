@@ -7,10 +7,6 @@
     background-image: url("/assets/careers-mobile-top.jpg");
 }
 
-.hero-banner.story {
-    background-image: url("/assets/careers-mobile-top.jpg");
-}
-
 .hero-banner .hero-banner-media-section {
     height: 14.75rem;
     position: relative;
@@ -193,6 +189,12 @@
         height: 36.4rem;
     }
 
+    .section.full-width.hero-banner-container:has(.hero-banner.story) {
+        position: relative;
+        min-height: 43.75rem;
+        margin-bottom: 8.625rem;
+    }
+
     .hero-banner .hero-banner-media-section {
         height: 32rem;
         position: absolute;
@@ -321,7 +323,7 @@
 }
 
 @media (min-width: 77rem) {
-    .hero-banner .hero-banner-heading-section{
+    .hero-banner .hero-banner-heading-section {
         padding-left: 0;
         padding-right: 0;
         max-width: 75rem;
