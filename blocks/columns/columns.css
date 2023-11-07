@@ -153,16 +153,6 @@
   max-width: 1200px;
 }
 
-.columns.esg-view > div {
-  margin-bottom: 1.5rem;
-  align-items: center;
-  flex-direction: unset;
-}
-
-.columns.esg-view > div > div {
-  flex: 1;
-}
-
 .columns.plain-links > div > div,
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
@@ -232,7 +222,7 @@
   padding: 0 1rem;
 }
 
-.columns.esg-view > div > div div.text-col {
+.columns.text-and-image-in-column.overlap > div > div div.text-col {
   position: relative;
   padding: unset;
   margin: unset;
@@ -297,6 +287,16 @@ div.img-col > video {
 
 .columns.collapse.top-down.columns-2-cols {
   max-width: 100%;
+}
+
+.columns.text-and-image-in-column.overlap > div {
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-direction: unset;
+}
+
+.columns.text-and-image-in-column.overlap > div > div {
+  flex: 1;
 }
 
 .columns.plain-links.collapse > div > div {
@@ -548,8 +548,8 @@ div.img-col > video {
   }
 }
 
-/* ESG View */
-.columns.esg-view em a {
+/* Text-image overlap View */
+.columns.text-and-image-in-column.overlap em a {
   display: inline-flex;
   width: 100%;
   font-size: 1.25rem;
@@ -557,7 +557,7 @@ div.img-col > video {
   border: 1px solid var(--secondary);
   background-color: var(--white);
   padding: 1rem 0;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-style: normal;
   align-items: center;
   justify-content: center;
@@ -566,7 +566,7 @@ div.img-col > video {
   border-radius: 2px;
 }
 
-.columns.esg-view .button-container {
+.columns.text-and-image-in-column.overlap .button-container {
   position: absolute;
   top: 30%;
   left: 0;
@@ -575,7 +575,7 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns.esg-view .button-container a {
+.columns.text-and-image-in-column.overlap .button-container a {
   background-color: unset;
   color: var(--secondary);
   font-size: 1rem;
@@ -584,18 +584,18 @@ div.img-col > video {
   margin: 0 -1.25rem;
 }
 
-.columns.esg-view em a:hover {
+.columns.text-and-image-in-column.overlap em a:hover {
   color: var(--white);
   background-color: var(--link-blue-color);
   border-color: var(--link-blue-color);
 }
 
-.columns.esg-view .button-container a:hover {
+.columns.text-and-image-in-column.overlap .button-container a:hover {
   text-decoration: underline;
 }
 
 @media (min-width: 62rem) {
-  .columns.esg-view .button-container a {
+  .columns.text-and-image-in-column.overlap .button-container a {
     font-size: 1.25rem;
     margin: 0 1rem;
   }
