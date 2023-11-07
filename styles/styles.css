@@ -535,6 +535,15 @@ main img {
 
 /* START Section Styles START */
 
+main .section[data-bg-image],
+main .section[data-bg-image-desktop],
+main .section[data-bg-image-mobile],
+main .section[data-bg-image-tablet] {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -946,7 +955,7 @@ main .section.padded-inline .section-container {
   box-sizing: border-box;
 }
 
-main .block.centered>div {
+main .block.centered > div {
   margin: auto;
 }
 
@@ -992,6 +1001,13 @@ main .block.centered>div {
   }
 
   /* START Section Styles START */
+
+  main .section[data-bg-image],
+  main .section[data-bg-image-desktop],
+  main .section[data-bg-image-mobile],
+  main .section[data-bg-image-tablet] {
+    background-size: cover;
+  }
 
   main .section .section-container {
     max-width: calc(872px + 32px);
