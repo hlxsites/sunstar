@@ -343,8 +343,9 @@
     }
 
     .hero-banner.overlap .hero-banner-heading-container.right-text {
-        padding-left: calc(90vw - 82.875rem / 2);
-        left: 0;
+        padding-right: calc(50vw - 82.875rem / 2);
+        left: unset;
+        right: 0;
     }
 
     .section.full-width.hero-banner-container.overlap {
