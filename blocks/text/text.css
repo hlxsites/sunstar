@@ -80,11 +80,11 @@ main .block.text.emphasis {
   margin-block: 1.5rem;
 }
 
-main .block.text.emphasis > :first-child {
+main .block.text.emphasis > div > div > :first-child {
   margin-top: 0;
 }
 
-main .block.text.emphasis > :last-child {
+main .block.text.emphasis > div > div > :last-child {
   margin-bottom: 0;
 }
 
@@ -100,11 +100,11 @@ main .block.text.emphasis > :last-child {
     margin-block: 2rem;
   }
 
-  main .block.text.emphasis > :first-child {
+  main .block.text.emphasis > div > div > :first-child {
     margin-top: 0;
   }
 
-  main .block.text.emphasis > :last-child {
+  main .block.text.emphasis > div > div > :last-child {
     margin-bottom: 0;
   }
 }
