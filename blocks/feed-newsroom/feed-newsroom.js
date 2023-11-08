@@ -57,6 +57,7 @@ function getMetadataNullable(key) {
   return meta === '' ? null : meta;
 }
 
+// The below function is leveraged for View More button functionality
 async function loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk) {
   const currentResults = document.querySelectorAll('.other').length;
   const slicedResults = results.slice(currentResults, currentResults + chunk);
@@ -83,14 +84,13 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
   let loadMoreContainer = 0;
   let currentResults = 0;
   if (results.length > chunk) {
-    // const factor = Math.trunc(results.length / chunk);
     currentResults = document.querySelectorAll('.other').length;
     slicedResults = results.slice(currentResults, currentResults + chunk);
     loadMoreContainer = document.createElement('div');
-    loadMoreContainer.innerHTML = '<button class="author-list-load-more-button">View more</button>';
+    loadMoreContainer.innerHTML = '<button class="load-more-button">View more</button>';
     loadMoreContainer.classList.add('load-more-container');
     loadMoreContainer.addEventListener('click', () => {
-      loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk);
+      loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk, slicedResults);
     });
   } else slicedResults = results;
   const blockContents = resultParsers[blockType](slicedResults, blockCfg);
@@ -109,7 +109,7 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   builtBlock.before(filterDiv);
-  if ((results.length - currentResults) > chunk) {
+  if (results.length > currentResults) {
     builtBlock.after(loadMoreContainer);
   } else loadMoreContainer.remove();
 
@@ -121,6 +121,28 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
   }
 
   return builtBlock;
+}
+
+// The Below function is leveraged for loading results when any year is selected in the dropdown
+async function loadYearResults(block, blockType, results, blockCfg) {
+  let slicedResults = 0;
+  const parentBlock = document.querySelector('.block.feed-newsroom > .others');
+  if (parentBlock.parentNode.nextElementSibling) parentBlock.parentNode.nextElementSibling.remove();
+  parentBlock.innerHTML = '';
+  slicedResults = results;
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
+  const builtBlock = buildBlock(blockType, blockContents);
+
+  [...block.classList].forEach((item) => {
+    if (item !== 'feed') {
+      builtBlock.classList.add(item);
+    }
+  });
+  await loadBlock(builtBlock);
+  builtBlock.querySelectorAll(':scope > div').forEach((div) => {
+    div.classList.add('other');
+  });
+  parentBlock.append(...builtBlock.childNodes);
 }
 
 /**
@@ -160,15 +182,10 @@ export default async function decorate(block) {
 </form>`;
   const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
   console.log(uniqYears);
-  console.log(results);
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
-    console.log(searchYear);
-    console.log(results);
     searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-    console.log(searchResults);
-    block.innerHTML = '';
-    loadResults(block, blockType, searchResults, blockCfg, chunk, filterDiv);
+    loadYearResults(block, blockType, searchResults, blockCfg);
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv);
 }
