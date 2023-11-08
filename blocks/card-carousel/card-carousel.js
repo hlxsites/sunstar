@@ -9,7 +9,7 @@ export function scrollToCard(idx, card, precedingCard, slides, span, doc) {
   const rect = card.getBoundingClientRect();
 
   // set the style on the active button
-  const buttons = doc.querySelectorAll('.career-slides-nav span.active-nav');
+  const buttons = doc.querySelectorAll('.card-slides-nav span.active-nav');
   buttons.forEach((b) => b.classList.remove('active-nav'));
   span.classList.add('active-nav');
 
@@ -55,17 +55,17 @@ export default async function decorate(block) {
   const data = shuffleArray(filterIncompleteEntries(json));
 
   const careerSlider = document.createElement('div');
-  careerSlider.classList.add('career-slider');
+  careerSlider.classList.add('card-slider');
 
   const careerSlides = document.createElement('div');
-  careerSlides.classList.add('career-slides');
+  careerSlides.classList.add('card-slides');
 
   const slideDivs = [];
   if (block.children && block.children.length > 0) {
     MAX_BUTTONS = block.children.length - 2;
     [...block.children].forEach((row) => {
       const div = document.createElement('div');
-      div.classList.add('career-card');
+      div.classList.add('carousel-childcard');
 
       const a = document.createElement('a');
       a.href = '#'; // Todo populate the Link of the stories
@@ -78,7 +78,7 @@ export default async function decorate(block) {
   } else {
     for (let i = 0; i < data.length; i += 1) {
       const div = document.createElement('div');
-      div.classList.add('career-card');
+      div.classList.add('carousel-childcard');
       const a = document.createElement('a');
       a.href = data[i].path;
       const pic = createOptimizedPicture(data[i].image, data[i].pagename);
@@ -116,9 +116,9 @@ export default async function decorate(block) {
   careerSlider.append(careerSlides);
 
   const navBar = document.createElement('div');
-  navBar.classList.add('career-slides-navbar');
+  navBar.classList.add('card-slides-navbar');
   const navButtons = document.createElement('div');
-  navButtons.classList.add('career-slides-nav');
+  navButtons.classList.add('card-slides-nav');
 
   const buttons = [];
   for (let i = 0; i < data.length && i < MAX_BUTTONS; i += 1) {
