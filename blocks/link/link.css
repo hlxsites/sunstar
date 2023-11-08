@@ -1,4 +1,4 @@
-.block.link a {
+.block.link {
   margin-bottom: 1.25rem;
 }
 
@@ -15,7 +15,7 @@
   top: 0.5rem;
 }
 
-.block.link.no-margin a {
+.block.link.no-margin {
   margin-bottom: 0;
 }
 
@@ -69,11 +69,11 @@
 }
 
 @media (min-width: 62rem) {
-  .block.link a {
+  .block.link {
     margin-bottom: 1.5rem;
   }
 
-  .block.link.no-margin a {
+  .block.link.no-margin {
     margin-bottom: 0;
   }
 
