@@ -79,6 +79,7 @@ async function loadMoreResults(block, blockType, results, blockCfg, loadMoreCont
   } else loadMoreContainer.remove();
 }
 
+// This is the default loading of the results
 async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv) {
   let slicedResults = 0;
   let loadMoreContainer = 0;
