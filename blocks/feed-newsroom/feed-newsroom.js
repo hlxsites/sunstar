@@ -176,13 +176,16 @@ export default async function decorate(block) {
     <span>
       <select class="form-control" name="" id="news_year">
         <option value="">Year</option>
-        <option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option>                  </select>
+        </select>
     </span>
     <button data-nonce="8411f43402" data-post_type="news" " id="news_filter">FILTER</button>
   </div>
 </form>`;
   const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
-  console.log(uniqYears);
+  // eslint-disable-next-line
+  const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='"+current+"'>" + current + "</option>"; return accum;},"");
+  filterDiv.querySelector('select').innerHTML = filterDiv.querySelector('select').innerHTML + yroptions;
+
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
     searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
