@@ -50,6 +50,11 @@ main .feed-newsroom-wrapper form button {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+main .feed-newsroom-wrapper form button:hover {
+    background: #007cad;
+    color: var(--white);
+}
+
 main .feed-newsroom-wrapper form span {
     margin-right: 2rem;
 }
