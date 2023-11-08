@@ -541,10 +541,6 @@ main .section .section-container {
   padding-right: 0;
 }
 
-main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
-}
-
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -841,7 +837,7 @@ main .section.static {
   margin-bottom: 7.5rem;
 }
 
-main .section.static .section-container {
+main .section.static > .section-container {
   padding: 0 1rem 2rem;
   margin-bottom: 5rem;
 }
@@ -898,20 +894,17 @@ main .section.thank-you p {
 }
 
 /* section - dark-blue */
-main .section.dark,
-main .section.dark .section-container {
+main .section.dark {
   background-color: var(--primary);
 }
 
 /* section - light-blue */
-main .section.light-blue,
-main .section.light-blue .section-container {
+main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
 /* section - bg-primary */
-main .section.bg-primary,
-main .section.bg-primary .section-container {
+main .section.bg-primary {
   background-color: var(--primary);
   padding-bottom: 1rem;
 }
@@ -949,6 +942,11 @@ main .section.padded-inline > .section-container {
 main .block.centered>div {
   margin: auto;
 }
+
+main .section.auto-top-spacing > .section-container {
+  margin-top: 3rem;
+}
+
 
 /* END Section Styles END */
 
