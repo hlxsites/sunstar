@@ -234,6 +234,25 @@ main .cards.machine-parts .cards-card-body a > strong {
   margin-right: 1rem;
 }
 
+/* Style for Row Cards */
+main .cards.row .cards-card-image {
+  width: auto;
+  height: 6rem;
+  flex-shrink: 0;
+}
+
+.block.cards.row > ul {
+  flex-flow: column;
+}
+
+main .block.cards.row > ul > li {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding-bottom: 1rem;
+  box-shadow: none;
+}
+
 /* stylelint-disable-next-line no-descending-specificity */
 main .cards.machine-parts ul > li {
   padding: 0;
@@ -377,6 +396,10 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   main .section .nolink h2 {
     font-size: var(--heading-font-size-l);
   }
+
+  main .block.cards.row .cards-card-body {
+    font-size: 0.8rem;
+  }
 }
 
 
@@ -413,6 +436,10 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards .cards-card-body {
     font-size: 1rem;
+  }
+
+  .block.cards.row .cards-card-body {
+    font-size: 0.9rem;
   }
 
   main .cards.info-points .cards-card-body * {

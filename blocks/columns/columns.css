@@ -117,6 +117,13 @@
   margin: 1.5rem 0;
 }
 
+.columns.heading-divider h2,
+.columns.heading-divider h3,
+.columns.heading-divider h4 {
+  border-bottom: 1px solid #3c4650;
+  padding-bottom: 1rem;
+}
+
 .columns > div > div p {
   margin-top: 0;
 }
