@@ -58,7 +58,7 @@ main .block.text.muted {
   padding-bottom: 0.5rem;
 }
 
-main .block.text.extra-muted p {
+main .block.text.extra-muted, main .block.text.extra-muted p {
   font-size: var(--body-font-size-xs);
   padding: 0;
   margin: 0;
