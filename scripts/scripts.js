@@ -179,6 +179,17 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
   });
 }
 
+function buildDownloadableLinks(main) {
+  // Find all 'a' elements that have a 'span' with class 'icon-download' as a child
+  // all links which has download icon in it
+  const downloadableLinks = main.querySelectorAll('a span.icon-download');
+  // add download attribute to all links and remove target attribute if it exists
+  downloadableLinks.forEach((link) => {
+    link.parentElement.setAttribute('download', '');
+    link.parentElement.removeAttribute('target');
+  });
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -188,6 +199,7 @@ function buildAutoBlocks(main) {
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
+    buildDownloadableLinks(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
