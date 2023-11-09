@@ -68,7 +68,7 @@ async function loadMoreResults(block, blockType, results, blockCfg, loadMoreCont
       builtBlock.classList.add(item);
     }
   });
-  await loadBlock(builtBlock);
+  // await loadBlock(builtBlock);
   builtBlock.querySelectorAll(':scope > div').forEach((div) => {
     div.classList.add('other');
   });
