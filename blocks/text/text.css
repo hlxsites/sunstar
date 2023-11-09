@@ -94,18 +94,10 @@ main .block.text.emphasis > div > div > :last-child {
   }
 
   main .block.text.emphasis {
-    background-color: var(--light);
     margin-inline: -3rem;
     padding: 3rem;
     margin-block: 2rem;
   }
 
-  main .block.text.emphasis > div > div > :first-child {
-    margin-top: 0;
-  }
-
-  main .block.text.emphasis > div > div > :last-child {
-    margin-bottom: 0;
-  }
 }
 
