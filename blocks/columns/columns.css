@@ -161,6 +161,13 @@
   max-width: 1200px;
 }
 
+.columns.heading-divider h2,
+.columns.heading-divider h3,
+.columns.heading-divider h4 {
+  border-bottom: 1px solid #3c4650;
+  padding-bottom: 1rem;
+}
+
 .columns.plain-links > div > div,
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
