@@ -246,6 +246,7 @@ main .cards.row .cards-card-image {
   width: auto;
   height: 6rem;
   flex-shrink: 0;
+  margin: 0;
 }
 
 .block.cards.row > ul {
