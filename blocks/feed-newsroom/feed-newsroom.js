@@ -153,7 +153,6 @@ export default async function decorate(block) {
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
-  console.log(`${getLanguage()}-search`);
   const queryObj = await queryIndex(`${getLanguage()}-search`);
 
   const omitPageTypes = getMetadataNullable('omit-page-types');

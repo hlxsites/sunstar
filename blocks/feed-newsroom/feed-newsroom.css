@@ -4,6 +4,11 @@ main .section.feed-newsroom-container > .section-container {
     max-width: 1200px;
 }
 
+.block.highlight.feed-newsroom > .others {
+    display: flex;
+    flex-direction: column;
+  }
+
 main .section.feed-newsroom-container.narrow {
     max-width: 90rem;
 }
@@ -85,5 +90,7 @@ main .feed-newsroom-wrapper .load-more-container {
     justify-content: space-between;
     margin-bottom: 10vh;
 }
+
+
 
 
