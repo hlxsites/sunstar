@@ -17,7 +17,7 @@
     }
 
     // If the URL requested is /en/... redirect to /...
-    if (window.location.href.includes('/en')) {
+    if (window.location.href.includes('/en/') || window.location.href.endsWith('/en')) {
       window.stop(); // Stop processing this page, make sure no 404 rendering is done
       const newLoc = window.location.href.replace('/en', '');
       window.location.replace(newLoc);

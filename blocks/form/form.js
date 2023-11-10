@@ -374,6 +374,11 @@ async function createForm(formURL) {
         fieldWrapper.append(msgEl);
         el.addEventListener('blur', () => validateField(el, fd));
       }
+      if (fd.Description) {
+        const des = document.createElement('div');
+        des.textContent = fd.Description;
+        fieldWrapper.append(des);
+      }
     };
 
     switch (fd.Type) {

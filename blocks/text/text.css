@@ -73,9 +73,31 @@ main .block.text.lead {
   font-size: var(--body-font-size-xl);
 }
 
+main .block.text.emphasis {
+  margin-inline: -1rem;
+  padding: 1rem;
+  background-color: var(--light);
+  margin-block: 1.5rem;
+}
+
+main .block.text.emphasis > div > div > :first-child {
+  margin-top: 0;
+}
+
+main .block.text.emphasis > div > div > :last-child {
+  margin-bottom: 0;
+}
+
 @media (min-width: 77rem) {
   main .block.text.lead {
     font-size: var(--body-font-size-xxl);
   }
+
+  main .block.text.emphasis {
+    margin-inline: -3rem;
+    padding: 3rem;
+    margin-block: 2rem;
+  }
+
 }
 
