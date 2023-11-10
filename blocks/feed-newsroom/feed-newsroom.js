@@ -9,7 +9,7 @@ import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 const resultParsers = {
 // Parse results into a highlight block
 
-  highlight: (results, blockCfg) => {
+  highlight: (results, blockCfg, locale) => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -30,6 +30,9 @@ const resultParsers = {
           } else if (fieldName === 'title') {
             div.classList.add('title');
             div.textContent = result[fieldName];
+          } else if ((fieldName === 'description') && (locale === 'jp')) {
+            const firstJpLine = result[fieldName].split('。')[0];
+            div.textContent = firstJpLine;
           } else {
             div.textContent = result[fieldName];
           }
@@ -58,10 +61,11 @@ function getMetadataNullable(key) {
 }
 
 // The below function is leveraged for View More button functionality
-async function loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk) {
+// eslint-disable-next-line
+async function loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk, locale) {
   const currentResults = document.querySelectorAll('.other').length;
   const slicedResults = results.slice(currentResults, currentResults + chunk);
-  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg, locale);
   const builtBlock = buildBlock(blockType, blockContents);
   [...block.classList].forEach((item) => {
     if (item !== 'feed') {
@@ -80,7 +84,7 @@ async function loadMoreResults(block, blockType, results, blockCfg, loadMoreCont
 }
 
 // This is the default loading of the results
-async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv) {
+async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale) {
   let slicedResults = 0;
   let loadMoreContainer = 0;
   let currentResults = 0;
@@ -91,10 +95,10 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
     loadMoreContainer.innerHTML = '<button class="load-more-button">View more</button>';
     loadMoreContainer.classList.add('load-more-container');
     loadMoreContainer.addEventListener('click', () => {
-      loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk, slicedResults);
+      loadMoreResults(block, blockType, results, blockCfg, loadMoreContainer, chunk, locale);
     });
   } else slicedResults = results;
-  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg, locale);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
@@ -129,13 +133,13 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
 }
 
 // The Below function is leveraged for loading results when any year is selected in the dropdown
-async function loadYearResults(block, blockType, results, blockCfg) {
+async function loadYearResults(block, blockType, results, blockCfg, locale) {
   let slicedResults = 0;
   const parentBlock = document.querySelector('.block.feed-newsroom > .others');
   if (parentBlock.parentNode.nextElementSibling) parentBlock.parentNode.nextElementSibling.remove();
   parentBlock.innerHTML = '';
   slicedResults = results;
-  const blockContents = resultParsers[blockType](slicedResults, blockCfg);
+  const blockContents = resultParsers[blockType](slicedResults, blockCfg, locale);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
@@ -157,6 +161,7 @@ export default async function decorate(block) {
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
+  const locale = `${getLanguage()}-search`.split('-')[0];
   const queryObj = await queryIndex(`${getLanguage()}-search`);
 
   const omitPageTypes = getMetadataNullable('omit-page-types');
@@ -192,7 +197,7 @@ export default async function decorate(block) {
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
     searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-    loadYearResults(block, blockType, searchResults, blockCfg);
+    loadYearResults(block, blockType, searchResults, blockCfg, locale);
   });
-  loadResults(block, blockType, results, blockCfg, chunk, filterDiv);
+  loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
