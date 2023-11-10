@@ -52,10 +52,12 @@ main .block.text.highlight a.button.primary {
   height: auto;
 }
 
-main .block.text.muted {
+main .block.text.muted,
+main .block.text.muted p {
   color: var(--steel-blue);
-  font-size: var(--body-font-size-s);
-  padding-bottom: 0.5rem;
+  font-size: var(--body-font-size-xs);
+  padding: 0; 
+  margin: 0;
 }
 
 main .block.text.alert {
@@ -78,6 +80,11 @@ main .block.text.emphasis {
   padding: 1rem;
   background-color: var(--light);
   margin-block: 1.5rem;
+}
+
+main .block.text.text-small,
+main .block.text.text-small p {
+  font-size: var(--body-font-size-xs);
 }
 
 main .block.text.emphasis > div > div > :first-child {

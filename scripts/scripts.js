@@ -283,7 +283,9 @@ export function getWindowSize() {
  * we break out of the loop to not add spacing to other sections as well.
  */
 export function addTopSpacingStyleToFirstMatchingSection(main) {
-  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container',
+    'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container',
+    'carousel-container', 'with-background-image'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 
