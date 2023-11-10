@@ -293,7 +293,8 @@ a {
 .dark h4,
 .dark h5,
 .dark h6,
-.dark p {
+.dark p,
+.white {
   color: var(--white);
 }
 
@@ -326,6 +327,10 @@ a {
 
 .backdrop.visible {
   display: block;
+}
+
+.compact {
+  max-width: 30rem;
 }
 
 main pre {
