@@ -412,27 +412,6 @@ main img {
   height: auto;
 }
 
-/* Styles for background images */
-.with-background-image {
-  position: relative;
-}
-
-.with-background-image > picture {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-}
-
-
-.with-background-image > picture > img {
-  display: block;
-  object-fit: cover;
-  width: 100%;
-}
-
 /* TODO: Remove this once this icon renders correctly */
 main table a > .icon-angle-right-blue {
   transform: rotate(180deg);
@@ -561,6 +540,7 @@ main .section .section-container {
   padding-left: 0;
   padding-right: 0;
 }
+
 
 main .section.auto-top-spacing .section-container {
   margin-top: 3rem;
@@ -970,6 +950,41 @@ main .section.padded-inline .section-container {
 main .block.centered > div {
   margin: auto;
 }
+
+
+/* Section Styles for background images */
+.section.with-background-image {
+  position: relative;
+}
+
+.section.with-background-image > picture {
+  display: block;
+  width: 100%;
+  z-index: -1;
+}
+
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image > picture > img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image > .section-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.section.with-background-image.align-right > .section-container {
+  right: 0;
+  left: unset;
+}
+
 
 /* END Section Styles END */
 
