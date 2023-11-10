@@ -14,6 +14,7 @@ import {
   getMetadata,
   isInternalPage,
   fetchPlaceholders,
+  createOptimizedPicture,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -335,7 +336,9 @@ function decorateSectionsWithBackgrounds(element) {
         break;
     }
     if (background) {
-      section.style.backgroundImage = `url(${background.replace(/"/g, '')})`;
+      section.classList.add('with-background-image');
+      const backgroundImage = createOptimizedPicture(background);
+      section.append(backgroundImage);
     }
   });
 }

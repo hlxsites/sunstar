@@ -406,6 +406,18 @@ main table a > .icon {
   padding-left: 0.25rem;
 }
 
+.with-background-image {
+  position: relative;
+}
+
+.with-background-image > picture {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 /* TODO: Remove this once this icon renders correctly */
 main table a > .icon-angle-right-blue {
   transform: rotate(180deg);
