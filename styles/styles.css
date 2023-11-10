@@ -126,6 +126,9 @@
   /* Font Sizes */
   --font-size-small: 14px;
   --font-size-xsmall: 12px;
+
+  /* Column Split Ratios */
+  --split-lastquarter: 75%:25%;
 }
 
 html {
