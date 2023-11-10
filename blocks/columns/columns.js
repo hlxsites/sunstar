@@ -42,6 +42,8 @@ function applyHorizontalCellAlignment(block) {
     } else {
       // This is an image column
       d.style.display = 'flex';
+      d.style.flexDirection = 'column';
+      d.style.alignItems = 'stretch';
       d.style.justifyContent = d.dataset.align;
     }
   });
@@ -52,6 +54,8 @@ function applyVerticalCellAlignment(block) {
   block.querySelectorAll(':scope > div > div:not(.text-col-wrapper').forEach((d) => {
     // this is an image column
     d.style.display = 'flex';
+    d.style.flexDirection = 'column';
+    d.style.alignItems = 'stretch';
 
     switch (d.dataset.valign) {
       case 'middle':
