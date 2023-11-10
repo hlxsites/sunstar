@@ -120,8 +120,9 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
 
   if (results.length > currentResults) {
     const mobileMedia = window.matchMedia('(max-width: 992px)');
-    if (mobileMedia.matches) builtBlock.querySelector('.others').after(loadMoreContainer);
-    else builtBlock.after(loadMoreContainer);
+    if (mobileMedia.matches) {
+      builtBlock.querySelector('.others').after(loadMoreContainer);
+    } else builtBlock.after(loadMoreContainer);
   } else loadMoreContainer.remove();
 
   return builtBlock;
