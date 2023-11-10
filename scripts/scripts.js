@@ -304,7 +304,7 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
 function getViewPort() {
   const { width } = getWindowSize();
   if (width >= 1232) {
-    return 'dekstop';
+    return 'desktop';
   }
   if (width >= 992) {
     return 'tablet';

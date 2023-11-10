@@ -416,6 +416,9 @@ main table a > .icon {
   top: 0;
   left: 0;
   z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* TODO: Remove this once this icon renders correctly */
@@ -546,15 +549,6 @@ main img {
 }
 
 /* START Section Styles START */
-
-main .section[data-bg-image],
-main .section[data-bg-image-desktop],
-main .section[data-bg-image-mobile],
-main .section[data-bg-image-tablet] {
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 main .section .section-container {
   max-width: 100%;
@@ -1013,13 +1007,6 @@ main .block.centered > div {
   }
 
   /* START Section Styles START */
-
-  main .section[data-bg-image],
-  main .section[data-bg-image-desktop],
-  main .section[data-bg-image-mobile],
-  main .section[data-bg-image-tablet] {
-    background-size: cover;
-  }
 
   main .section .section-container {
     max-width: calc(872px + 32px);
