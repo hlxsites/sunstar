@@ -423,7 +423,6 @@ main img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   z-index: -1;
 }
 
@@ -432,7 +431,6 @@ main img {
   display: block;
   object-fit: cover;
   width: 100%;
-  height: 100%;
 }
 
 /* TODO: Remove this once this icon renders correctly */
