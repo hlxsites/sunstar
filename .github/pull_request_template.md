@@ -10,14 +10,11 @@ Test URLs:
 - [ ] New Blocks introduced in this PR
       If yes, please provide details below
 
-Block Name    | Documentation
-------------- | -------------
- For e.g. cards | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=0)
-
+**Block Name** : For e.g. cards
+- [ ] Documented in sidekick library
 
 
 - [ ] New variations introduced in this PR
 
-Variation Name    | Documentation
-------------- | -------------
- For e.g. cards (grid)  | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=2)
+**Variation Name ** :  For e.g. cards (grid)
+- [ ] Documented in sidekick library
