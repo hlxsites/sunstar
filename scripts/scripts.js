@@ -179,17 +179,6 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
   });
 }
 
-function buildDownloadableLinks(main) {
-  // Find all 'a' elements that have a 'span' with class 'icon-download' as a child
-  // all links which has download icon in it
-  const downloadableLinks = main.querySelectorAll('a span.icon-download');
-  // add download attribute to all links and remove target attribute if it exists
-  downloadableLinks.forEach((link) => {
-    link.parentElement.setAttribute('download', '');
-    link.parentElement.removeAttribute('target');
-  });
-}
-
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -199,7 +188,6 @@ function buildAutoBlocks(main) {
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
-    buildDownloadableLinks(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -237,6 +225,20 @@ export function decorateExternalAnchors(externalAnchors) {
 }
 
 /**
+ * decorates links with download icon as downloadables
+ * @param {Element}s to decorate downloadableLink
+ * @returns {void}
+ */
+export function decorateDownloadableLinks(downloadableLinks) {
+  if (downloadableLinks.length) {
+    downloadableLinks.forEach((link) => {
+      link.setAttribute('download', '');
+      link.removeAttribute('target');
+    });
+  }
+}
+
+/**
  * Gets the extension of a URL.
  * @param {string} url The URL
  * @returns {string} The extension
@@ -269,6 +271,9 @@ export function decorateAnchors(element = document) {
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
     || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+  ));
+  decorateDownloadableLinks(Array.from(anchors).filter(
+    (a) => a.querySelector('span.icon-download'),
   ));
 }
 
