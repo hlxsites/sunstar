@@ -161,6 +161,13 @@
   max-width: 1200px;
 }
 
+.columns.heading-divider h2,
+.columns.heading-divider h3,
+.columns.heading-divider h4 {
+  border-bottom: 1px solid #3c4650;
+  padding-bottom: 1rem;
+}
+
 .columns.plain-links > div > div,
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
@@ -558,7 +565,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.absolute-no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
