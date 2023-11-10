@@ -1,3 +1,76 @@
+export function applySplitPercentages(block) {
+  const ratios = [];
+  for (let i = 0; i < block.classList.length; i += 1) {
+    const cls = block.classList[i];
+    if (cls.startsWith('split-')) {
+      const varName = `--${cls}`;
+      const numbers = getComputedStyle(block).getPropertyValue(varName);
+      numbers.split(':').forEach((n) => ratios.push(n));
+      break;
+    }
+  }
+
+  if (ratios.length === 0) {
+    return;
+  }
+
+  let pctIdx = 0;
+
+  for (let i = 0; i < block.children.length; i += 1) {
+    if (block.children[i].localName === 'div') {
+      for (let j = 0; j < block.children[i].children.length; j += 1) {
+        if (block.children[i].children[j].localName === 'div') {
+          block.children[i].children[j].style.flexBasis = ratios[pctIdx];
+          pctIdx += 1;
+
+          if (pctIdx >= ratios.length) {
+            pctIdx = 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+function applyHorizontalCellAlignment(block) {
+  block.querySelectorAll(':scope div[data-align]').forEach((d) => {
+    if (d.classList.contains('text-col')) {
+      // This is a text column
+      if (d.dataset.align) {
+        d.style.textAlign = d.dataset.align;
+      }
+    } else {
+      // This is an image column
+      d.style.display = 'flex';
+      d.style.justifyContent = d.dataset.align;
+    }
+  });
+}
+
+// Vertical Cell Alignment is only applied to non-text columns
+function applyVerticalCellAlignment(block) {
+  block.querySelectorAll(':scope > div > div:not(.text-col-wrapper').forEach((d) => {
+    // this is an image column
+    d.style.display = 'flex';
+
+    switch (d.dataset.valign) {
+      case 'middle':
+        d.style.alignSelf = 'center';
+        break;
+      case 'bottom':
+        d.style.alignSelf = 'flex-end';
+        break;
+      default:
+        d.style.alignSelf = 'flex-start';
+    }
+  });
+}
+
+export function applyCellAlignment(block) {
+  applyHorizontalCellAlignment(block);
+  applyVerticalCellAlignment(block);
+}
+
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
@@ -143,4 +216,7 @@ export default function decorate(block) {
       }
     });
   }
+
+  applySplitPercentages(block);
+  applyCellAlignment(block);
 }
