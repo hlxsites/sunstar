@@ -241,7 +241,7 @@
   text-align: center;
 }
 
-.columns.text-and-image-in-column > div div.text-col {
+.columns.text-and-image-in-column > div div.text-col, .columns.invert-image-order-in-narrow-view > div div.text-col {
   margin: 0;
   padding: 0 1rem;
 }
@@ -565,7 +565,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.absolute-no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
