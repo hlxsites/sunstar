@@ -9,6 +9,11 @@ main .section.feed-newsroom-container > .section-container {
     flex-direction: column;
   }
 
+.block.highlight.feed-newsroom > .others picture {
+    width: auto;
+    height: 250px;
+  }
+
 main .section.feed-newsroom-container.narrow {
     max-width: 90rem;
 }
@@ -88,9 +93,18 @@ main .feed-newsroom-wrapper .load-more-container {
     grid-column: 1/-1;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10vh;
 }
 
+.block.highlight.feed-newsroom > .others:last-child {
+    margin-bottom: 5vh;
+}
 
-
+@media (min-width: 62rem) {
+.block.highlight.feed-newsroom > .others picture {
+        width: 174px;
+        height: 98px;
+        display: block;
+        position: relative;
+    }
+}
 

@@ -110,9 +110,6 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   builtBlock.before(filterDiv);
-  if (results.length > currentResults) {
-    builtBlock.after(loadMoreContainer);
-  } else loadMoreContainer.remove();
 
   // In order to place fragment block to the right side of the page
   const feedNewsroom = builtBlock.parentElement.parentElement.parentElement;
@@ -120,6 +117,12 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
     feedNewsroom.nextElementSibling.lastChild.classList.add('others');
     builtBlock.append(...feedNewsroom.nextElementSibling.childNodes);
   }
+
+  if (results.length > currentResults) {
+    const mobileMedia = window.matchMedia('(max-width: 992px)');
+    if (mobileMedia.matches) builtBlock.querySelector('.others').after(loadMoreContainer);
+    else builtBlock.after(loadMoreContainer);
+  } else loadMoreContainer.remove();
 
   return builtBlock;
 }
