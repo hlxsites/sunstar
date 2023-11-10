@@ -394,14 +394,8 @@ async function loadEager(doc) {
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
-    try {
-      /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-      if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-        loadFonts();
-      }
-    } catch (e) {
-      // do nothing
-    }
+    /* lonading fonts.css eagerly to avoid LCS */
+    loadFonts();
   }
 }
 
