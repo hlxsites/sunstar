@@ -406,6 +406,13 @@ main table a > .icon {
   padding-left: 0.25rem;
 }
 
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* Styles for background images */
 .with-background-image {
   position: relative;
 }
@@ -415,10 +422,17 @@ main table a > .icon {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
   width: 100%;
   height: 100%;
+  z-index: -1;
+}
+
+
+.with-background-image > picture > img {
+  display: block;
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 /* TODO: Remove this once this icon renders correctly */
@@ -527,12 +541,6 @@ main .block.border {
 
 main .block.centered {
   text-align: center;
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
 }
 
 .icon.icon-link-blue {
