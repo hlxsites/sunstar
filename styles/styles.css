@@ -406,6 +406,33 @@ main table a > .icon {
   padding-left: 0.25rem;
 }
 
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* Styles for background images */
+.with-background-image {
+  position: relative;
+}
+
+.with-background-image > picture {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+
+.with-background-image > picture > img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
 /* TODO: Remove this once this icon renders correctly */
 main table a > .icon-angle-right-blue {
   transform: rotate(180deg);
@@ -512,12 +539,6 @@ main .block.border {
 
 main .block.centered {
   text-align: center;
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
 }
 
 .icon.icon-link-blue {
@@ -939,7 +960,7 @@ main .section.padded-inline > .section-container {
   box-sizing: border-box;
 }
 
-main .block.centered>div {
+main .block.centered > div {
   margin: auto;
 }
 

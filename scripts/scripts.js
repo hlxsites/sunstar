@@ -14,6 +14,7 @@ import {
   getMetadata,
   isInternalPage,
   fetchPlaceholders,
+  createOptimizedPicture,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -300,6 +301,47 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   });
 }
 
+function getViewPort() {
+  const { width } = getWindowSize();
+  if (width >= 1232) {
+    return 'desktop';
+  }
+  if (width >= 992) {
+    return 'tablet';
+  }
+  return 'mobile';
+}
+
+function decorateSectionsWithBackgrounds(element) {
+  const sections = element.querySelectorAll(`.section[data-bg-image],
+  .section[data-bg-image-desktop],
+  .section[data-bg-image-mobile],
+  .section[data-bg-image-tablet]`);
+  sections.forEach((section) => {
+    const bgImage = section.getAttribute('data-bg-image');
+    const bgImageDesktop = section.getAttribute('data-bg-image-desktop');
+    const bgImageMobile = section.getAttribute('data-bg-image-mobile');
+    const bgImageTablet = section.getAttribute('data-bg-image-tablet');
+    const viewPort = getViewPort();
+    let background;
+    switch (viewPort) {
+      case 'mobile':
+        background = bgImageMobile || bgImageTablet || bgImageDesktop || bgImage;
+        break;
+      case 'tablet':
+        background = bgImageTablet || bgImageDesktop || bgImage || bgImageMobile;
+        break;
+      default:
+        background = bgImageDesktop || bgImage || bgImageTablet || bgImageMobile;
+        break;
+    }
+    if (background) {
+      section.classList.add('with-background-image');
+      const backgroundPic = createOptimizedPicture(background);
+      section.append(backgroundPic);
+    }
+  });
+}
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -312,6 +354,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionsWithBackgrounds(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
 }
