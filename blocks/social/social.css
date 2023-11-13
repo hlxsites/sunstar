@@ -168,7 +168,8 @@ main .section.social-container a.category-title {
   }
 
   main .section.narrow.social-container > .section-container {
-    margin-right: 13.75rem;
+    margin-left: 18.5%;
+    margin-right: 81.5%;
   }
 
   .social-container div.image-caption {
@@ -224,9 +225,4 @@ main .section.social-container a.category-title {
   .block.social {
     right: -10rem;
   }
-
-  main .section.narrow.social-container > .section-container {
-    margin-right: 42rem;
-  }
-
 }
