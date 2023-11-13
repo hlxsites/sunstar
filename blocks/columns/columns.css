@@ -131,6 +131,7 @@
 
 .columns.history h2 {
   border-bottom: 1px solid var(--primary);
+  margin-inline: 0;
   margin-bottom: 1rem;
   font-size: var(--heading-font-size-xl);
   font-weight: var(--font-weight-small);
