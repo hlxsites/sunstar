@@ -9,12 +9,14 @@ Test URLs:
 
 - [ ] New Blocks introduced in this PR
       If yes, please provide details below
-
 **Block Name** : For e.g. cards
 - [ ] Documented in sidekick library
 
 
 - [ ] New variations introduced in this PR
+**Variation Name** :  For e.g. cards (grid)
+- [ ] Documented in sidekick library
 
-**Variation Name ** :  For e.g. cards (grid)
+- [ ] New mixins introduced in this PR
+**Mixin Name** :  For e.g. compact, white
 - [ ] Documented in sidekick library
