@@ -196,8 +196,6 @@ export function buildBreadcrumbBlock(main) {
   }
 }
 
-// doc.querySelector('.breadcrumb')
-
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
