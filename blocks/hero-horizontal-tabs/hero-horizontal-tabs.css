@@ -78,6 +78,27 @@ main .hero-horiz-tabs-text > p {
   font-size: var(--body-font-size-s);
 }
 
+main .hero-horiz-tabs-with-button .hero-horiz-tabs-text {
+  margin-right: 1rem;
+}
+
+main .hero-horiz-tabs-with-button .hero-horiz-tabs-text > h2 {
+  font-size: var(--heading-font-size-xmxl);
+}
+
+main .hero-horiz-tabs-with-button .hero-horiz-tabs-text > p {
+  font-size: var(--body-font-size-m);
+}
+
+main .hero-horiz-tabs-with-button .hero-horiz-tabs-text p.button-container {
+  margin-bottom: 0.4375rem;
+}
+
+main .hero-horiz-tabs-with-button .hero-horiz-tabs-text p.button-container > a {
+  width: 100%;
+  background-color: var(--orange-light);
+}
+
 main div.no-image .hero-horiz-tabs-text > p {
   color: var(--white);
   line-height: 1.5em;
@@ -162,6 +183,11 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     min-width: 27.25rem;
   }
 
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text {
+    margin-right: 2rem;
+    width: 30.375rem;
+  }
+
   main div.no-image .hero-horiz-tabs-text {
     padding-top: 0;
     margin: 3rem 2rem 7rem 0;
@@ -217,6 +243,34 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     justify-content: center;
     width: 70%;
   }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text > h2 {
+    margin-bottom: 2.2rem;
+  }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture {
+    height: 34.75rem;
+    width: calc(41vw);
+  }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text-button {
+    width: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text-button-left,
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text-button-right {
+    flex: 0 1 auto;
+    
+  }
+  
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text p.button-container > a {
+    width: 14.375rem;
+    font-size: var(--body-font-size-s);
+    background-color: var(--orange-light);
+  }
 }
 
 @media (min-width:77rem) {
@@ -245,5 +299,13 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
 
   main .hero-horiz-tabs-img picture {
     height: 32.5rem;
+  }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-text {
+    padding-top: 3.5rem;
+  }
+
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture {
+    height: 33.75rem;
   }
 }

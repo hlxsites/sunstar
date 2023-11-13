@@ -20,9 +20,36 @@ function getImage(block) {
   return div;
 }
 
+function getbutton(block) {
+  const div = getNamedValueFromTable(block, 'Button');
+  if (!div) return null;
+  const p = div.querySelectorAll('p');
+  if (!p) return null;
+
+  const botton = document.createElement('div');
+  botton.classList.add('hero-horiz-tabs-text-button');
+  const buttonLeft = document.createElement('div');
+  buttonLeft.classList.add('hero-horiz-tabs-text-button-left');
+  const buttonRight = document.createElement('div');
+  buttonRight.classList.add('hero-horiz-tabs-text-button-right');
+  p.forEach((item, index) => {
+    if (index < 2) {
+      buttonLeft.appendChild(item);
+    } else if (index > 1 && index < 4) {
+      buttonRight.appendChild(item);
+    }
+  });
+  botton.appendChild(buttonLeft);
+  botton.appendChild(buttonRight);
+  block.classList.add('hero-horiz-tabs-with-button');
+  return botton;
+}
+
 function getText(block) {
   const div = getNamedValueFromTable(block, 'Contents');
   if (!div) return null;
+  const buttons = getbutton(block);
+  if (buttons) div.appendChild(buttons);
   div.classList.add('hero-horiz-tabs-text');
   return div;
 }
@@ -43,8 +70,8 @@ export default function decorate(block) {
     block.firstElementChild.remove();
     const divs = document.querySelectorAll('div'); // Select all div elements
     divs.forEach((div) => {
-      if (div.textContent.trim() === 'Contents') {
-        div.remove(); // Remove the div with the exact text content "Contents"
+      if (div.textContent.trim() === 'Contents' || div.textContent.trim() === 'Button') {
+        div.remove(); // Remove the div with the exact text content "Contents" and "Button"
       }
     });
   }
