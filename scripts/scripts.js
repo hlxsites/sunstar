@@ -344,12 +344,28 @@ function decorateSectionsWithBackgrounds(element) {
     }
   });
 }
+
+function adjustImageSrc(main) {
+  main.querySelectorAll('img').forEach((img) => {
+    const imgSrc = img.getAttribute('src');
+    const imgUrl = new URL(imgSrc, window.location.href);
+    const imgHost = imgUrl.host;
+    const prodHosts = ['www.sunstar.com', 'www.stg.sunstar.com'];
+    if (prodHosts.includes(imgHost)) {
+      imgUrl.host = window.location.host;
+      img.setAttribute('src', imgUrl.href);
+    }
+  });
+}
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  // TODO: This is a temporary fix to address broken image links till we go live.
+  // Remove this once we go live.
+  adjustImageSrc(main);
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateAnchors(main);
