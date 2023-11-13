@@ -73,6 +73,27 @@ export function getLanguangeSpecificPath(path) {
   return `/${lang}${path}`;
 }
 
+/**
+ * Builds hero block and prepends to main in a new section.
+ * @param {Element} main The container element
+ */
+function buildHeroBlock(main) {
+  const h1 = main.querySelector('h1');
+  const picture = main.querySelector('picture');
+  const hasHeroBlockVariant = main.querySelector('[class*="hero-"]');
+  // omit to build hero block here for other hero blocks variants like hero-banner,
+  // hero-horizontal-tabs and hero-vertical-tabs
+  if (hasHeroBlockVariant) {
+    return;
+  }
+  // eslint-disable-next-line no-bitwise
+  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+    const section = document.createElement('div');
+    section.append(buildBlock('hero', { elems: [picture, h1] }));
+    main.prepend(section);
+  }
+}
+
 function buildModalFragmentBlock(main) {
   const MODAL_FRAGMENT_BLOCK_NAME = 'modal-fragment';
   if (main.querySelector(MODAL_FRAGMENTS_ANCHOR_SELECTOR)
@@ -160,28 +181,12 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
- * Adding breadcrumb block if its not present in doc
- * @param {*} main
- */
-export function buildBreadcrumbBlock(main) {
-  const noBreadcrumb = getMetadata('nobreadcrumb');
-  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
-
-  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
-    const section = document.createElement('div');
-    const blockEl = buildBlock('breadcrumb', { elems: [] });
-    section.append(blockEl);
-    main.prepend(section);
-  }
-}
-
-/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
-    buildBreadcrumbBlock(main);
+    buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
   } catch (error) {
