@@ -181,11 +181,30 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
+ * Adding breadcrumb block if its not present in doc
+ * @param {*} main
+ */
+export function buildBreadcrumbBlock(main) {
+  const noBreadcrumb = getMetadata('nobreadcrumb');
+  const alreadyBreadcrumb = main.querySelector('.breadcrumb');
+
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock('breadcrumb', { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+
+// doc.querySelector('.breadcrumb')
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbBlock(main);
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
