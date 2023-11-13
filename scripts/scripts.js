@@ -186,9 +186,9 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
  */
 export function buildBreadcrumbBlock(main) {
   const noBreadcrumb = getMetadata('nobreadcrumb');
-  const alreadyBreadcrumb = main.querySelector('.breadcrumb');
+  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
 
-  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb) {
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
     const section = document.createElement('div');
     const blockEl = buildBlock('breadcrumb', { elems: [] });
     section.append(blockEl);
