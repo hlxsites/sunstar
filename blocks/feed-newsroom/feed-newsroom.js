@@ -116,11 +116,11 @@ async function loadResults(block, blockType, results, blockCfg, chunk, filterDiv
   builtBlock.before(filterDiv);
 
   // In order to place fragment block to the right side of the page
-  const feedNewsroom = builtBlock.parentElement.parentElement.parentElement;
-  if (feedNewsroom.nextElementSibling.classList.contains('fragment-container')) {
-    feedNewsroom.nextElementSibling.lastChild.classList.add('others');
-    builtBlock.append(...feedNewsroom.nextElementSibling.childNodes);
-  }
+  const downloadCenter = document.querySelectorAll('.feed-newsroom-container > .section-container > div:not(.feed-newsroom-wrapper)');
+  const rightDiv = document.createElement('div');
+  downloadCenter.forEach((x) => { rightDiv.append(x); });
+  rightDiv.classList.add('others');
+  builtBlock.append(rightDiv);
 
   if (results.length > currentResults) {
     const mobileMedia = window.matchMedia('(max-width: 992px)');
