@@ -8,13 +8,13 @@ main .image-collage[class*='boxy-col-'] {
   padding-inline: 0;
 }
 
-main .image-collage>div {
+main .image-collage > div {
   display: inline-block;
   break-inside: avoid-column;
   page-break-inside: avoid;
 }
 
-main .image-collage.icon-caption>div {
+main .image-collage.icon-caption > div {
   display: flex;
   flex-basis: 100%;
   margin: 0 0 1.25rem;
@@ -22,7 +22,7 @@ main .image-collage.icon-caption>div {
   align-items: center;
 }
 
-main .image-collage.icon-title-list>div {
+main .image-collage.icon-title-list > div {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
@@ -31,15 +31,15 @@ main .image-collage.icon-title-list>div {
   margin-bottom: 2rem;
 }
 
-main .image-collage.icon-title-text>div {
+main .image-collage.icon-title-text > div {
   margin-bottom: 1rem;
 }
 
-main .image-collage[class*='boxy-col-']>div {
+main .image-collage[class*='boxy-col-'] > div {
   margin-bottom: 1.5rem;
 }
 
-main .image-collage>div>div:first-of-type {
+main .image-collage > div > div:first-of-type {
   padding-top: 26px;
   padding-bottom: 14px;
 }
@@ -52,47 +52,47 @@ main .image-collage[class*='boxy-col-'].image-with-title > div {
   flex-basis: calc(50% - 16px);
 }
 
-main .image-collage.icon-caption>div>div:first-of-type,
-main .image-collage.icon-title-list>div>div:first-of-type {
+main .image-collage.icon-caption > div > div:first-of-type,
+main .image-collage.icon-title-list > div > div:first-of-type {
   padding-top: unset;
   padding-bottom: unset;
   padding-right: 1rem;
 }
 
-main .image-collage.icon-title-text>div>div:first-of-type {
+main .image-collage.icon-title-text > div > div:first-of-type {
   padding-top: unset;
   padding-bottom: unset;
   display: flex;
   margin-bottom: 0.5rem;
 }
 
-main .image-collage.icon-title-text>div>div:first-of-type h4{
+main .image-collage.icon-title-text > div > div:first-of-type h4{
   padding-left: 1rem;
   line-height: 1.875rem;
   font-size: var(--heading-font-size-s);
   margin: unset;
 }
 
-main .image-collage.icon-title-list>div>div p {
+main .image-collage.icon-title-list > div > div p {
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-bold);
   line-height: 1.5rem;
 }
 
-main .image-collage.icon-title-list>div>div ul {
+main .image-collage.icon-title-list > div > div ul {
   list-style-type: none;
   padding: unset;
   margin: unset;
 }
 
-main .image-collage.icon-title-list>div>div li {
+main .image-collage.icon-title-list > div > div li {
   margin-bottom: 9px;
   text-indent: -9px;
   margin-left: 1rem;
   line-height: 1.1rem;
 }
 
-main .image-collage.icon-title-list>div>div li::before {
+main .image-collage.icon-title-list > div > div li::before {
   content: "\2022";
   color: var(--orange-light);
   display: inline-block;
@@ -101,7 +101,7 @@ main .image-collage.icon-title-list>div>div li::before {
 }
 
 
-main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+main .image-collage[class*='boxy-col-'] > div > div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -208,7 +208,7 @@ image-collage.medium {
     column-gap: unset;
   }
 
-  main .image-collage.icon-caption>div {
+  main .image-collage.icon-caption > div {
     flex-basis: 11.25rem;
     text-align: center;
     margin: 1.25rem 1.875rem;
@@ -230,14 +230,14 @@ image-collage.medium {
     width: 7.375rem;
   }
 
-  main .image-collage.icon-title-list>div {
+  main .image-collage.icon-title-list > div {
     flex-flow: column nowrap;
     align-items: center;
     flex-basis: calc(100% / 5 - 1.6rem);
     margin-bottom: 2rem;
   }
 
-  main .image-collage.icon-title-list>div>div li {
+  main .image-collage.icon-title-list > div > div li {
     line-height: 1.5;
     font-size: var(--body-font-size-m);
   }
@@ -249,7 +249,7 @@ image-collage.medium {
     column-gap: 8rem;
   }
 
-  main .image-collage.icon-title-text>div {
+  main .image-collage.icon-title-text > div {
     flex-basis: calc(100% / 2 - 4rem);
     margin-bottom: 2rem;
   }
@@ -258,7 +258,7 @@ image-collage.medium {
     width: 7.375rem;
   }
 
-  main .image-collage.icon-title-text>div>div:first-of-type h4 {
+  main .image-collage.icon-title-text > div > div:first-of-type h4 {
     padding-left: 2rem;
     margin: unset;
 }
@@ -289,16 +289,16 @@ image-collage.medium {
     flex: 0 0 calc(100% / 3 - 2rem);
   }
 
-  main .image-collage.boxy-col-1>div,
-  main .image-collage.boxy-col-2>div {
+  main .image-collage.boxy-col-1 > div,
+  main .image-collage.boxy-col-2 > div {
     flex: 0 0 calc(100% / 2 - 2rem);
   }
 
-  main .image-collage.boxy-col-3>div {
+  main .image-collage.boxy-col-3 > div {
     flex: 0 0 calc(100% / 3 - 2rem);
   }
 
-  main .image-collage[class*='boxy-col-']>div {
+  main .image-collage[class*='boxy-col-'] > div {
     margin-bottom: 2rem;
   }
 
@@ -314,20 +314,20 @@ image-collage.medium {
     display: block;
   }
 
-  main .image-collage.wide.boxy-col-1>div {
+  main .image-collage.wide.boxy-col-1 > div {
     flex: unset;
   }
 
-  main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+  main .image-collage[class*='boxy-col-'] > div > div:first-of-type {
     padding: unset;
   }
 
-  main .image-collage.icon-caption>div>div:first-of-type {
+  main .image-collage.icon-caption > div > div:first-of-type {
     padding-bottom: 1rem;
     padding-right: unset;
   }
 
-  main .image-collage.icon-title-list>div>div:first-of-type {
+  main .image-collage.icon-title-list > div > div:first-of-type {
     margin-bottom: 1.5rem;
     padding-right: unset;
   }
@@ -365,7 +365,7 @@ image-collage.medium {
     column-gap: 1rem;
   }
 
-  main .image-collage.icon-title-text>div {
+  main .image-collage.icon-title-text > div {
     flex-basis: calc(100% / 3 - 0.7rem);
     margin-bottom: 2rem;
   }
