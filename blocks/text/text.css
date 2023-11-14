@@ -82,16 +82,24 @@ main .block.text.emphasis {
   margin-block: 1.5rem;
 }
 
+main .block.text.light-background {
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+}
+
 main .block.text.text-small,
 main .block.text.text-small p {
   font-size: var(--body-font-size-xs);
 }
 
-main .block.text.emphasis > div > div > :first-child {
+main .block.text.emphasis > div > div > :first-child,
+main .block.text.light-background  > div > div > :first-child {
   margin-top: 0;
 }
 
-main .block.text.emphasis > div > div > :last-child {
+main .block.text.emphasis > div > div > :last-child,
+main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
 }
 
@@ -111,6 +119,11 @@ main .block.text.emphasis > div > div > :last-child {
     margin-inline: -3rem;
     padding: 3rem;
     margin-block: 2rem;
+  }
+
+  main .block.text.light-background {
+    margin-block: 1.5rem;
+    padding: 3rem;
   }
 
 }
