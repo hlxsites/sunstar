@@ -332,7 +332,7 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns:not(.flex-start) > div > div:not(.columns-img-col) div:not(.img-col) {
+.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
   padding: 0 1rem;
 }
 
@@ -572,7 +572,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns:not(.flex-start) > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
