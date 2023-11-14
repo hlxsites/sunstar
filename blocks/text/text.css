@@ -78,7 +78,7 @@ main .block.text.lead {
 main .block.text.emphasis {
   margin-inline: -1rem;
   padding: 1rem;
-  background-color: var(--light);
+  background-color: var(--transparent-blue-light-color);
   margin-block: 1.5rem;
 }
 
