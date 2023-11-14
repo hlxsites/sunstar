@@ -20,6 +20,7 @@
   --red: #eb0000;
   --orange: #fd7e14;
   --yellow: #ffc107;
+  --orange-light: #f68d2e;
   --green: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
@@ -126,6 +127,9 @@
   /* Font Sizes */
   --font-size-small: 14px;
   --font-size-xsmall: 12px;
+
+  /* Column Split Ratios */
+  --split-lastquarter: 75%:25%;
 }
 
 html {
@@ -293,7 +297,8 @@ a {
 .dark h4,
 .dark h5,
 .dark h6,
-.dark p {
+.dark p,
+.white {
   color: var(--white);
 }
 
@@ -326,6 +331,10 @@ a {
 
 .backdrop.visible {
   display: block;
+}
+
+.compact {
+  max-width: 30rem;
 }
 
 main pre {

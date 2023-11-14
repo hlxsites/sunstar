@@ -80,7 +80,7 @@ export function getLanguangeSpecificPath(path) {
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  const hasHeroBlockVariant = main.querySelector('[class^="hero-"]');
+  const hasHeroBlockVariant = main.querySelector('[class*="hero-"]');
   // omit to build hero block here for other hero blocks variants like hero-banner,
   // hero-horizontal-tabs and hero-vertical-tabs
   if (hasHeroBlockVariant) {
@@ -181,11 +181,27 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
+ * Adding breadcrumb block if its not present in doc
+ * @param {*} main
+ */
+export function buildBreadcrumbBlock(main) {
+  const noBreadcrumb = getMetadata('nobreadcrumb');
+  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
+
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock('breadcrumb', { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbBlock(main);
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
@@ -226,6 +242,20 @@ export function decorateExternalAnchors(externalAnchors) {
 }
 
 /**
+ * decorates links with download icon as downloadables
+ * @param {Element}s to decorate downloadableLink
+ * @returns {void}
+ */
+export function decorateDownloadableLinks(downloadableLinks) {
+  if (downloadableLinks.length) {
+    downloadableLinks.forEach((link) => {
+      link.setAttribute('download', '');
+      link.removeAttribute('target');
+    });
+  }
+}
+
+/**
  * Gets the extension of a URL.
  * @param {string} url The URL
  * @returns {string} The extension
@@ -257,7 +287,10 @@ export function decorateAnchors(element = document) {
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
-    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+      || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+  ));
+  decorateDownloadableLinks(Array.from(anchors).filter(
+    (a) => a.querySelector('span.icon-download'),
   ));
 }
 

@@ -131,6 +131,7 @@
 
 .columns.history h2 {
   border-bottom: 1px solid var(--primary);
+  margin-inline: 0;
   margin-bottom: 1rem;
   font-size: var(--heading-font-size-xl);
   font-weight: var(--font-weight-small);
@@ -159,6 +160,13 @@
 
 .columns.top-down.columns-3-cols {
   max-width: 1200px;
+}
+
+.columns.heading-divider h2,
+.columns.heading-divider h3,
+.columns.heading-divider h4 {
+  border-bottom: 1px solid var(--light-black);
+  padding-bottom: 1rem;
 }
 
 .columns.plain-links > div > div,
@@ -558,7 +566,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.absolute-no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }

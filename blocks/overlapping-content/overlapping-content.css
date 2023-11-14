@@ -21,9 +21,11 @@
   min-width: unset;
 }
 
-.overlapping-content a.button.tertiary {
+.overlapping-content a.button.tertiary,
+.overlapping-content a.tertiary {
   background-color: unset;
   padding: 0;
+  color: var(--white);
 }
 
 .overlapping-content > div.crop > {
