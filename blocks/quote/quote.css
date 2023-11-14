@@ -7,6 +7,11 @@
   position: relative;
 }
 
+.block.quote.no-border {
+  border-left: none;
+  padding-left: 0;
+}
+
 .block.quote .quote-content {
   margin-bottom: 1.5rem;
 }

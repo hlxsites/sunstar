@@ -260,6 +260,10 @@ p.lead {
   font-size: var(--body-font-size-xl);
 }
 
+main .block.lead > div > div > .text-col {
+  font-size: var(--body-font-size-xl);
+}
+
 hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -1282,6 +1286,10 @@ main .block.centered > div {
   }
 
   p.lead {
+    font-size: var(--body-font-size-xxl);
+  }
+
+  main .block.lead > div > div > .text-col {
     font-size: var(--body-font-size-xxl);
   }
 
