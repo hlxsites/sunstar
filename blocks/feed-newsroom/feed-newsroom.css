@@ -1,9 +1,5 @@
 /* eslint no-empty: "info" */
 
-main .section.feed-newsroom-container > .section-container {
-    max-width: 1200px;
-}
-
 .block.highlight.feed-newsroom > .others {
     display: flex;
     flex-direction: column;
@@ -26,22 +22,19 @@ main .block.feed-newsroom > .others:first-child {
     flex-grow: 3;
 }
 
-main .feed-newsroom-wrapper > div:first-child {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+main .feed-newsroom-wrapper form {
     margin: 50px;
 }
 
 main .feed-newsroom-wrapper form .filter-nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 main .feed-newsroom-wrapper button {
-    background-color: #007cad;
-    color: #fff;
+    background-color: var(--secondary);
+    color: var(--white);
     font-size: var(--body-font-size-m);;
 }
 
