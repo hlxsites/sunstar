@@ -551,10 +551,6 @@ main .section .section-container {
 }
 
 
-main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
-}
-
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -990,6 +986,12 @@ main .block.centered > div {
   right: 0;
   left: unset;
 }
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
+}
+
 
 
 /* END Section Styles END */
