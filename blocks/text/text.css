@@ -95,6 +95,13 @@ main .block.text.emphasis > div > div > :last-child {
   margin-bottom: 0;
 }
 
+.block.text.download a::after {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
+
 @media (min-width: 77rem) {
   main .block.text.lead {
     font-size: var(--body-font-size-xxl);
