@@ -53,6 +53,13 @@
   margin: 0 auto 1rem;
 }
 
+.columns.heading-divider h2,
+.columns.heading-divider h3,
+.columns.heading-divider h4 {
+  border-bottom: 1px solid var(--light-black);
+  padding-bottom: 1rem;
+}
+
 .columns :not(.table) h4 {
   font-size: var(--heading-font-size-mxs);
 }
@@ -162,11 +169,8 @@
   max-width: 1200px;
 }
 
-.columns.heading-divider h2,
-.columns.heading-divider h3,
-.columns.heading-divider h4 {
-  border-bottom: 1px solid var(--light-black);
-  padding-bottom: 1rem;
+.columns.medium-margin > div {
+  margin-bottom: 4rem;
 }
 
 .columns.plain-links > div > div,
@@ -182,6 +186,10 @@
 
 .columns.text-layout > div > div > div {
   font-size: var(--body-font-size-l);
+}
+
+.columns.flex-start.medium-margin > div {
+  margin-bottom: 4rem;
 }
 
 .columns.history.invert-image-order-in-narrow-view > div,
@@ -324,7 +332,7 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns > div > div:not(.columns-img-col) div:not(.img-col) {
+.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
   padding: 0 1rem;
 }
 
@@ -411,8 +419,6 @@ div.img-col > video {
     gap: 3rem;
     margin-bottom: 7.5rem;
   }
-
-
 
   .columns p.button-container {
     flex-direction: row;
@@ -566,7 +572,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns:not(.absolute-no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
