@@ -93,7 +93,7 @@ main .image-collage.icon-title-list > div > div li {
 }
 
 main .image-collage.icon-title-list > div > div li::before {
-  content: "\2022";
+  content: "•";
   color: var(--orange-light);
   display: inline-block;
   width: 0.625rem;
