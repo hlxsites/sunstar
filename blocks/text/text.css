@@ -71,6 +71,16 @@ main .block.text.border {
   margin-bottom: 1rem;
 }
 
+main .block.text.lead {
+  font-size: var(--body-font-size-xl);
+  margin: 0 0 1.25rem;
+  
+}
+
+main .block.text.colored {
+  color: var(--primary)
+}
+
 main .block.text.emphasis {
   margin-inline: -1rem;
   padding: 1rem;
@@ -92,6 +102,11 @@ main .block.text.emphasis > div > div > :last-child {
 }
 
 @media (min-width: 77rem) {
+  main .block.text.lead {
+    font-size: var(--body-font-size-xxl);
+    margin: 0 0 1.5rem;
+  }
+
   main .block.text.emphasis {
     margin-inline: -3rem;
     padding: 3rem;
