@@ -298,8 +298,26 @@ a {
 .dark h5,
 .dark h6,
 .dark p,
-.white {
+.white,
+.white h1,
+.white h2,
+.white h3,
+.white h4,
+.white h5,
+.white h6,
+.white p {
   color: var(--white);
+}
+
+.no-margins,
+.no-margins  * {
+  margin: 0!important;
+}
+
+/* Mixins carry !important to override the default styles */
+.no-borders * {
+  border: none!important;
+  box-shadow: none!important;
 }
 
 .dark h6 {
@@ -992,6 +1010,12 @@ main .block.centered > div {
 .section.with-background-image.align-right > .section-container {
   right: 0;
   left: unset;
+}
+
+.section.with-background-image.align-center > .section-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
