@@ -30,8 +30,8 @@ const resultParsers = {
           } else if (fieldName === 'title') {
             div.classList.add('title');
             div.textContent = result[fieldName];
-          } else if ((fieldName === 'description') && (locale === 'jp')) {
-            const firstJpLine = result[fieldName].split('。')[0];
+          } else if (fieldName === 'description') {
+            const firstJpLine = (locale === 'jp') ? result[fieldName].split('。')[0] : result[fieldName].split('. ')[0];
             div.textContent = firstJpLine;
           } else {
             div.textContent = result[fieldName];
@@ -161,7 +161,7 @@ export default async function decorate(block) {
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
-  const locale = `${getLanguage()}-search`.split('-')[0];
+  const locale = getLanguage();
   const queryObj = await queryIndex(`${getLanguage()}-search`);
 
   const omitPageTypes = getMetadataNullable('omit-page-types');
