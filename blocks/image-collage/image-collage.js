@@ -17,4 +17,32 @@ export default function decorate(block) {
       }
     });
   }
+
+  const iconTitleList = block.classList.contains('icon-title-list');
+  if (iconTitleList) {
+    const textDiv = block.querySelectorAll(':scope>div>div:last-of-type');
+    if (textDiv.length) {
+      [...textDiv].forEach((div) => {
+        if (!div.querySelector('p') && !div.querySelector('img') && div.textContent) {
+          const p = document.createElement('p');
+          p.textContent = div.textContent;
+          div.textContent = '';
+          div.appendChild(p);
+        }
+      });
+    }
+  }
+
+  const iconTitleText = block.classList.contains('icon-title-text');
+  if (iconTitleText) {
+    [...block.children].forEach((row) => {
+      const h4 = row.querySelector('h4');
+      if (h4) {
+        const firstDiv = row.querySelector(':scope>div:first-of-type');
+        if (firstDiv && firstDiv.querySelector('img')) {
+          firstDiv.appendChild(h4);
+        }
+      }
+    });
+  }
 }
