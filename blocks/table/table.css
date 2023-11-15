@@ -218,6 +218,11 @@ main .table.block .table-title h4 {
     color: var(--gray-dark);
 }
 
+main .table.highlight-first-column table tr:not(:first-child) td:first-child {
+    color: var(--secondary);
+    background-color: var(--overlay-background-color);
+}
+
 @media (min-width: 62rem) {
     main .table.text-table table tr {
         flex-direction: row;
