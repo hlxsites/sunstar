@@ -126,6 +126,7 @@ main .hero-horizontal-tabs nav ul {
   display: flex;
   align-items: flex-end;
   text-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 main .hero-horizontal-tabs nav ul li {
