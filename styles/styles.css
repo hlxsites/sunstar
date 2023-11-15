@@ -129,7 +129,10 @@
   --font-size-xsmall: 12px;
 
   /* Column Split Ratios */
+  --split-firstquarter: 25%:75%;
   --split-lastquarter: 75%:25%;
+  --split-firstthird: 34%:66%;
+  --split-lastthird: 66%:34%;
 }
 
 html {
