@@ -529,6 +529,11 @@ main .section.auto-top-spacing .section-container {
   margin-top: 3rem;
 }
 
+/* section - no-padding-top for h1 */
+.header-no-top-padding h1 {
+  padding-top: 0 !important;
+}
+
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -564,6 +569,7 @@ main .section.brands-top h2 {
   line-height: 1.3em;
   font-weight: var(--font-weight-medium);
 }
+
 
 main .section.brands-top h6 {
   color: #007cadb3;
@@ -854,11 +860,6 @@ main .section.no-margin-top {
   margin-top: 0;
 }
 
-/* section - no-margin-top for newsroom */
-main .section.newsroom .section-container {
-  margin-top: 0;
-}
-
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
@@ -920,10 +921,9 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
-/* section - no-padding-top for newsroom h1 */
-main .section.bg-primary.newsroom h1 {
+/* main .section.bg-primary.newsroom h1 {
   padding-top: 0;
-}
+} */
 
 main .section.newsroom h4 {
   color: #89d1e1;
