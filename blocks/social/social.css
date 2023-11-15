@@ -44,11 +44,9 @@ main .section.social-container .tag-name {
   margin-bottom: 0.5rem;
 }
 
-main .section.social-container .section-container {
+main .section.narrow.social-container > .section-container {
   max-width: 45rem;
-  margin-right: auto;
-  margin-left: unset;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
 }
 
@@ -169,6 +167,10 @@ main .section.social-container a.category-title {
     position: relative;
   }
 
+  main .section.narrow.social-container > .section-container {
+    margin-inline: auto;
+  }
+
   .social-container div.image-caption {
     margin-bottom: 2rem;
   }
@@ -222,4 +224,5 @@ main .section.social-container a.category-title {
   .block.social {
     right: -10rem;
   }
+
 }

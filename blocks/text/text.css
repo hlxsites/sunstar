@@ -78,7 +78,13 @@ main .block.text.lead {
 main .block.text.emphasis {
   margin-inline: -1rem;
   padding: 1rem;
-  background-color: var(--light);
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+}
+
+main .block.text.light-background {
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
   margin-block: 1.5rem;
 }
 
@@ -87,12 +93,21 @@ main .block.text.text-small p {
   font-size: var(--body-font-size-xs);
 }
 
-main .block.text.emphasis > div > div > :first-child {
+main .block.text.emphasis > div > div > :first-child,
+main .block.text.light-background  > div > div > :first-child {
   margin-top: 0;
 }
 
-main .block.text.emphasis > div > div > :last-child {
+main .block.text.emphasis > div > div > :last-child,
+main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
+}
+
+.block.text.download a::after {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
 }
 
 @media (min-width: 77rem) {
@@ -104,6 +119,11 @@ main .block.text.emphasis > div > div > :last-child {
     margin-inline: -3rem;
     padding: 3rem;
     margin-block: 2rem;
+  }
+
+  main .block.text.light-background {
+    margin-block: 1.5rem;
+    padding: 2rem;
   }
 
 }
