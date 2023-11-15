@@ -981,31 +981,6 @@ main .block.centered > div {
     margin-block-end: 3rem;
   }
 
-  /* section - contacts and links from global-network */
-  main .section.contacts-and-links h3 {
-    font-size: var(--heading-font-size-l);
-  }
-
-  /* section - contact-us */
-  /* stylelint-disable-next-line no-descending-specificity */
-  main .section.contact-us > .section-container,
-  main .section.contact-us > .tab-item.active > .section-container {
-    padding: 5rem 0;
-  }
-
-  main .section.contact-us h2 {
-    margin-top: 1rem;
-  }
-
-  main .section.contact-us p.button-container {
-    margin-top: 1.5rem;
-  }
-
-  /* section - about-us */
-  main .section.about-us p.button-container {
-    margin-top: 1rem;
-  }
-
   /* section - margin-bottom */
   main .section.margin-bottom {
     margin-bottom: 7.5rem;
