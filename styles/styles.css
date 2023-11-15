@@ -576,7 +576,8 @@ main .section.bold-headings h6 {
 }
 
 /* section - full-width */
-main .section.full-width > .section-container {
+main .section.full-width > .section-container,
+main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
@@ -608,7 +609,9 @@ main .section.brands-top p {
   letter-spacing: 0.1px;
 }
 
-main .section.brands-top > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.brands-top > .section-container,
+main .section.brands-top > .tab-item.active > .section-container {
   padding: 0 1rem;
 }
 
@@ -618,6 +621,7 @@ main .section.social-media {
   background-color: var(--transparent-blue-light-color);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.social-media .section-container {
   padding: 0 1rem;
 }
@@ -761,7 +765,9 @@ main .section.spaced li {
   line-height: 1;
 }
 
-main .section.spaced > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.spaced > .section-container,
+main .section.spaced > .tab-item.active > .section-container {
   max-width: 100%;
   padding: 0;
 }
@@ -777,7 +783,9 @@ main .section.contacts-and-links h3 {
 }
 
 /* section - contact-us */
-main .section.contact-us > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.contact-us > .section-container,
+main .section.contact-us > .tab-item.active > .section-container {
   padding: 5rem 1rem;
   background-color: var(--transparent-blue-light-color);
   text-align: center;
@@ -797,7 +805,9 @@ main .section.contact-us .button-container a:hover {
 }
 
 /* section - about-us */
-main .section.about-us > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.about-us > .section-container,
+main .section.about-us > .tab-item.active > .section-container {
   text-align: center;
 }
 
@@ -818,7 +828,9 @@ main .section.small-narrow {
   margin-top: 3rem;
 }
 
-main .section.small-narrow > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.small-narrow > .section-container,
+main .section.small-narrow > .tab-item.active > .section-container {
   padding: 0 1rem;
 }
 
@@ -831,14 +843,18 @@ main .section.small-narrow h5 {
 }
 
 /* section - narrow */
-main .section.narrow > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.narrow > .section-container,
+main .section.narrow > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
   max-width: 42rem;
 }
 
 /* section - narrower */
-main .section.narrower > .section-container{
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.narrower > .section-container,
+main .section.narrower > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
   margin-block-end: 3rem;
@@ -850,7 +866,9 @@ main .section.static {
   margin-bottom: 7.5rem;
 }
 
-main .section.static > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.static > .section-container,
+main .section.static > .tab-item.active > .section-container {
   padding: 0 1rem 2rem;
   margin-bottom: 5rem;
 }
@@ -942,12 +960,16 @@ main .section.bg-primary p {
 }
 
 /* section - padded */
-main .section.padded > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padded > .section-container,
+main .section.padded > .tab-item.active > .section-container {
   padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
-main .section.padded-inline > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padded-inline > .section-container,
+main .section.padded-inline > .tab-item.active > .section-container {
   padding-inline: 1rem;
   box-sizing: border-box;
 }
@@ -977,7 +999,8 @@ main .block.centered > div {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image > .section-container {
+.section.with-background-image > .section-container,
+.section.with-background-image > .tab-item.active > .section-container {
   display: block;
   position: absolute;
   top: 0;
@@ -985,7 +1008,9 @@ main .block.centered > div {
   width: 100%;
 }
 
-.section.with-background-image.align-right > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-right > .section-container,
+.section.with-background-image.align-right > .tab-item.active > .section-container {
   right: 0;
   left: unset;
 }
@@ -1105,7 +1130,9 @@ main .section.auto-top-spacing .section-container {
   }
 
   /* section - narrow */
-  main .section.narrow > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrow > .section-container,
+  main .section.narrow > .tab-item.active > .section-container {
     position: relative;
     width: 100%;
     padding-right: 0;
@@ -1116,7 +1143,9 @@ main .section.auto-top-spacing .section-container {
   }
 
   /* section - narrower */
-  main .section.narrower > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrower > .section-container,
+  main .section.narrower > .tab-item.active > .section-container {
     position: relative;
     width: 100%;
     padding-right: 0;
@@ -1133,7 +1162,9 @@ main .section.auto-top-spacing .section-container {
   }
 
   /* section - contact-us */
-  main .section.contact-us > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.contact-us > .section-container,
+  main .section.contact-us > .tab-item.active > .section-container {
     padding: 5rem 0;
   }
 
@@ -1196,6 +1227,7 @@ main .section.auto-top-spacing .section-container {
     padding: 5rem 0;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   main .section.social-media .section-container {
     display: flex;
   }
@@ -1231,17 +1263,23 @@ main .section.auto-top-spacing .section-container {
     min-height: unset;
   }
 
-  main .section.spaced > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.spaced > .section-container,
+  main .section.spaced > .tab-item.active > .section-container {
     padding: 0 1rem;
   }
 
   /* section - padded */
-  main .section.padded > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.padded > .section-container,
+  main .section.padded > .tab-item.active > .section-container {
     padding: 2rem;
   }
 
   /* section - padded-inline - not applied for wide screens */
-  main .section.padded-inline > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.padded-inline > .section-container,
+  main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
 
