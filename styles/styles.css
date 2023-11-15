@@ -571,6 +571,10 @@ main .section .section-container {
   padding-right: 0;
 }
 
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
+}
+
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -583,17 +587,13 @@ main .section.bold-headings h6 {
 }
 
 /* section - centered */
-.section.centered > .section-container {
+.section.centered {
   padding-inline: 1rem;
 }
 
 .section.centered div {
   align-items: center;
   text-align: center;
-}
-
-main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
 }
 
 /* section - full-width */
