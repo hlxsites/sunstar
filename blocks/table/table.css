@@ -213,6 +213,10 @@ main .table.inner-table table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
+main .table.inner-table.no-head table tbody tr:first-of-type {
+  background: var(--white);
+}
+
 main .table.inner-table.lastline-leftalign table tr:last-of-type td {
     text-align: left;
 }
