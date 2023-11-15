@@ -309,16 +309,19 @@ a {
   color: var(--white);
 }
 
-.no-margins,
-.no-margins  * {
-  margin: 0!important;
-}
 
 /* Mixins carry !important to override the default styles */
 .no-borders * {
   border: none!important;
   box-shadow: none!important;
 }
+
+.no-margins,
+.no-margins  * {
+  margin: 0!important;
+}
+
+
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -568,11 +571,6 @@ main .section .section-container {
   padding-right: 0;
 }
 
-
-main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
-}
-
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -585,13 +583,17 @@ main .section.bold-headings h6 {
 }
 
 /* section - centered */
-.section.centered {
+.section.centered > .section-container {
   padding-inline: 1rem;
 }
 
 .section.centered div {
   align-items: center;
   text-align: center;
+}
+
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
 }
 
 /* section - full-width */
