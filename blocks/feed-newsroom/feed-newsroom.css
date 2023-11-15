@@ -1,0 +1,108 @@
+/* eslint no-empty: "info" */
+
+.block.highlight.feed-newsroom > .others {
+    display: flex;
+    flex-direction: column;
+  }
+
+.block.highlight.feed-newsroom > .others picture {
+    width: auto;
+    height: 250px;
+  }
+
+main .section.feed-newsroom-container.narrow {
+    max-width: 90rem;
+}
+
+main .block.feed-newsroom {
+    gap: 10vw;
+}
+
+main .block.feed-newsroom > .others:first-child {
+    flex-grow: 3;
+}
+
+main .feed-newsroom-wrapper form {
+    margin: 50px;
+}
+
+main .feed-newsroom-wrapper form .filter-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+main .feed-newsroom-wrapper button {
+    background-color: var(--secondary);
+    color: var(--white);
+    font-size: var(--body-font-size-m);;
+}
+
+
+main .feed-newsroom-wrapper form button {
+    min-width: 6rem;
+    background: var(--white);
+    color: var(--secondary);
+    padding: 6px 15px;
+    height: 32px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+    font-size: var(--body-font-size-m);
+    border: 1px solid #007CAD;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+main .feed-newsroom-wrapper form button:hover {
+    background: #007cad;
+    color: var(--white);
+}
+
+main .feed-newsroom-wrapper form span {
+    margin-right: 2rem;
+}
+
+
+main .feed-newsroom-wrapper form select {
+    min-width: 6rem;
+    background: var(--white);
+    color: var(--secondary);
+    padding: 6px 15px;
+    height: 32px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+    border: 0;
+    font-size: var(--body-font-size-m);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+main .feed-newsroom-wrapper>div:first-child>div:first-child {
+    border: 0;
+}
+
+main .feed-newsroom-wrapper .load-more-container {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+
+.block.highlight.feed-newsroom > .others:last-child {
+    margin-bottom: 5vh;
+}
+
+@media (min-width: 62rem) {
+.block.highlight.feed-newsroom > .others picture {
+        width: 174px;
+        height: 98px;
+        display: block;
+        position: relative;
+    }
+
+main .feed-newsroom-wrapper .load-more-container {
+        margin-bottom: 10vh;
+    }
+}
+
