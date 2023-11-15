@@ -582,36 +582,6 @@ main .section.full-width > .section-container {
   padding-right: 0;
 }
 
-/* section - brands-top */
-main .section.brands-top {
-  padding-top: 3rem;
-}
-
-main .section.brands-top h2 {
-  margin-bottom: 2rem;
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  font-weight: var(--font-weight-medium);
-}
-
-main .section.brands-top h6 {
-  color: #007cadb3;
-  font-size: var(--font-size-xsmall);
-}
-
-main .section.brands-top p {
-  text-align: center;
-  max-width: 45rem;
-  display: inline-block;
-  line-height: 1.5;
-  margin-bottom: 3rem;
-  letter-spacing: 0.1px;
-}
-
-main .section.brands-top > .section-container {
-  padding: 0 1rem;
-}
-
 /* section - social */
 main .section.social-media {
   padding: 4rem 0;
@@ -660,77 +630,6 @@ main .section.social-media .icon-linkedin {
   background-image: url("../../icons/linkedin.svg");
 }
 
-/* section - brands-description */
-main .section.brand-description {
-  margin-bottom: 7.5rem;
-  padding: 0 1rem;
-}
-
-main .section.brand-description em {
-  font-size: var(--font-size-small);
-  color: #3c4650b3;
-  font-style: normal;
-}
-
-main .section.brand-description .icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-bottom: 0.3125rem;
-  margin-left: 0.3125rem;
-}
-
-main .section.brand-description img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-}
-
-main .section.brand-description p:first-of-type img {
-  max-width: 12.5rem;
-  zoom: 1;
-}
-
-main .section.brand-description h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  font-weight: var(--font-weight-medium);
-}
-
-main .section.brand-description h3 {
-  margin-top: 3.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  color: var(--link-color);
-}
-
-main .section.brand-description p {
-  margin-bottom: 1.5rem;
-}
-
-main .section.brand-description .button-container {
-  margin-bottom: 1.5rem;
-}
-
-main .section.brand-description a.button.primary {
-  display: inline-block;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--body-font-size-m);
-  line-height: 1.5em;
-  background-color: unset;
-  color: var(--secondary);
-  height: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-main .section.brand-description strong > a.button.primary {
-  font-weight: var(--font-weight-bold);
-}
-
 /* section - spaced */
 main .section.spaced {
   padding-top: 5rem;
@@ -764,53 +663,6 @@ main .section.spaced li {
 main .section.spaced > .section-container {
   max-width: 100%;
   padding: 0;
-}
-
-/* section - contacts and links from global-network */
-main .section.contacts-and-links {
-  margin: 74px 1rem 214px;
-}
-
-main .section.contacts-and-links h3 {
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
-}
-
-/* section - contact-us */
-main .section.contact-us > .section-container {
-  padding: 5rem 1rem;
-  background-color: var(--transparent-blue-light-color);
-  text-align: center;
-}
-
-main .section.contact-us h2 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-}
-
-main .section.contact-us p.button-container {
-  margin-top: 2rem;
-}
-
-main .section.contact-us .button-container a:hover {
-  text-decoration: none;
-}
-
-/* section - about-us */
-main .section.about-us > .section-container {
-  text-align: center;
-}
-
-main .section.about-us h2 {
-  color: var(--primary);
-}
-
-main .section.about-us p.button-container {
-  margin-top: 2rem;
-}
-
-main .section.about-us .button-container a:hover {
-  text-decoration: none;
 }
 
 /* section - small narrow */
@@ -881,29 +733,6 @@ main .section.no-margin-bottom {
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
-}
-
-/** section - thank-you */
-main .section.thank-you {
-  text-align: left;
-  margin: 64px auto 120px;
-}
-
-main .section.thank-you div.section-container {
-  padding: 0 16px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.thank-you h2 {
-  font-size: 2rem;
-  font-weight: var(--font-weight-medium);
-  margin-bottom: 1.5rem;
-}
-
-main .section.thank-you p {
-  font-size: 1rem;
-  line-height: 1.5em;
-  font-weight: var(--font-weight-medium);
 }
 
 /* section - dark-blue */
@@ -1047,42 +876,6 @@ main .section.auto-top-spacing .section-container {
     padding-right: 16px;
   }
 
-  /* section - brands-top */
-  main .section.brands-top h6 {
-    font-size: var(--font-size-small);
-  }
-
-  main .section.brands-top h2 {
-    font-weight: var(--font-weight-small);
-    font-size: 2.25rem;
-  }
-
-  /* section - brands-description */
-  main .section.brands-top,
-  main .section.brand-description {
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 54.5rem;
-  }
-
-  main .section.brands-top .section-container {
-    box-sizing: border-box;
-  }
-
-  main .section.brand-description img,
-  main .section.brand-description p:first-of-type img {
-    zoom: 0.5;
-    max-width: unset;
-  }
-
-  main .section.brand-description h2 {
-    font-weight: var(--font-weight-small);
-    font-size: 2.25rem;
-  }
-
   /* section - bottom-border */
   main .section.bottom-border {
     border-bottom: 1px solid var(--overlay-background-color);
@@ -1127,58 +920,9 @@ main .section.auto-top-spacing .section-container {
     margin-block-end: 3rem;
   }
 
-  /* section - contacts and links from global-network */
-  main .section.contacts-and-links h3 {
-    font-size: var(--heading-font-size-l);
-  }
-
-  /* section - contact-us */
-  main .section.contact-us > .section-container {
-    padding: 5rem 0;
-  }
-
-  main .section.contact-us h2 {
-    margin-top: 1rem;
-  }
-
-  main .section.contact-us p.button-container {
-    margin-top: 1.5rem;
-  }
-
-  /* section - about-us */
-  main .section.about-us p.button-container {
-    margin-top: 1rem;
-  }
-
   /* section - margin-bottom */
   main .section.margin-bottom {
     margin-bottom: 7.5rem;
-  }
-
-  /* secton - contacts-and-links */
-  main .section.contacts-and-links div.columns.top-down {
-    margin-top: 0;
-    margin-bottom: 4rem;
-  }
-
-  main .section.contacts-and-links .columns > div > div.non-singleton-img {
-    margin-bottom: 2rem;
-  }
-
-  /* section - thank-you */
-  main .section.thank-you {
-    text-align: center;
-    margin: 120px auto 240px;
-  }
-
-  main .section.thank-you h2 {
-    font-size: 52px;
-    margin-bottom: 5rem;
-  }
-
-  main .section.thank-you p {
-    font-size: 1.5rem;
-    line-height: 1em;
   }
 
   /* section - static */
