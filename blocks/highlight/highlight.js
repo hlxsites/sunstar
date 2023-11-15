@@ -1,28 +1,17 @@
 export default async function decorate(block) {
-  if (block.classList.contains('feed-newsroom')) {
-    const others = document.createElement('div');
-    others.classList.add('others');
-    block.querySelectorAll(':scope > div').forEach((div) => {
+  let spotlight = document.createElement('div');
+  spotlight.classList.add('spotlight');
+  const others = document.createElement('div');
+  others.classList.add('others');
+  block.querySelectorAll(':scope > div').forEach((div, index) => {
+    if ((index === 0) && (!block.classList.contains('feed-newsroom'))) {
+      spotlight = div;
+      block.appendChild(spotlight);
+    } else {
       div.classList.add('other');
       others.appendChild(div);
-    });
-    block.innerHTML = '';
-    block.appendChild(others);
-  } else {
-    let spotlight = document.createElement('div');
-    spotlight.classList.add('spotlight');
-    const others = document.createElement('div');
-    others.classList.add('others');
-    block.querySelectorAll(':scope > div').forEach((div, index) => {
-      if (index === 0) {
-        spotlight = div;
-      } else {
-        div.classList.add('other');
-        others.appendChild(div);
-      }
-    });
-    block.innerHTML = '';
-    block.appendChild(spotlight);
-    block.appendChild(others);
-  }
+    }
+  });
+  block.innerHTML = '';
+  block.appendChild(others);
 }
