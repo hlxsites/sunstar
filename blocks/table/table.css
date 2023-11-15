@@ -39,6 +39,7 @@ main .table.inner-table table {
     background-color: var(--white);
     border-collapse: collapse;
     overflow-x: auto;
+    display: block;
     margin-bottom: 1.5rem;
 }
 
@@ -172,6 +173,10 @@ main .table.text-table table tr {
 
 main .table.inner-table table tr {
   display: table-row;
+}
+
+main .table.inner-table table tr a {
+  display: unset;
 }
 
 main .table.text-table table tr td {
