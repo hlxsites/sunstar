@@ -39,7 +39,6 @@ main .table.inner-table table {
     background-color: var(--white);
     border-collapse: collapse;
     overflow-x: auto;
-    display: block;
     margin-bottom: 1.5rem;
 }
 
@@ -169,6 +168,10 @@ main .table.text-table table tr {
     flex-direction: column;
     padding: 1.2rem 0;
     border-bottom: 1px solid var(--transparent-grey-light-color);
+}
+
+main .table.inner-table table tr {
+  display: table-row;
 }
 
 main .table.text-table table tr td {
