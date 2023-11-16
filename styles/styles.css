@@ -129,7 +129,10 @@
   --font-size-xsmall: 12px;
 
   /* Column Split Ratios */
+  --split-firstquarter: 25%:75%;
   --split-lastquarter: 75%:25%;
+  --split-firstthird: 34%:66%;
+  --split-lastthird: 66%:34%;
 }
 
 html {
@@ -298,9 +301,30 @@ a {
 .dark h5,
 .dark h6,
 .dark p,
-.white {
+.white,
+.white h1,
+.white h2,
+.white h3,
+.white h4,
+.white h5,
+.white h6,
+.white p {
   color: var(--white);
 }
+
+
+/* Mixins carry !important to override the default styles */
+.no-borders * {
+  border: none!important;
+  box-shadow: none!important;
+}
+
+.no-margins,
+.no-margins  * {
+  margin: 0!important;
+}
+
+
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -550,9 +574,13 @@ main .section .section-container {
   padding-right: 0;
 }
 
-
 main .section.auto-top-spacing .section-container {
   margin-top: 3rem;
+}
+
+/* section - no-padding-top for h1 */
+.header-no-top-padding h1 {
+  padding-top: 0 !important;
 }
 
 /* section - bold headings */
@@ -577,40 +605,11 @@ main .section.bold-headings h6 {
 }
 
 /* section - full-width */
-main .section.full-width > .section-container {
+main .section.full-width > .section-container,
+main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
-}
-
-/* section - brands-top */
-main .section.brands-top {
-  padding-top: 3rem;
-}
-
-main .section.brands-top h2 {
-  margin-bottom: 2rem;
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  font-weight: var(--font-weight-medium);
-}
-
-main .section.brands-top h6 {
-  color: #007cadb3;
-  font-size: var(--font-size-xsmall);
-}
-
-main .section.brands-top p {
-  text-align: center;
-  max-width: 45rem;
-  display: inline-block;
-  line-height: 1.5;
-  margin-bottom: 3rem;
-  letter-spacing: 0.1px;
-}
-
-main .section.brands-top > .section-container {
-  padding: 0 1rem;
 }
 
 /* section - social */
@@ -619,6 +618,7 @@ main .section.social-media {
   background-color: var(--transparent-blue-light-color);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.social-media .section-container {
   padding: 0 1rem;
 }
@@ -661,77 +661,6 @@ main .section.social-media .icon-linkedin {
   background-image: url("../../icons/linkedin.svg");
 }
 
-/* section - brands-description */
-main .section.brand-description {
-  margin-bottom: 7.5rem;
-  padding: 0 1rem;
-}
-
-main .section.brand-description em {
-  font-size: var(--font-size-small);
-  color: #3c4650b3;
-  font-style: normal;
-}
-
-main .section.brand-description .icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-bottom: 0.3125rem;
-  margin-left: 0.3125rem;
-}
-
-main .section.brand-description img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-}
-
-main .section.brand-description p:first-of-type img {
-  max-width: 12.5rem;
-  zoom: 1;
-}
-
-main .section.brand-description h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  font-weight: var(--font-weight-medium);
-}
-
-main .section.brand-description h3 {
-  margin-top: 3.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: var(--font-weight-bold);
-  font-size: var(--heading-font-size-m);
-  line-height: 1.3em;
-  color: var(--link-color);
-}
-
-main .section.brand-description p {
-  margin-bottom: 1.5rem;
-}
-
-main .section.brand-description .button-container {
-  margin-bottom: 1.5rem;
-}
-
-main .section.brand-description a.button.primary {
-  display: inline-block;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--body-font-size-m);
-  line-height: 1.5em;
-  background-color: unset;
-  color: var(--secondary);
-  height: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-main .section.brand-description strong > a.button.primary {
-  font-weight: var(--font-weight-bold);
-}
-
 /* section - spaced */
 main .section.spaced {
   padding-top: 5rem;
@@ -762,56 +691,11 @@ main .section.spaced li {
   line-height: 1;
 }
 
-main .section.spaced > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.spaced > .section-container,
+main .section.spaced > .tab-item.active > .section-container {
   max-width: 100%;
   padding: 0;
-}
-
-/* section - contacts and links from global-network */
-main .section.contacts-and-links {
-  margin: 74px 1rem 214px;
-}
-
-main .section.contacts-and-links h3 {
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
-}
-
-/* section - contact-us */
-main .section.contact-us > .section-container {
-  padding: 5rem 1rem;
-  background-color: var(--transparent-blue-light-color);
-  text-align: center;
-}
-
-main .section.contact-us h2 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-}
-
-main .section.contact-us p.button-container {
-  margin-top: 2rem;
-}
-
-main .section.contact-us .button-container a:hover {
-  text-decoration: none;
-}
-
-/* section - about-us */
-main .section.about-us > .section-container {
-  text-align: center;
-}
-
-main .section.about-us h2 {
-  color: var(--primary);
-}
-
-main .section.about-us p.button-container {
-  margin-top: 2rem;
-}
-
-main .section.about-us .button-container a:hover {
-  text-decoration: none;
 }
 
 /* section - small narrow */
@@ -819,7 +703,9 @@ main .section.small-narrow {
   margin-top: 3rem;
 }
 
-main .section.small-narrow .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.small-narrow > .section-container,
+main .section.small-narrow > .tab-item.active > .section-container {
   padding: 0 1rem;
 }
 
@@ -832,14 +718,18 @@ main .section.small-narrow h5 {
 }
 
 /* section - narrow */
-main .section.narrow {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.narrow > .section-container,
+main .section.narrow > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
   max-width: 42rem;
 }
 
 /* section - narrower */
-main .section.narrower {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.narrower > .section-container,
+main .section.narrower > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
   margin-block-end: 3rem;
@@ -851,7 +741,9 @@ main .section.static {
   margin-bottom: 7.5rem;
 }
 
-main .section.static .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.static > .section-container,
+main .section.static > .tab-item.active > .section-container {
   padding: 0 1rem 2rem;
   margin-bottom: 5rem;
 }
@@ -879,49 +771,28 @@ main .section.no-margin-bottom {
   margin-bottom: 0;
 }
 
+/* section - no margin-top */
+main .section.no-margin-top {
+  margin-top: 0;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
 }
 
-/** section - thank-you */
-main .section.thank-you {
-  text-align: left;
-  margin: 64px auto 120px;
-}
-
-main .section.thank-you div.section-container {
-  padding: 0 16px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.thank-you h2 {
-  font-size: 2rem;
-  font-weight: var(--font-weight-medium);
-  margin-bottom: 1.5rem;
-}
-
-main .section.thank-you p {
-  font-size: 1rem;
-  line-height: 1.5em;
-  font-weight: var(--font-weight-medium);
-}
-
 /* section - dark-blue */
-main .section.dark,
-main .section.dark .section-container {
+main .section.dark {
   background-color: var(--primary);
 }
 
 /* section - light-blue */
-main .section.light-blue,
-main .section.light-blue .section-container {
+main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
 }
 
 /* section - bg-primary */
-main .section.bg-primary,
-main .section.bg-primary .section-container {
+main .section.bg-primary {
   background-color: var(--primary);
   padding-bottom: 1rem;
 }
@@ -939,6 +810,10 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
+main .section.newsroom h4 {
+  color: #89d1e1;
+}
+
 main .section.bg-primary p {
   color: var(--white);
   margin-top: 0.5rem;
@@ -946,12 +821,16 @@ main .section.bg-primary p {
 }
 
 /* section - padded */
-main .section.padded .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padded > .section-container,
+main .section.padded > .tab-item.active > .section-container {
   padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
-main .section.padded-inline .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padded-inline > .section-container,
+main .section.padded-inline > .tab-item.active > .section-container {
   padding-inline: 1rem;
   box-sizing: border-box;
 }
@@ -981,7 +860,8 @@ main .block.centered > div {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image > .section-container {
+.section.with-background-image > .section-container,
+.section.with-background-image > .tab-item.active > .section-container {
   display: block;
   position: absolute;
   top: 0;
@@ -989,11 +869,19 @@ main .block.centered > div {
   width: 100%;
 }
 
-.section.with-background-image.align-right > .section-container {
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-right > .section-container,
+.section.with-background-image.align-right > .tab-item.active > .section-container {
   right: 0;
   left: unset;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-center > .section-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /* END Section Styles END */
 
@@ -1045,42 +933,6 @@ main .block.centered > div {
     padding-right: 16px;
   }
 
-  /* section - brands-top */
-  main .section.brands-top h6 {
-    font-size: var(--font-size-small);
-  }
-
-  main .section.brands-top h2 {
-    font-weight: var(--font-weight-small);
-    font-size: 2.25rem;
-  }
-
-  /* section - brands-description */
-  main .section.brands-top,
-  main .section.brand-description {
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 54.5rem;
-  }
-
-  main .section.brands-top .section-container {
-    box-sizing: border-box;
-  }
-
-  main .section.brand-description img,
-  main .section.brand-description p:first-of-type img {
-    zoom: 0.5;
-    max-width: unset;
-  }
-
-  main .section.brand-description h2 {
-    font-weight: var(--font-weight-small);
-    font-size: 2.25rem;
-  }
-
   /* section - bottom-border */
   main .section.bottom-border {
     border-bottom: 1px solid var(--overlay-background-color);
@@ -1103,7 +955,9 @@ main .block.centered > div {
   }
 
   /* section - narrow */
-  main .section.narrow {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrow > .section-container,
+  main .section.narrow > .tab-item.active > .section-container {
     position: relative;
     width: 100%;
     padding-right: 0;
@@ -1114,7 +968,9 @@ main .block.centered > div {
   }
 
   /* section - narrower */
-  main .section.narrower {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrower > .section-container,
+  main .section.narrower > .tab-item.active > .section-container {
     position: relative;
     width: 100%;
     padding-right: 0;
@@ -1125,58 +981,9 @@ main .block.centered > div {
     margin-block-end: 3rem;
   }
 
-  /* section - contacts and links from global-network */
-  main .section.contacts-and-links h3 {
-    font-size: var(--heading-font-size-l);
-  }
-
-  /* section - contact-us */
-  main .section.contact-us > .section-container {
-    padding: 5rem 0;
-  }
-
-  main .section.contact-us h2 {
-    margin-top: 1rem;
-  }
-
-  main .section.contact-us p.button-container {
-    margin-top: 1.5rem;
-  }
-
-  /* section - about-us */
-  main .section.about-us p.button-container {
-    margin-top: 1rem;
-  }
-
   /* section - margin-bottom */
   main .section.margin-bottom {
     margin-bottom: 7.5rem;
-  }
-
-  /* secton - contacts-and-links */
-  main .section.contacts-and-links div.columns.top-down {
-    margin-top: 0;
-    margin-bottom: 4rem;
-  }
-
-  main .section.contacts-and-links .columns > div > div.non-singleton-img {
-    margin-bottom: 2rem;
-  }
-
-  /* section - thank-you */
-  main .section.thank-you {
-    text-align: center;
-    margin: 120px auto 240px;
-  }
-
-  main .section.thank-you h2 {
-    font-size: 52px;
-    margin-bottom: 5rem;
-  }
-
-  main .section.thank-you p {
-    font-size: 1.5rem;
-    line-height: 1em;
   }
 
   /* section - static */
@@ -1194,6 +1001,7 @@ main .block.centered > div {
     padding: 5rem 0;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   main .section.social-media .section-container {
     display: flex;
   }
@@ -1229,17 +1037,23 @@ main .block.centered > div {
     min-height: unset;
   }
 
-  main .section.spaced > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.spaced > .section-container,
+  main .section.spaced > .tab-item.active > .section-container {
     padding: 0 1rem;
   }
 
   /* section - padded */
-  main .section.padded .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.padded > .section-container,
+  main .section.padded > .tab-item.active > .section-container {
     padding: 2rem;
   }
 
   /* section - padded-inline - not applied for wide screens */
-  main .section.padded-inline .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.padded-inline > .section-container,
+  main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
 

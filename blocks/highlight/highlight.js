@@ -4,14 +4,14 @@ export default async function decorate(block) {
   const others = document.createElement('div');
   others.classList.add('others');
   block.querySelectorAll(':scope > div').forEach((div, index) => {
-    if (index === 0) {
+    if ((index === 0) && (!block.classList.contains('feed-newsroom'))) {
       spotlight = div;
+      block.appendChild(spotlight);
     } else {
       div.classList.add('other');
       others.appendChild(div);
     }
   });
   block.innerHTML = '';
-  block.appendChild(spotlight);
   block.appendChild(others);
 }

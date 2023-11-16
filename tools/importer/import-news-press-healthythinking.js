@@ -179,7 +179,10 @@ const remmoveNewsContactBar = (document) => {
   }
 };
 
-const addLeadingZero = (number) => (number < 10 ? `0${number}` : number);
+const getFileName = (url) => {
+  const initialReplace = new URL(url).pathname.replace(/\.html$/, '').replace(/\/$/, '');
+  return initialReplace;
+};
 
 const createDownloadLinkBlock = (document, url, params) => {
   const learnMore = document.querySelector('.ss-learn-more');
@@ -191,6 +194,9 @@ const createDownloadLinkBlock = (document, url, params) => {
     learnMoreContainer.remove();
 
     if (li.length) {
+      const used = [];
+      const currentFileName = getFileName(url).split('/').pop();
+
       li.forEach((ele, index) => {
         if (index === 0) {
           const p = document.createElement('p');
@@ -198,20 +204,29 @@ const createDownloadLinkBlock = (document, url, params) => {
           learnMore.appendChild(p);
         } else {
           const a = ele.querySelector('a');
-          if (a?.href && a.href.includes('.pdf')) {
-            a.href = a.href.replaceAll('wp-content/uploads', 'jp/assets');
+          if (a?.href) {
+            let href = 'https://main--sunstar--hlxsites.hlx.page/jp/assets/newsroom/';
 
             if (params.preProcessMetadata?.PublishedDate) {
               const tempArr = a.href.split('/');
               const extension = tempArr[tempArr.length - 1].split('.').pop();
-              const datePublished = new Date(params.preProcessMetadata.PublishedDate);
-              const name = `${datePublished.getFullYear()}${addLeadingZero(datePublished.getMonth() + 1)}${addLeadingZero(datePublished.getDate())}`;
-              tempArr[tempArr.length - 1] = `${name}.${extension}`;
-              a.href = tempArr.join('/');
+              href += `${currentFileName}/`;
+              let finalName = currentFileName;
+              let ct = 1;
+
+              while (used.indexOf(finalName) > -1) {
+                finalName = `${currentFileName}-${ct}`;
+                ct += 1;
+              }
+
+              href += `${finalName}.${extension}`;
+              used.push(finalName);
+              a.href = href;
             }
+            a.textContent = `${a.textContent} :download:`;
 
             const block = [];
-            block.push(['Link (Download, No Buttons)']);
+            block.push(['Link (No Buttons)']);
             block.push([a]);
             const table = WebImporter.DOMUtils.createTable(block, document);
             learnMore.appendChild(table);
