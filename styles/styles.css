@@ -75,11 +75,11 @@
   /* fallback font for Noto Sans (normal - 400) */
   @font-face {
     font-family: "noto-sans-normal-400-fallback";
-    size-adjust: 103.7%;
-    src: local("Trebuchet MS");
+    size-adjust: 205.431%;
+    src: local("Arial");
   }
 
-  --body-font-family: 'Noto Sans', 'noto-sans-normal-400-fallback';
+  --body-font-family: 'Noto Sans', noto-sans-normal-400-fallback, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono",
     monospace;
