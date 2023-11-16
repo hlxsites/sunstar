@@ -14,7 +14,7 @@
    @font-face {
     font-family: "noto-sans-normal-400-fallback";
     size-adjust: 105.431%;
-    src: local("Arial");
+    src: local("Sans-Serif");
   }
 
 :root {
