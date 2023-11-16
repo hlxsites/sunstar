@@ -76,7 +76,7 @@ export function applyCellAlignment(block) {
 }
 
 function applyAnchorToWholeBlock(block) {
-  const hyperlink = block.classList.contains('wrap-link-on-image');
+  const hyperlink = block.classList.contains('hyperlink-image');
   if (hyperlink) {
     // Access all anchor elements
     const anchorElements = block.querySelectorAll('a');
@@ -114,7 +114,7 @@ export default function decorate(block) {
   const videoAnchor = [...block.querySelectorAll('a')].filter((a) => a.href.includes('.mp4'));
   const textOnlyColBlock = !block.querySelector('picture') && !videoAnchor.length;
 
-  const hyperlink = block.classList.contains('wrap-link-on-image');
+  const hyperlink = block.classList.contains('hyperlink-image');
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
