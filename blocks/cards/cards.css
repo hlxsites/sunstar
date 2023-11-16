@@ -73,6 +73,10 @@ main .block.cards {
   padding: 20px;
 }
 
+.cards.hide-body .cards-card-body {
+  display: none;
+}
+
 .cards.info-points .cards-card-body {
   text-align: center;
 }
@@ -132,6 +136,19 @@ main .cards.features-items h6 {
 
 main .cards.features-items ul > li {
   align-items: flex-start;
+}
+
+/* Styles for Flat List */
+main .cards.flat-list > ul {
+  flex-direction: row;
+}
+
+main .cards.flat-list .cards-card-image {
+  height: auto;
+}
+
+main .cards.flat-list > ul > li {
+  box-shadow: none;
 }
 
 /* Styles for info points cards */
