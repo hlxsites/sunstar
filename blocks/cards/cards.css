@@ -147,10 +147,6 @@ main .cards.flat-list .cards-card-image {
   height: auto;
 }
 
-main .cards.flat-list > ul > li {
-  box-shadow: none;
-}
-
 /* Styles for info points cards */
 main .cards.info-points .cards-card-body * {
   text-align: left;
