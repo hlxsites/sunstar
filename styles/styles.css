@@ -10,6 +10,13 @@
  * governing permissions and limitations under the License.
  */
 
+   /* fallback font for Noto Sans (normal - 400) */
+   @font-face {
+    font-family: "noto-sans-normal-400-fallback";
+    size-adjust: 105.431%;
+    src: local("Arial");
+  }
+
 :root {
   /* colors */
   --black: #000;
@@ -71,13 +78,6 @@
 
 
   /* fonts */
-
-  /* fallback font for Noto Sans (normal - 400) */
-  @font-face {
-    font-family: "noto-sans-normal-400-fallback";
-    size-adjust: 205.431%;
-    src: local("Arial");
-  }
 
   --body-font-family: 'Noto Sans', noto-sans-normal-400-fallback, sans-serif;
   --heading-font-family: var(--body-font-family);
