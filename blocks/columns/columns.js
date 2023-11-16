@@ -75,6 +75,24 @@ export function applyCellAlignment(block) {
   applyVerticalCellAlignment(block);
 }
 
+function applyAnchorToWholeBlock(block) {
+  const hyperlink = block.classList.contains('wrap-link-on-image');
+  if (hyperlink) {
+    // Access all anchor elements
+    const anchorElements = block.querySelectorAll('a');
+    // Wrap each anchor element within its closest picture element
+    anchorElements.forEach((anchor) => {
+      const pictureElement = anchor.closest('div').querySelector('picture');
+      if (pictureElement) {
+        // If a closest picture element is found, wrap the anchor inside it
+        pictureElement.parentElement.remove();
+        anchor.replaceChildren(pictureElement);
+        anchor.classList.remove('button');
+      }
+    });
+  }
+}
+
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
@@ -96,19 +114,30 @@ export default function decorate(block) {
   const videoAnchor = [...block.querySelectorAll('a')].filter((a) => a.href.includes('.mp4'));
   const textOnlyColBlock = !block.querySelector('picture') && !videoAnchor.length;
 
+  const hyperlink = block.classList.contains('wrap-link-on-image');
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       if (!textOnlyColBlock) {
         const pics = col.querySelectorAll('picture');
+        // Access all anchor
+        const anchorElement = col.querySelectorAll('a');
         if (pics.length) {
           const picWrapper = pics[0].closest('div');
           if (picWrapper && picWrapper.children.length === pics.length) {
-            // pictures (either wrapped in achors, or otherwise)
-            // are only content in the column
+            // pictures are only content in the column
+            picWrapper.classList.add('img-col');
+          } else if (
+            hyperlink
+            && anchorElement
+            && picWrapper
+            && picWrapper.children.length === pics.length + 1
+          ) {
+            // It is expected to be an image along with a single hyperlink in the column
             picWrapper.classList.add('img-col');
           }
         }
+
         if (videoAnchor.length) {
           const videoWrapper = videoAnchor[0].parentElement;
           if (videoWrapper) {
@@ -223,4 +252,5 @@ export default function decorate(block) {
 
   applySplitPercentages(block);
   applyCellAlignment(block);
+  applyAnchorToWholeBlock(block);
 }
