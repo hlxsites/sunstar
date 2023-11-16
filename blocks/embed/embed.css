@@ -4,7 +4,11 @@ main .embed {
   margin: 2rem auto;
   min-height: 12rem;
 }
-  
+
+main .embed.share {
+  min-height: unset;
+}
+
 main .embed > div {
   display: flex;
   justify-content: center;
@@ -89,5 +93,9 @@ main .embed .social-plugin-iframe {
 @media (min-width: 48rem) {
   main .embed {
     min-height: 25.3rem;
+  }
+
+  main .embed.share {
+    min-height: unset;
   }
 }

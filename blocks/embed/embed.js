@@ -59,8 +59,8 @@ const embedYoutube = (url, isLite) => {
 * @returns
 */
 const embedSocialPlugins = (urlParam, isLite, type) => {
-  const url = decodeURI(urlParam);
-  const usp = new URLSearchParams(url);
+  const url = urlParam;
+  const usp = new URLSearchParams(decodeURI(urlParam));
   let width = usp.get('container_width') || usp.get('width') || '360px';
   let height = usp.get('height') || usp.get('maxHeight') || '598px';
 
@@ -111,8 +111,9 @@ const loadEmbed = (block, grandChilds, link) => {
   const isLite = block.classList.contains('lite');
 
   if (config) {
+    const shareVariant = block.classList.contains('share');
     block.innerHTML = config.embed(url, isLite, config.type);
-    block.classList = `block embed embed-${config.match[0]}`;
+    block.classList = `block embed embed-${config.match[0]} ${shareVariant ? 'share' : ''}`;
   }
   block.classList.add('embed-is-loaded');
 
