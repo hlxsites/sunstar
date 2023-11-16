@@ -377,6 +377,25 @@ function decorateSectionsWithBackgrounds(element) {
     }
   });
 }
+
+/**
+ * Enclose all text content of direct div children in p tags
+ * @param {*} element
+ */
+function wrapDirectDivTextInParagraphs(element) {
+  const divs = element.getElementsByTagName('div');
+  Array.from(divs).forEach((div) => {
+    const textNodes = Array.from(div.childNodes)
+      .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
+
+    textNodes.forEach((textNode) => {
+      const pElement = document.createElement('p');
+      pElement.appendChild(textNode.cloneNode(true));
+      div.replaceChild(pElement, textNode);
+    });
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -392,6 +411,7 @@ export function decorateMain(main) {
   decorateSectionsWithBackgrounds(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
+  wrapDirectDivTextInParagraphs(main);
 }
 
 function decoratePageStyles() {
