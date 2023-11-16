@@ -79,7 +79,7 @@
     src: local("Trebuchet MS");
   }
 
-  --body-font-family: "Noto Sans", "noto-sans-normal-400-fallback";
+  --body-font-family: 'Noto Sans', 'noto-sans-normal-400-fallback';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono",
     monospace;
