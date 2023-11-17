@@ -8,7 +8,7 @@ import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 // the specific block types
 const resultParsers = {
   // Parse results into a cards block
-  cards: (results, blockCfg) => {
+  cards: (results, blockCfg, variation = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',');
@@ -18,7 +18,7 @@ const resultParsers = {
       fields.forEach((field) => {
         const fieldName = field.trim().toLowerCase();
         if (fieldName === 'image') {
-          cardImage = createOptimizedPicture(result[fieldName]);
+          cardImage = createOptimizedPicture(result[fieldName], '', variation === 'hero-block');
         } else {
           const div = document.createElement('div');
           if (fieldName === 'publisheddate') {
@@ -48,7 +48,7 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg) => {
+  highlight: (results, blockCfg, variation = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -60,7 +60,7 @@ const resultParsers = {
         if (fieldName === 'path') {
           cardBody.href = result[fieldName];
         } else if (fieldName === 'image') {
-          cardImage = createOptimizedPicture(result[fieldName]);
+          cardImage = createOptimizedPicture(result[fieldName], '', variation === 'hero-block');
         } else {
           const div = document.createElement('div');
           if (fieldName === 'publisheddate') {
@@ -139,7 +139,7 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-  const blockContents = resultParsers[blockType](results, blockCfg);
+  const blockContents = resultParsers[blockType](results, blockCfg, variation);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
