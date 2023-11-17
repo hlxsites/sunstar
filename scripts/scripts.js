@@ -411,7 +411,6 @@ export function decorateMain(main) {
   decorateSectionsWithBackgrounds(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
-  wrapDirectDivTextInParagraphs(main);
 }
 
 function decoratePageStyles() {
@@ -531,6 +530,7 @@ function setMetaTags(main) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+  wrapDirectDivTextInParagraphs(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;
