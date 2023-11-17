@@ -604,6 +604,16 @@ main .section.bold-headings h6 {
   text-align: center;
 }
 
+main .section.image-before > .section-container {
+  position: relative;
+  max-width: 100%;
+}
+
+main .section.image-after > .section-container {
+  position: relative;
+  max-width: 100%;
+}
+
 /* section - full-width */
 main .section.full-width > .section-container,
 main .section.full-width > .tab-item.active > .section-container {
@@ -882,6 +892,26 @@ main .block.centered > div {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* section - image-before */
+
+main .section.image-before > div p img {
+  width: 402px;
+  height: 253px;
+  position: absolute;
+  top: -16vh;
+}
+
+main .section.image-after > div p img {
+  width: 181px;
+  height: 533px;
+  position: absolute;
+  top: -29vh;
+  right: 1vw;
+}
+
+
+
 
 /* END Section Styles END */
 
