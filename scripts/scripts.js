@@ -25,8 +25,9 @@ const LCP_BLOCKS = [
   'overlapping-content',
   'carousel',
   'career-hero',
+  'social',
 ]; // add your LCP blocks to the list
-const SKIP_FROM_LCP = ['breadcrumb', 'social']; // add blocks that shouldn't ever be LCP candidates to the list
+const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP candidates to the list
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
