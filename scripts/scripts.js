@@ -290,7 +290,7 @@ export function decorateAnchors(element = document) {
       || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
   decorateDownloadableLinks(Array.from(anchors).filter(
-    (a) => a.querySelector('span.icon-download'),
+    (a) => (a.querySelector('span.icon-download') || a.closest('.download')),
   ));
 }
 

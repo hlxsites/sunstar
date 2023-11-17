@@ -36,6 +36,57 @@
   content: unset;
 }
 
+.block.link.large-background-button {
+  background-color: var(--primary);
+  max-width: 100%;
+  margin: 0 1rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.block.link.large-background-button:hover {
+  background: var(--link-color);
+}
+
+.block.link.large-background-button a {
+  padding: 1.5rem;
+}
+
+.block.link.large-background-button a:hover {
+  text-decoration: none;
+}
+
+.block.link.large-background-button .download-icon {
+  position: absolute;
+  top: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}  
+
+.block.link.large-background-button .download-details {
+  position: relative;
+  margin-left: 1.375rem;
+}  
+
+.block.link.large-background-button .download-details h6 {
+  color: var(--hero-strong-color);
+  font-size: var(--body-font-size-s);
+  line-height: 1.3rem;
+  margin: 0 1rem 0 3.625rem;
+  text-transform: unset;
+  letter-spacing: 0.05em;
+}  
+
+.block.link.large-background-button .download-details h2 {
+  font-size: var(--body-font-size-xxl);
+  line-height: 1.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: unset;
+  display: inline-block;
+  color: var(--white);
+  text-align: left;
+}  
+
 .block.link.white-button a:hover {
   color: var(--white);
   background-color: var(--link-blue-color);
@@ -58,13 +109,6 @@
 
 .block.link ul > * {
   flex-grow: 1;
-}
-
-.block.link.download a::after {
-  content: url("../../icons/download.svg");
-  position: relative;
-  left: 0.3rem;
-  top: 0.05rem;
 }
 
 @media (min-width: 62rem) {
@@ -91,5 +135,43 @@
     margin: 0;
   }
 
+  .block.link.large-background-button {
+    margin: 0 0 2.5rem;
+  }
  
+  .block.link.large-background-button a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2.5rem 6rem;
+  }
+
+  .block.link.large-background-button .download-icon {
+    position: unset;
+    width: 3.5rem;
+    height: 3.5rem;
+  }  
+
+  .block.link.large-background-button .download-details {
+    position: relative;
+    margin-left: 1.375rem;
+    width: 39.375rem;
+  }  
+
+  .block.link.large-background-button .download-details h6 {
+    margin: unset;
+  }  
+  
+  .block.link.large-background-button .download-details h2 {
+    font-size: var(--heading-font-size-mxl);
+    line-height: 3rem;
+    margin: unset;
+    display: unset;
+  }  
 }
+
+@media (min-width: 77rem) {
+  .block.link.large-background-button a {
+    padding: 2.5rem 14.5rem;
+  }
+}  

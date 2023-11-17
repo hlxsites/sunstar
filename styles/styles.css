@@ -10,6 +10,13 @@
  * governing permissions and limitations under the License.
  */
 
+   /* fallback font for Noto Sans (normal - 400) */
+   @font-face {
+    font-family: "noto-sans-normal-400-fallback";
+    size-adjust: 105.431%;
+    src: local("Arial");
+  }
+
 :root {
   /* colors */
   --black: #000;
@@ -69,8 +76,10 @@
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
 
+
   /* fonts */
-  --body-font-family: "Noto Sans";
+
+  --body-font-family: 'Noto Sans', noto-sans-normal-400-fallback, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono",
     monospace;
@@ -839,6 +848,12 @@ main .block.centered > div {
   margin: auto;
 }
 
+main .block.download a::after {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
 
 /* Section Styles for background images */
 .section.with-background-image {
