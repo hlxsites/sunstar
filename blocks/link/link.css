@@ -111,13 +111,6 @@
   flex-grow: 1;
 }
 
-.block.link.download a::after {
-  content: url("../../icons/download.svg");
-  position: relative;
-  left: 0.3rem;
-  top: 0.05rem;
-}
-
 @media (min-width: 62rem) {
   .block.link {
     margin-bottom: 1.5rem;

@@ -848,6 +848,12 @@ main .block.centered > div {
   margin: auto;
 }
 
+main .block.download a::after {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
 
 /* Section Styles for background images */
 .section.with-background-image {
