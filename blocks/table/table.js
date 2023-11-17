@@ -32,6 +32,18 @@ function buildMutipleTables(block) {
   mainContent.replaceChildren(...mainTmp.childNodes);
 }
 
+function innerTableHighlightFirstColumn(block) {
+  const trs = block.querySelectorAll('table tr');
+  const tdNumbArray = [];
+  [...trs].forEach((td) => { tdNumbArray.push(td.children.length); });
+  const tdNumb = Math.max(...tdNumbArray);
+  [...trs].forEach((td, index) => {
+    if (index !== 0 && tdNumb === td.children.length) {
+      td.classList.add('highlight-item');
+    }
+  });
+}
+
 export default async function decorate(block) {
   const noHead = block.classList.contains('no-head');
   const tableDiv = document.createElement('div');
@@ -69,4 +81,8 @@ export default async function decorate(block) {
   }
   if (block.classList.contains('flat')) block.parentElement.classList.add('flat-table');
   buildMutipleTables(block);
+  if (block.classList.contains('inner-table')
+   && block.classList.contains('highlight-first-column')) {
+    innerTableHighlightFirstColumn(block);
+  }
 }

@@ -75,6 +75,18 @@ export function applyCellAlignment(block) {
   applyVerticalCellAlignment(block);
 }
 
+function formatTableText(block) {
+  const tds = block.querySelectorAll('table td');
+  [...tds].forEach((td) => {
+    if (!td.querySelector('p')) {
+      const p = document.createElement('p');
+      p.textContent = td.textContent;
+      td.textContent = '';
+      td.appendChild(p);
+    }
+  });
+}
+
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
@@ -223,4 +235,5 @@ export default function decorate(block) {
 
   applySplitPercentages(block);
   applyCellAlignment(block);
+  formatTableText(block);
 }

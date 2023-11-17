@@ -111,6 +111,9 @@ main .multiple-table .flat-table {
     overflow-wrap: break-word;
 }
 
+
+
+
 @media (min-width: 62rem) {
     main .multiple-table {
         display: flex;
@@ -207,10 +210,26 @@ main .table.text-table table tr td a .icon {
     width: 1.5em;
 }
 
+main .table.highlight-first-column tr:first-of-type td{
+    background-color: var(--secondary);
+    color: var(--white);
+    font-weight: var(--font-weight-bold);
+}
+
+main .table.highlight-first-column tr:not(:first-of-type) td{
+    text-align: left;
+}
+
 main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
     font-size: var(--body-font-size-m);
     line-height: 1.5rem;
+}
+
+main .table.highlight-first-column tr.highlight-item td:first-of-type{
+    background-color: var(--transparent-blue-light-color);
+    color: var(--secondary);
+    text-align: center;
 }
 
 main .table.inner-table table tbody tr:first-of-type {
