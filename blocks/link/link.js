@@ -1,11 +1,4 @@
 export default async function decorate(block) {
-  if (block.classList.contains('download')) {
-    const a = block.querySelector('a');
-    if (a) {
-      a.setAttribute('download', '');
-    }
-  }
-
   if (block.classList.contains('large-background-button')) {
     if (block.children[0] && block.children[0].children[0]) {
       const a = document.createElement('a');
