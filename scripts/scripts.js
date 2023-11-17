@@ -290,7 +290,7 @@ export function decorateAnchors(element = document) {
       || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
   decorateDownloadableLinks(Array.from(anchors).filter(
-    (a) => a.querySelector('span.icon-download'),
+    (a) => (a.querySelector('span.icon-download') || a.closest('.download')),
   ));
 }
 
@@ -379,23 +379,6 @@ function decorateSectionsWithBackgrounds(element) {
 }
 
 /**
- * For all blocks having download variant
- * download attribute must be added to the anchor tags
- * @param {*} main
- */
-const addDownloadAttribute = (main) => {
-  const blocks = main.querySelectorAll('.block');
-  blocks.forEach((block) => {
-    if (block.classList.contains('download')) {
-      const anchors = block.querySelectorAll('a');
-      anchors.forEach((anchor) => {
-        anchor.setAttribute('download', '');
-      });
-    }
-  });
-};
-
-/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -410,7 +393,6 @@ export function decorateMain(main) {
   decorateSectionsWithBackgrounds(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
-  addDownloadAttribute(main);
 }
 
 function decoratePageStyles() {
