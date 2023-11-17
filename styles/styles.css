@@ -907,7 +907,7 @@ main .section.image-after > div p img {
   height: 533px;
   position: absolute;
   top: -29vh;
-  right: 1vw;
+  right: 0;
 }
 
 
