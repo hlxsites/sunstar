@@ -592,16 +592,6 @@ main .section.auto-top-spacing .section-container {
   padding-top: 0 !important;
 }
 
-/* section - left align headings */
-main .left-align-headings h1,
-main .left-align-headings h2,
-main .left-align-headings h3,
-main .left-align-headings h4,
-main .left-align-headings h5,
-main .left-align-headings h6 {
-  text-align: left;
-}
-
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -765,6 +755,16 @@ main .section.static > .section-container,
 main .section.static > .tab-item.active > .section-container {
   padding: 0 1rem 2rem;
   margin-bottom: 5rem;
+}
+
+/* section - text align left */
+main .section.left-align-text h1,
+main .section.left-align-text h2,
+main .section.left-align-text h3,
+main .section.left-align-text h4,
+main .section.left-align-text h5,
+main .section.left-align-text h6 {
+  text-align: left;
 }
 
 main .section.static .section-container h1 {
@@ -949,16 +949,6 @@ main .block.download a::after {
     display: block;
   }
 
-  /* section - left align headings */
-  main .left-align-headings h1,
-  main .left-align-headings h2,
-  main .left-align-headings h3,
-  main .left-align-headings h4,
-  main .left-align-headings h5,
-  main .left-align-headings h6 {
-    text-align: center;
-  }
-
   /* START Section Styles START */
 
   main .section .section-container {
@@ -1014,6 +1004,16 @@ main .block.download a::after {
     margin-left: auto;
     max-width: 45rem;
     margin-block-end: 3rem;
+  }
+
+  /* section - text align left */
+  main .section.left-align-text h1,
+  main .section.left-align-text h2,
+  main .section.left-align-text h3,
+  main .section.left-align-text h4,
+  main .section.left-align-text h5,
+  main .section.left-align-text h6 {
+    text-align: center;
   }
 
   /* section - margin-bottom */
