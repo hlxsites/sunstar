@@ -1,5 +1,6 @@
 export default async function decorate(block) {
   let spotlight = document.createElement('div');
+  const hideSpotlight = (block.classList.contains('feed-newsroom'));
   spotlight.classList.add('spotlight');
   const others = document.createElement('div');
   others.classList.add('others');
@@ -12,6 +13,6 @@ export default async function decorate(block) {
     }
   });
   block.innerHTML = '';
-  block.appendChild(spotlight);
+  if (!hideSpotlight) block.appendChild(spotlight);
   block.appendChild(others);
 }

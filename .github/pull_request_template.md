@@ -1,23 +1,29 @@
-Please always provide the [GitHub issue(s)](../issues) your PR is for, as well as test URLs where your change can be observed (before and after):
+Please always provide the [GitHub issue(s)](../issues) your PR is for, as well as test URLs where your change can be observed (before and after), along with a short summary of changes:
+
+## Issue
 
 Fixes #<gh-issue-id>
 
-Test URLs:
+## Changelog:
+_Please enter each change as a new bullet point_
+
+## Test URLs:
 - Original: https://www.sunstar.com/<path>
 - Before: https://main--sunstar--hlxsites.hlx.live/<path>
 - After: https://$branch--sunstar--hlxsites.hlx.live/<path>
 
+## Library
+
 - [ ] New Blocks introduced in this PR
       If yes, please provide details below
-
-Block Name    | Documentation
-------------- | -------------
- For e.g. cards | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=0)
-
+**Block Name** : For e.g. _cards_
+- [ ] Documented in sidekick library
 
 
 - [ ] New variations introduced in this PR
+**Variation Name** :  For e.g. _cards (grid)_
+- [ ] Documented in sidekick library
 
-Variation Name    | Documentation
-------------- | -------------
- For e.g. cards (grid)  | [doc-link](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/cards&index=2)
+- [ ] New mixins introduced in this PR
+**Mixin Name** :  For e.g. _compact, white_
+- [ ] Documented in sidekick library

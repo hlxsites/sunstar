@@ -1,0 +1,49 @@
+.boxes > ul {
+    list-style: none;
+    margin-top: 2rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+}
+
+.boxes > ul > li {
+    border: 1px solid var(--light-black);
+    border-radius: 45px;
+    position: relative;
+    padding: 2.5rem 1.5rem;
+    margin: 1rem;
+}
+
+.boxes .boxes-card-body {
+    margin: 16px;
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.boxes .boxes-card-body p{
+    margin: 0;
+}
+
+.boxes .boxes-card-title {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: var(--secondary);
+    color: var(--white);
+    width: 8em;
+    text-align: center;
+    top: -1.3em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+@media screen and (min-width: 48rem) {
+    .boxes > ul {
+        flex-flow: row nowrap;
+    }
+}

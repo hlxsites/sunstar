@@ -44,11 +44,9 @@ main .section.social-container .tag-name {
   margin-bottom: 0.5rem;
 }
 
-main .section.social-container .section-container {
+main .section.narrow.social-container > .section-container {
   max-width: 45rem;
-  margin-right: auto;
-  margin-left: unset;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
 }
 
@@ -164,9 +162,17 @@ main .section.social-container a.category-title {
   font-weight:  var(--font-weight-bold);
 }
 
+.block.social.horizontal-icon {
+  justify-content: center;
+}
+
 @media (min-width: 62rem) {
   main .section.social-container .section-container {
     position: relative;
+  }
+
+  main .section.narrow.social-container > .section-container {
+    margin-inline: auto;
   }
 
   .social-container div.image-caption {
@@ -215,6 +221,16 @@ main .section.social-container a.category-title {
 
   div.social-container h3 {
     font-size: var(--heading-font-size-m);
+  }
+
+  .block.social.horizontal-icon {
+    flex-direction: row;
+    gap: 1rem;
+    position: unset;
+  }
+
+  .block.social.horizontal-icon > span {
+    display: none;
   }
 }
 

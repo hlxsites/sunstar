@@ -52,10 +52,12 @@ main .block.text.highlight a.button.primary {
   height: auto;
 }
 
-main .block.text.muted {
+main .block.text.muted,
+main .block.text.muted p {
   color: var(--steel-blue);
-  font-size: var(--body-font-size-s);
-  padding-bottom: 0.5rem;
+  font-size: var(--body-font-size-xs);
+  padding: 0; 
+  margin: 0;
 }
 
 main .block.text.alert {
@@ -73,9 +75,47 @@ main .block.text.lead {
   font-size: var(--body-font-size-xl);
 }
 
+main .block.text.emphasis {
+  margin-inline: -1rem;
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+}
+
+main .block.text.light-background {
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+}
+
+main .block.text.text-small,
+main .block.text.text-small p {
+  font-size: var(--body-font-size-xs);
+}
+
+main .block.text.emphasis > div > div > :first-child,
+main .block.text.light-background  > div > div > :first-child {
+  margin-top: 0;
+}
+
+main .block.text.emphasis > div > div > :last-child,
+main .block.text.light-background  > div > div > :last-child {
+  margin-bottom: 0;
+}
+
 @media (min-width: 77rem) {
   main .block.text.lead {
     font-size: var(--body-font-size-xxl);
   }
-}
 
+  main .block.text.emphasis {
+    margin-inline: -3rem;
+    padding: 3rem;
+    margin-block: 2rem;
+  }
+
+  main .block.text.light-background {
+    margin-block: 1.5rem;
+    padding: 2rem;
+  }
+}

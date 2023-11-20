@@ -63,4 +63,24 @@ describe('Hero Horizontal Tabs', () => {
 
     expect(['hero-horiz-tabs-img']).to.deep.equal([...block.children[1].classList]);
   });
+
+  it('Render Button', async () => {
+    const block = document.querySelector('.hero-horizontal-tabs');
+
+    await scripts.default(block);
+
+    const texts = block.children[0].children[0];
+    expect(texts.classList.contains('hero-horiz-tabs-text')).equal(true);
+
+    const buttonContent = texts.querySelectorAll('.hero-horiz-tabs-text-button>div');
+    expect([...buttonContent].length).to.equal(2);
+    const leftButton = buttonContent[0].querySelector('a');
+    expect(leftButton).to.exist;
+    expect(leftButton.href.endsWith('left-button.pdf')).to.be.true;
+    const rightButton = buttonContent[1].querySelector('a');
+    expect(rightButton).to.exist;
+    expect(rightButton.href.endsWith('right-button.pdf')).to.be.true;
+
+    expect(['hero-horiz-tabs-img']).to.deep.equal([...block.children[1].classList]);
+  });
 });
