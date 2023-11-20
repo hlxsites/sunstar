@@ -614,6 +614,26 @@ main .section.image-after > .section-container {
   max-width: 100%;
 }
 
+main .section.image-before-after-t1 > div p img {
+  width: 402px;
+  height: 253px;
+  position: absolute;
+  top: -19vh;
+  z-index: 1;
+}
+
+main .section.image-before-after-t2 > div p img {
+  width: 181px;
+  height: 533px;
+  position: absolute;
+  top: -29vh;
+  z-index: 1;
+}
+
+main .section.right > div p img {
+  right: 0;
+}
+
 /* section - full-width */
 main .section.full-width > .section-container {
   max-width: 100%;
@@ -1104,10 +1124,6 @@ main .section.underfill > .section-container img {
   }
 
   main .section.image-before > div p img {
-    width: 402px;
-    height: 253px;
-    position: absolute;
-    top: -19vh;
     display: block;
   }
 
@@ -1207,13 +1223,7 @@ main .section.underfill > .section-container img {
   }
 
   main .section.image-after > div p img {
-    width: 181px;
-    height: 533px;
-    position: absolute;
-    top: -29vh;
-    right: 0;
     display: block;
-    z-index: 1;
   }
 
   /* section - underfill */
