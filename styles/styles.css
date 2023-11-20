@@ -615,7 +615,19 @@ main .section.image-after > .section-container {
 }
 
 /* section - full-width */
-main .section.full-width > .section-container,
+main .section.full-width > .section-container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* section - underfill */
+main .section.underfill.section.with-background-image > .section-container {
+  max-width: 50%;
+  right: 8vw;
+}
+
+/* section - full-width */
 main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -894,7 +906,6 @@ main .block.centered > div {
 }
 
 /* section - image-before */
-
 main .section.image-before > div p img {
   display: none;
 }
@@ -903,7 +914,19 @@ main .section.image-after > div p img {
   display: none;
 }
 
+/* section - underfill */
 
+main .section.underfill > .section-container h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+
+main .section.underfill > .section-container h5 {
+  line-height: 1.8;
+}
+
+main .section.underfill > .section-container img {
+  width: 100%;
+}
 
 
 /* END Section Styles END */
@@ -1190,5 +1213,12 @@ main .section.image-after > div p img {
     top: -29vh;
     right: 0;
     display: block;
+    z-index: 1;
+  }
+
+  /* section - underfill */
+  main .section.underfill.section.with-background-image > .section-container {
+    max-width: 40%;
+    right: 8vw;
   }
 }
