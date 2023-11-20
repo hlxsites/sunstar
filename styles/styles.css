@@ -584,7 +584,7 @@ main .section .section-container {
 }
 
 main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
+  margin-top: 3rem !important;
 }
 
 /* section - no-padding-top for h1 */
