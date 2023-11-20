@@ -896,18 +896,11 @@ main .block.centered > div {
 /* section - image-before */
 
 main .section.image-before > div p img {
-  width: 402px;
-  height: 253px;
-  position: absolute;
-  top: -16vh;
+  display: none;
 }
 
 main .section.image-after > div p img {
-  width: 181px;
-  height: 533px;
-  position: absolute;
-  top: -29vh;
-  right: 0;
+  display: none;
 }
 
 
@@ -1087,6 +1080,14 @@ main .section.image-after > div p img {
     padding-inline: 0;
   }
 
+  main .section.image-before > div p img {
+    width: 402px;
+    height: 253px;
+    position: absolute;
+    top: -19vh;
+    display: block;
+  }
+
   /* END Section Styles END */
 }
 
@@ -1180,5 +1181,14 @@ main .section.image-after > div p img {
     margin-right: auto;
     margin-left: auto;
     max-width: 1200px;
+  }
+
+  main .section.image-after > div p img {
+    width: 181px;
+    height: 533px;
+    position: absolute;
+    top: -29vh;
+    right: 0;
+    display: block;
   }
 }
