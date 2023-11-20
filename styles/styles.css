@@ -68,6 +68,8 @@
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
+  --underfill-indigo: #6a2383;
+  --underfill-dark-indigo: #490c61;
 
   /* fonts */
   --body-font-family: "Noto Sans";
@@ -647,6 +649,11 @@ main .section.underfill.section.with-background-image > .section-container {
   right: 8vw;
 }
 
+main .section.underfill.indigo {
+  position: relative;
+  top: -3.2vh;
+}
+
 /* section - full-width */
 main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
@@ -839,6 +846,16 @@ main .section.bg-primary {
   padding-bottom: 1rem;
 }
 
+/* section - indigo */
+main .section.indigo {
+  background-color: var(--underfill-indigo);
+}
+
+/* section - dark indigo */
+main .section.dark-indigo {
+  background-color: var(--underfill-dark-indigo);
+}
+
 /* Keep the bg-primary styles together */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.bg-primary h1,
@@ -941,6 +958,10 @@ main .section.underfill > .section-container h1 {
 }
 
 main .section.underfill > .section-container h5 {
+  line-height: 1.8;
+}
+
+main .section.underfill .text-col {
   line-height: 1.8;
 }
 
