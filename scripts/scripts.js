@@ -383,8 +383,8 @@ function decorateSectionsWithBackgrounds(element) {
  * @param {*} element
  */
 function wrapDirectDivTextInParagraphs(element) {
-  const classNamestoWrapText = ['.block.text div', '.block.columns div'];
-  const combinedSelector = classNamestoWrapText.join(', ');
+  const classNamesToWrapText = ['.block.text div', '.block.columns div'];
+  const combinedSelector = classNamesToWrapText.join(', ');
   const divs = element.querySelectorAll(combinedSelector);
   Array.from(divs).forEach((div) => {
     const textNodes = Array.from(div.childNodes)
