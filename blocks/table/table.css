@@ -183,6 +183,15 @@ main .table.text-table table tr td {
     flex-basis: calc(100% - 7.5em);
 }
 
+/* Blue theme */
+main .table.theme-blue table tbody tr td {
+    color: var(--secondary);
+}
+
+main .table.highlight-first-column table td:nth-child(1) {
+    background-color: var(--transparent-grey-light-color);
+}
+
 main .table.text-table table tr td h4 {
     color: var(--text-color);
     font-size: var(--heading-font-size-ms);
@@ -211,6 +220,11 @@ main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
     font-size: var(--body-font-size-m);
     line-height: 1.5rem;
+}
+
+main .table.theme-blue table tbody tr:first-of-type td {
+    background-color: var(--secondary);
+    color: var(--white);
 }
 
 main .table.inner-table table tbody tr:first-of-type {

@@ -69,6 +69,10 @@
     position: relative;
 }
 
+.hero-banner.image-fit img {
+    height: 15rem;
+}
+
 .hero-banner.careers .hero-banner-text-container {
     background: unset;
     flex-direction: column;

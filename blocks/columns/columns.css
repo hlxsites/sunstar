@@ -173,6 +173,34 @@
   margin-bottom: 4rem;
 }
 
+.columns.title-text-link {
+  padding: 3.5rem 0;
+  margin: unset;
+}
+
+.columns.title-text-link h4 {
+  font-size: var(--heading-font-size-s);
+  margin-bottom: 0.5rem;
+}
+
+.columns.title-text-link p {
+  font-size: var(--body-font-size-s);
+}
+
+.columns.title-text-link a {
+  background: unset;
+  color: var(--link-color);
+  height: unset;
+  line-height: 1.5;
+  display: block;
+  padding: unset;
+}
+
+.columns.title-text-link > div {
+  gap: 2.5rem;
+  margin-bottom: unset;
+}
+
 .columns.plain-links > div > div,
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
@@ -465,6 +493,19 @@ div.img-col > video {
     display: table;
     width: 100%;
   }
+
+  .columns.title-text-link {
+    padding: 4.875rem 0;
+  }
+
+  .columns.title-text-link > div {
+    gap: unset;
+  }
+
+  .columns.title-text-link h4 {
+    font-size: var(--heading-font-size-s);
+    margin-bottom: 0.5rem;
+}
 
   .columns > div .img-col {
     order: unset;

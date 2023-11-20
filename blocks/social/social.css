@@ -162,6 +162,10 @@ main .section.social-container a.category-title {
   font-weight:  var(--font-weight-bold);
 }
 
+.block.social.horizontal-icon {
+  justify-content: center;
+}
+
 @media (min-width: 62rem) {
   main .section.social-container .section-container {
     position: relative;
@@ -217,6 +221,16 @@ main .section.social-container a.category-title {
 
   div.social-container h3 {
     font-size: var(--heading-font-size-m);
+  }
+
+  .block.social.horizontal-icon {
+    flex-direction: row;
+    gap: 1rem;
+    position: unset;
+  }
+
+  .block.social.horizontal-icon > span {
+    display: none;
   }
 }
 
