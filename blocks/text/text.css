@@ -84,6 +84,7 @@ main .block.text.blue h4 {
   color: #007CAD;
 }
 
+main .block.text.rounded-border,
 main .block.text.rounded-border p {
   font-size: var(--body-font-size-xl);
 }
