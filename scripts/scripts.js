@@ -379,11 +379,13 @@ function decorateSectionsWithBackgrounds(element) {
 }
 
 /**
- * Enclose all text content of direct div children in p tags
+ * Enclose all text content of direct div children in p tags (for specified blocks)
  * @param {*} element
  */
 function wrapDirectDivTextInParagraphs(element) {
-  const divs = element.getElementsByTagName('div');
+  const classNamestoWrapText = ['.block.text div', '.block.columns div'];
+  const combinedSelector = classNamestoWrapText.join(', ');
+  const divs = element.querySelectorAll(combinedSelector);
   Array.from(divs).forEach((div) => {
     const textNodes = Array.from(div.childNodes)
       .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
