@@ -748,6 +748,12 @@ main .section.narrow > .tab-item.active > .section-container {
   max-width: 42rem;
 }
 
+main .section.narrow.section.with-background-image > .section-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /* section - narrower */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.narrower > .section-container,
