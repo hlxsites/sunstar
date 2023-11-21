@@ -558,6 +558,19 @@ main .block.border {
   border: 1px solid;
 }
 
+main .block.rounded-border {
+  border: 1px solid;
+  border-radius: 45px;
+}
+
+main .block.blue {
+  color: var(--secondary);
+}
+
+main .block.blue h4 {
+  color: var(--secondary);
+}
+
 main .block.centered {
   text-align: center;
 }
@@ -584,7 +597,7 @@ main .section .section-container {
 }
 
 main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
+  margin-top: 3rem !important;
 }
 
 /* section - no-padding-top for h1 */
