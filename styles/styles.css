@@ -954,6 +954,13 @@ main .block.centered > div {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-left > .section-container {
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
+
 /* section - image-before */
 main .section.image-before > div p img {
   display: none;
