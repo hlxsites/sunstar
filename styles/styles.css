@@ -999,6 +999,13 @@ main .block.download a::after {
     max-width: 54.5rem;
   }
 
+  main .section.narrow.section.with-background-image > .section-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   /* section - narrower */
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.narrower > .section-container,
