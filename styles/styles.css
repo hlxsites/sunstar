@@ -68,7 +68,6 @@
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
-  --underfill-indigo: #6a2383;
   --underfill-dark-indigo: #490c61;
 
   /* fonts */
@@ -620,7 +619,7 @@ main .section.image-before-after-t1 > div p img {
   width: 402px;
   height: 253px;
   position: absolute;
-  top: -19vh;
+  top: -22vh;
   z-index: 1;
 }
 
@@ -858,15 +857,18 @@ main .section.bg-primary {
   padding-bottom: 1rem;
 }
 
-/* section - indigo */
-main .section.indigo {
-  background-color: var(--underfill-indigo);
-}
-
 /* section - dark indigo */
-main .section.dark-indigo {
+main .section.underfill.bg-dark-indigo {
   background-color: var(--underfill-dark-indigo);
 }
+
+main .section.underfill.dark-indigo h1,
+main .section.underfill.dark-indigo h3,
+main .section.underfill.dark-indigo h5 {
+  color: var(--underfill-dark-indigo);
+}
+
+
 
 /* Keep the bg-primary styles together */
 /* stylelint-disable-next-line no-descending-specificity */
@@ -940,6 +942,12 @@ main .block.centered > div {
   width: 100%;
 }
 
+/* section - underfill */
+
+main .section.underfill > .section-container h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-right > .section-container,
 .section.with-background-image.align-right > .tab-item.active > .section-container {
@@ -953,6 +961,19 @@ main .block.centered > div {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-bottom > .section-container {
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.section.with-background-image.align-bottom.text-shadow h1 {
+  text-shadow: 0 0 120px #490c61, 0 0 100px #490c61, 0 0 90px #490c61, 0 0 80px #490c61, 0 0 80px #490c61, 0 0 90px #490c61, 0 0 0 #490c61;
+}
+
+
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-left > .section-container {
@@ -971,10 +992,6 @@ main .section.image-after > div p img {
 }
 
 /* section - underfill */
-
-main .section.underfill > .section-container h1 {
-  font-size: var(--heading-font-size-xxl);
-}
 
 main .section.underfill > .section-container h5 {
   line-height: 1.8;
