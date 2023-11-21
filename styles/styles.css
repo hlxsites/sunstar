@@ -657,9 +657,14 @@ main .section.underfill.section.with-background-image > .section-container {
   right: 8vw;
 }
 
-main .section.underfill.indigo {
+main .section.underfill.slight-up {
   position: relative;
   top: -3.2vh;
+}
+
+main .section.underfill.up {
+  position: relative;
+  top: -10vh;
 }
 
 /* section - full-width */
@@ -1154,6 +1159,11 @@ main .section.underfill > .section-container img {
 
   main .section.image-before > div p img {
     display: block;
+  }
+
+  main .section.underfill.more-up {
+    position: relative;
+    top: -27vh;
   }
 
   /* END Section Styles END */
