@@ -657,16 +657,6 @@ main .section.underfill.section.with-background-image > .section-container {
   right: 8vw;
 }
 
-main .section.underfill.slight-up {
-  position: relative;
-  top: -3.2vh;
-}
-
-main .section.underfill.up {
-  position: relative;
-  top: -10vh;
-}
-
 /* section - full-width */
 main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
@@ -1160,10 +1150,11 @@ main .section.underfill > .section-container img {
   main .section.image-before > div p img {
     display: block;
   }
-
-  main .section.underfill.more-up {
+  
+  /* section - underfill */
+  main .section.underfill.up {
     position: relative;
-    top: -27vh;
+    top: -17vh;
   }
 
   /* END Section Styles END */
