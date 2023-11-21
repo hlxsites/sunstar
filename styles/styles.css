@@ -908,6 +908,13 @@ main .block.download a::after {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-bottom > .section-container {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
