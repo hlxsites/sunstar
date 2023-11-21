@@ -563,6 +563,14 @@ main .block.rounded-border {
   border-radius: 45px;
 }
 
+main .block.blue {
+  color: var(--secondary);
+}
+
+main .block.blue h4 {
+  color: var(--secondary);
+}
+
 main .block.centered {
   text-align: center;
 }

@@ -76,22 +76,14 @@ main .block.text.rounded-border {
   margin-bottom: 1rem;
 }
 
-main .block.text.blue {
-  color: #007CAD;
-}
-
-main .block.text.blue h4 {
-  color: #007CAD;
-}
-
 main .block.text.rounded-border,
 main .block.text.rounded-border p {
   font-size: var(--body-font-size-xl);
 }
 
-main .block.text.block.text.rounded-border  h4 {
+main .block.text.rounded-border  h4 {
   text-align: center;
-  border-bottom: 1px solid #3c4650;
+  border-bottom: 1px solid var(--light-black);
   padding-bottom: 1.5rem;
   margin-bottom: 3rem;
   font-size: var(--heading-font-size-s);
