@@ -632,6 +632,14 @@ main .section.image-before-after-t2 > div p img {
   z-index: 1;
 }
 
+main .section.image-before-after-t3 > div p img {
+  width: 190px;
+  height: 131px;
+  position: absolute;
+  top: -30vh;
+  z-index: 1;
+}
+
 main .section.right > div p img {
   right: 0;
 }
