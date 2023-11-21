@@ -71,6 +71,24 @@ main .block.text.border {
   margin-bottom: 1rem;
 }
 
+main .block.text.rounded-border {
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+main .block.text.rounded-border,
+main .block.text.rounded-border p {
+  font-size: var(--body-font-size-xl);
+}
+
+main .block.text.rounded-border  h4 {
+  text-align: center;
+  border-bottom: 1px solid var(--light-black);
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  font-size: var(--heading-font-size-s);
+}
+
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
 }
