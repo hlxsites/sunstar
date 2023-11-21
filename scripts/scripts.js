@@ -387,14 +387,14 @@ function wrapDirectDivTextInParagraphs(element) {
   const combinedSelector = classNamesToWrapText.join(', ');
   const divs = element.querySelectorAll(combinedSelector);
   Array.from(divs).forEach((div) => {
-    const textNodes = Array.from(div.childNodes)
-      .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
-
-    textNodes.forEach((textNode) => {
+    const hasTextNodes = Array.from(div.childNodes)
+      .some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0);
+    if (hasTextNodes) {
       const pElement = document.createElement('p');
-      pElement.appendChild(textNode.cloneNode(true));
-      div.replaceChild(pElement, textNode);
-    });
+      pElement.innerHTML = div.innerHTML;
+      div.innerHTML = '';
+      div.appendChild(pElement);
+    }
   });
 }
 
