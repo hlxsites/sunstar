@@ -640,6 +640,15 @@ main .section.image-before-after-t3 > div p img {
   z-index: 1;
 }
 
+main .section.image-before-after-t4 > div p img {
+  width: 107px;
+  height: 420px;
+  position: absolute;
+  top: -30vh;
+  z-index: 1;
+  right: 90px;
+}
+
 main .section.right > div p img {
   right: 0;
 }
@@ -1150,7 +1159,7 @@ main .section.underfill > .section-container img {
   main .section.image-before > div p img {
     display: block;
   }
-  
+
   /* section - underfill */
   main .section.underfill.up {
     position: relative;
