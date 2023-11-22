@@ -10,6 +10,10 @@
     height: 250px;
   }
 
+main .section.auto-top-spacing.no-margin-top.newsroom .section-container {
+    margin-top: 0 !important;
+}
+
 main .block.feed-newsroom {
     gap: 10vw;
 }
