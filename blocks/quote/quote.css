@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.block.quote.white {
+  color: var(--white);
+}
+
 .block.quote.no-border {
   border-left: none;
   padding-left: 0;
