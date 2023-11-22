@@ -614,7 +614,7 @@ export function decorateButtons(element) {
 /**
  * Load LCP block and/or wait for LCP in default content.
  */
-export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) {
+export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 2) {
   async function setImageToLoadEagerly(lcpCandidate) {
     await new Promise((resolve) => {
       if (lcpCandidate && !lcpCandidate.complete) {
@@ -629,6 +629,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
   }
 
   const blocks = document.querySelectorAll('.block');
+
   const main = document.querySelector('main');
   [...blocks]
     .filter((block) => !skipBlocks.includes(block?.dataset?.blockName) && lcpBlocks.includes(block?.dataset?.blockName)) // eslint-disable-line max-len
@@ -642,8 +643,11 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
 
   document.body.style.display = null;
 
-  const lcpCandidate = document.querySelector('main img');
-  await setImageToLoadEagerly(lcpCandidate);
+  const lcpCandidates = [...document.querySelectorAll('main img')].slice(0, maxCandidates);
+
+  lcpCandidates.forEach(async (candidate) => {
+    await setImageToLoadEagerly(candidate);
+  });
 }
 
 /**

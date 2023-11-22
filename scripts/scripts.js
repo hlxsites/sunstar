@@ -29,7 +29,7 @@ const LCP_BLOCKS = [
 ]; // add your LCP blocks to the list
 const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP candidates to the list
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
-const MAX_LCP_CANDIDATE_BLOCKS = 2;
+const MAX_LCP_CANDIDATE_BLOCKS = 3;
 
 const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'jp']);
 
