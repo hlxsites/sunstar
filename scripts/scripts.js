@@ -25,6 +25,7 @@ const LCP_BLOCKS = [
   'overlapping-content',
   'carousel',
   'career-hero',
+  'background-image',
 ]; // add your LCP blocks to the list
 const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP candidates to the list
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
@@ -373,6 +374,7 @@ function decorateSectionsWithBackgrounds(element) {
     if (background) {
       section.classList.add('with-background-image');
       const backgroundPic = createOptimizedPicture(background);
+      backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
     }
   });
