@@ -14,6 +14,7 @@ import {
   getMetadata,
   isInternalPage,
   fetchPlaceholders,
+  createOptimizedPicture,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -79,7 +80,7 @@ export function getLanguangeSpecificPath(path) {
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  const hasHeroBlockVariant = main.querySelector('[class^="hero-"]');
+  const hasHeroBlockVariant = main.querySelector('[class*="hero-"]');
   // omit to build hero block here for other hero blocks variants like hero-banner,
   // hero-horizontal-tabs and hero-vertical-tabs
   if (hasHeroBlockVariant) {
@@ -180,11 +181,27 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
+ * Adding breadcrumb block if its not present in doc
+ * @param {*} main
+ */
+export function buildBreadcrumbBlock(main) {
+  const noBreadcrumb = getMetadata('nobreadcrumb');
+  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
+
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock('breadcrumb', { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbBlock(main);
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
@@ -225,6 +242,20 @@ export function decorateExternalAnchors(externalAnchors) {
 }
 
 /**
+ * decorates links with download icon as downloadables
+ * @param {Element}s to decorate downloadableLink
+ * @returns {void}
+ */
+export function decorateDownloadableLinks(downloadableLinks) {
+  if (downloadableLinks.length) {
+    downloadableLinks.forEach((link) => {
+      link.setAttribute('download', '');
+      link.removeAttribute('target');
+    });
+  }
+}
+
+/**
  * Gets the extension of a URL.
  * @param {string} url The URL
  * @returns {string} The extension
@@ -256,7 +287,10 @@ export function decorateAnchors(element = document) {
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
-    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+      || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+  ));
+  decorateDownloadableLinks(Array.from(anchors).filter(
+    (a) => (a.querySelector('span.icon-download') || a.closest('.download')),
   ));
 }
 
@@ -282,7 +316,9 @@ export function getWindowSize() {
  * we break out of the loop to not add spacing to other sections as well.
  */
 export function addTopSpacingStyleToFirstMatchingSection(main) {
-  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container',
+    'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container',
+    'carousel-container', 'with-background-image', 'report-overview-container'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 
@@ -300,6 +336,68 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   });
 }
 
+function getViewPort() {
+  const { width } = getWindowSize();
+  if (width >= 1232) {
+    return 'desktop';
+  }
+  if (width >= 992) {
+    return 'tablet';
+  }
+  return 'mobile';
+}
+
+function decorateSectionsWithBackgrounds(element) {
+  const sections = element.querySelectorAll(`.section[data-bg-image],
+  .section[data-bg-image-desktop],
+  .section[data-bg-image-mobile],
+  .section[data-bg-image-tablet]`);
+  sections.forEach((section) => {
+    const bgImage = section.getAttribute('data-bg-image');
+    const bgImageDesktop = section.getAttribute('data-bg-image-desktop');
+    const bgImageMobile = section.getAttribute('data-bg-image-mobile');
+    const bgImageTablet = section.getAttribute('data-bg-image-tablet');
+    const viewPort = getViewPort();
+    let background;
+    switch (viewPort) {
+      case 'mobile':
+        background = bgImageMobile || bgImageTablet || bgImageDesktop || bgImage;
+        break;
+      case 'tablet':
+        background = bgImageTablet || bgImageDesktop || bgImage || bgImageMobile;
+        break;
+      default:
+        background = bgImageDesktop || bgImage || bgImageTablet || bgImageMobile;
+        break;
+    }
+    if (background) {
+      section.classList.add('with-background-image');
+      const backgroundPic = createOptimizedPicture(background);
+      section.append(backgroundPic);
+    }
+  });
+}
+
+/**
+ * Enclose all text content of direct div children in p tags (for specified blocks)
+ * @param {*} element
+ */
+function wrapDirectDivTextInParagraphs(element) {
+  const classNamesToWrapText = ['.block.text div', '.block.columns div'];
+  const combinedSelector = classNamesToWrapText.join(', ');
+  const divs = element.querySelectorAll(combinedSelector);
+  Array.from(divs).forEach((div) => {
+    const textNodes = Array.from(div.childNodes)
+      .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
+
+    textNodes.forEach((textNode) => {
+      const pElement = document.createElement('p');
+      pElement.appendChild(textNode.cloneNode(true));
+      div.replaceChild(pElement, textNode);
+    });
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -312,6 +410,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionsWithBackgrounds(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
 }
@@ -378,12 +477,62 @@ export function addFavIcon(href) {
 }
 
 /**
+ * Function to set head meta tags.
+ */
+export function setMetaTag(tagType, propertyKey, propertyValue, url) {
+  const tag = document.querySelector(`${tagType}[${propertyKey}='${propertyValue}']`);
+  if (tag) {
+    if (tagType === 'link') {
+      tag.href = url;
+    } else {
+      tag.content = url;
+    }
+  } else {
+    const meta = document.createElement(tagType);
+    meta.setAttribute(propertyKey, propertyValue);
+    if (tagType === 'link') {
+      meta.href = url;
+    } else {
+      meta.content = url;
+    }
+    document.head.appendChild(meta);
+  }
+}
+
+/**
+ * Function to set following meta tags for tag page
+ *  og:image
+ *  og:image:secure_url
+ *  twitter:image
+ *  og:url
+ *  canonical
+ */
+function setMetaTags(main) {
+  const pageType = getMetadata('pagetype');
+  if (pageType && pageType.trim().toLowerCase() === 'tagpage') {
+    const images = [...main.querySelectorAll('.cards.block > ul > li img')];
+    const imageTag = images.find((image) => (image.src));
+    if (imageTag && imageTag.src) {
+      const imageUrl = imageTag.src;
+      const OgTags = ['og:image', 'og:image:secure_url'];
+      OgTags.forEach((tag) => {
+        setMetaTag('meta', 'property', tag, imageUrl);
+      });
+      setMetaTag('meta', 'name', 'twitter:image', imageUrl);
+    }
+    setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
+    setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
+  }
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+  wrapDirectDivTextInParagraphs(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;
@@ -391,6 +540,7 @@ async function loadLazy(doc) {
   if (!isInternalPage()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
+    setMetaTags(main);
 
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
     loadFonts();

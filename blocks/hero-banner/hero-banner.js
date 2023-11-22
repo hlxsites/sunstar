@@ -77,7 +77,7 @@ function decorateTextContent(headingRow, target, placeholders, overlap) {
     linkedin.appendChild(sprite);
 
     pElement.append(linkedin);
-  } else if (pElement && pElement.childElementCount === 1 && pElement.firstElementChild.tagName === 'A') {
+  } else if (!target.classList.contains('small-box') && pElement && pElement.childElementCount === 1 && pElement.firstElementChild.tagName === 'A') {
     textDiv.removeChild(pElement);
     const buttonDiv = document.createElement('div');
     buttonDiv.classList.add('hero-banner-button-container');
@@ -122,6 +122,9 @@ export default async function decorate(block) {
     const cb = block.closest('.section.full-width.hero-banner-container');
     if (cb) {
       cb.classList.add('overlap');
+      if (block.classList.contains('small-box')) {
+        cb.classList.add('hero-small-box');
+      }
     }
   }
 }

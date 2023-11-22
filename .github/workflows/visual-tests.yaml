@@ -5,7 +5,7 @@ on:
     types: [ opened, synchronize ]
 
 env:
-  TEST_PATHS: "/ /career/yuya-yoshisue /brands/consumer-health-beauty /healthy-thinking/6-things-you-didnt-know-about-your-oral-health /brands /about/history /about/business-performance /about/structure /sustainability /careers /careers/career-opportunities /about/global-network /healthy-thinking"
+  TEST_PATHS: "/ /career/yuya-yoshisue /brands/consumer-health-beauty /healthy-thinking/6-things-you-didnt-know-about-your-oral-health /brands /about/history /about/business-performance /about/structure /sustainability /careers /careers/career-opportunities /about/global-network /healthy-thinking /newsroom/world-dental-hygienist-awards-ceremony-australia"
   TEST_PATHS_INDEXES: "/sidekick/library.json "
   DOMAIN_MAIN: "main--sunstar--hlxsites.hlx.page"
   DOMAIN_BRANCH: "${{github.head_ref}}--sunstar--hlxsites.hlx.page"
@@ -17,8 +17,8 @@ jobs:
       run:
         working-directory: .github/visual-tests
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
 

@@ -96,6 +96,10 @@ main .form select:focus {
   box-shadow: none;
 }
 
+main .form-select-wrapper div {
+  font-size: var(--body-font-size-s);
+}
+
 main .form .invalid>input:hover,
 main .form .invalid>textarea:hover,
 main .form .invalid>select:hover {

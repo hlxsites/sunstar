@@ -1,0 +1,60 @@
+<head>
+    <style>
+        :root {
+          --split-testratio1: 80%:20%;
+          --split-testratio2: 30%:70%;
+         }
+    </style>
+</head>
+<body>
+  <div>
+    <div class="columns split-testratio1 native-image-sizes">
+      <div>
+        <div id="column-a" data-valign="middle">
+        </div>
+        <div id="column-b" data-valign="bottom">
+        </div>
+      </div>
+      <div>
+        <div id="column-x" data-align="center">
+        </div>
+        <div id="column-y" data-align="right">
+        </div>
+      </div>
+    </div>
+
+    <div class="columns split-testratio2 native-image-sizes">
+      <div>
+        <div class="text-col-wrapper">
+          <div id="column-t1" class="text-col" data-valign="middle">
+          </div>
+        </div>
+        <div class="text-col-wrapper">
+          <div id="column-t2" class="text-col" data-valign="bottom">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="text-col-wrapper">
+          <div id="column-t3" class="text-col" data-align="center">
+          </div>
+        </div>
+        <div class="text-col-wrapper">
+          <div id="column-t4" class="text-col" data-align="right">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns other native-image-sizes">
+      <div>
+        <div id="column-c">
+        </div>
+        <div id="column-d" class="text-col-wrapper">
+          <div id="column-d2" class="text-col">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

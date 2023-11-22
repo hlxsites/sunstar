@@ -72,6 +72,7 @@ export default async function decorate(block) {
       const category = categories[0];
       const a = document.createElement('a');
       a.classList.add('category-title');
+      a.setAttribute('aria-label', 'Category Title');
       a.href = hrefVal || '#';
       a.textContent = category?.name ?? categoryMetadata;
       firstH1.insertAdjacentElement('beforebegin', a);

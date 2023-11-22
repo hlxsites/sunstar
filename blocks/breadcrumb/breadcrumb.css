@@ -4,7 +4,7 @@
   font-weight: var(--font-weight-medium);
   line-height: 1;
   display: none;
-  height: 2.08rem;
+  min-height: 2.08rem;
 }
 
 .section.breadcrumb-container.visible {
@@ -29,6 +29,7 @@
   margin: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .breadcrumb-item {
