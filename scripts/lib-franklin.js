@@ -643,6 +643,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 2) 
 
   document.body.style.display = null;
 
+  // load lcp candidates in default content/background images for sections
   const lcpCandidates = [...document.querySelectorAll('main img')].slice(0, maxCandidates);
 
   lcpCandidates.forEach(async (candidate) => {
