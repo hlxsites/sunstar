@@ -615,13 +615,6 @@ export function decorateButtons(element) {
  * Load LCP block and/or wait for LCP in default content.
  */
 export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) {
-  // Adding blocks containing hero variant in lcp blocks at runtime
-  document.querySelectorAll('[class*="hero-"]')
-    .forEach((heroBlock) => {
-      const shortBlockName = heroBlock.classList[0];
-      lcpBlocks.push(shortBlockName);
-    });
-
   async function setImageToLoadEagerly(lcpCandidate) {
     await new Promise((resolve) => {
       if (lcpCandidate && !lcpCandidate.complete) {
