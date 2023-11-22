@@ -71,6 +71,24 @@ main .block.text.border {
   margin-bottom: 1rem;
 }
 
+main .block.text.rounded-border {
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+main .block.text.rounded-border,
+main .block.text.rounded-border p {
+  font-size: var(--body-font-size-xl);
+}
+
+main .block.text.rounded-border  h4 {
+  text-align: center;
+  border-bottom: 1px solid var(--light-black);
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  font-size: var(--heading-font-size-s);
+}
+
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
   margin: 0 0 1.25rem;
@@ -84,7 +102,13 @@ main .block.text.colored {
 main .block.text.emphasis {
   margin-inline: -1rem;
   padding: 1rem;
-  background-color: var(--light);
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+}
+
+main .block.text.light-background {
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
   margin-block: 1.5rem;
 }
 
@@ -93,11 +117,13 @@ main .block.text.text-small p {
   font-size: var(--body-font-size-xs);
 }
 
-main .block.text.emphasis > div > div > :first-child {
+main .block.text.emphasis > div > div > :first-child,
+main .block.text.light-background  > div > div > :first-child {
   margin-top: 0;
 }
 
-main .block.text.emphasis > div > div > :last-child {
+main .block.text.emphasis > div > div > :last-child,
+main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
 }
 
@@ -113,5 +139,8 @@ main .block.text.emphasis > div > div > :last-child {
     margin-block: 2rem;
   }
 
+  main .block.text.light-background {
+    margin-block: 1.5rem;
+    padding: 2rem;
+  }
 }
-

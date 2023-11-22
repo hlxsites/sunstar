@@ -39,7 +39,6 @@ main .table.inner-table table {
     background-color: var(--white);
     border-collapse: collapse;
     overflow-x: auto;
-    display: block;
     margin-bottom: 1.5rem;
 }
 
@@ -171,9 +170,26 @@ main .table.text-table table tr {
     border-bottom: 1px solid var(--transparent-grey-light-color);
 }
 
+main .table.inner-table table tr {
+  display: table-row;
+}
+
+main .table.inner-table table tr a {
+  display: unset;
+}
+
 main .table.text-table table tr td {
     color: var(--text-color);
     flex-basis: calc(100% - 7.5em);
+}
+
+/* Blue theme */
+main .table.theme-blue table tbody tr td {
+    color: var(--secondary);
+}
+
+main .table.highlight-first-column table td:nth-child(1) {
+    background-color: var(--transparent-grey-light-color);
 }
 
 main .table.text-table table tr td h4 {
@@ -206,8 +222,17 @@ main .table.text-table table tr td:first-child {
     line-height: 1.5rem;
 }
 
+main .table.theme-blue table tbody tr:first-of-type td {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
 main .table.inner-table table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
+}
+
+main .table.inner-table.no-head table tbody tr:first-of-type {
+  background: var(--white);
 }
 
 main .table.inner-table.lastline-leftalign table tr:last-of-type td {

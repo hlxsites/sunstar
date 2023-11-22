@@ -44,6 +44,10 @@
   width: 100%;
 }
 
+.columns.native-image-sizes img {
+  width: auto;
+}
+
 .columns h2,
 .columns h3,
 .columns h4 {
@@ -117,12 +121,6 @@
   order: 2;
 }
 
-.columns .text-col-wrapper img {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -130,6 +128,12 @@
 
 .columns > div > .img-col img {
   display: block;
+}
+
+.columns:not(.native-image-sizes) .text-col-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .columns > div > div p {
@@ -171,6 +175,34 @@
 
 .columns.medium-margin > div {
   margin-bottom: 4rem;
+}
+
+.columns.title-text-link {
+  padding: 3.5rem 0;
+  margin: unset;
+}
+
+.columns.title-text-link h4 {
+  font-size: var(--heading-font-size-s);
+  margin-bottom: 0.5rem;
+}
+
+.columns.title-text-link p {
+  font-size: var(--body-font-size-s);
+}
+
+.columns.title-text-link a {
+  background: unset;
+  color: var(--link-color);
+  height: unset;
+  line-height: 1.5;
+  display: block;
+  padding: unset;
+}
+
+.columns.title-text-link > div {
+  gap: 2.5rem;
+  margin-bottom: unset;
 }
 
 .columns.plain-links > div > div,
@@ -261,7 +293,7 @@
   margin: unset;
 }
 
-.columns.text-and-image-in-column > div div.text-col img {
+.columns:not(.native-image-sizes).text-and-image-in-column > div div.text-col img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -465,6 +497,19 @@ div.img-col > video {
     display: table;
     width: 100%;
   }
+
+  .columns.title-text-link {
+    padding: 4.875rem 0;
+  }
+
+  .columns.title-text-link > div {
+    gap: unset;
+  }
+
+  .columns.title-text-link h4 {
+    font-size: var(--heading-font-size-s);
+    margin-bottom: 0.5rem;
+}
 
   .columns > div .img-col {
     order: unset;
