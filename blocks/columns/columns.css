@@ -121,12 +121,6 @@
   order: 2;
 }
 
-.columns:not(.native-image-sizes) .text-col-wrapper img {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -134,6 +128,12 @@
 
 .columns > div > .img-col img {
   display: block;
+}
+
+.columns:not(.native-image-sizes) .text-col-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .columns > div > div p {
