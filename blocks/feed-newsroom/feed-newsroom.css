@@ -90,7 +90,7 @@ main .feed-newsroom-wrapper .load-more-container {
 }
 
 @media (min-width: 62rem) {
-main .section.feed-newsroom-container.narrow > .section-container {
+main .section.feed-newsroom-container.narrower > .section-container {
         max-width: 80rem;
     }
     
