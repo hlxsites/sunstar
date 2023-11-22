@@ -44,6 +44,10 @@
   width: 100%;
 }
 
+.columns.native-image-sizes img {
+  width:auto;
+}
+
 .columns h2,
 .columns h3,
 .columns h4 {
@@ -117,7 +121,7 @@
   order: 2;
 }
 
-.columns .text-col-wrapper img {
+.columns:not(.native-image-sizes) .text-col-wrapper img {
   width: 100%;
   height: auto;
   vertical-align: middle;
@@ -261,7 +265,7 @@
   margin: unset;
 }
 
-.columns.text-and-image-in-column > div div.text-col img {
+.columns:not(.native-image-sizes).text-and-image-in-column > div div.text-col img {
   height: 100%;
   width: 100%;
   object-fit: cover;
