@@ -614,7 +614,7 @@ export function decorateButtons(element) {
 /**
  * Load LCP block and/or wait for LCP in default content.
  */
-export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 2) {
+export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) {
   async function setImageToLoadEagerly(lcpCandidate) {
     await new Promise((resolve) => {
       if (lcpCandidate && !lcpCandidate.complete) {
@@ -644,7 +644,9 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 2) 
   document.body.style.display = null;
 
   // load lcp candidates in default content/background images for sections
-  const lcpCandidates = [...document.querySelectorAll('main img')].slice(0, maxCandidates);
+  const lcpCandidates = [...document.querySelectorAll('main img')]
+    .filter((image) => !image.computedStyleMap().get('display').value.startsWith('none'))
+    .slice(0, maxCandidates);
 
   lcpCandidates.forEach(async (candidate) => {
     await setImageToLoadEagerly(candidate);
