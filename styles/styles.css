@@ -1161,11 +1161,8 @@ main .block.download a::after {
     padding: 0;
   }
 
-  main .block.lead p {
-    font-size: var(--body-font-size-xxl);
-  }
-
-  p.lead {
+  main .block.lead p,
+   p.lead {
     font-size: var(--body-font-size-xxl);
   }
 
