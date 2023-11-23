@@ -394,6 +394,32 @@ export function decorateMain(main) {
   addTopSpacingStyleToFirstMatchingSection(main);
 }
 
+async function loadTemplate(doc, templateName) {
+  try {
+    const cssLoaded = new Promise((resolve) => {
+      loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`, resolve);
+    });
+    const decorationComplete = new Promise((resolve) => {
+      (async () => {
+        try {
+          const mod = await import(`../templates/${templateName}/${templateName}.js`);
+          if (mod.default) {
+            await mod.default(doc);
+          }
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(`failed to load module for ${templateName}`, error);
+        }
+        resolve();
+      })();
+    });
+    await Promise.all([cssLoaded, decorationComplete]);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(`failed to load block ${templateName}`, error);
+  }
+}
+
 function decoratePageStyles() {
   const pageStyle = getMetadata('page-style');
   if (pageStyle && pageStyle.trim().length > 0) {
@@ -509,6 +535,10 @@ function setMetaTags(main) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
+  const templateName = getMetadata('template');
+  if (templateName) {
+    await loadTemplate(doc, templateName);
+  }
   const main = doc.querySelector('main');
   await loadBlocks(main);
 

@@ -605,53 +605,6 @@ main .section.bold-headings h6 {
   text-align: center;
 }
 
-main .section.image-before > .section-container {
-  position: relative;
-  max-width: 100%;
-}
-
-main .section.image-after > .section-container {
-  position: relative;
-  max-width: 100%;
-}
-
-main .section.image-before-after-t1 > div p img {
-  width: 402px;
-  height: 253px;
-  position: absolute;
-  top: -22vh;
-  z-index: 1;
-}
-
-main .section.image-before-after-t2 > div p img {
-  width: 181px;
-  height: 533px;
-  position: absolute;
-  top: -29vh;
-  z-index: 1;
-}
-
-main .section.image-before-after-t3 > div p img {
-  width: 190px;
-  height: 131px;
-  position: absolute;
-  top: -30vh;
-  z-index: 1;
-}
-
-main .section.image-before-after-t4 > div p img {
-  width: 107px;
-  height: 420px;
-  position: absolute;
-  top: -30vh;
-  z-index: 1;
-  right: 90px;
-}
-
-main .section.right > div p img {
-  right: 0;
-}
-
 /* section - full-width */
 main .section.full-width > .section-container {
   max-width: 100%;
@@ -659,13 +612,8 @@ main .section.full-width > .section-container {
   padding-right: 0;
 }
 
-/* section - underfill */
-main .section.underfill.section.with-background-image > .section-container {
-  max-width: 50%;
-  right: 8vw;
-}
-
 /* section - full-width */
+main .section.full-width > .section-container,
 main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -857,19 +805,6 @@ main .section.bg-primary {
   padding-bottom: 1rem;
 }
 
-/* section - dark indigo */
-main .section.underfill.bg-dark-indigo {
-  background-color: var(--underfill-dark-indigo);
-}
-
-main .section.underfill.dark-indigo h1,
-main .section.underfill.dark-indigo h3,
-main .section.underfill.dark-indigo h5 {
-  color: var(--underfill-dark-indigo);
-}
-
-
-
 /* Keep the bg-primary styles together */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.bg-primary h1,
@@ -942,12 +877,6 @@ main .block.centered > div {
   width: 100%;
 }
 
-/* section - underfill */
-
-main .section.underfill > .section-container h1 {
-  font-size: var(--heading-font-size-xxl);
-}
-
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-right > .section-container,
 .section.with-background-image.align-right > .tab-item.active > .section-container {
@@ -961,50 +890,6 @@ main .section.underfill > .section-container h1 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-/* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image.align-bottom > .section-container {
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.section.with-background-image.align-bottom.text-shadow h1 {
-  text-shadow: 0 0 120px #490c61, 0 0 100px #490c61, 0 0 90px #490c61, 0 0 80px #490c61, 0 0 80px #490c61, 0 0 90px #490c61, 0 0 0 #490c61;
-}
-
-
-
-/* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image.align-left > .section-container {
-  top: 50%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-}
-
-/* section - image-before */
-main .section.image-before > div p img {
-  display: none;
-}
-
-main .section.image-after > div p img {
-  display: none;
-}
-
-/* section - underfill */
-
-main .section.underfill > .section-container h5 {
-  line-height: 1.8;
-}
-
-main .section.underfill .text-col {
-  line-height: 1.8;
-}
-
-main .section.underfill > .section-container img {
-  width: 100%;
-}
-
 
 /* END Section Styles END */
 
@@ -1180,16 +1065,6 @@ main .section.underfill > .section-container img {
     padding-inline: 0;
   }
 
-  main .section.image-before > div p img {
-    display: block;
-  }
-
-  /* section - underfill */
-  main .section.underfill.up {
-    position: relative;
-    top: -17vh;
-  }
-
   /* END Section Styles END */
 }
 
@@ -1283,15 +1158,5 @@ main .section.underfill > .section-container img {
     margin-right: auto;
     margin-left: auto;
     max-width: 1200px;
-  }
-
-  main .section.image-after > div p img {
-    display: block;
-  }
-
-  /* section - underfill */
-  main .section.underfill.section.with-background-image > .section-container {
-    max-width: 40%;
-    right: 8vw;
   }
 }
