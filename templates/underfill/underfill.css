@@ -56,7 +56,6 @@ body.underfill main .section.full-width > .section-container {
   padding-right: 0;
 }
 
-/* section - underfill */
 body.underfill main .section.with-background-image > .section-container {
     max-width: 50%;
     right: 8vw;
@@ -66,8 +65,6 @@ body.underfill main .section.with-background-image > .section-container {
 body.underfill main .section.bg-dark-indigo {
     background-color: var(--underfill-dark-indigo);
 }
-
-/* section - underfill */
 
 body.underfill main .section > .section-container h1 {
     font-size: var(--heading-font-size-xxl);
@@ -102,7 +99,6 @@ body.underfill main .section.image-after > div p img {
     display: none;
 }
 
-/* section - underfill */
 
 body.underfill main .section > .section-container h5 {
     line-height: 1.8;
@@ -112,16 +108,25 @@ body.underfill main .section .text-col {
     line-height: 1.8;
 }
 
+body.underfill main .section.with-background-image.title > .section-container {
+    max-width: 70%;
+    right: 8vw;
+}
+
 
 @media (min-width: 62rem) {
     body.underfill main .section.image-before > div p img {
         display: block;
     }
 
-    /* section - underfill */
     body.underfill main .section.up {
         position: relative;
         top: -17vh;
+    }
+
+    body.underfill main .section.with-background-image.title > .section-container {
+        max-width: 70%;
+        right: 8vw;
     }
 
 }
@@ -131,9 +136,13 @@ body.underfill main .section .text-col {
         display: block;
     }
 
-    /* section - underfill */
     body.underfill main .section.with-background-image > .section-container {
         max-width: 40%;
+        right: 8vw;
+    }
+
+    body.underfill main .section.with-background-image.title > .section-container {
+        max-width: 60%;
         right: 8vw;
     }
 }
