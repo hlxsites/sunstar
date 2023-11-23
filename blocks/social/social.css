@@ -194,7 +194,7 @@ main .section.social-container a.category-title {
     font-size: var(--heading-font-size-mxl);
   }
 
-  .block.social {
+  main .section.narrow .block.social {
     flex-direction: column;
     gap: 1rem;
     top: 2.5rem;
@@ -235,7 +235,7 @@ main .section.social-container a.category-title {
 }
 
 @media (min-width:77rem) {
-  .block.social {
+  main .section.narrow .block.social {
     right: -10rem;
   }
 }
