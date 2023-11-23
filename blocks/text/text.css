@@ -91,6 +91,12 @@ main .block.text.rounded-border  h4 {
 
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
+  margin: 0 0 1.25rem;
+  
+}
+
+main .block.text.colored {
+  color: var(--primary)
 }
 
 main .block.text.emphasis {
@@ -124,6 +130,7 @@ main .block.text.light-background  > div > div > :last-child {
 @media (min-width: 77rem) {
   main .block.text.lead {
     font-size: var(--body-font-size-xxl);
+    margin: 0 0 1.5rem;
   }
 
   main .block.text.emphasis {

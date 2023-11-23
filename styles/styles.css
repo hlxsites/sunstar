@@ -272,6 +272,8 @@ p.lead {
   font-size: var(--body-font-size-xl);
 }
 
+
+
 hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -322,6 +324,12 @@ a {
 }
 
 
+main .block.lead p {
+  font-size: var(--body-font-size-xl);
+}
+
+
+
 /* Mixins carry !important to override the default styles */
 .no-borders * {
   border: none!important;
@@ -332,8 +340,6 @@ a {
 .no-margins  * {
   margin: 0!important;
 }
-
-
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -1167,9 +1173,7 @@ main .block.download a::after {
     font-size: var(--heading-font-size-xxs);
   }
 
-  p.lead {
-    font-size: var(--body-font-size-xxl);
-  }
+  
 
   p,
   dl,
@@ -1179,6 +1183,11 @@ main .block.download a::after {
   blockquote {
     margin: 0 0 1.5rem;
     padding: 0;
+  }
+
+  main .block.lead p,
+   p.lead {
+    font-size: var(--body-font-size-xxl);
   }
 
   ul,
