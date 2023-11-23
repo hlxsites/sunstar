@@ -1,7 +1,7 @@
 import { getMetadata } from '../../scripts/lib-franklin.js';
 import { decorateAnchors, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
-const getSocialPaths = (type) => {
+const getSocialURL = (type) => {
   let anchorHref = '';
   const currPath = document.location.href;
   const pageName = getMetadata('pagename') || '';
@@ -60,7 +60,7 @@ export default async function decorate(block) {
         firstInnerDiv.textContent = x;
         const secondInnerDiv = document.createElement('div');
         const anchor = document.createElement('a');
-        anchor.href = getSocialPaths(x);
+        anchor.href = getSocialURL(x);
         secondInnerDiv.appendChild(anchor);
         outerDiv.appendChild(firstInnerDiv);
         outerDiv.appendChild(secondInnerDiv);
@@ -74,7 +74,7 @@ export default async function decorate(block) {
       const newAnchor = document.createElement('a');
       const firstGrandChild = x.querySelector('div');
       const firstGrandChildLower = firstGrandChild.innerText.toLowerCase();
-      const anchorHref = anchor?.href || getSocialPaths(firstGrandChildLower);
+      const anchorHref = anchor?.href || getSocialURL(firstGrandChildLower);
       newAnchor.href = anchorHref.replaceAll(/%5C%5C&/g, '&'); // Replacing extra backslash which is getting appended
       newAnchor.setAttribute('aria-label', `${firstGrandChildLower} share`);
       span.classList.add(`icon-${firstGrandChildLower}`, 'icon');
