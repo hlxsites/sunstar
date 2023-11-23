@@ -2,17 +2,24 @@ import { getMetadata } from '../../scripts/lib-franklin.js';
 import { decorateAnchors, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 const getSocialURL = (type) => {
-  let anchorHref = '';
+  let anchorHref;
   const currPath = document.location.href;
   const pageName = getMetadata('pagename') || '';
+  const source = 'Sunstar Group';
 
-  if (type === 'facebook') {
-    anchorHref = `https://www.facebook.com/sharer?u=${currPath}&t=${pageName}`;
-  } else if (type === 'twitter') {
-    anchorHref = `http://twitter.com/intent/tweet?text=${pageName}&url=${currPath}`;
-  } else if (type === 'linkedin') {
-    const source = 'Sunstar Group';
-    anchorHref = `http://www.linkedin.com/shareArticle?mini=true&url=${currPath}&title=${pageName}&source=${source}`;
+  switch (type) {
+    case 'facebook':
+      anchorHref = `https://www.facebook.com/sharer?u=${currPath}&t=${pageName}`;
+      break;
+    case 'linkedin':
+      anchorHref = `https://www.linkedin.com/shareArticle?mini=true&url=${currPath}&title=${pageName}&source=${source}`;
+      break;
+    case 'twitter':
+      anchorHref = `https://twitter.com/intent/tweet?text=${pageName}&url=${currPath}`;
+      break;
+    default:
+      anchorHref = '';
+      break;
   }
 
   return anchorHref;
