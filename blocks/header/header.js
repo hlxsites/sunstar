@@ -177,15 +177,12 @@ function getNavbarToggler() {
   navbarToggl.addEventListener('click', () => {
     const navBottom = document.querySelector('.nav-bottom');
     const header = document.querySelector('header');
-    const { body } = document;
     if (navBottom.classList.contains('open')) {
       navBottom.classList.remove('open');
       header.classList.remove('menu-open');
-      body.classList.remove('fixed');
     } else {
       navBottom.classList.add('open');
       header.classList.add('menu-open');
-      body.classList.add('fixed');
     }
   });
   return navbarToggl;
@@ -193,7 +190,6 @@ function getNavbarToggler() {
 
 function attachWindowResizeListeners(nav) {
   const header = document.querySelector('header');
-  const { body } = document;
   const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
   widerScreenWidth.addEventListener('change', (event) => {
     const toggler = nav.querySelector('.navbar-toggler');
@@ -201,7 +197,6 @@ function attachWindowResizeListeners(nav) {
       if (nav.classList.contains('open')) {
         nav.classList.remove('open');
         header.classList.remove('menu-open');
-        body.classList.remove('fixed');
       }
       if (toggler.classList.contains('visible')) {
         toggler.classList.remove('visible');
