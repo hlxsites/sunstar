@@ -373,6 +373,7 @@ function decorateSectionsWithBackgrounds(element) {
     if (background) {
       section.classList.add('with-background-image');
       const backgroundPic = createOptimizedPicture(background);
+      backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
     }
   });
@@ -387,14 +388,14 @@ function wrapDirectDivTextInParagraphs(element) {
   const combinedSelector = classNamesToWrapText.join(', ');
   const divs = element.querySelectorAll(combinedSelector);
   Array.from(divs).forEach((div) => {
-    const textNodes = Array.from(div.childNodes)
-      .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
-
-    textNodes.forEach((textNode) => {
+    const hasTextNodes = Array.from(div.childNodes)
+      .some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0);
+    if (hasTextNodes) {
       const pElement = document.createElement('p');
-      pElement.appendChild(textNode.cloneNode(true));
-      div.replaceChild(pElement, textNode);
-    });
+      pElement.innerHTML = div.innerHTML;
+      div.innerHTML = '';
+      div.appendChild(pElement);
+    }
   });
 }
 
@@ -447,6 +448,15 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
+    // Adding blocks containing hero variant in lcp blocks at runtime
+    document.querySelectorAll('[class*="hero-"]')
+      .forEach((heroBlock) => {
+        const shortBlockName = heroBlock.classList[0];
+        if (LCP_BLOCKS.indexOf(shortBlockName) === -1) {
+          LCP_BLOCKS.push(shortBlockName);
+        }
+      });
+
     await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
     try {
       /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */

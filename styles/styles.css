@@ -273,6 +273,8 @@ p.lead {
   font-size: var(--body-font-size-xl);
 }
 
+
+
 hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -321,6 +323,12 @@ a {
 .white p {
   color: var(--white);
 }
+
+
+main .block.lead p {
+  font-size: var(--body-font-size-xl);
+}
+
 
 
 /* Mixins carry !important to override the default styles */
@@ -773,6 +781,14 @@ main .section.narrower > .tab-item.active > .section-container {
   max-width: 45rem;
 }
 
+/* section - narrow/narrower with background image compatibility */
+main .section.narrow.section.with-background-image > .section-container,
+main .section.narrower.section.with-background-image > .section-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -969,8 +985,7 @@ main .section.float-image-right picture {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-main .section.with-background-image.align-bottom > .section-container {
-  position: absolute;
+.section.with-background-image.align-bottom > .section-container {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1072,6 +1087,15 @@ main .section.with-background-image.align-bottom > .section-container {
     margin-left: auto;
     max-width: 45rem;
     margin-block-end: 3rem;
+  }
+
+  /* section - narrow/narrower with background image compatibility */
+  main .section.narrow.section.with-background-image > .section-container,
+  main .section.narrower.section.with-background-image > .section-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* section - text align left */
@@ -1198,9 +1222,7 @@ main .section.with-background-image.align-bottom > .section-container {
     font-size: var(--heading-font-size-xxs);
   }
 
-  p.lead {
-    font-size: var(--body-font-size-xxl);
-  }
+  
 
   p,
   dl,
@@ -1210,6 +1232,11 @@ main .section.with-background-image.align-bottom > .section-container {
   blockquote {
     margin: 0 0 1.5rem;
     padding: 0;
+  }
+
+  main .block.lead p,
+   p.lead {
+    font-size: var(--body-font-size-xxl);
   }
 
   ul,

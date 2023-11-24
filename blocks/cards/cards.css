@@ -298,8 +298,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
 }
 
 main .cards-wrapper .machine-parts .cards-card-body h3{
-  margin-block-start: 0;
-  margin-block-end: 0;
+  margin-block: 0;
   color: var(--light-black);
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-bold);
