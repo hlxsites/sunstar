@@ -323,6 +323,9 @@ a {
   color: var(--white);
 }
 
+main {
+  max-width: 100vw;
+}
 
 main .block.lead p {
   font-size: var(--body-font-size-xl);
@@ -483,6 +486,7 @@ button {
   display: inline-flex;
   align-items: center;
   align-content: center;
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
   justify-content: center;
   line-height: 1;
   border-radius: 2px;
@@ -1173,7 +1177,7 @@ main .block.download a::after {
     font-size: var(--heading-font-size-xxs);
   }
 
-  
+
 
   p,
   dl,
