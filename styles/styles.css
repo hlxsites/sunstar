@@ -1002,7 +1002,6 @@ main .block.download a::after {
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.narrow > .section-container,
   main .section.narrow > .tab-item.active > .section-container {
-    position: relative;
     width: 100%;
     padding-right: 0;
     padding-left: 0;
@@ -1015,7 +1014,6 @@ main .block.download a::after {
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.narrower > .section-container,
   main .section.narrower > .tab-item.active > .section-container {
-    position: relative;
     width: 100%;
     padding-right: 0;
     padding-left: 0;
@@ -1149,7 +1147,7 @@ main .block.download a::after {
     font-size: var(--heading-font-size-xxs);
   }
 
-  
+
 
   p,
   dl,
@@ -1200,7 +1198,6 @@ main .block.download a::after {
   }
 
   main .section .section-container {
-    position: relative;
     width: 100%;
     padding-right: 0;
     padding-left: 0;
