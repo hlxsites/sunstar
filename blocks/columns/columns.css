@@ -299,6 +299,16 @@
   margin: 0 1rem;
 }
 
+.columns.block.image-with-label > div {
+  display: flex;
+  gap: unset;
+  margin: 0;
+}
+
+.columns.block.image-with-label > div .img-col > picture {
+  width: 8rem;
+}
+
 /* both autoblocking options for bottom caption */
 .columns.history div.image-collage.autoblocked picture ~ em,
 .columns.history div.image-collage.autoblocked picture ~ p {

@@ -121,6 +121,25 @@ main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
 }
 
+main .block.text.red-circle > div > div::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: var(--red);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .block.text.red-circle > div {
+  position: relative;
+}
+
+main .block.text.red-circle > div > div * {
+  margin-left: 10px;
+}
+
 @media (min-width: 77rem) {
   main .block.text.lead {
     font-size: var(--body-font-size-xxl);

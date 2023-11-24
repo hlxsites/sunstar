@@ -21,6 +21,7 @@
   /* colors */
   --black: #000;
   --blue: #007bff;
+  --beaublue: #bedceb;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -333,7 +334,21 @@ a {
   margin: 0!important;
 }
 
+.no-margin-bottom, .no-margin-bottom * {
+  margin-bottom: 0!important;
+}
 
+.half-width {
+  width: 50%;
+}
+
+.quarter-width {
+  width: 30%!important;
+}
+
+.float-right {
+  float: right;
+}
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -793,6 +808,27 @@ main .section.static .section-container h2 {
   margin: 4rem 0 1.5rem;
 }
 
+/* Three Column Layout */
+
+main .section.three-columns-layout {
+  height: 1000px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.three-columns-layout .section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main .section.three-columns-layout .section-container > div  {
+  max-width: 50%;
+}
+
+main .section.three-columns-layout.with-background-image > picture {
+  position: absolute;
+  bottom: 0;
+}
+
 /* section - margin-bottom */
 main .section.margin-bottom {
   margin-bottom: 5rem;
@@ -816,6 +852,11 @@ main .section .section-container.highlight {
 /* section - dark-blue */
 main .section.dark {
   background-color: var(--primary);
+}
+
+/* section - beau-blue */
+main .section.beau-blue {
+  background-color: var(--beaublue);
 }
 
 /* section - light-blue */
@@ -867,6 +908,7 @@ main .section.padded-inline > .tab-item.active > .section-container {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .block.centered > div {
   margin: auto;
 }
@@ -883,12 +925,17 @@ main .block.download a::after {
   position: relative;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image > picture {
   display: block;
   width: 100%;
   z-index: -1;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.float-image-right picture {
+  float: right;
+}
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image > picture > img {
@@ -917,6 +964,14 @@ main .block.download a::after {
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-center > .section-container {
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.with-background-image.align-bottom > .section-container {
+  position: absolute;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -1198,5 +1253,16 @@ main .block.download a::after {
     margin-right: auto;
     margin-left: auto;
     max-width: 1200px;
+  }
+
+  /* Three Column Layout */
+  main .section.three-columns-layout {
+    height: 1000px;
+  }
+
+  main .section.three-columns-layout .section-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 }
