@@ -216,7 +216,7 @@ export async function fetchPlaceholders(locale = 'en') {
 
   if (!loaded) {
     window.placeholders[`${TRANSLATION_KEY}-loaded`] = new Promise((resolve, reject) => {
-      fetch('/placeholders.json')
+      fetch('/_drafts/piyush/placeholders.json') // todo piyush change this
         .then((resp) => {
           if (resp.ok) {
             return resp.json();

@@ -2,37 +2,53 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock,
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex, getLanguage } from '../../scripts/scripts.js';
+import { queryIndex, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
 const resultParsers = {
   // Parse results into a cards block
-  cards: (results, blockCfg, variation = '') => {
+  cards: async (results, blockCfg, variation = '') => {
     const blockContents = [];
-    results.forEach((result) => {
+    for (let index = 0; index < results.length; index += 1) {
+      const result = results[index];
       const fields = blockCfg.fields.split(',');
       const row = [];
       let cardImage;
       const cardBody = document.createElement('div');
-      fields.forEach((field) => {
+      for (let innerIndex = 0; innerIndex < fields.length; innerIndex += 1) {
+        const field = fields[innerIndex];
         const fieldName = field.trim().toLowerCase();
         if (fieldName === 'image') {
           cardImage = createOptimizedPicture(result[fieldName], '', variation === 'hero-block');
         } else {
-          const div = document.createElement('div');
-          if (fieldName === 'publisheddate') {
-            div.classList.add('date');
-            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
-          } else if (fieldName === 'title') {
-            div.classList.add('title');
-            div.textContent = result[fieldName];
+          // eslint-disable-next-line no-lonely-if
+          if (fieldName === 'category') {
+            // Field name category handling
+            if (result[fieldName] !== '0') {
+              const anchor = document.createElement('a');
+              anchor.classList.add('category');
+              // eslint-disable-next-line no-await-in-loop
+              const categories = await fetchTagsOrCategories([result[fieldName]], 'categories', '', getLanguage());
+              anchor.textContent = categories[0].name;
+              cardBody.appendChild(anchor);
+            }
           } else {
-            div.textContent = result[fieldName];
+            const div = document.createElement('div');
+            if (fieldName === 'publisheddate') {
+              div.classList.add('date');
+              div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
+            } else if (fieldName === 'title') {
+              div.classList.add('title');
+              div.textContent = result[fieldName];
+            } else {
+              div.textContent = result[fieldName];
+            }
+            cardBody.appendChild(div);
           }
-          cardBody.appendChild(div);
         }
-      });
+      }
+
       if (cardImage) {
         row.push(cardImage);
       }
@@ -44,7 +60,7 @@ const resultParsers = {
         row.push(cardBody);
       }
       blockContents.push(row);
-    });
+    }
     return blockContents;
   },
 
@@ -139,7 +155,7 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-  const blockContents = resultParsers[blockType](results, blockCfg, variation);
+  const blockContents = await resultParsers[blockType](results, blockCfg, variation);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
