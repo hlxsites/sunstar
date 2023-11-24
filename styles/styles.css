@@ -606,13 +606,6 @@ main .section.bold-headings h6 {
 }
 
 /* section - full-width */
-main .section.full-width > .section-container {
-  max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* section - full-width */
 main .section.full-width > .section-container,
 main .section.full-width > .tab-item.active > .section-container {
   max-width: 100%;
