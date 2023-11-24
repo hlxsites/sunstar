@@ -19,6 +19,11 @@
     overflow: hidden;
 }
 
+.hero-banner.static .hero-banner-media-section {
+    position: relative;
+    height: auto;
+}
+
 .hero-banner.careers .hero-banner-media-section {
     display: none;
 }
@@ -186,6 +191,11 @@
         position: relative;
         height: 32rem;
         margin-bottom: 8.625rem;
+    }
+
+    .section.full-width.natural-height.hero-banner-container {
+        height: auto;
+        margin-bottom: 0;
     }
 
     /* TODO refactor to work on firefox as well */
