@@ -112,6 +112,10 @@ body.underfill main .section.image-before > .section-container {
       max-width: 70%;
       right: 8vw;
   }
+
+  body.underfill .block.quote::before {
+    left: 0;
+  }
   
   
   @media (min-width: 62rem) {
