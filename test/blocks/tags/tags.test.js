@@ -22,7 +22,7 @@ describe('Tags Block', () => {
 
   beforeEach(async () => {
     await sinon.stub(window, 'fetch').callsFake((v) => {
-      const queryIndex = '/tags-categories.json';
+      const queryIndex = '/_drafts/piyush/tags-categories.json';
       if (v.startsWith(queryIndex)) {
         return {
           ok: true,

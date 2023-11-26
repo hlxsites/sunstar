@@ -10,20 +10,23 @@ const resultParsers = {
   // Parse results into a cards block
   cards: async (results, blockCfg, variation = '') => {
     const blockContents = [];
+
     for (let index = 0; index < results.length; index += 1) {
       const result = results[index];
       const fields = blockCfg.fields.split(',');
       const row = [];
       let cardImage;
       const cardBody = document.createElement('div');
+
       for (let innerIndex = 0; innerIndex < fields.length; innerIndex += 1) {
         const field = fields[innerIndex];
         const fieldName = field.trim().toLowerCase();
-        if (fieldName === 'image') {
-          cardImage = createOptimizedPicture(result[fieldName], '', variation === 'hero-block');
-        } else {
-          // eslint-disable-next-line no-lonely-if
-          if (fieldName === 'category') {
+
+        switch (fieldName) {
+          case 'image':
+            cardImage = createOptimizedPicture(result[fieldName], '', variation === 'hero-block');
+            break;
+          case 'category': {
             // Field name category handling
             if (result[fieldName] !== '0') {
               const anchor = document.createElement('a');
@@ -33,17 +36,25 @@ const resultParsers = {
               anchor.textContent = categories[0].name;
               cardBody.appendChild(anchor);
             }
-          } else {
+            break;
+          }
+          case 'publisheddate': {
             const div = document.createElement('div');
-            if (fieldName === 'publisheddate') {
-              div.classList.add('date');
-              div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
-            } else if (fieldName === 'title') {
-              div.classList.add('title');
-              div.textContent = result[fieldName];
-            } else {
-              div.textContent = result[fieldName];
-            }
+            div.classList.add('date');
+            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName], 10)));
+            cardBody.appendChild(div);
+            break;
+          }
+          case 'title': {
+            const div = document.createElement('div');
+            div.classList.add('title');
+            div.textContent = result[fieldName];
+            cardBody.appendChild(div);
+            break;
+          }
+          default: {
+            const div = document.createElement('div');
+            div.textContent = result[fieldName];
             cardBody.appendChild(div);
           }
         }
@@ -61,6 +72,7 @@ const resultParsers = {
       }
       blockContents.push(row);
     }
+
     return blockContents;
   },
 
