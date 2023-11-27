@@ -192,8 +192,7 @@ main .form .button {
   border: none;
   display: inline-flex;
   align-items: center;
-  align-content: center;
-  justify-content: center;
+  place-content: center;
   line-height: 1;
 }
 

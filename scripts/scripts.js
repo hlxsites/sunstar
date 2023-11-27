@@ -318,7 +318,7 @@ export function getWindowSize() {
 export function addTopSpacingStyleToFirstMatchingSection(main) {
   const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container',
     'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container',
-    'carousel-container', 'with-background-image', 'report-overview-container'];
+    'carousel-container', 'with-background-image', 'report-overview-container', 'no-margin-top'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 
@@ -373,7 +373,28 @@ function decorateSectionsWithBackgrounds(element) {
     if (background) {
       section.classList.add('with-background-image');
       const backgroundPic = createOptimizedPicture(background);
+      backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
+    }
+  });
+}
+
+/**
+ * Enclose all text content of direct div children in p tags (for specified blocks)
+ * @param {*} element
+ */
+function wrapDirectDivTextInParagraphs(element) {
+  const classNamesToWrapText = ['.block.text div', '.block.columns div'];
+  const combinedSelector = classNamesToWrapText.join(', ');
+  const divs = element.querySelectorAll(combinedSelector);
+  Array.from(divs).forEach((div) => {
+    const hasTextNodes = Array.from(div.childNodes)
+      .some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0);
+    if (hasTextNodes) {
+      const pElement = document.createElement('p');
+      pElement.innerHTML = div.innerHTML;
+      div.innerHTML = '';
+      div.appendChild(pElement);
     }
   });
 }
@@ -427,6 +448,15 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
+    // Adding blocks containing hero variant in lcp blocks at runtime
+    document.querySelectorAll('[class*="hero-"]')
+      .forEach((heroBlock) => {
+        const shortBlockName = heroBlock.classList[0];
+        if (LCP_BLOCKS.indexOf(shortBlockName) === -1) {
+          LCP_BLOCKS.push(shortBlockName);
+        }
+      });
+
     await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
     try {
       /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
@@ -512,6 +542,7 @@ function setMetaTags(main) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+  wrapDirectDivTextInParagraphs(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;

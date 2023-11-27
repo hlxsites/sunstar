@@ -75,6 +75,7 @@
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
+  --underfill-dark-indigo: #490c61;
 
 
   /* fonts */
@@ -272,6 +273,8 @@ p.lead {
   font-size: var(--body-font-size-xl);
 }
 
+
+
 hr {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -321,6 +324,15 @@ a {
   color: var(--white);
 }
 
+main {
+  max-width: 100vw;
+}
+
+main .block.lead p {
+  font-size: var(--body-font-size-xl);
+}
+
+
 
 /* Mixins carry !important to override the default styles */
 .no-borders * {
@@ -332,8 +344,6 @@ a {
 .no-margins  * {
   margin: 0!important;
 }
-
-
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -477,6 +487,7 @@ button {
   display: inline-flex;
   align-items: center;
   align-content: center;
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
   justify-content: center;
   line-height: 1;
   border-radius: 2px;
@@ -558,6 +569,19 @@ main .block.border {
   border: 1px solid;
 }
 
+main .block.rounded-border {
+  border: 1px solid;
+  border-radius: 45px;
+}
+
+main .block.blue {
+  color: var(--secondary);
+}
+
+main .block.blue h4 {
+  color: var(--secondary);
+}
+
 main .block.centered {
   text-align: center;
 }
@@ -584,7 +608,7 @@ main .section .section-container {
 }
 
 main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
+  margin-top: 3rem !important;
 }
 
 /* section - no-padding-top for h1 */
@@ -743,6 +767,14 @@ main .section.narrower > .tab-item.active > .section-container {
   margin: auto;
   margin-block-end: 3rem;
   max-width: 45rem;
+}
+
+/* section - narrow/narrower with background image compatibility */
+main .section.narrow.section.with-background-image > .section-container,
+main .section.narrower.section.with-background-image > .section-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 /* section - static */
@@ -908,6 +940,13 @@ main .block.download a::after {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-bottom > .section-container {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
@@ -1004,6 +1043,15 @@ main .block.download a::after {
     margin-left: auto;
     max-width: 45rem;
     margin-block-end: 3rem;
+  }
+
+  /* section - narrow/narrower with background image compatibility */
+  main .section.narrow.section.with-background-image > .section-container,
+  main .section.narrower.section.with-background-image > .section-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* section - text align left */
@@ -1130,9 +1178,7 @@ main .block.download a::after {
     font-size: var(--heading-font-size-xxs);
   }
 
-  p.lead {
-    font-size: var(--body-font-size-xxl);
-  }
+
 
   p,
   dl,
@@ -1142,6 +1188,11 @@ main .block.download a::after {
   blockquote {
     margin: 0 0 1.5rem;
     padding: 0;
+  }
+
+  main .block.lead p,
+   p.lead {
+    font-size: var(--body-font-size-xxl);
   }
 
   ul,
