@@ -38,6 +38,7 @@ async function decorateWebsitePicker(websitePicker) {
   });
 
   const a = document.createElement('a');
+  a.href = '#';
   a.textContent = title;
   websitePicker.prepend(a);
 
@@ -136,6 +137,7 @@ async function decorateLangPicker(langPicker) {
   });
 
   const a = document.createElement('a');
+  a.href = '#';
   a.textContent = langName;
   langPicker.prepend(a);
 
