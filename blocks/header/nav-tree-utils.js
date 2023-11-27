@@ -53,7 +53,7 @@ function decorateChildNodes(parent, json, level) {
       if (data.link && !children) {
         return `${accumalator} <a class="link" href=${data.link}>${data.category}</a>`;
       } if (!data.link && children) {
-        return `${accumalator} <div class="menu-level-${level}-item"><h6 class="subtitle">${data.category}</h6>${children}</div>`;
+        return `${accumalator} <div class="menu-level-${level}-item"><h5 class="subtitle">${data.category}</h5>${children}</div>`;
       }
       return accumalator;
     }
