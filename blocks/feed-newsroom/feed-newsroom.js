@@ -204,7 +204,17 @@ export default async function decorate(block) {
   filterDiv.querySelector('#news_category').innerHTML = filterDiv.querySelector('#news_category').innerHTML + categoryOptions;
 
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
-    const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
+    const searchYear = Number(filterDiv.querySelector('form .filter-nav #news_year').value);
+    const searchCategory = filterDiv.querySelector('form .filter-nav #news_category').value;
+    if (!searchCategory) {
+      const option = filterDiv.querySelector('#news_category').options;
+      for (let i = 0; i < option.length; i += 1) {
+        if (option[i].text === 'news') {
+          option[i].selected = true;
+          break;
+        }
+      }
+    }
     searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
     loadYearResults(block, blockType, searchResults, blockCfg, locale);
   });
