@@ -146,8 +146,11 @@
   --split-lastthird: 66%:34%;
 }
 
+*, *::before, *::after { box-sizing: inherit; }
+
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
