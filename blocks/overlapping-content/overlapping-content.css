@@ -6,11 +6,6 @@
   margin: auto 1rem;
 }
 
-.overlapping-content.muted-text {
-  color: var(--steel-blue);
-  font-size: var(--body-font-size-s);
-}
-
 .overlapping-content .overlapping-content-item h2 {
   margin-top: 0;
   margin-bottom: 0.75rem;
