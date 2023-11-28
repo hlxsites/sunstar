@@ -3,7 +3,7 @@
 }
 
 .columns.small-margin {
-  margin: 2rem 0 0;
+  margin: 1.25rem 0;
 }
 
 .columns p,
@@ -627,7 +627,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding, .history) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
@@ -686,6 +686,10 @@ div.img-col > video {
 }
 
 @media (min-width: 62rem) {
+  .columns.small-margin {
+    margin: 1.5rem 0;
+  }
+
   .columns.text-and-image-in-column.overlap .button-container a {
     font-size: var(--body-font-size-xl);
     margin: 0 1rem;
