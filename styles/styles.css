@@ -784,6 +784,7 @@ main .section.narrower > .tab-item.active > .section-container {
   margin: auto;
   margin-block-end: 3rem;
   max-width: 45rem;
+  box-sizing: border-box;
 }
 
 /* section - narrow/narrower with background image compatibility */
