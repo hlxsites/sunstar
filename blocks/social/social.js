@@ -1,6 +1,30 @@
 import { getMetadata } from '../../scripts/lib-franklin.js';
 import { decorateAnchors, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
+const getSocialURL = (type) => {
+  let anchorHref;
+  const currPath = document.location.href;
+  const pageName = getMetadata('pagename') || '';
+  const source = 'Sunstar Group';
+
+  switch (type) {
+    case 'facebook':
+      anchorHref = `https://www.facebook.com/sharer?u=${currPath}&t=${pageName}`;
+      break;
+    case 'linkedin':
+      anchorHref = `https://www.linkedin.com/shareArticle?mini=true&url=${currPath}&title=${pageName}&source=${source}`;
+      break;
+    case 'twitter':
+      anchorHref = `https://twitter.com/intent/tweet?text=${pageName}&url=${currPath}`;
+      break;
+    default:
+      anchorHref = '';
+      break;
+  }
+
+  return anchorHref;
+};
+
 /**
  * decorates the social block
  * @param {Element} block The social block element
@@ -35,13 +59,30 @@ export default async function decorate(block) {
     categoryMetadata = categoryMetadata.trim().toLowerCase();
     const type = getMetadata('type') || '';
 
+    if (childs.length === 0) {
+      const socialIcons = ['facebook', 'twitter', 'linkedin'];
+      socialIcons.forEach((x) => {
+        const outerDiv = document.createElement('div');
+        const firstInnerDiv = document.createElement('div');
+        firstInnerDiv.textContent = x;
+        const secondInnerDiv = document.createElement('div');
+        const anchor = document.createElement('a');
+        anchor.href = getSocialURL(x);
+        secondInnerDiv.appendChild(anchor);
+        outerDiv.appendChild(firstInnerDiv);
+        outerDiv.appendChild(secondInnerDiv);
+        childs.push(outerDiv);
+      });
+    }
+
     childs.forEach((x) => {
-      const a = x.querySelector('a');
+      const anchor = x.querySelector('a');
       const span = document.createElement('span');
       const newAnchor = document.createElement('a');
       const firstGrandChild = x.querySelector('div');
       const firstGrandChildLower = firstGrandChild.innerText.toLowerCase();
-      newAnchor.href = a.href.replaceAll(/%5C%5C&/g, '&'); // Replacing extra backslash which is getting appended
+      const anchorHref = anchor?.href || getSocialURL(firstGrandChildLower);
+      newAnchor.href = anchorHref.replaceAll(/%5C%5C&/g, '&'); // Replacing extra backslash which is getting appended
       newAnchor.setAttribute('aria-label', `${firstGrandChildLower} share`);
       span.classList.add(`icon-${firstGrandChildLower}`, 'icon');
       newAnchor.appendChild(span);

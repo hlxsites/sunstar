@@ -133,9 +133,8 @@
 .hero-banner .hero-banner-button-container {
     flex-basis: 100%;
     width: 100%;
-    justify-content: left;
     align-items: center;
-    align-content: center;
+    place-content: center left;
     display: inline-flex;
     flex-wrap: wrap;
 }

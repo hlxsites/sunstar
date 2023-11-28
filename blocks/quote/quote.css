@@ -7,6 +7,15 @@
   position: relative;
 }
 
+.block.quote.white {
+  color: var(--white);
+}
+
+.block.quote.no-border {
+  border-left: none;
+  padding-left: 0;
+}
+
 .block.quote .quote-content {
   margin-bottom: 1.5rem;
 }
@@ -18,7 +27,7 @@
   line-height: 1;
   color: inherit;
   position: absolute;
-  top: -2.75rem;
+  top: -3.75rem;
 }
 
 .block.quote::after {

@@ -629,6 +629,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
   }
 
   const blocks = document.querySelectorAll('.block');
+
   const main = document.querySelector('main');
   [...blocks]
     .filter((block) => !skipBlocks.includes(block?.dataset?.blockName) && lcpBlocks.includes(block?.dataset?.blockName)) // eslint-disable-line max-len
@@ -642,8 +643,14 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
 
   document.body.style.display = null;
 
-  const lcpCandidate = document.querySelector('main img');
-  await setImageToLoadEagerly(lcpCandidate);
+  // load lcp candidates in default content/background images for sections
+  const lcpCandidates = [...document.querySelectorAll('main img')]
+    .filter((image) => !image.computedStyleMap().get('display').value.startsWith('none'))
+    .slice(0, maxCandidates);
+
+  lcpCandidates.forEach(async (candidate) => {
+    await setImageToLoadEagerly(candidate);
+  });
 }
 
 /**
