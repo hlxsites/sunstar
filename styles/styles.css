@@ -808,12 +808,6 @@ main .section.static .section-container h2 {
   margin: 4rem 0 1.5rem;
 }
 
-/* Three Column Layout */
-
-main .section.three-columns-layout {
-  height: 1000px;
-}
-
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.three-columns-layout .section-container {
   display: flex;
@@ -824,7 +818,7 @@ main .section.three-columns-layout .section-container > div  {
   max-width: 50%;
 }
 
-main .section.three-columns-layout.with-background-image > picture {
+main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
   bottom: 0;
 }
@@ -842,6 +836,12 @@ main .section.no-margin-bottom {
 /* section - no margin-top */
 main .section.no-margin-top {
   margin-top: 0;
+}
+
+/* fixed padding bottom of section-container - 400px */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padding-bottom-400 .section-container {
+  padding-bottom: 400px;
 }
 
 /* section - highlight */
@@ -921,12 +921,12 @@ main .block.download a::after {
 }
 
 /* Section Styles for background images */
-.section.with-background-image {
+.section.with-background-image, .section.with-static-background-image {
   position: relative;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image > picture {
+.section.with-background-image > picture, .section.with-static-background-image > picture {
   display: block;
   width: 100%;
   z-index: -1;
@@ -938,7 +938,7 @@ main .section.float-image-right picture {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image > picture > img {
+.section.with-background-image > picture > img, .section.with-static-background-image > picture > img {
   display: block;
   object-fit: cover;
   width: 100%;
@@ -1256,10 +1256,6 @@ main .section.with-background-image.align-bottom > .section-container {
   }
 
   /* Three Column Layout */
-  main .section.three-columns-layout {
-    height: 1000px;
-  }
-
   main .section.three-columns-layout .section-container {
     flex-direction: row;
     align-items: flex-start;

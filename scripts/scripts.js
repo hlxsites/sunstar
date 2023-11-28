@@ -371,7 +371,11 @@ function decorateSectionsWithBackgrounds(element) {
         break;
     }
     if (background) {
-      section.classList.add('with-background-image');
+      if (section.classList.contains('with-static-background-image')) {
+        section.classList.add('with-static-background-image');
+      } else {
+        section.classList.add('with-background-image');
+      }
       const backgroundPic = createOptimizedPicture(background);
       section.append(backgroundPic);
     }
