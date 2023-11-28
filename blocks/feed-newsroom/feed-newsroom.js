@@ -2,7 +2,7 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock,
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex, getLanguage } from '../../scripts/scripts.js';
+import { queryIndex, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -177,10 +177,15 @@ export default async function decorate(block) {
     .toList()
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
   block.innerHTML = '';
-  // Creation of filter and year
+  // Creation of Category, Year and filter
   const filterDiv = document.createElement('div');
   filterDiv.innerHTML = `<form action="#">
   <div class="filter-nav">
+    <span>
+      <select class="form-control" name="" id="news_category">
+        <option value="">Category</option>
+        </select>
+    </span>
     <span>
       <select class="form-control" name="" id="news_year">
         <option value="">Year</option>
@@ -192,7 +197,11 @@ export default async function decorate(block) {
   const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
   // eslint-disable-next-line
   const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='"+current+"'>" + current + "</option>"; return accum;},"");
-  filterDiv.querySelector('select').innerHTML = filterDiv.querySelector('select').innerHTML + yroptions;
+  filterDiv.querySelector('#news_year').innerHTML = filterDiv.querySelector('#news_year').innerHTML + yroptions;
+  const categoryDetails = await fetchTagsOrCategories('', 'categories', 'newsroom', locale);
+  // eslint-disable-next-line
+  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='"+current.id+"'>" + current.id + "</option>"; return accum;},"");
+  filterDiv.querySelector('#news_category').innerHTML = filterDiv.querySelector('#news_category').innerHTML + categoryOptions;
 
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
