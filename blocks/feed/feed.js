@@ -105,7 +105,7 @@ export default async function decorate(block) {
   const blockType = (blockName.split('(')[0]).trim();
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
   const queryObj = await queryIndex(`${getLanguage()}-search`);
-
+  const sortCriteria = blockCfg.sort ? blockCfg.sort.trim().toLowerCase() : 'path';
   // Get the query string, which includes the leading "?" character
   const queryString = window.location.search;
 
@@ -134,8 +134,8 @@ export default async function decorate(block) {
       match = tagList.some((tag) => elTags.includes(tag.trim()));
     }
     return match;
-  })
-    .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort.trim().toLowerCase()] : el.path))
+  }) // eslint-disable-next-line max-len
+    .orderByDescending((el) => (Number.isNaN(el[sortCriteria]) ? el[sortCriteria] : parseInt(el[sortCriteria], 10)))
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
