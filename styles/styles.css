@@ -410,8 +410,8 @@ main pre {
   background-position: center;
   background-size: cover;
   display: inline-block;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 24px;
 }
 
 .icon svg {
