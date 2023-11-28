@@ -336,7 +336,7 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   });
 }
 
-function getViewPort() {
+export function getViewPort() {
   const { width } = getWindowSize();
   if (width >= 1232) {
     return 'desktop';

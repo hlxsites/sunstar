@@ -5,6 +5,7 @@ import {
   getLanguangeSpecificPath,
   fetchTagsOrCategories,
   setMetaTag,
+  getViewPort,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
@@ -51,6 +52,9 @@ function setTagPageTitle(tagPageTitle) {
 }
 
 async function createAutoBreadcrumb(block, placeholders) {
+  if (getViewPort() === 'mobile') {
+    return;
+  }
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
   const { pathname } = window.location;
