@@ -1130,7 +1130,7 @@ main .block.download a::after {
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.padded > .section-container,
   main .section.padded > .tab-item.active > .section-container {
-    padding: 2rem;
+    padding: 2rem 0;
   }
 
   /* section - padded-inline - not applied for wide screens */
