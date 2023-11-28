@@ -774,6 +774,7 @@ main .section.narrow > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
   max-width: 42rem;
+  box-sizing: border-box;
 }
 
 /* section - narrower */
