@@ -167,6 +167,10 @@ main .section.cards-container:has(.cards.info-points) h2 {
   margin-bottom: 2rem;
 }
 
+.cards.grid .cards-card-image img {
+  object-position: center;
+}
+
 main .cards.info-points .cards-card-body h4 {
   font-size: var(--heading-font-size-mxs);
   font-weight: var(--font-weight-bold);
@@ -326,6 +330,10 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
 
   .cards.grid > ul {
     flex-flow: column nowrap;
+  }
+
+  .cards.grid .cards-card-image img {
+    object-position: 50% 0;
   }
 }
 
