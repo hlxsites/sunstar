@@ -379,6 +379,9 @@ function decorateSectionsWithBackgrounds(element) {
       const backgroundPic = createOptimizedPicture(background);
       backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
+      if (section.querySelector('.section-container')?.children.length === 0) {
+        section.classList.add('no-content');
+      }
     }
   });
 }

@@ -149,7 +149,7 @@
 /* this selects the sections that have a background image and other blocks
   and sets them as the container for the query below
   sections with background images only get ignored */
-div.section.section.with-background-image:has(.section-container:not(:empty)) {
+div.section.section.with-background-image:not(.no-content) {
   container-name: text-container;
   container-type: inline-size;
 }
