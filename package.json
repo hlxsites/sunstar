@@ -28,7 +28,7 @@
   },
   "homepage": "https://www.sunstar.com",
   "devDependencies": {
-    "@babel/core": "7.23.3",
+    "@babel/core": "7.23.5",
     "@babel/eslint-parser": "7.23.3",
     "@esm-bundle/chai": "4.3.4-fix.0",
     "@web/test-runner": "0.18.0",
