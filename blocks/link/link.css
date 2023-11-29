@@ -126,6 +126,7 @@
   margin-left: 8px;
   vertical-align: middle;
   background-size: contain;
+  top: 0;
 }
 
 @media (min-width: 62rem) {
