@@ -5,10 +5,14 @@
     flex-direction: column;
   }
 
-.block.highlight.feed-newsroom > .others picture {
+.block.highlight.feed-newsroom>.others picture {
     width: auto;
     height: 250px;
-  }
+}
+
+.block.highlight.feed-newsroom > .others .title {
+    color: var(--link-color);
+}
 
 main .block.feed-newsroom {
     gap: 10vw;
@@ -95,8 +99,8 @@ main .section.feed-newsroom-container.narrower > .section-container {
     }
     
 .block.highlight.feed-newsroom > .others picture {
-        width: 174px;
-        height: 98px;
+        width: 280px;
+        height: 150px;
         display: block;
         position: relative;
     }
