@@ -964,13 +964,6 @@ main .section.float-image-right picture {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image .section-container {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image > picture > img, .section.with-static-background-image > picture > img {
   display: block;
   object-fit: cover;
@@ -982,8 +975,9 @@ main .section.float-image-right picture {
 .section.with-background-image > .tab-item.active > .section-container {
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
 }
 
