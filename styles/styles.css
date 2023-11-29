@@ -964,6 +964,13 @@ main .section.float-image-right picture {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
+.section.section.with-background-image .section-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image > picture > img, .section.with-static-background-image > picture > img {
   display: block;
   object-fit: cover;
