@@ -637,6 +637,10 @@ div.img-col > video {
     height: 469px;
     width: 469px;
   }
+
+  main .block.columns.big-gap > div {
+    gap: 10.25rem;
+  }
 }
 
 /* Text-image overlap View */
@@ -702,5 +706,4 @@ div.img-col > video {
   .columns :not(.table) h3 {
     font-size: var(--heading-font-size-m);
   }
-
 }
