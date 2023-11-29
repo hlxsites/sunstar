@@ -779,6 +779,7 @@ main .section.narrow > .tab-item.active > .section-container {
 /* section - narrower */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.narrower > .section-container,
+main .section.narrower > picture,
 main .section.narrower > .tab-item.active > .section-container {
   padding: 0 1rem;
   margin: auto;
@@ -792,6 +793,14 @@ main .section.narrower.section.with-background-image > .section-container {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+main .section.narrower.section.with-background-image > .section-container > .link-wrapper {
+  width: 100%;
 }
 
 /* section - static */
