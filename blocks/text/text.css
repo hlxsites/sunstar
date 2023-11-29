@@ -97,8 +97,8 @@ main .block.text.rounded-border  h4 {
 
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
-  margin: 0 0 1.25rem;
-  
+  margin: 1rem 1rem 1.25rem;
+  max-width: 90vw;
 }
 
 main .block.text.colored {
