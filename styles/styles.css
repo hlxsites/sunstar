@@ -964,7 +964,7 @@ main .section.float-image-right picture {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.section.with-background-image .section-container {
+.section.with-background-image .section-container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
