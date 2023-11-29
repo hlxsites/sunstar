@@ -743,11 +743,11 @@ export function shuffleArray(arr) {
 
 export async function queryIndex(sheet) {
   await loadScript('/ext-libs/jslinq/jslinq.min.js');
-  let index = await fetchIndex('_drafts/piyush/query-index', sheet);
+  let index = await fetchIndex('query-index', sheet);
   // Fetch the index until it is complete
   while (!index.complete) {
     // eslint-disable-next-line no-await-in-loop
-    index = await fetchIndex('_drafts/piyush/query-index', sheet);
+    index = await fetchIndex('query-index', sheet);
   }
   const { jslinq } = window;
   return jslinq(index.data);
@@ -832,7 +832,7 @@ export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '',
     await loadScript('/ext-libs/jslinq/jslinq.min.js');
   }
   const sheetName = sheet ? `sheet=${sheet}` : '';
-  const tagDetails = await fetch(`/_drafts/piyush/tags-categories.json?${sheetName}`); // todo piyush change this
+  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
   const results = await tagDetails.json();
   const { jslinq } = window;
 

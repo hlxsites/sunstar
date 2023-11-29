@@ -28,7 +28,7 @@ describe('Feed Block', async () => {
   beforeEach(async () => {
     document.write(await readFile({ path: './feed.plain.html' }));
     await sinon.stub(window, 'fetch').callsFake((v) => {
-      const queryIndex = '/_drafts/piyush/query-index.json';
+      const queryIndex = '/query-index.json';
       if (v.startsWith(queryIndex)) {
         return {
           ok: true,
