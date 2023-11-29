@@ -216,8 +216,11 @@ export default async function decorate(block) {
       }
       searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
       loadYearResults(block, blockType, searchResults, blockCfg, locale);
-    } else {
-      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
+    } else if (searchCategory && !searchYear) {
+      searchResults = results.filter((x) => (x.category === searchCategory));
+      loadYearResults(block, blockType, searchResults, blockCfg, locale);
+    } else if (searchCategory && searchYear) {
+      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return ((parseInt(itsDate[itsDate.length - 1], 10) === searchYear) && (x.category === searchCategory)); });
       loadYearResults(block, blockType, searchResults, blockCfg, locale);
     }
   });
