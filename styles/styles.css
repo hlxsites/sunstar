@@ -146,6 +146,18 @@
   --split-lastthird: 66%:34%;
 }
 
+div.section.section.with-background-image:has(.section-container:not(:empty)) {
+  container-name: text-container;
+  container-type: inline-size;
+}
+
+@container text-container (max-width: 62rem) {
+  body > main > div.with-background-image > picture img,
+  body > main > div.with-background-image > .section-container {
+    height: 110cqh;
+  }
+} 
+
 html {
   scroll-behavior: smooth;
 }
