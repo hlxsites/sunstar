@@ -804,6 +804,11 @@ main .section.narrower.section.with-background-image > .section-container {
   box-sizing: border-box;
 }
 
+main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
+  position: absolute;
+  bottom: 0;
+}
+
 main .section.narrower.section.with-background-image > picture {
   margin: auto;
   margin-block-end: 3rem;
@@ -857,11 +862,6 @@ main .section.three-columns-layout .section-container {
 
 main .section.three-columns-layout .section-container > div  {
   max-width: 50%;
-}
-
-main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
-  position: absolute;
-  bottom: 0;
 }
 
 /* section - margin-bottom */
