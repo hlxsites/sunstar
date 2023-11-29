@@ -115,6 +115,7 @@
   left: 0;
   top: 0;
   padding-inline: 8px;
+  vertical-align: middle;
 }
 
 @media (min-width: 62rem) {
