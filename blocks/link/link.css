@@ -111,6 +111,23 @@
   flex-grow: 1;
 }
 
+/* Breadcrumb Link */
+.block.link.breadcrumb nav {
+  display: flex;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.block.link.breadcrumb nav a {
+  padding-right: 32px;
+}
+
+.block.link.breadcrumb.arrow a::after {
+  content: url("../../icons/angle-right-blue.svg");
+  margin-left: 8px;
+  vertical-align: middle;
+  background-size: contain;
+}
+
 @media (min-width: 62rem) {
   .block.link {
     margin-bottom: 1.5rem;

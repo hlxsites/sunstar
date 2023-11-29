@@ -25,5 +25,22 @@ export default async function decorate(block) {
       a.appendChild(contents);
       block.replaceChildren(a);
     }
+  } else if (block.classList.contains('breadcrumb')) {
+    const anchorElements = block.querySelectorAll('.button-container a');
+
+    const navElement = document.createElement('nav');
+
+    anchorElements.forEach((anchor) => {
+      const href = anchor.getAttribute('href');
+      const title = anchor.getAttribute('title');
+
+      const newAnchor = document.createElement('a');
+      newAnchor.setAttribute('href', `/${href.split('/').pop()}/`);
+      newAnchor.innerHTML = `${title}`;
+
+      navElement.appendChild(newAnchor);
+    });
+
+    block.replaceChildren(navElement);
   }
 }
