@@ -146,15 +146,19 @@
   --split-lastthird: 66%:34%;
 }
 
+/* this selects the sections that have a background image and other blocks
+  and sets them as the container for the query below
+  sections with background images only get ignored */
 div.section.section.with-background-image:has(.section-container:not(:empty)) {
   container-name: text-container;
   container-type: inline-size;
 }
 
+/* this updates the height of the content inside the section */
 @container text-container (max-width: 62rem) {
   body > main > div.with-background-image > picture img,
   body > main > div.with-background-image > .section-container {
-    height: 110cqh;
+    height: 110cqh; /* 110% of the container's height */
   }
 } 
 
