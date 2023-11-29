@@ -144,6 +144,8 @@
   --split-lastquarter: 75%:25%;
   --split-firstthird: 34%:66%;
   --split-lastthird: 66%:34%;
+  --split-firsttwothird: 40%:60%;
+  --split-lasttwothird: 60%:40%;
 }
 
 html {
