@@ -196,17 +196,17 @@ export default async function decorate(block) {
 </form>`;
   const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
   // eslint-disable-next-line
-  const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='"+current+"'>" + current + "</option>"; return accum;},"");
+  const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='" + current + "'>" + current + "</option>"; return accum; }, "");
   filterDiv.querySelector('#news_year').innerHTML = filterDiv.querySelector('#news_year').innerHTML + yroptions;
   const categoryDetails = await fetchTagsOrCategories('', 'categories', 'newsroom', locale);
   // eslint-disable-next-line
-  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='"+current.id+"'>" + current.id + "</option>"; return accum;},"");
+  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='" + current.id + "'>" + current.id + "</option>"; return accum; }, "");
   filterDiv.querySelector('#news_category').innerHTML = filterDiv.querySelector('#news_category').innerHTML + categoryOptions;
 
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav #news_year').value);
     const searchCategory = filterDiv.querySelector('form .filter-nav #news_category').value;
-    if (!searchCategory) {
+    if (!searchCategory && searchYear) {
       const option = filterDiv.querySelector('#news_category').options;
       for (let i = 0; i < option.length; i += 1) {
         if (option[i].text === 'news') {
@@ -214,9 +214,12 @@ export default async function decorate(block) {
           break;
         }
       }
+      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
+      loadYearResults(block, blockType, searchResults, blockCfg, locale);
+    } else {
+      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
+      loadYearResults(block, blockType, searchResults, blockCfg, locale);
     }
-    searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-    loadYearResults(block, blockType, searchResults, blockCfg, locale);
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
