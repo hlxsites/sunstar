@@ -292,8 +292,8 @@
     .hero-banner.overlap .hero-banner-text-container {
         display: block;
         padding: 3rem 2rem;
-        width: 24.25rem;
-        height: 26rem;
+        width: 28.25rem;
+        height: 32rem;
     }
 
     .hero-banner.overlap .hero-banner-text-wrapper {
@@ -370,8 +370,8 @@
 
     .hero-banner.overlap .hero-banner-text-container {
         padding: 10rem 3.75rem 0;
-        width: 27.5rem;
-        height: 33.75rem;
+        width: 35rem;
+        height: 43.75rem;
     }
 
     .hero-banner.overlap .hero-banner-media-section {
@@ -382,7 +382,7 @@
 /* Variation small-box */
 @media (min-width: 62rem) {
     .hero-banner.overlap.small-box .hero-banner-text-container {
-        height: 23.75rem;
+        height: 29.75rem;
         margin-top: 1rem;
         display: flex;
         align-items: center;
@@ -409,7 +409,7 @@
     .hero-banner.overlap.small-box .hero-banner-text-container {
         padding: 3rem;
         margin-top: 3rem;
-        height: 23.75rem;
+        height: 29.75rem;
     }
 
     .hero-banner.overlap.small-box .hero-banner-text-wrapper h2 {

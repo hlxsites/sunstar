@@ -217,8 +217,8 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
   }
 
   main .hero-horiz-tabs-img picture {
-    width: calc(50vw);
-    height: 25rem;
+    width: calc(50vw - 1rem);
+    height: 26rem;
   }
 
   main .hero-horizontal-tabs nav {
