@@ -108,7 +108,9 @@ async function createAutoBreadcrumb(block, placeholders) {
   block.classList.add('visible');
 }
 
-export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders(getLanguage());
-  createAutoBreadcrumb(block, placeholders);
+export default async function decorate(block, contentLoad = false) {
+  if (contentLoad) {
+    const placeholders = await fetchPlaceholders(getLanguage());
+    createAutoBreadcrumb(block, placeholders);
+  }
 }
