@@ -160,7 +160,7 @@
 }
 
 .carousel.small .swiper-pagination-bullet {
-  background: #0003;
+  background: var(--transparent-grey-light-color);
 }
 
 .carousel .swiper-pagination-bullet:last-child {
