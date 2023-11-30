@@ -112,6 +112,20 @@ main .block.cards {
   height: 100%;
 }
 
+.cards.light-background .cards-card-image span.icon svg {
+  width: 7rem;
+  height: 7rem;
+  margin-top: 1rem;
+}
+
+main .block.cards.light-background ul > li{
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+  border-bottom: none;
+  margin: 0;
+}
+
 .cards .cards-card-body u {
   text-decoration: none;
 }
@@ -312,6 +326,12 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
+main .cards-wrapper .light-background .cards-card-body h3{
+  color: var(--primary);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-medium);
+}
+
 .cards.nolink.no-buttons.machine-parts.block > ul{
   flex-flow: column;
 }
@@ -508,6 +528,14 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     width: auto;
     height: 12.1875rem;
     flex: 1;
+    margin: 0;
+  }
+
+  main .block.cards.light-background ul > li{
+    padding: 1rem;
+    background-color: var(--transparent-blue-light-color);
+    margin-block: 1.5rem;
+    border-bottom: none;
     margin: 0;
   }
 

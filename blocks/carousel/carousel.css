@@ -85,7 +85,7 @@
   font-size: var(--heading-font-size-s);
   letter-spacing: 0;
   font-weight: var(--font-weight-medium);
-  color: var(--black);
+  color: var(--primary);
 }
 
 .carousel p {
@@ -94,6 +94,7 @@
 
 .carousel.small p {
   font-size: var(--font-size-small);
+  color: var(--text-color);
 }
 
 .carousel h2 {
@@ -171,7 +172,7 @@
 }
 
 .carousel.small .swiper-pagination-bullet.active {
-  background-color: var(--blue);
+  background-color: var(--primary);
 }
 
 .carousel .control-container {
@@ -258,6 +259,7 @@ main .section.carousel-container {
 
   .carousel.small .text{
     padding-top: 6.5rem;
+    max-width: 100%;
   }
 
   .carousel .image {
@@ -303,6 +305,10 @@ main .section.carousel-container {
 
   .carousel .text-item {
     width: 30rem;
+  }
+
+  .carousel.small img{
+    margin-left: 0;
   }
 
   .carousel.small .text-item {

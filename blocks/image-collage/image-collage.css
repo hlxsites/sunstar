@@ -143,9 +143,14 @@ main .image-collage.boxy-col-1.zoom-in::after {
   flex: unset;
 }
 
-main .image-collage * {
+main .image-collage *:not(h4) {
   font-size: var(--font-size-small);
   color: #6D757C;
+}
+
+main .image-collage svg {
+  width: 7.5rem;
+  height: 7.5rem;
 }
 
 main .image-collage.icon-caption * {

@@ -62,13 +62,13 @@ export default async function decorate(block) {
 
   const slideDivs = [];
   if (block.children && block.children.length > 0) {
-    MAX_BUTTONS = block.children.length - 2;
+    MAX_BUTTONS = block.children.length - 3;
     [...block.children].forEach((row) => {
       const div = document.createElement('div');
       div.classList.add('carousel-childcard');
 
       const a = document.createElement('a');
-      a.href = '#'; // Todo populate the Link of the stories
+      a.href = row.querySelector('a');; // Todo populate the Link of the stories
       div.append(a);
       a.innerHTML = row.innerHTML;
 
