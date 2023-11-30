@@ -157,7 +157,6 @@ async function loadYearResults(block, blockType, results, blockCfg, locale) {
    * Feed block decorator to build feeds based on block configuration
    */
 export default async function decorate(block) {
-  let searchResults = 0;
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
@@ -206,23 +205,25 @@ export default async function decorate(block) {
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
     const searchYear = Number(filterDiv.querySelector('form .filter-nav #news_year').value);
     const searchCategory = filterDiv.querySelector('form .filter-nav #news_category').value;
-    if (!searchCategory && searchYear) {
+    let filteredResults = window.jslinq(results);
+    if (searchYear) {
+      filteredResults = filteredResults.where((el) => {
+        const itsDate = getFormattedDate(new Date(parseInt(el[blockCfg.sort.trim().toLowerCase()], 10))).split(', ');
+        return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear);
+      });
+    }
+    if (searchCategory) {
+      filteredResults = filteredResults.where((el) => el.category === searchCategory);
+    } else if (searchYear) {
       const option = filterDiv.querySelector('#news_category').options;
       for (let i = 0; i < option.length; i += 1) {
-        if (option[i].text === 'news') {
+        if (option[i].text === 'News') {
           option[i].selected = true;
           break;
         }
       }
-      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
-    } else if (searchCategory && !searchYear) {
-      searchResults = results.filter((x) => (x.category === searchCategory));
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
-    } else if (searchCategory && searchYear) {
-      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return ((parseInt(itsDate[itsDate.length - 1], 10) === searchYear) && (x.category === searchCategory)); });
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
     }
+    loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
