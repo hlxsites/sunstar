@@ -341,6 +341,10 @@ main .block.lead p {
 
 
 /* Mixins carry !important to override the default styles */
+.display-block * {
+  display: block!important;
+}
+
 .no-borders * {
   border: none!important;
   box-shadow: none!important;
@@ -633,6 +637,14 @@ main .section.auto-top-spacing .section-container {
   margin-top: 3rem !important;
 }
 
+main .section .default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+main .section .default-content-wrapper > :last-child {
+  margin-bottom: 0;
+}
+
 /* section - no-padding-top for h1 */
 .header-no-top-padding h1 {
   padding-top: 0 !important;
@@ -859,7 +871,9 @@ main .section.three-columns-layout .section-container > div  {
   max-width: 50%;
 }
 
-main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.three-columns-layout.with-background-image > picture,
+main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
   bottom: 0;
 }
