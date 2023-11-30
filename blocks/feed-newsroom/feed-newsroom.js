@@ -2,7 +2,9 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock,
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
+import {
+  queryIndex, getLanguage, fetchTagsOrCategories,
+} from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -157,7 +159,6 @@ async function loadYearResults(block, blockType, results, blockCfg, locale) {
    * Feed block decorator to build feeds based on block configuration
    */
 export default async function decorate(block) {
-  let searchResults = 0;
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
@@ -214,15 +215,20 @@ export default async function decorate(block) {
           break;
         }
       }
-      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
-    } else if (searchCategory && !searchYear) {
-      searchResults = results.filter((x) => (x.category === searchCategory));
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
-    } else if (searchCategory && searchYear) {
-      searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return ((parseInt(itsDate[itsDate.length - 1], 10) === searchYear) && (x.category === searchCategory)); });
-      loadYearResults(block, blockType, searchResults, blockCfg, locale);
     }
+    let filteredResults = window.jslinq(results);
+    if (searchYear) {
+      filteredResults = filteredResults.where((el) => {
+        const itsDate = getFormattedDate(new Date(parseInt(el[blockCfg.sort.trim().toLowerCase()], 10))).split(', ');
+        return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear);
+      });
+    }
+
+    if (searchCategory) {
+      filteredResults = filteredResults.where((el) => el.category === searchCategory);
+    }
+
+    loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
