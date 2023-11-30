@@ -200,7 +200,7 @@ export default async function decorate(block) {
   filterDiv.querySelector('#news_year').innerHTML = filterDiv.querySelector('#news_year').innerHTML + yroptions;
   const categoryDetails = await fetchTagsOrCategories('', 'categories', 'newsroom', locale);
   // eslint-disable-next-line
-  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='" + current.id + "'>" + current.id + "</option>"; return accum; }, "");
+  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='" + current.id + "'>" + current.name + "</option>"; return accum; }, "");
   filterDiv.querySelector('#news_category').innerHTML = filterDiv.querySelector('#news_category').innerHTML + categoryOptions;
 
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
