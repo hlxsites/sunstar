@@ -68,7 +68,7 @@ export default async function decorate(block) {
       div.classList.add('carousel-childcard');
 
       const a = document.createElement('a');
-      a.href = row.querySelector('a');; // Todo populate the Link of the stories
+      a.href = row.querySelector('a'); // Todo populate the Link of the stories
       div.append(a);
       a.innerHTML = row.innerHTML;
 
