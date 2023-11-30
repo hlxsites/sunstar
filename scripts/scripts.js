@@ -15,7 +15,6 @@ import {
   isInternalPage,
   fetchPlaceholders,
   createOptimizedPicture,
-  loadBreadcrumb,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -555,7 +554,6 @@ async function loadLazy(doc) {
   if (!isInternalPage()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
-    await loadBreadcrumb();
     setMetaTags(main);
 
     loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
