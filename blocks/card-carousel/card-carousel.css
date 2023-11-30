@@ -97,7 +97,6 @@
 .card-carousel .carousel-childcard picture img {
   height: 10rem;
   width: 18rem;
-  padding-inline: 2.8rem;
 }
 
 .card-carousel .carousel-childcard blockquote {
@@ -196,7 +195,6 @@
 @media (min-width: 77rem) {
   .card-slider {
     width: calc(((var(--card-width) + 3rem) * 4));
-    margin-left: 15.8rem;
   }
 
   .career .card-slider{

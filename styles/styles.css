@@ -1265,6 +1265,7 @@ main .section.float-image-right picture {
     font-size: var(--body-font-size-xxl);
   }
 
+  ul,
   ol {
     padding: 0 0 0 1.75rem;
   }

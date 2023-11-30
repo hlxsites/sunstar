@@ -428,6 +428,7 @@ div.img-col > video {
 
 .columns.plain-links.collapse ul {
   display:none;
+  padding: 0;
 }
 
 .columns.plain-links.collapse ul.active {
