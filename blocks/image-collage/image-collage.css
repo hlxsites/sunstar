@@ -151,10 +151,15 @@ main .image-collage *:not(h4) {
 main .image-collage svg {
   width: 7.5rem;
   height: 7.5rem;
+
+main .image-collage.icon-title-list *,
+main .image-collage.icon-title-text * {
+  color: unset;
 }
 
 main .image-collage.icon-caption * {
-line-height: 1.1rem;
+  line-height: 1.1rem;
+  color: unset;
 }
 
 main .image-collage .image-caption {

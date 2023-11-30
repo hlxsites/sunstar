@@ -832,19 +832,40 @@ export function addPagingWidget(
 }
 
 export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
-  const placeholders = await fetchPlaceholders(locale);
+  window.tagsCategories = window.tagsCategories || {};
+  const sheetKey = sheet;
+  const loaded = window.tagsCategories[`${sheetKey}-loaded`];
+
+  if (!loaded) {
+    const placeholders = await fetchPlaceholders(locale);
+    const sheetName = sheet ? `sheet=${sheet}` : '';
+    window.tagsCategories[`${sheetKey}-loaded`] = new Promise((resolve, reject) => {
+      fetch(`/tags-categories.json?${sheetName}`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          throw new Error(`${resp.status}: ${resp.statusText}`);
+        })
+        .then((results) => {
+          // eslint-disable-next-line max-len
+          window.tagsCategories[sheetKey] = results.data.map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
+          resolve();
+        }).catch((error) => {
+          // Error While Loading tagsCategories
+          window.tagsCategories[sheetKey] = {};
+          reject(error);
+        });
+    });
+  }
+
   if (!window.jslinq) {
     await loadScript('/ext-libs/jslinq/jslinq.min.js');
   }
-  const sheetName = sheet ? `sheet=${sheet}` : '';
-  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
-  const results = await tagDetails.json();
-  const { jslinq } = window;
 
-  // eslint-disable-next-line max-len
-  return jslinq(results.data).where((ele) => (!ids.length || ids.indexOf(ele.Key) > -1) && (!type || ele.Type === type))
-    .toList()
-    .map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
+  await window.tagsCategories[`${sheetKey}-loaded`];
+  return window.tagsCategories[sheetKey]
+    .filter((ele) => (!ids.length || ids.indexOf(ele.id) > -1) && (!type || ele.type === type));
 }
 
 export function wrapImgsInLinks(container) {
