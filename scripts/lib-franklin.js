@@ -677,17 +677,6 @@ export function loadFooter(footer) {
   return loadBlock(footerBlock);
 }
 
-export async function loadBreadcrumb() {
-  const breadcrumbBlock = document.querySelector('.breadcrumb');
-  const blockName = 'breadcrumb';
-  if (breadcrumbBlock) {
-    const breadcrumb = await import(`../blocks/${blockName}/${blockName}.js`);
-    if (breadcrumb.default) {
-      await breadcrumb.default(breadcrumbBlock, true);
-    }
-  }
-}
-
 /**
  * Setup block utils.
  */
