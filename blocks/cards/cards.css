@@ -206,11 +206,6 @@ main .cards.info-points > ul {
   flex-direction: column;
 }
 
-main .cards.info-points > ul > li {
-  display: flex;
-  box-shadow: none;
-}
-
 main .cards.info-points > ul > li:hover {
   box-shadow: none;
 }
