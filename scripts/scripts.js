@@ -454,13 +454,6 @@ async function loadEager(doc) {
     decorateMain(main);
     document.body.classList.add('appear');
     // Adding blocks containing hero variant in lcp blocks at runtime
-    document.querySelectorAll('[class*="hero-"]')
-      .forEach((heroBlock) => {
-        const shortBlockName = heroBlock.classList[0];
-        if (LCP_BLOCKS.indexOf(shortBlockName) === -1) {
-          LCP_BLOCKS.push(shortBlockName);
-        }
-      });
 
     await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
     try {
