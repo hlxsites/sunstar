@@ -118,6 +118,15 @@ main .block.cards {
   margin-top: 1rem;
 }
 
+main .cards.features-items ul > li {
+  align-items: flex-start;
+}
+
+main .cards.info-points > ul > li {
+  display: flex;
+  box-shadow: none;
+}
+
 main .block.cards.light-background ul > li{
   padding: 1rem;
   background-color: var(--transparent-blue-light-color);
@@ -151,10 +160,6 @@ main .block.cards.light-background ul > li{
 main .cards.features-items h6 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-main .cards.features-items ul > li {
-  align-items: flex-start;
 }
 
 /* Styles for Flat List */
