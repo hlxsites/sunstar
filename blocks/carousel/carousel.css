@@ -253,8 +253,9 @@ main .section.carousel-container {
   }
 
   .carousel.small {
+    width: 90%;
     position: relative;
-    left: 25%;
+    transform: translateX(25%);
   }
 
   .carousel.small .text{
