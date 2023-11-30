@@ -5,14 +5,10 @@
     flex-direction: column;
   }
 
-.block.highlight.feed-newsroom>.others picture {
+.block.highlight.feed-newsroom > .others picture {
     width: auto;
     height: 250px;
-}
-
-.block.highlight.feed-newsroom > .others .title {
-    color: var(--link-color);
-}
+  }
 
 main .block.feed-newsroom {
     gap: 10vw;
@@ -95,12 +91,12 @@ main .feed-newsroom-wrapper .load-more-container {
 
 @media (min-width: 62rem) {
 main .section.feed-newsroom-container.narrower > .section-container {
-        max-width: 80rem;
+        max-width: 75rem;
     }
     
 .block.highlight.feed-newsroom > .others picture {
-        width: 280px;
-        height: 150px;
+        width: 174px;
+        height: 98px;
         display: block;
         position: relative;
     }
