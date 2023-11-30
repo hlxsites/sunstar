@@ -10,6 +10,10 @@
     height: 250px;
   }
 
+.block.highlight.feed-newsroom > .others .title {
+    color: var(--link-color);
+}
+
 main .block.feed-newsroom {
     gap: 10vw;
 }
@@ -93,10 +97,10 @@ main .feed-newsroom-wrapper .load-more-container {
 main .section.feed-newsroom-container.narrower > .section-container {
         max-width: 75rem;
     }
-    
-.block.highlight.feed-newsroom > .others picture {
-        width: 174px;
-        height: 98px;
+
+    .block.highlight.feed-newsroom > .others picture {
+        width: 280px;
+        height: 150px;
         display: block;
         position: relative;
     }
