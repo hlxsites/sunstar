@@ -110,7 +110,8 @@
   --heading-font-size-xxxs: 12px;
 
   /* Heading Variables */
-  --h1-font-size: min(70rem, var(--heading-font-size-m), var(--heading-font-size-mxl));
+  --h1-font-size-desktop: var(--heading-font-size-mxl);
+  --h1-font-size-mobile: var(--heading-font-size-m);
   --h2-font-size: min(70rem, var(--heading-font-size-ms), var(--heading-font-size-m));
   --h3-font-size: min(70rem, var(--heading-font-size-xs), var(--heading-font-size-ms));
   --h4-font-size: var(--heading-font-size-ms);
@@ -202,7 +203,7 @@ h6 {
 }
 
 h1 {
-  font-size: var(--h1-font-size);
+  font-size: var(--h1-font-size-mobile);
   margin: 3.5rem 0 2rem;
 }
 
@@ -1207,7 +1208,7 @@ main .section.float-image-right picture {
   }
 
   h1 {
-    font-size: var(--h1-font-size);
+    font-size: var(--h1-font-size-desktop);
     margin: 4.375rem 0 2.5rem;
   }
 
