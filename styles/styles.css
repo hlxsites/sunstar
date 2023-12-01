@@ -202,7 +202,7 @@ h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-mxl);
+  font-size: var(--h1-font-size);
   margin: 3.5rem 0 2rem;
 }
 
@@ -1207,7 +1207,7 @@ main .section.float-image-right picture {
   }
 
   h1 {
-    font-size: var(--heading-font-size-xxl);
+    font-size: var(--h1-font-size);
     margin: 4.375rem 0 2.5rem;
   }
 
