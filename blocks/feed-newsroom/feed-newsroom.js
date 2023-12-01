@@ -214,7 +214,9 @@ export default async function decorate(block) {
     }
     if (searchCategory) {
       filteredResults = filteredResults.where((el) => el.category === searchCategory);
-    } else if (searchYear) {
+    }
+    loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
+    if (searchYear && !searchCategory) {
       const option = filterDiv.querySelector('#news_category').options;
       for (let i = 0; i < option.length; i += 1) {
         if (option[i].text === 'News') {
@@ -223,7 +225,6 @@ export default async function decorate(block) {
         }
       }
     }
-    loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
