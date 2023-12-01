@@ -178,7 +178,7 @@ export default async function decorate(block) {
   block.innerHTML = '';
   // Creation of Category, Year and filter
   const filterDiv = document.createElement('div');
-  filterDiv.innerHTML = `<form action="#">
+  filterDiv.innerHTML = `<form action="#results">
   <div class="filter-nav">
     <span>
       <select class="form-control" name="" id="news_category">

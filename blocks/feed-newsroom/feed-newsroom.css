@@ -58,6 +58,10 @@ main .feed-newsroom-wrapper form span {
     margin-right: 2rem;
 }
 
+main .feed-newsroom-wrapper form span:first-of-type {
+    flex-grow: 0.3;
+}
+
 
 main .feed-newsroom-wrapper form select {
     min-width: 6rem;
