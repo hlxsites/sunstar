@@ -217,10 +217,10 @@ export default async function decorate(block) {
     }
     loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
     if (searchYear && !searchCategory) {
-      const option = filterDiv.querySelector('#news_category').options;
-      for (let i = 0; i < option.length; i += 1) {
-        if (option[i].text === 'News') {
-          option[i].selected = true;
+      const { options } = filterDiv.querySelector('#news_category');
+      for (let index = 0; index < options.length; index += 1) {
+        if (options[index].text === 'News') {
+          options[index].selected = true;
           break;
         }
       }
