@@ -637,11 +637,11 @@ main .section.auto-top-spacing .section-container {
   margin-top: 3rem !important;
 }
 
-main .section .default-content-wrapper > :first-child {
+main .section .default-content-wrapper:first-of-type > :first-child {
   margin-top: 0;
 }
 
-main .section .default-content-wrapper > :last-child {
+main .section .default-content-wrapper:last-of-type > :last-child {
   margin-bottom: 0;
 }
 
