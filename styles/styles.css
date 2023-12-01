@@ -1094,6 +1094,10 @@ main .section.float-image-right picture {
   }
 
   /* section - small narrow */
+  main .section.small-narrow > .section-container {
+    padding: unset;
+  }
+
   main .section.small-narrow h1 {
     margin-bottom: 3.5rem;
   }
