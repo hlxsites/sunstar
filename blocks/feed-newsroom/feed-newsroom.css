@@ -1,5 +1,9 @@
 /* eslint no-empty: "info" */
 
+main .newsroom.section .cards-card-body .title {
+    font-size: var(--body-font-size-m);
+}
+
 .block.highlight.feed-newsroom > .others {
     display: flex;
     flex-direction: column;
@@ -101,16 +105,25 @@ main .feed-newsroom-wrapper .load-more-container {
     margin-bottom: 5vh;
 }
 
-@media (min-width: 62rem) {
+@media (min-width: 62rem) {  
+main .newsroom.section .cards-card-image {
+        height: 10rem;
+        aspect-ratio: 16/9;
+}
+    
+main .newsroom.section .cards-card-image img {
+        object-position: 50% 50%;
+}
+
 main .section.feed-newsroom-container.narrower > .section-container {
         max-width: 75rem;
-    }
+}
     
 .block.highlight.feed-newsroom > .others picture {
         width: 280px;
         height: 150px;
         display: block;
         position: relative;
-    }
+}
 }
 
