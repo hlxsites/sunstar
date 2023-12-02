@@ -18,6 +18,10 @@ main .block.feed-newsroom {
     color: var(--link-color);
 }
 
+.block.highlight.feed-newsroom > .others h4 {
+    color: var(--text-color);
+}
+
 main .block.feed-newsroom > .others:first-child {
     flex-grow: 3;
 }
