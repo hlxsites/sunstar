@@ -1037,6 +1037,10 @@ main .newsroom.section .cards-card-body .title {
   font-size: var(--body-font-size-m);
 }
 
+main .newsroom.section .cards-card-body > div {
+  height: 10rem;
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
