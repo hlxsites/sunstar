@@ -1041,6 +1041,10 @@ main .newsroom.section .cards-card-body > div {
   height: 10rem;
 }
 
+main .newsroom.section .cards-card-image img {
+  object-position: 50% 50%;
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
