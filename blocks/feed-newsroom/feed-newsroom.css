@@ -14,8 +14,12 @@ main .block.feed-newsroom {
     gap: 10vw;
 }
 
-.block.highlight.feed-newsroom > .others .title {
+.block.highlight.feed-newsroom > .others .title, .link-wrapper {
     color: var(--link-color);
+}
+
+.block.highlight.feed-newsroom > .others h4 {
+    color: var(--text-color);
 }
 
 main .block.feed-newsroom > .others:first-child {
