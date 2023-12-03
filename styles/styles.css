@@ -454,7 +454,8 @@ main pre {
   margin-bottom: 0.2rem;
 }
 
-.icon.icon-angle-right-blue-bg {
+.icon.icon-angle-right-blue-bg,
+.icon.icon-angle-right-blue {
   background-image: url("/icons/angle-right-blue.svg");
   vertical-align: middle;
   width: 0.5rem;
@@ -488,11 +489,6 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-/* TODO: Remove this once this icon renders correctly */
-main table a > .icon-angle-right-blue {
-  transform: rotate(180deg);
 }
 
 a:any-link {
