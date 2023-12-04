@@ -17,6 +17,10 @@ main .newsroom.section .cards-card-body .title {
     object-position: 50% 50%;
   }
 
+  main .newsroom.section .cards > ul {
+    gap: 1rem;
+  }
+
   @media (min-width: 62rem) {
     main .newsroom.section .cards-card-image {
         height: 10rem;
@@ -26,5 +30,9 @@ main .newsroom.section .cards-card-body .title {
       main .newsroom.section .cards-card-image img {
         object-position: 50% 50%;
     }
+
+    main .newsroom.section .cards > ul {
+        gap: 0;
+      }
 
   }
