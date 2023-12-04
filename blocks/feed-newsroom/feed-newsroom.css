@@ -63,7 +63,7 @@ main .feed-newsroom-wrapper form button:hover {
 }
 
 main .feed-newsroom-wrapper form span {
-    margin-right: 2rem;
+    margin-right: 0;
 }
 
 main .feed-newsroom-wrapper form span:first-of-type {
@@ -75,7 +75,7 @@ main .feed-newsroom-wrapper form select {
     min-width: 6rem;
     background: var(--white);
     color: var(--secondary);
-    padding: 6px 15px;
+    padding: 0;
     height: 32px;
     font-weight: 500;
     border-radius: 2px;
@@ -101,16 +101,24 @@ main .feed-newsroom-wrapper .load-more-container {
     margin-bottom: 5vh;
 }
 
-@media (min-width: 62rem) { 
-main .section.feed-newsroom-container.narrower > .section-container {
-        max-width: 75rem;
-}
+@media (min-width: 62rem) {
+    main .feed-newsroom-wrapper form span {
+        margin-right: 2rem;
+    }
     
-.block.highlight.feed-newsroom > .others picture {
+    main .feed-newsroom-wrapper form select {
+        padding: 6px 15px;
+    }
+
+    main .section.feed-newsroom-container.narrower >  .section-container {
+        max-width: 75rem;
+    }
+
+    .block.highlight.feed-newsroom > .others picture {
         width: 280px;
         height: 150px;
         display: block;
         position: relative;
-}
+    }
 }
 
