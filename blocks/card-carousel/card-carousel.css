@@ -201,7 +201,10 @@
   }
 
   .card-carousel .carousel-childcard {
-    margin: 1.5rem 1rem;
+    margin-left: 0;
+    margin-right: 2.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     width: 17rem;
   }
 
