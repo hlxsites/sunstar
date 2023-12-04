@@ -645,7 +645,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
 
   // load lcp candidates in default content/background images for sections
   const lcpCandidates = [...document.querySelectorAll('main img')]
-    .filter((image) => !image.computedStyleMap().get('display').value.startsWith('none'))
+    .filter((image) => getComputedStyle(image).getPropertyValue('display') !== 'none')
     .slice(0, maxCandidates);
 
   lcpCandidates.forEach(async (candidate) => {
