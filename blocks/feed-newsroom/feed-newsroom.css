@@ -14,6 +14,14 @@ main .block.feed-newsroom {
     gap: 10vw;
 }
 
+.block.highlight.feed-newsroom > .others .title, .link-wrapper {
+    color: var(--link-color);
+}
+
+.block.highlight.feed-newsroom > .others h4 {
+    color: var(--text-color);
+}
+
 main .block.feed-newsroom > .others:first-child {
     flex-grow: 3;
 }
@@ -55,7 +63,7 @@ main .feed-newsroom-wrapper form button:hover {
 }
 
 main .feed-newsroom-wrapper form span {
-    margin-right: 2rem;
+    margin-right: 0;
 }
 
 main .feed-newsroom-wrapper form span:first-of-type {
@@ -67,7 +75,7 @@ main .feed-newsroom-wrapper form select {
     min-width: 6rem;
     background: var(--white);
     color: var(--secondary);
-    padding: 6px 15px;
+    padding: 0;
     height: 32px;
     font-weight: 500;
     border-radius: 2px;
@@ -78,7 +86,7 @@ main .feed-newsroom-wrapper form select {
 }
 
 
-main .feed-newsroom-wrapper>div:first-child>div:first-child {
+main .feed-newsroom-wrapper>div:first-child > div:first-child {
     border: 0;
 }
 
@@ -94,13 +102,21 @@ main .feed-newsroom-wrapper .load-more-container {
 }
 
 @media (min-width: 62rem) {
-main .section.feed-newsroom-container.narrower > .section-container {
-        max-width: 80rem;
+    main .feed-newsroom-wrapper form span {
+        margin-right: 2rem;
     }
     
-.block.highlight.feed-newsroom > .others picture {
-        width: 174px;
-        height: 98px;
+    main .feed-newsroom-wrapper form select {
+        padding: 6px 15px;
+    }
+
+    main .section.feed-newsroom-container.narrower >  .section-container {
+        max-width: 75rem;
+    }
+
+    .block.highlight.feed-newsroom > .others picture {
+        width: 280px;
+        height: 150px;
         display: block;
         position: relative;
     }

@@ -40,7 +40,10 @@ const resultParsers = {
         }
       });
       if (cardImage) {
-        row.push(cardImage);
+        const pathImg = document.createElement('a');
+        pathImg.href = result.path;
+        pathImg.append(cardImage);
+        row.push(pathImg);
       }
 
       if (cardBody) {
