@@ -1027,6 +1027,13 @@ main .section.float-image-right picture {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-top > .section-container {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
