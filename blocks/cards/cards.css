@@ -326,13 +326,13 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
-main .cards-wrapper .light-background .cards-card-body h3{
+main .cards-wrapper .light-background .cards-card-body h3 {
   color: var(--primary);
   font-family: var(--heading-font-family);
   font-weight: var(--font-weight-medium);
 }
 
-.cards.nolink.no-buttons.machine-parts.block > ul{
+.cards.nolink.no-buttons.machine-parts.block > ul {
   flex-flow: column;
 }
 
@@ -531,7 +531,7 @@ main .cards-wrapper .light-background .cards-card-body h3{
     margin: 0;
   }
 
-  main .block.cards.light-background ul > li{
+  main .block.cards.light-background ul > li {
     padding: 1rem;
     background-color: var(--transparent-blue-light-color);
     margin-block: 1.5rem;
