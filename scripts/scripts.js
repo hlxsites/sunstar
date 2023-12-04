@@ -4,7 +4,6 @@ import {
   loadHeader,
   loadFooter,
   decorateButtons,
-  decorateIcons,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
@@ -412,7 +411,6 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateAnchors(main);
-  decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateSectionsWithBackgrounds(main);

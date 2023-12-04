@@ -344,6 +344,10 @@ main .block.lead p {
 
 
 /* Mixins carry !important to override the default styles */
+.display-block * {
+  display: block!important;
+}
+
 .no-borders * {
   border: none!important;
   box-shadow: none!important;
@@ -469,7 +473,8 @@ main pre {
   margin-bottom: 0.2rem;
 }
 
-.icon.icon-angle-right-blue-bg {
+.icon.icon-angle-right-blue-bg,
+.icon.icon-angle-right-blue {
   background-image: url("/icons/angle-right-blue.svg");
   vertical-align: middle;
   width: 0.5rem;
@@ -503,11 +508,6 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-/* TODO: Remove this once this icon renders correctly */
-main table a > .icon-angle-right-blue {
-  transform: rotate(180deg);
 }
 
 a:any-link {
@@ -651,6 +651,14 @@ main .section .section-container {
 
 main .section.auto-top-spacing .section-container {
   margin-top: 3rem !important;
+}
+
+main .section .default-content-wrapper:first-of-type > :first-child {
+  margin-top: 0;
+}
+
+main .section .default-content-wrapper:last-of-type > :last-child {
+  margin-bottom: 0;
 }
 
 /* section - no-padding-top for h1 */
@@ -880,7 +888,9 @@ main .section.three-columns-layout .section-container > div  {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
+
+main .section.three-columns-layout.with-background-image > picture,
+main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
   bottom: 0;
 }
@@ -958,10 +968,6 @@ main .section.bg-primary h6 {
   color: var(--white);
   padding-top: 3rem;
   margin-bottom: 0;
-}
-
-main .section.newsroom h4 {
-  color: #89d1e1;
 }
 
 main .section.bg-primary p {
@@ -1123,6 +1129,10 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   }
 
   /* section - small narrow */
+  main .section.small-narrow > .section-container {
+    padding: unset;
+  }
+
   main .section.small-narrow h1 {
     margin-bottom: 3.5rem;
   }
@@ -1253,7 +1263,7 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
-
+  
   /* END Section Styles END */
 }
 

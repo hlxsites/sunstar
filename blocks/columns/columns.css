@@ -412,6 +412,7 @@ div.img-col > video {
   list-style: none;
   padding-bottom: 1rem;
   box-sizing: border-box;
+  padding-left: 0;
 }
 
 .columns.plain-links > div a {
@@ -428,6 +429,7 @@ div.img-col > video {
 
 .columns.plain-links.collapse ul {
   display:none;
+  padding: 0;
 }
 
 .columns.plain-links.collapse ul.active {

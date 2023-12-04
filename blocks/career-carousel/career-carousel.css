@@ -1,5 +1,5 @@
 .career-carousel {
-  --card-width: 16rem;
+  --card-width: 18rem;
 
   margin-top: 3rem;
   padding-left: 0.5rem;
@@ -32,7 +32,7 @@
   box-shadow: #3c465040 0 2px 12px 0;
   margin: 1.5rem 0.5rem;
   padding: 1rem;
-  width: var(--card-width);
+  width: 16rem;
   transition: all 0.15s ease-in-out;
 }
 
@@ -57,9 +57,9 @@
 }
 
 .career-carousel .career-card picture img {
+  margin-left: 2.75rem;
   height: 9.5625rem;
   width: 8.75rem;
-  padding-inline: 2.8rem;
 }
 
 .career-carousel .career-card blockquote {
@@ -157,7 +157,11 @@
 
 @media (min-width: 77rem) {
   .career-slider {
-    width: calc(((var(--card-width) + 3rem) * 4));
+    width: calc(((var(--card-width) + 1rem) * 4));
+  }
+
+  .career-carousel .career-card {
+    width: var(--card-width);
   }
 
   .career-carousel .career-card blockquote {
@@ -171,6 +175,7 @@
   }
 
   .career-carousel .career-card picture img {
+    margin-left: unset;
     height: 16rem;
     width: 14.375rem;
     padding-inline: 0;
