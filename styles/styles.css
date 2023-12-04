@@ -938,11 +938,6 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
-main .section.newsroom h4 {
-  color: #89d1e1;
-  padding-top: 0;
-}
-
 main .section.bg-primary p {
   color: var(--white);
   margin-top: 0.5rem;
@@ -1030,19 +1025,6 @@ main .section.float-image-right picture {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* For the newsroom featured block title */
-main .newsroom.section .cards-card-body .title {
-  font-size: var(--body-font-size-m);
-}
-
-main .newsroom.section .cards-card-body > div {
-  height: 10rem;
-}
-
-main .newsroom.section .cards-card-image img {
-  object-position: 50% 50%;
 }
 
 /* END Section Styles END */
@@ -1242,16 +1224,6 @@ main .newsroom.section .cards-card-image img {
     padding-inline: 0;
   }
   
-  /* For newsroom featured block */
-  main .newsroom.section .cards-card-image {
-    height: 10rem;
-    aspect-ratio: 16/9;
-}
-
-  main .newsroom.section .cards-card-image img {
-    object-position: 50% 50%;
-}
-
   /* END Section Styles END */
 }
 
