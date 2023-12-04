@@ -335,6 +335,22 @@ a {
   color: var(--white);
 }
 
+.h1 h2, .h1 h3, .h1 h4 {
+  font-size: var(--h1-font-size-mobile)
+}
+
+.h2 h1, .h2 h3, .h2 h4 {
+  font-size: var(--h2-font-size-mobile);
+}
+
+.h3 h1, .h3 h2 .h3 h4 {
+  font-size: var(--h3-font-size-mobile);
+}
+
+.h4 h1, .h4 h2, .h4 h3 {
+  font-size: var(--h4-font-size-mobile);
+}
+
 main {
   max-width: 100vw;
 }
@@ -1227,6 +1243,22 @@ main .section.float-image-right picture {
   h4 {
     font-size: var(--h4-font-size-desktop);
     margin: 2rem 0 0.5rem;
+  }
+
+  .h1 h2, .h1 h3, .h1 h4 {
+    font-size: var(--h1-font-size-desktop)
+  }
+  
+  .h2 h1, .h2 h3, .h2 h4 {
+    font-size: var(--h2-font-size-desktop);
+  }
+  
+  .h3 h1, .h3 h2 .h3 h4 {
+    font-size: var(--h3-font-size-desktop);
+  }
+  
+  .h4 h1, .h4 h2, .h4 h3 {
+    font-size: var(--h4-font-size-desktop);
   }
 
   h5 {
