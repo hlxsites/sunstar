@@ -87,7 +87,7 @@ export default async function decorate(block) {
     const link = document.createElement('button');
     link.textContent = placeholders['career-carousel-readmore'];
     const arrow = document.createElement('img');
-    arrow.src = '/icons/angle-right-blue.svg';
+    arrow.src = '/icons/angle-right-blue-bg.svg';
     arrow.alt = 'Go to testimonial';
     arrow.classList.add('icon-angle-right-blue');
     link.append(arrow);
@@ -124,7 +124,7 @@ export default async function decorate(block) {
   navButtons.prepend(la);
 
   const ra = document.createElement('img');
-  ra.src = '/icons/angle-right-blue.svg';
+  ra.src = '/icons/angle-right-blue-bg.svg';
   ra.alt = 'Next person card';
   ra.classList.add('btn-angle');
   ra.onclick = () => scrollToAdjacent(buttons, slideDivs, careerSlides, true, document);
