@@ -37,9 +37,9 @@ async function decorateWebsitePicker(websitePicker) {
     li.classList.add('website-picker-item');
   });
 
-  const a = document.createElement('a');
-  a.textContent = title;
-  websitePicker.prepend(a);
+  const div = document.createElement('div');
+  div.textContent = title;
+  websitePicker.prepend(div);
 
   if (websitePicker.querySelectorAll(':scope>ul>li').length === 0 && websitePicker.querySelector('ul')) {
     websitePicker.querySelector('ul').remove();
@@ -59,7 +59,7 @@ function decorateOtherItems(otherItemsEl) {
   const websitePicker = document.createElement('li');
   websitePicker.classList.add('mobile-website-picker');
   const websitePickerUl = document.createElement('ul');
-  const title = otherItemsEl.querySelector('.website-picker').querySelector(':scope>a');
+  const title = otherItemsEl.querySelector('.website-picker').querySelector(':scope>div');
   websitePicker.appendChild(title);
   websitePicker.appendChild(websitePickerUl);
   otherItemsEl.querySelector('.website-picker').querySelectorAll(':scope>ul>li').forEach((li) => {
@@ -135,9 +135,9 @@ async function decorateLangPicker(langPicker) {
     }
   });
 
-  const a = document.createElement('a');
-  a.textContent = langName;
-  langPicker.prepend(a);
+  const div = document.createElement('div');
+  div.textContent = langName;
+  langPicker.prepend(div);
 
   if (langPicker.querySelectorAll(':scope>ul>li').length === 0 && langPicker.querySelector('ul')) {
     langPicker.querySelector('ul').remove();

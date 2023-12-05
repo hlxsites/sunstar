@@ -105,7 +105,7 @@ export default async function decorate(block) {
       .filter(Boolean)
       .join('-');
 
-    if (firstH1) {
+    if (firstH1 && type.toLowerCase() !== 'newsroom') {
       const locale = getLanguage();
       const prefix = locale === 'en' ? '/' : `/${locale}/`;
       const hrefVal = `${prefix}${typeKey}/${categoryMetadata}`;

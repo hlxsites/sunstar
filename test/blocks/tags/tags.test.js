@@ -40,15 +40,20 @@ describe('Tags Block', () => {
   });
 
   it('Count of Tags should be 2', async () => {
-    const placeholders = {
-      'covid-19': 'aaaadad',
-      'global-healthy-thinking-report': 'adadadad',
-    };
-    window.placeholders = {
-      'translation-loaded': {},
-      translation: {
-        en: placeholders,
-      },
+    window.tagsCategories = {
+      'tags-loaded': {},
+      tags: [
+        {
+          id: 'covid-19',
+          name: 'Covid 19',
+          type: 'Healthy Thinking',
+        },
+        {
+          id: 'global-healthy-thinking-report',
+          name: 'global-healthy-thinking-report',
+          type: 'Healthy Thinking',
+        },
+      ],
     };
 
     const block = document.querySelector('.tags');

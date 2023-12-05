@@ -2,7 +2,6 @@
   --card-width: 16rem;
 
   margin-top: 3rem;
-  padding-left: 0.5rem;
 }
 
 .card-slider {
@@ -38,7 +37,10 @@
 
 .card-carousel .carousel-childcard {
   flex-shrink: 0;
-  box-shadow: var(--light-grey) 0 2px 12px 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
+  border: none;
+  background-color: var(--white);
   margin: 1.5rem 3.5px;
   width: 15rem;
   transition: all 0.15s ease-in-out;
@@ -65,10 +67,16 @@
   display: inline-flex;
   flex-direction: column;
   text-decoration: none;
+  color: var(--gray-dark);
+  font-weight: var(--font-weight-medium);
+  padding: 0;
+  background: none;
 }
 
 .card-carousel .carousel-childcard a > div:nth-child(2) {
   margin: 2rem 1rem;
+  font-size: var(--body-font-size-l);
+  color: var(--gray-dark);
 }
 
 .card-carousel.career .carousel-childcard a > div:nth-child(2) {
@@ -86,9 +94,8 @@
 }
 
 .card-carousel .carousel-childcard picture img {
-  height: 9.5rem;
-  width: 8.75rem;
-  padding-inline: 2.8rem;
+  height: 10rem;
+  width: 18rem;
 }
 
 .card-carousel .carousel-childcard blockquote {
@@ -175,7 +182,7 @@
 }
 
 .card-carousel .card-slides-nav span.active-nav {
-  background: var(--link-color);
+  background: var(--secondary);
 }
 
 .card-carousel .card-slides-nav .btn-angle {
@@ -186,8 +193,7 @@
 
 @media (min-width: 77rem) {
   .card-slider {
-    width: calc(((var(--card-width) + 4rem) * 4));
-    margin-left: 12rem;
+    width: calc(((var(--card-width) + 3rem) * 4));
   }
 
   .career .card-slider{
@@ -195,8 +201,8 @@
   }
 
   .card-carousel .carousel-childcard {
-    margin: 1.5rem 3.5rem;
-    width: 20rem;
+    margin: 1.5rem 2.2rem 1.5rem 0;
+    width: 17rem;
   }
 
   .card-carousel .carousel-childcard blockquote {
@@ -210,7 +216,7 @@
   }
 
   .card-carousel .carousel-childcard picture img {
-    height: 16rem;
+    height: 12.5rem;
     width: 30rem;
     padding-inline: 0;
   }

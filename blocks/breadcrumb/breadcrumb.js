@@ -51,10 +51,11 @@ function setTagPageTitle(tagPageTitle) {
   setMetaTag('meta', 'name', 'twitter:title', tagPageTitle);
 }
 
-async function createAutoBreadcrumb(block, placeholders) {
+async function createAutoBreadcrumb(block) {
   if (getViewPort() === 'mobile') {
     return;
   }
+  const placeholders = await fetchPlaceholders(getLanguage());
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
   const { pathname } = window.location;
@@ -109,6 +110,5 @@ async function createAutoBreadcrumb(block, placeholders) {
 }
 
 export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders(getLanguage());
-  createAutoBreadcrumb(block, placeholders);
+  createAutoBreadcrumb(block);
 }

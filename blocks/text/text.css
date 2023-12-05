@@ -1,3 +1,7 @@
+main .block.text.padded {
+  padding: 0 1rem;
+}
+
 main .block.text.narrow {
   width: 100%;
   padding-right: 0;
@@ -98,7 +102,6 @@ main .block.text.rounded-border  h4 {
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
   margin: 0 0 1.25rem;
-  
 }
 
 main .block.text.colored {

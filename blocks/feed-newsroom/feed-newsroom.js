@@ -2,7 +2,7 @@ import {
   buildBlock, createOptimizedPicture, decorateBlock,
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
-import { queryIndex, getLanguage } from '../../scripts/scripts.js';
+import { queryIndex, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -40,7 +40,10 @@ const resultParsers = {
         }
       });
       if (cardImage) {
-        row.push(cardImage);
+        const pathImg = document.createElement('a');
+        pathImg.href = result.path;
+        pathImg.append(cardImage);
+        row.push(pathImg);
       }
 
       if (cardBody) {
@@ -157,7 +160,6 @@ async function loadYearResults(block, blockType, results, blockCfg, locale) {
    * Feed block decorator to build feeds based on block configuration
    */
 export default async function decorate(block) {
-  let searchResults = 0;
   const chunk = 15;
   const blockType = 'highlight';
   const blockCfg = readBlockConfig(block);
@@ -177,10 +179,15 @@ export default async function decorate(block) {
     .toList()
     .filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) > 2000); });
   block.innerHTML = '';
-  // Creation of filter and year
+  // Creation of Category, Year and filter
   const filterDiv = document.createElement('div');
-  filterDiv.innerHTML = `<form action="#">
+  filterDiv.innerHTML = `<form action="#results">
   <div class="filter-nav">
+    <span>
+      <select class="form-control" name="" id="news_category">
+        <option value="">Category</option>
+        </select>
+    </span>
     <span>
       <select class="form-control" name="" id="news_year">
         <option value="">Year</option>
@@ -191,13 +198,36 @@ export default async function decorate(block) {
 </form>`;
   const uniqYears = Array.from(new Set(results.map((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return parseInt(itsDate[itsDate.length - 1], 10); })));
   // eslint-disable-next-line
-  const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='"+current+"'>" + current + "</option>"; return accum;},"");
-  filterDiv.querySelector('select').innerHTML = filterDiv.querySelector('select').innerHTML + yroptions;
+  const yroptions = uniqYears.reduce((accum, current) => { accum += "<option value='" + current + "'>" + current + "</option>"; return accum; }, "");
+  filterDiv.querySelector('#news_year').innerHTML = filterDiv.querySelector('#news_year').innerHTML + yroptions;
+  const categoryDetails = await fetchTagsOrCategories('', 'categories', 'newsroom', locale);
+  // eslint-disable-next-line
+  const categoryOptions = categoryDetails.reduce((accum, current) => { accum += "<option value='" + current.id + "'>" + current.name + "</option>"; return accum; }, "");
+  filterDiv.querySelector('#news_category').innerHTML = filterDiv.querySelector('#news_category').innerHTML + categoryOptions;
 
   filterDiv.querySelector('form .filter-nav button').addEventListener('click', () => {
-    const searchYear = Number(filterDiv.querySelector('form .filter-nav select').value);
-    searchResults = results.filter((x) => { const itsDate = getFormattedDate(new Date(parseInt(x[blockCfg.sort.trim().toLowerCase()], 10))).split(', '); return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear); });
-    loadYearResults(block, blockType, searchResults, blockCfg, locale);
+    const searchYear = Number(filterDiv.querySelector('form .filter-nav #news_year').value);
+    const searchCategory = filterDiv.querySelector('form .filter-nav #news_category').value;
+    let filteredResults = window.jslinq(results);
+    if (searchYear) {
+      filteredResults = filteredResults.where((el) => {
+        const itsDate = getFormattedDate(new Date(parseInt(el[blockCfg.sort.trim().toLowerCase()], 10))).split(', ');
+        return (parseInt(itsDate[itsDate.length - 1], 10) === searchYear);
+      });
+    }
+    if (searchCategory) {
+      filteredResults = filteredResults.where((el) => el.category === searchCategory);
+    }
+    loadYearResults(block, blockType, filteredResults.toList(), blockCfg, locale);
+    if (searchYear && !searchCategory) {
+      const { options } = filterDiv.querySelector('#news_category');
+      for (let index = 0; index < options.length; index += 1) {
+        if (options[index].text === 'News') {
+          options[index].selected = true;
+          break;
+        }
+      }
+    }
   });
   loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }

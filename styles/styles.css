@@ -109,6 +109,16 @@
   --heading-font-size-xxs: 14px;
   --heading-font-size-xxxs: 12px;
 
+  /* Heading Variables */
+  --h1-font-size-desktop: var(--heading-font-size-mxl);
+  --h1-font-size-mobile: var(--heading-font-size-m);
+  --h2-font-size-desktop: var(--heading-font-size-s);
+  --h2-font-size-mobile: var(--heading-font-size-ms);
+  --h3-font-size-desktop: var(--heading-font-size-ms);
+  --h3-font-size-mobile: var(--heading-font-size-xs);
+  --h4-font-size-desktop: var(--heading-font-size-xs);
+  --h4-font-size-mobile: var(--heading-font-size-mxs);
+
   /* Font Weight */
   --font-weight-small: 300;
   --font-weight-regular: 400;
@@ -128,7 +138,7 @@
   );
 
   /* button */
-  --button-background-color: #007cad;
+  --button-background-color: var(--secondary);
   --button-background-disabled-color: #ccc;
   --button-padding: 0 1.5em;
   --button-text-color: white;
@@ -144,6 +154,8 @@
   --split-lastquarter: 75%:25%;
   --split-firstthird: 34%:66%;
   --split-lastthird: 66%:34%;
+  --split-firsttwothird: 40%:60%;
+  --split-lasttwothird: 60%:40%;
 }
 
 
@@ -214,26 +226,26 @@ h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-mxl);
+  font-size: var(--h1-font-size-mobile);
   margin: 3.5rem 0 2rem;
 }
 
 h2 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--h2-font-size-mobile);
   margin: 3rem 0 1.5rem;
   font-weight: 500;
   line-height: 1.3em;
 }
 
 h3 {
-  font-size: var(--heading-font-size-ms);
+  font-size: var(--h3-font-size-mobile);
   margin: 2rem 0 0.75rem;
   font-weight: 500;
   line-height: 1.3em;
 }
 
 h4 {
-  font-size: var(--heading-font-size-mxs);
+  font-size: var(--h4-font-size-mobile);
   margin: 1.5em 0 0.5rem;
 }
 
@@ -344,6 +356,22 @@ a {
   color: var(--white);
 }
 
+.h1 h2, .h1 h3, .h1 h4 {
+  font-size: var(--h1-font-size-mobile)
+}
+
+.h2 h1, .h2 h3, .h2 h4 {
+  font-size: var(--h2-font-size-mobile);
+}
+
+.h3 h1, .h3 h2 .h3 h4 {
+  font-size: var(--h3-font-size-mobile);
+}
+
+.h4 h1, .h4 h2, .h4 h3 {
+  font-size: var(--h4-font-size-mobile);
+}
+
 main {
   max-width: 100vw;
 }
@@ -355,6 +383,10 @@ main .block.lead p {
 
 
 /* Mixins carry !important to override the default styles */
+.display-block * {
+  display: block!important;
+}
+
 .no-borders * {
   border: none!important;
   box-shadow: none!important;
@@ -464,7 +496,8 @@ main pre {
   margin-bottom: 0.2rem;
 }
 
-.icon.icon-angle-right-blue-bg {
+.icon.icon-angle-right-blue-bg,
+.icon.icon-angle-right-blue {
   background-image: url("/icons/angle-right-blue.svg");
   vertical-align: middle;
   width: 0.5rem;
@@ -498,11 +531,6 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-/* TODO: Remove this once this icon renders correctly */
-main table a > .icon-angle-right-blue {
-  transform: rotate(180deg);
 }
 
 a:any-link {
@@ -645,6 +673,14 @@ main .section .section-container {
 
 main .section.auto-top-spacing .section-container {
   margin-top: 3rem !important;
+}
+
+main .section .default-content-wrapper:first-of-type > :first-child {
+  margin-top: 0;
+}
+
+main .section .default-content-wrapper:last-of-type > :last-child {
+  margin-bottom: 0;
 }
 
 /* section - no-padding-top for h1 */
@@ -811,6 +847,21 @@ main .section.narrower.section.with-background-image > .section-container {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+
+main .section.narrower.section.with-background-image > picture {
+  margin: auto;
+  margin-block-end: 3rem;
+  max-width: 45rem;
+}
+
+main .section.narrower.section.with-background-image > .section-container > .link-wrapper {
+  width: 100%;
 }
 
 /* section - static */
@@ -858,7 +909,9 @@ main .section.three-columns-layout .section-container > div  {
   max-width: 50%;
 }
 
-main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.three-columns-layout.with-background-image > picture,
+main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
   bottom: 0;
 }
@@ -923,10 +976,6 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
-main .section.newsroom h4 {
-  color: #89d1e1;
-}
-
 main .section.bg-primary p {
   color: var(--white);
   margin-top: 0.5rem;
@@ -989,8 +1038,9 @@ main .section.float-image-right picture {
 .section.with-background-image > .tab-item.active > .section-container {
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
 }
 
@@ -1013,6 +1063,14 @@ main .section.float-image-right picture {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-top > .section-container {
+  margin-top: 1.5rem;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 /* END Section Styles END */
@@ -1078,6 +1136,10 @@ main .section.float-image-right picture {
   }
 
   /* section - small narrow */
+  main .section.small-narrow > .section-container {
+    padding: unset;
+  }
+
   main .section.small-narrow h1 {
     margin-bottom: 3.5rem;
   }
@@ -1207,7 +1269,7 @@ main .section.float-image-right picture {
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
-
+  
   /* END Section Styles END */
 }
 
@@ -1219,23 +1281,39 @@ main .section.float-image-right picture {
   }
 
   h1 {
-    font-size: var(--heading-font-size-xxl);
+    font-size: var(--h1-font-size-desktop);
     margin: 4.375rem 0 2.5rem;
   }
 
   h2 {
-    font-size: var(--heading-font-size-mxl);
+    font-size: var(--h2-font-size-desktop);
     margin: 3.5rem 0 2rem;
   }
 
   h3 {
-    font-size: var(--heading-font-size-m);
+    font-size: var(--h3-font-size-desktop);
     margin: 2.5rem 0 1rem;
   }
 
   h4 {
-    font-size: var(--heading-font-size-ms);
+    font-size: var(--h4-font-size-desktop);
     margin: 2rem 0 0.5rem;
+  }
+
+  .h1 h2, .h1 h3, .h1 h4 {
+    font-size: var(--h1-font-size-desktop)
+  }
+  
+  .h2 h1, .h2 h3, .h2 h4 {
+    font-size: var(--h2-font-size-desktop);
+  }
+  
+  .h3 h1, .h3 h2 .h3 h4 {
+    font-size: var(--h3-font-size-desktop);
+  }
+  
+  .h4 h1, .h4 h2, .h4 h3 {
+    font-size: var(--h4-font-size-desktop);
   }
 
   h5 {
