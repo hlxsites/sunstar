@@ -1,0 +1,60 @@
+body.philosophy main .section.narrower.section.with-background-image .section-container {
+    display: flex;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .section-container > div {
+    flex: 1;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block > div {
+    width: 100%;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block > div:last-child {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image a {
+    text-align: center;
+    font-size: 1rem;
+    padding: 2em;
+    font-weight: normal;
+    line-height: 1.2em;
+    border: 1px solid #fff;
+    border-radius: 5px;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block > div a {
+    background-color: #00a4d6;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block > div:first-child a {
+    background: #00587c;
+    width: 72%;
+  }
+  
+  body.philosophy main .section.narrower.section.with-background-image .link.block > div:nth-child(2) a {
+    background: #007CAD;
+    width: 85%;
+  }
+  
+  @media (min-width: 48rem) {
+    body.philosophy main .section.narrower.section.with-background-image a {
+      font-size: 1.5rem;
+    }
+  
+    body.philosophy main .section.narrower.section.with-background-image .link.block > div:last-child {
+      gap: 1.5rem;
+    }
+  }
+  
