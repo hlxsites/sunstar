@@ -186,15 +186,15 @@ main .table.padding-2 table td {
     padding: 2rem;
 }
 
-main .table.text-align-left tr td{
+main .table.text-align-left tr td {
     text-align: left;
 }
 
-main .table.text-align-right tr td{
+main .table.text-align-right tr td {
     text-align: right;
 }
 
-main .table.text-align-center tr td{
+main .table.text-align-center tr td {
     text-align: center;
 }
 
