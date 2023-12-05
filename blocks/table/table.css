@@ -254,7 +254,7 @@ main .table.highlight-first-column:not(.no-head) tr:first-of-type td{
 }
 
 main .table.highlight-first-column tr.highlight-item td:first-of-type{
-    background-color: var(--transparent-blue-light-color);
+    background-color: var(--transparent-grey-light-color);
     color: var(--secondary);
     text-align: center;
 }
