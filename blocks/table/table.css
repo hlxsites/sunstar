@@ -244,7 +244,7 @@ main .table.theme-blue table tbody tr:first-of-type td {
 }
 
 main .table.highlight-first-column:not(.no-head) tr:not(:first-of-type) td{
-    text-align: left;
+    text-align: center;
 }
 
 main .table.highlight-first-column:not(.no-head) tr:first-of-type td{
