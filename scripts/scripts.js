@@ -382,6 +382,15 @@ function decorateSectionsWithBackgrounds(element) {
   });
 }
 
+function decorateSectionsWithBackgroundColor(element) {
+  element
+    .querySelectorAll('.section[data-bg-color]')
+    .forEach((section) => {
+      const bgColors = section.getAttribute('data-bg-color').replaceAll(' ', '-').toLowerCase();
+      section.classList.add(bgColors);
+    });
+}
+
 /**
  * Enclose all text content of direct div children in p tags (for specified blocks)
  * @param {*} element
@@ -414,6 +423,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateSectionsWithBackgrounds(main);
+  decorateSectionsWithBackgroundColor(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
 }

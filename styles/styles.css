@@ -408,14 +408,6 @@ main .block.lead p {
   padding: 1rem 0!important;
 }
 
-.section.top-65 > .section-container {
-  top: 65% !important;
-}
-
-.section.top-20 > .section-container {
-  top: 20% !important;
-}
-
 .dark h6 {
   color: var(--hero-strong-color);
 }
@@ -914,7 +906,6 @@ main .section.three-columns-layout .section-container > div  {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-
 main .section.three-columns-layout.with-background-image > picture,
 main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
@@ -1080,7 +1071,7 @@ main .section.float-image-right picture {
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-bottom > .section-container {
-  top: 80%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -1291,7 +1282,7 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
-  
+
   /* END Section Styles END */
 }
 
@@ -1325,15 +1316,15 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   .h1 h2, .h1 h3, .h1 h4 {
     font-size: var(--h1-font-size-desktop)
   }
-  
+
   .h2 h1, .h2 h3, .h2 h4 {
     font-size: var(--h2-font-size-desktop);
   }
-  
+
   .h3 h1, .h3 h2 .h3 h4 {
     font-size: var(--h3-font-size-desktop);
   }
-  
+
   .h4 h1, .h4 h2, .h4 h3 {
     font-size: var(--h4-font-size-desktop);
   }
