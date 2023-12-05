@@ -17,6 +17,13 @@
       "isPalette": true,
       "includePaths": ["**.docx**"],
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:800px; height: calc(100vh - 60px)"
+    },
+    {
+      "id": "knownsense",
+      "title": "Known Sense",
+      "environments": ["edit"],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": ["**.docx**"]
     }
   ]
 }
