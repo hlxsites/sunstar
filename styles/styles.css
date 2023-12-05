@@ -838,7 +838,7 @@ main .section.narrower.section.with-background-image > .section-container {
   box-sizing: border-box;
 }
 
-main .section.narrower.section.with-background-image > picture {
+main .section.narrower-picture.section.with-background-image > picture {
   margin: auto;
   margin-block-end: 3rem;
   max-width: 45rem;
