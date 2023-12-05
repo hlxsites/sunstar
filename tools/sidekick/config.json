@@ -22,7 +22,7 @@
       "id": "knownsense",
       "title": "Known Sense",
       "environments": ["edit"],
-      "url": "/tools/sidekick/library.html",
+      "url": "/tools/sidekick/knownsense/library.html",
       "includePaths": ["**.docx**"]
     }
   ]

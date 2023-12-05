@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="Description" content="AEM Sidekick Library" />
+    <meta name="robots" content="noindex" />
+    <base href="/" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #ededed;
+        height: 100%;
+      }
+
+      helix-sidekick { display: none }
+    </style>
+    <title>Sidekick Library</title>
+  </head>
+
+  <body>
+    <script
+      type="module"
+      src="tools/sidekick/knownsense/knownsense.js"
+    ></script>
+    <!-- <script>
+      const library = document.createElement('sidekick-library')
+      library.config = {
+        base: '/sidekick/library.json',
+        icons: '/tools/sidekick/plugins/icons/icons.js',
+        placeholders: '/tools/sidekick/plugins/placeholders/placeholders.js'
+      }
+
+      document.body.prepend(library)
+    </script> -->
+  </body>
+</html>
