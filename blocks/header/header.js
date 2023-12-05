@@ -170,10 +170,6 @@ function getNavbarToggler() {
     <i></i>
   </span>
   </button>`);
-  const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
-  if (!widerScreenWidth.matches) {
-    navbarToggl.classList.add('visible');
-  }
   navbarToggl.addEventListener('click', () => {
     const navBottom = document.querySelector('.nav-bottom');
     const header = document.querySelector('header');
@@ -194,28 +190,30 @@ function getNavbarToggler() {
 function attachWindowResizeListeners(nav) {
   const header = document.querySelector('header');
   const { body } = document;
-  const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
-  widerScreenWidth.addEventListener('change', (event) => {
-    const toggler = nav.querySelector('.navbar-toggler');
-    if (event.matches) {
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        header.classList.remove('menu-open');
-        body.classList.remove('fixed');
+  window.addEventListener('viewportResize', (event) => {
+    if (event.detail.widthRem > 77) {
+      // For Desktop View
+      const toggler = nav.querySelector('.navbar-toggler');
+      if (event.matches) {
+        if (nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          header.classList.remove('menu-open');
+          body.classList.remove('fixed');
+        }
+        if (toggler.classList.contains('visible')) {
+          toggler.classList.remove('visible');
+        }
+        const visibleMegaDrop = nav.querySelector('.mega-dropdown.visible');
+        if (visibleMegaDrop) {
+          visibleMegaDrop.classList.remove('visible');
+        }
+        const backButton = nav.querySelector('.menu-back-btn');
+        if (backButton) {
+          backButton.remove();
+        }
+      } else {
+        toggler.classList.add('visible');
       }
-      if (toggler.classList.contains('visible')) {
-        toggler.classList.remove('visible');
-      }
-      const visibleMegaDrop = nav.querySelector('.mega-dropdown.visible');
-      if (visibleMegaDrop) {
-        visibleMegaDrop.classList.remove('visible');
-      }
-      const backButton = nav.querySelector('.menu-back-btn');
-      if (backButton) {
-        backButton.remove();
-      }
-    } else {
-      toggler.classList.add('visible');
     }
   }, true);
 }

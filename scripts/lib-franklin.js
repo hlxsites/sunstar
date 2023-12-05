@@ -775,6 +775,30 @@ export function decorateRenderHints(block) {
 export function isInternalPage() {
   return getHref().indexOf('/sidekick/blocks/') > 0 || getHref().indexOf('/_tools/') > 0;
 }
+
+function sendResizeEvent() {
+  const heightPx = window.innerHeight || document.documentElement.clientHeight;
+  const widthPx = window.innerWidth || document.documentElement.clientWidth;
+
+  const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  const heightRem = heightPx / baseFontSize;
+  const widthRem = widthPx / baseFontSize;
+
+  // Create a new custom event with custom parameters
+  const resizeEvent = new CustomEvent('viewportResize', {
+    detail: {
+      heightPx,
+      widthPx,
+      heightRem,
+      widthRem,
+    },
+  });
+
+  window.dispatchEvent(resizeEvent);
+}
+
+window.addEventListener('resize', sendResizeEvent);
+
 /**
  * Auto initializiation.
  */

@@ -17,15 +17,14 @@ function buildTaglist(taglist, ul, tagTitle) {
     }
   });
 
-  const mediaQueryList = window.matchMedia('(min-width: 62rem)');
   const listener = (evt) => {
-    if (evt.matches) {
+    if (evt.detail.widthRem > 62) {
+      // For Desktop View
       ul.classList.remove('visible');
       taglist.classList.remove('visible');
     }
   };
-  mediaQueryList.addEventListener('change', listener);
-  listener(mediaQueryList);
+  window.addEventListener('viewportResize', listener);
   taglist.append(ul);
 }
 
