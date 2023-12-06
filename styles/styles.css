@@ -647,6 +647,7 @@ main .block.centered {
   position: relative;
 }
 
+
 /* START Section Styles START */
 
 main .section .section-container {
@@ -1253,7 +1254,7 @@ main .section.float-image-right picture {
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
-  
+
   /* END Section Styles END */
 }
 
@@ -1287,15 +1288,15 @@ main .section.float-image-right picture {
   .h1 h2, .h1 h3, .h1 h4 {
     font-size: var(--h1-font-size-desktop)
   }
-  
+
   .h2 h1, .h2 h3, .h2 h4 {
     font-size: var(--h2-font-size-desktop);
   }
-  
+
   .h3 h1, .h3 h2 .h3 h4 {
     font-size: var(--h3-font-size-desktop);
   }
-  
+
   .h4 h1, .h4 h2, .h4 h3 {
     font-size: var(--h4-font-size-desktop);
   }

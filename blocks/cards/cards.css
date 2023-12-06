@@ -221,7 +221,17 @@ main .cards.machine-parts .cards-card-image {
   height: 9rem;
   flex-shrink: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+main .cards .cards-card-image span.icon.icon-scientific-literature-1 {
+  background-image: url("/icons/scientific-literature-1.svg");
+  width: 84px;
+  height: 84px;
+}
+
 
 main .cards.machine-parts .cards-card-body {
   width: auto;

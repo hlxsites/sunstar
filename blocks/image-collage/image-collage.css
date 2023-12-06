@@ -195,14 +195,32 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
   flex-direction: column-reverse;
 }
 
-image-collage.medium {
+.image-collage.medium {
   font-size: var(--font-size-small);
   color: #0d66c2;
 }
 
-.medium .icon {
+.image-collage.medium .icon {
   width: auto;
   height: auto;
+}
+
+.image-collage.medium .icon.icon-mouth-and-body {
+  background-image: url("/icons/mouth-and-body.svg");
+  width: 120px;
+  height: 120px;
+}
+
+.image-collage.medium .icon.icon-health-and-beauty {
+  background-image: url("/icons/health-and-beauty.svg");
+  width: 120px;
+  height: 120px;
+}
+
+.image-collage.medium .icon.icon-safety-and-environment {
+  background-image: url("/icons/safety-and-environment.svg");
+  width: 120px;
+  height: 120px;
 }
 
 @media (min-width: 62rem) {
@@ -283,7 +301,7 @@ image-collage.medium {
   main .image-collage[class*='boxy-col-'].aublocked {
     flex-direction: column;
   }
-  
+
   main .image-collage.boxy-col-1::after,
   main .image-collage.boxy-col-2::after {
     content: "";
