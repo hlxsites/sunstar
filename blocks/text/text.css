@@ -13,6 +13,16 @@ main .block.text.narrow {
   margin-bottom: 3.5rem;
 }
 
+main .block.text.narrower {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 45rem;
+  margin-bottom: 3.5rem;
+}
+
 main .block.text.left-aligned h1,
 main .block.text.left-aligned h2,
 main .block.text.left-aligned h3,
@@ -66,7 +76,7 @@ main .block.text.muted,
 main .block.text.muted p {
   color: var(--steel-blue);
   font-size: var(--body-font-size-xs);
-  padding: 0; 
+  padding: 0;
   margin: 0;
 }
 

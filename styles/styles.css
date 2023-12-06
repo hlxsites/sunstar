@@ -22,6 +22,9 @@
   --black: #000;
   --blue: #007bff;
   --beaublue: #bedceb;
+  --granny-smith-apple: #9ce69b;
+  --alice-blue: #e8f5ff;
+  --caribbean-green: #00be91;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -393,8 +396,16 @@ main .block.lead p {
   width: 30%!important;
 }
 
+.float-left {
+  float: left;
+}
+
 .float-right {
   float: right;
+}
+
+.padded-block {
+  padding: 1rem 0!important;
 }
 
 .dark h6 {
@@ -650,6 +661,7 @@ main .block.centered {
 
 /* START Section Styles START */
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -937,6 +949,21 @@ main .section.beau-blue {
   background-color: var(--beaublue);
 }
 
+/* section - apple-green */
+main .section.apple-green {
+  background-color: var(--granny-smith-apple);
+}
+
+/* section - Alice Blue */
+main .section.alice-blue {
+  background-color: var(--alice-blue);
+}
+
+/* section - apple-caribbean-green gradient */
+main .section.apple-caribbean-green {
+  background: linear-gradient(to bottom, var(--granny-smith-apple) 28%, var(--caribbean-green) 100%);
+}
+
 /* section - light-blue */
 main .section.light-blue {
   background-color: var(--transparent-blue-light-color);
@@ -1045,15 +1072,16 @@ main .section.float-image-right picture {
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-bottom > .section-container {
-  top: 80%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image.align-top > .section-container {
+main .section.with-background-image.align-top > .section-container, main .section.narrow.with-background-image.align-top > .section-container, main .section.narrower.with-background-image.align-top > .section-container  {
   margin-top: 1.5rem;
   top: 0%;
+  height: auto;
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -1161,8 +1189,9 @@ main .section.float-image-right picture {
   }
 
   /* section - narrow/narrower with background image compatibility */
-  main .section.narrow.section.with-background-image > .section-container,
-  main .section.narrower.section.with-background-image > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrow.with-background-image > .section-container,
+  main .section.narrower.with-background-image > .section-container {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -223,6 +223,10 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
   height: 120px;
 }
 
+main .image-collage.native-image-sizes img {
+  width: auto;
+}
+
 @media (min-width: 62rem) {
   main .image-collage {
     columns: 2;
@@ -318,9 +322,19 @@ main div.autoblocked.image-collage[class*='boxy-col-'].caption-above.block > div
     flex: 0 0 calc(100% / 3 - 2rem);
   }
 
+  main .image-collage.boxy-col-4::after {
+    content: "";
+    flex: 0 0 calc(100% / 4 - 2rem);
+  }
+
   main .image-collage.boxy-col-1 > div,
   main .image-collage.boxy-col-2 > div {
     flex: 0 0 calc(100% / 2 - 2rem);
+  }
+
+
+  main .image-collage.boxy-col-4 > div {
+    flex: 0 0 calc(100% / 4 - 2rem);
   }
 
   main .image-collage.boxy-col-3 > div {

@@ -66,11 +66,6 @@
   position: relative;
 }
 
-.block.quote.column .quote-content h2 {
-  margin: 0;
-  padding-inline: 32px;
-}
-
 .block.quote.column .quote-content::before, .block.quote.column .quote-content::after {
   width: 47px;
   height: 36px;
@@ -89,6 +84,18 @@
 
 .block.quote.column .quote-content::after {
   background-image: url("/assets/quate-bottom-2x.png");
+  bottom: 0;
+  right: 0;
+}
+
+.block.quote.column.gray-icon .quote-content::before {
+  background-image: url("/assets/quate-top-gray-2x.png");
+  top: 0;
+  left: -32px;
+}
+
+.block.quote.column.gray-icon .quote-content::after {
+  background-image: url("/assets/quate-bottom-gray-2x.png");
   bottom: 0;
   right: 0;
 }
