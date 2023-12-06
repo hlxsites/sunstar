@@ -18,8 +18,8 @@ function buildTaglist(taglist, ul, tagTitle) {
   });
 
   const listener = (evt) => {
-    if (evt.detail.widthRem > 62) {
-      // For Desktop View
+    if (evt.detail.deviceType !== 'Mobile') {
+      // For Tablet & Desktop View
       ul.classList.remove('visible');
       taglist.classList.remove('visible');
     }

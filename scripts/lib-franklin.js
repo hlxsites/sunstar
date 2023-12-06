@@ -784,6 +784,15 @@ function sendResizeEvent() {
   const heightRem = heightPx / baseFontSize;
   const widthRem = widthPx / baseFontSize;
 
+  let deviceType;
+  if (widthRem < 62) {
+    deviceType = 'Mobile';
+  } else if (widthRem >= 62 && widthRem < 77) {
+    deviceType = 'Tablet';
+  } else {
+    deviceType = 'Desktop';
+  }
+
   // Create a new custom event with custom parameters
   const resizeEvent = new CustomEvent('viewportResize', {
     detail: {
@@ -791,6 +800,7 @@ function sendResizeEvent() {
       widthPx,
       heightRem,
       widthRem,
+      deviceType,
     },
   });
 

@@ -191,7 +191,7 @@ function attachWindowResizeListeners(nav) {
   const header = document.querySelector('header');
   const { body } = document;
   window.addEventListener('viewportResize', (event) => {
-    if (event.detail.widthRem > 77) {
+    if (event.detail.deviceType === 'Desktop') {
       // For Desktop View
       const toggler = nav.querySelector('.navbar-toggler');
       if (event.matches) {
