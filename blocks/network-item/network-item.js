@@ -65,7 +65,15 @@ function createOurHrDiv(placeholders) {
   const ourHrDiv = document.createElement('div');
   ourHrDiv.classList.add('our-hr');
   const ourHrA = document.createElement('a');
-  ourHrA.href = placeholders['our-hr-href'];
+  if (placeholders['our-hr-href']) {
+    const url = new URL(placeholders['our-hr-href']);
+    url.hostname = window.location.hostname;
+    if (window.location.port) {
+      url.port = window.location.port;
+    }
+    ourHrA.href = url.href;
+  }
+
   ourHrA.innerText = placeholders['our-hr-text'];
   ourHrDiv.append(ourHrA);
   return ourHrDiv;
