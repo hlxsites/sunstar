@@ -1,0 +1,61 @@
+body.sustainability main .composite .composite-container h2, body.sustainability main .composite .composite-container h3 {
+    margin: 1rem;
+}
+
+
+body.sustainability main .section.image-at-bottom-of-section.with-background-image .section-container picture img {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+body.sustainability main .section.half-image-sizes.with-background-image .section-container picture img {
+    width: 20%;
+}
+
+/* only Desktop */
+@media (min-width: 77rem) {
+    body.sustainability main .section.bg-image-max-height > .background-image img {
+        height: 700px;
+    }
+
+}
+
+/* only Tablet */
+@media (min-width: 62rem) and (max-width: 77rem) {
+    body.sustainability main .section.bg-image-max-height > .background-image img {
+        height: 530px;
+    }
+
+    body.sustainability main .block.composite.two-column .composite-item-right img {
+        width: 80%;
+    }
+
+}
+
+/* Desktop & Tablet */
+@media (min-width: 62rem) {
+    body.sustainability main .block.composite.two-column .composite-item-right img {
+        float: right;
+    }
+
+}
+
+/* only Mobile */
+@media (max-width: 62rem) {
+    body.sustainability main .section.bg-image-max-height > .background-image img {
+        height: auto;
+    }
+
+    body.sustainability main .composite .composite-container h1 {
+        margin: 0;
+    }
+
+}
+
+@media (max-width: 42rem) {
+    body.sustainability main .block.composite.two-column .composite-item-left {
+        grid-column: 2 / 3;
+        justify-self: start;
+    }
+}

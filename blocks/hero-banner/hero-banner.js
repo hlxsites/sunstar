@@ -98,32 +98,80 @@ function decorateTextContent(headingRow, target, placeholders, overlap) {
   target.appendChild(heroBannerMainDiv);
 }
 
-export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders(getLanguage());
-
-  const rows = [...block.children];
-  const mediaRow = rows.at(0);
-  const contentRow = rows.at(1);
-
-  const overlap = block.classList.contains('overlap');
-
-  if (mediaRow) {
-    if (mediaRow.querySelector('a') !== null) {
-      decorateVideo(mediaRow, block);
-    } else {
-      decorateBackGroundImage(mediaRow, block);
+function determineCompositeItemClass(item, columns) {
+  if (columns.length <= 1) {
+    item.className = 'composite-item-full';
+  } else if (columns.length === 2) {
+    if (columns[0].innerHTML.trim() === '' && columns[1].innerHTML.trim() !== '') {
+      item.className = 'composite-item-right';
+    } else if (columns[0].innerHTML.trim() !== '' && columns[1].innerHTML.trim() === '') {
+      item.className = 'composite-item-left';
     }
   }
-  if (contentRow) {
-    decorateTextContent(contentRow, block, placeholders, overlap);
-  }
+}
 
-  if (block.classList && block.classList.contains('overlap')) {
-    const cb = block.closest('.section.full-width.hero-banner-container');
-    if (cb) {
-      cb.classList.add('overlap');
-      if (block.classList.contains('small-box')) {
-        cb.classList.add('hero-small-box');
+function appendColumnContent(item, column) {
+  if (column.children.length > 0) {
+    Array.from(column.children).forEach((child) => {
+      item.appendChild(child.cloneNode(true));
+    });
+  } else {
+    column.classList = '';
+    item.appendChild(column);
+  }
+}
+
+export default async function decorate(block) {
+  const rows = [...block.children];
+
+  if (block.classList && block.classList.contains('composite')) {
+    const compositeContainer = document.createElement('div');
+    compositeContainer.className = 'composite-container';
+
+    rows.forEach((row) => {
+      const columns = row.querySelectorAll('div');
+
+      const compositeItem = document.createElement('div');
+      determineCompositeItemClass(compositeItem, columns);
+
+      columns.forEach((column) => {
+        if (column && column.innerHTML.trim() !== '') {
+          appendColumnContent(compositeItem, column);
+        }
+      });
+
+      compositeContainer.appendChild(compositeItem);
+    });
+
+    block.innerHTML = '';
+    block.appendChild(compositeContainer);
+  } else {
+    const placeholders = await fetchPlaceholders(getLanguage());
+
+    const mediaRow = rows.at(0);
+    const contentRow = rows.at(1);
+
+    const overlap = block.classList.contains('overlap');
+
+    if (mediaRow) {
+      if (mediaRow.querySelector('a') !== null) {
+        decorateVideo(mediaRow, block);
+      } else {
+        decorateBackGroundImage(mediaRow, block);
+      }
+    }
+
+    if (contentRow) {
+      decorateTextContent(contentRow, block, placeholders, overlap);
+    }
+
+    if (block.classList && block.classList.contains('overlap')) {
+      const cb = block.closest('.section.full-width.hero-banner-container');
+      if (cb) {
+        cb.classList.add('overlap');
+        if (block.classList.contains('small-box')) {
+          cb.classList.add('hero-small-box');
+        }
       }
     }
   }

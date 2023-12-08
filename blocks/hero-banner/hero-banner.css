@@ -3,6 +3,49 @@
     margin-bottom: 2rem;
 }
 
+main .block.composite.two-column .composite-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
+}
+
+main .block.composite.two-column .composite-item-full {
+    grid-column: 1/-1;
+}
+
+main .block.composite.two-column .composite-item-right {
+    align-self: flex-end;
+    grid-column: 2 / -1;
+}
+
+main .block.composite.two-column .composite-item-left {
+    grid-column: 1 / 2;
+    justify-self: start;
+}
+
+main .block.composite.padded {
+    padding: 0 2rem;
+}
+
+.block.composite.button a {
+    font-size: var(--body-font-size-m);
+    background: var(--secondary);
+    border-color: var(--primary);
+    color: var(--white);
+    min-width: 160px;
+    height: 48px;
+    padding: 0 1.5em;
+    font-weight: var(--font-weight-bold);
+    display: inline-flex;
+    justify-content: center;
+    user-select: auto;
+    text-decoration: none;
+}
+
+.block.composite.button a:hover {
+    background: var(--link-sky-color);
+}
+
 .hero-banner.careers {
     background-image: url("/assets/careers-mobile-top.jpg");
 }
@@ -43,6 +86,11 @@
 
 .hero-banner.image-left img {
     object-position: 20% 0;
+}
+
+.hero-banner.native-image-sizes img {
+    width: auto;
+    height: auto;
 }
 
 .hero-banner .hero-banner-heading-section {
@@ -414,5 +462,9 @@
 
     .hero-banner.overlap.small-box .hero-banner-text-wrapper h2 {
         font-size: var(--heading-font-size-l);
+    }
+
+    main .block.composite .composite-container {
+        padding: 1rem 2rem;
     }
 }
