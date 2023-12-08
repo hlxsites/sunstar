@@ -46,12 +46,12 @@ body.unique main .section.image-before > .section-container {
   }
 
   body.unique main .section.image-before-after-t5 > div p img {
-    width: 490px;
-    height: 260px;
+    width: 392px;
+    height: 208;
     position: absolute;
-    top: 2vh;
+    top: -2vh;
     z-index: 1;
-    left: 51%;
+    left: 54%;
     transform: translate(-50%,-50%);
   }
   
@@ -107,6 +107,10 @@ body.unique main .section.image-before > .section-container {
   body.unique main .section.image-after > div p img {
       display: none;
   }
+
+  body.unique main .section.image-before.image-before-after-t5 > div p img {
+    display: block;
+}
   
   
   body.unique main .section > .section-container h5 {
@@ -126,7 +130,7 @@ body.unique main .section.image-before > .section-container {
     left: 0;
   }
 
-  body.unique .small-images.columns.block img {
+  body.unique .small-images.columns.block.text-and-image-in-column img {
     width: 10%;
   }
   
@@ -144,6 +148,16 @@ body.unique main .section.image-before > .section-container {
       body.unique main .section.with-background-image.title > .section-container {
           max-width: 70%;
           right: 8vw;
+      }
+
+      body.unique main .section.image-before-after-t5 > div p img {
+        width: 490px;
+        height: 260px;
+        position: absolute;
+        top: 2vh;
+        z-index: 1;
+        left: 51%;
+        transform: translate(-50%,-50%);
       }
   
   }
