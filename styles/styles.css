@@ -714,12 +714,6 @@ main .section.full-width > .tab-item.active > .section-container {
   padding-right: 0;
 }
 
-/* section - full-height */
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.full-height > .section-container {
-  height: 100%;
-}
-
 /* section - social */
 main .section.social-media {
   padding: 4rem 0;
