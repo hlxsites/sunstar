@@ -44,6 +44,16 @@ body.unique main .section.image-before > .section-container {
     z-index: 1;
     right: 90px;
   }
+
+  body.unique main .section.image-before-after-t5 > div p img {
+    width: 490px;
+    height: 260px;
+    position: absolute;
+    top: 2vh;
+    z-index: 1;
+    left: 51%;
+    transform: translate(-50%,-50%);
+  }
   
   body.unique main .section.right > div p img {
     right: 0;
@@ -77,10 +87,9 @@ body.unique main .section.image-before > .section-container {
       transform: translate(-50%, -50%);
   }
   
-  body.unique .section.with-background-image.align-bottom.text-shadow h1 {
+  body.unique .section.underfill.with-background-image.align-bottom.text-shadow h1 {
       text-shadow: 0 0 120px #490c61, 0 0 100px #490c61, 0 0 90px #490c61, 0 0 80px #490c61, 0 0 80px #490c61, 0 0 90px #490c61, 0 0 0 #490c61;
   }
-  
   
   
   /* stylelint-disable-next-line no-descending-specificity */
@@ -115,6 +124,10 @@ body.unique main .section.image-before > .section-container {
 
   body.unique .block.quote::before {
     left: 0;
+  }
+
+  body.unique .small-images.columns.block img {
+    width: 10%;
   }
   
   
