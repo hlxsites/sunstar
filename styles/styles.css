@@ -1058,7 +1058,7 @@ main .section.float-image-right picture {
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-right > .section-container,
 .section.with-background-image.align-right > .tab-item.active > .section-container {
-  right: 0;
+  right: -50%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
