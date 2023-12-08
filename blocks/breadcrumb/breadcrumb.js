@@ -5,7 +5,6 @@ import {
   getLanguangeSpecificPath,
   fetchTagsOrCategories,
   setMetaTag,
-  getViewPort,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
@@ -52,7 +51,7 @@ function setTagPageTitle(tagPageTitle) {
 }
 
 async function createAutoBreadcrumb(block) {
-  if (getViewPort() === 'mobile') {
+  if (window.deviceType === 'Mobile') {
     return;
   }
   const placeholders = await fetchPlaceholders(getLanguage());

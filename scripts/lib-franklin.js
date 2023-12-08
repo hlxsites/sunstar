@@ -776,38 +776,52 @@ export function isInternalPage() {
   return getHref().indexOf('/sidekick/blocks/') > 0 || getHref().indexOf('/_tools/') > 0;
 }
 
-function sendResizeEvent() {
-  const heightPx = window.innerHeight || document.documentElement.clientHeight;
-  const widthPx = window.innerWidth || document.documentElement.clientWidth;
-
-  const baseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-  const heightRem = heightPx / baseFontSize;
-  const widthRem = widthPx / baseFontSize;
-
+const Viewport = (function initializeViewport() {
   let deviceType;
-  if (widthRem < 62) {
-    deviceType = 'Mobile';
-  } else if (widthRem >= 62 && widthRem < 77) {
-    deviceType = 'Tablet';
-  } else {
-    deviceType = 'Desktop';
+
+  const breakpoints = {
+    mobile: window.matchMedia('(max-width: 61.99rem)'),
+    tablet: window.matchMedia('(min-width: 62rem) and (max-width: 76.99rem)'),
+    desktop: window.matchMedia('(min-width: 77rem)'),
+  };
+
+  function sendResizeEvent() {
+    if (breakpoints.mobile.matches) {
+      deviceType = 'Mobile';
+    } else if (breakpoints.tablet.matches) {
+      deviceType = 'Tablet';
+    } else {
+      deviceType = 'Desktop';
+    }
+
+    const resizeEvent = new CustomEvent('viewportResize', {
+      detail: { deviceType },
+    });
+
+    window.dispatchEvent(resizeEvent);
   }
 
-  // Create a new custom event with custom parameters
-  const resizeEvent = new CustomEvent('viewportResize', {
-    detail: {
-      heightPx,
-      widthPx,
-      heightRem,
-      widthRem,
-      deviceType,
-    },
+  function getDeviceType() {
+    return deviceType;
+  }
+
+  Object.values(breakpoints).forEach((breakpoint) => {
+    breakpoint.addEventListener('change', sendResizeEvent);
   });
 
-  window.dispatchEvent(resizeEvent);
-}
+  sendResizeEvent();
 
-window.addEventListener('resize', sendResizeEvent);
+  return {
+    getDeviceType,
+  };
+}());
+
+// for initial page load
+window.deviceType = Viewport.getDeviceType();
+
+window.addEventListener('viewportResize', (event) => {
+  window.deviceType = event.detail.deviceType;
+});
 
 /**
  * Auto initializiation.

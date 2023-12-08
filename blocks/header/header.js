@@ -170,6 +170,10 @@ function getNavbarToggler() {
     <i></i>
   </span>
   </button>`);
+
+  if (window.deviceType !== 'Desktop') {
+    navbarToggl.classList.add('visible');
+  }
   navbarToggl.addEventListener('click', () => {
     const navBottom = document.querySelector('.nav-bottom');
     const header = document.querySelector('header');
@@ -192,7 +196,6 @@ function attachWindowResizeListeners(nav) {
   const { body } = document;
   window.addEventListener('viewportResize', (event) => {
     if (event.detail.deviceType === 'Desktop') {
-      // For Desktop View
       const toggler = nav.querySelector('.navbar-toggler');
       if (event.matches) {
         if (nav.classList.contains('open')) {

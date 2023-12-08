@@ -335,17 +335,6 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   });
 }
 
-export function getViewPort() {
-  const { width } = getWindowSize();
-  if (width >= 1232) {
-    return 'desktop';
-  }
-  if (width >= 992) {
-    return 'tablet';
-  }
-  return 'mobile';
-}
-
 function decorateSectionsWithBackgrounds(element) {
   const sections = element.querySelectorAll(`.section[data-bg-image],
   .section[data-bg-image-desktop],
@@ -356,13 +345,13 @@ function decorateSectionsWithBackgrounds(element) {
     const bgImageDesktop = section.getAttribute('data-bg-image-desktop');
     const bgImageMobile = section.getAttribute('data-bg-image-mobile');
     const bgImageTablet = section.getAttribute('data-bg-image-tablet');
-    const viewPort = getViewPort();
+    const viewPort = window.deviceType;
     let background;
     switch (viewPort) {
-      case 'mobile':
+      case 'Mobile':
         background = bgImageMobile || bgImageTablet || bgImageDesktop || bgImage;
         break;
-      case 'tablet':
+      case 'Tablet':
         background = bgImageTablet || bgImageDesktop || bgImage || bgImageMobile;
         break;
       default:
