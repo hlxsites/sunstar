@@ -49,7 +49,7 @@ body.unique main .section.image-before > .section-container {
     width: 392px;
     height: 208;
     position: absolute;
-    top: -2vh;
+    top: 6vh;
     z-index: 1;
     left: 54%;
     transform: translate(-50%,-50%);
@@ -75,11 +75,20 @@ body.unique main .section.image-before > .section-container {
   body.unique main .section.bg-dark-indigo {
       background-color: var(--underfill-dark-indigo);
   }
+
+  body.unique .section.brown-rice h1,h2,h3,h4,h5,h6 {
+    color: var(--brown-rice-color);
+  }
   
   body.unique main .section > .section-container h1 {
       font-size: var(--heading-font-size-xxl);
   }
-  
+
+  /* section - brown-rice */
+    main .section.brown-rice {
+      background-color: var(--brown-rice-background);
+  }
+
   /* stylelint-disable-next-line no-descending-specificity */
   body.unique .section.with-background-image.align-bottom > .section-container {
       top: 60%;
@@ -133,6 +142,26 @@ body.unique main .section.image-before > .section-container {
   body.unique .small-images.columns.block.text-and-image-in-column img {
     width: 10%;
   }
+
+  body.unique .section.brown-rice.nolink .cards > ul > li {
+    background-color: var(--brown-rice-background);
+  }
+
+  body.unique .section.brown-rice.nolink .cards > ul > li .cards-card-image {
+    height: 190px;
+  }
+
+  body.unique .brown-rice .block.cards {
+    margin: 0;
+  }
+
+  body.unique .brown-rice.section.cards-container {
+    margin: 0;
+  }
+
+  body.unique .brown-rice .cards .cards-card-body {
+    padding: 0;
+  }
   
   
   @media (min-width: 62rem) {
@@ -159,6 +188,10 @@ body.unique main .section.image-before > .section-container {
         left: 51%;
         transform: translate(-50%,-50%);
       }
+
+      body.unique .brown-rice .cards.grid > ul {
+        grid-template-columns: repeat(auto-fill, 20rem);
+      }
   
   }
   
@@ -176,6 +209,11 @@ body.unique main .section.image-before > .section-container {
           max-width: 60%;
           right: 8vw;
       }
+
+      body.unique .brown-rice .cards.grid > ul {
+        grid-template-columns: repeat(auto-fill, 15rem);
+      }
+      
   }
   
   
