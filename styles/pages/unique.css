@@ -119,7 +119,7 @@ body.unique main .section.image-before > .section-container {
 
   body.unique main .section.image-before.image-before-after-t5 > div p img {
     display: block;
-}
+  }
   
   
   body.unique main .section > .section-container h5 {
@@ -129,20 +129,46 @@ body.unique main .section.image-before > .section-container {
   body.unique main .section .text-col {
       line-height: 1.8;
   }
-  
-  body.unique main .section.with-background-image.title > .section-container {
-      max-width: 70%;
-      right: 8vw;
-  }
 
-  body.unique .block.quote::before {
-    left: 0;
+  body.unique main .section.with-background-image.title > .section-container {
+    max-width: 70%;
+    right: 8vw;
   }
 
   body.unique .small-images.columns.block.text-and-image-in-column img {
     width: 10%;
   }
 
+  body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div {
+    gap: 0;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type {
+    flex-basis: 70%;
+  }
+
+  body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
+    width: 100%;
+    flex-basis: 35%;
+  }
+
+  body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type img {
+    object-fit: cover;
+  }
+
+  body.unique .block.quote::before {
+    left: 0;
+  }
+  
   body.unique .section.brown-rice.nolink .cards > ul > li {
     background-color: var(--brown-rice-background);
   }
@@ -163,7 +189,7 @@ body.unique main .section.image-before > .section-container {
     padding: 0;
   }
   
-  
+
   @media (min-width: 62rem) {
       body.unique main .section.image-before > div p img {
           display: block;
@@ -191,6 +217,16 @@ body.unique main .section.image-before > .section-container {
 
       body.unique .brown-rice .cards.grid > ul {
         grid-template-columns: repeat(auto-fill, 20rem);
+      }
+
+      body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type img {
+        object-fit: cover;
+        flex-basis: 100%;
+      }
+
+      body.unique .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
+        width: 100%;
+        flex-basis: 35%;
       }
   
   }
