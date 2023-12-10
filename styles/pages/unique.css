@@ -211,7 +211,7 @@ body.unique main .section.image-before > .section-container {
       }
 
       body.unique main .section.with-background-image > .section-container {
-        max-width: 60%;
+        max-width: 50%;
         right: 8vw;
       }
 
