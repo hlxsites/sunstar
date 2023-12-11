@@ -3,7 +3,7 @@ body.sustainability main .section.full-height > .section-container {
 }
 
 body.sustainability main .block.hero-banner.composite .composite-container h2, body.sustainability main .block.hero-banner.composite .composite-container h3 {
-    margin: 1rem;
+    margin: 1rem 0;
 }
 
 body.sustainability main .section.bg-image-max-height > .background-image img {
