@@ -1,10 +1,10 @@
 .block.hotspot {
-    position: absolute;
+    position: relative;
 }
 
 .block.hotspot.right {
    right: -15rem;
-   top: -10rem;
+   top: 0;
 }
 
 .block.hotspot img {
@@ -15,32 +15,27 @@
 
 
 .block.hotspot > div:nth-child(n+2) {
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    background: #f30;
+    border-radius: 5px;
+    background: white;
     position: absolute;
+    width: 25vw;
     cursor: pointer;
-}
-
-.block.hotspot > div:nth-child(n+2):hover::after,
-.block.hotspot > div:nth-child(n+2):focus::after,
-.block.hotspot > div:nth-child(n+2).onclick::after {
-    opacity: 1;
     content: attr(data);
-    position: absolute;
     padding: 5px;
-    width: 20vw;
-    left: -150%;
-    bottom: 150%;
-    background-color: var(--text-white);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--text-color);
-    font-size: var(--body-font-size-s);
+    font-size: var(--body-font-size-m);
     transition: opacity 0.4s linear;
     z-index: +1;
+    color: var(--primary);
 }
+
+@media (min-width: 62rem) {
+    .block.hotspot {
+        position: absolute;
+    }
+
+    .block.hotspot > div:nth-child(n+2) {
+        width: 7vw
+    }
+}
+
+
