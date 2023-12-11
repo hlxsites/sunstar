@@ -8,6 +8,7 @@ body.sustainability main .block.hero-banner.composite .composite-container h2, b
 
 body.sustainability main .section.bg-image-max-height > .background-image img {
     height: auto;
+    min-height: 700px;
 }
 
 body.sustainability main .section.image-at-bottom-of-section.with-background-image .section-container picture img {
