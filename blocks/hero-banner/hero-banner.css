@@ -3,31 +3,31 @@
     margin-bottom: 2rem;
 }
 
-main .block.composite.two-column .composite-container {
+main .block.hero-banner.composite.two-column .composite-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 1rem;
 }
 
-main .block.composite.two-column .composite-item-full {
+main .block.hero-banner.composite.two-column .composite-item-full {
     grid-column: 1/-1;
 }
 
-main .block.composite.two-column .composite-item-right {
+main .block.hero-banner.composite.two-column .composite-item-right {
     align-self: flex-end;
     grid-column: 2 / -1;
 }
 
-main .block.composite.two-column .composite-item-left {
+main .block.hero-banner.composite.two-column .composite-item-left {
     grid-column: 1 / 2;
     justify-self: start;
 }
 
-main .block.composite.padded {
+main .block.hero-banner.composite.padded {
     padding: 0 2rem;
 }
 
-.block.composite.button a {
+main .block.hero-banner.composite.button a {
     font-size: var(--body-font-size-m);
     background: var(--secondary);
     border-color: var(--primary);
@@ -42,7 +42,7 @@ main .block.composite.padded {
     text-decoration: none;
 }
 
-.block.composite.button a:hover {
+main .block.hero-banner.composite.button a:hover {
     background: var(--link-sky-color);
 }
 
