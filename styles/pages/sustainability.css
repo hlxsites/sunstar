@@ -2,10 +2,13 @@ body.sustainability main .section.full-height > .section-container {
     height: 100%;
 }
 
-body.sustainability main .composite .composite-container h2, body.sustainability main .composite .composite-container h3 {
+body.sustainability main .block.hero-banner.composite .composite-container h2, body.sustainability main .block.hero-banner.composite .composite-container h3 {
     margin: 1rem;
 }
 
+body.sustainability main .section.bg-image-max-height > .background-image img {
+    height: auto;
+}
 
 body.sustainability main .section.image-at-bottom-of-section.with-background-image .section-container picture img {
     position: absolute;
@@ -17,49 +20,42 @@ body.sustainability main .section.half-image-sizes.with-background-image .sectio
     width: 20%;
 }
 
-/* only Desktop */
-@media (min-width: 77rem) {
-    body.sustainability main .section.bg-image-max-height > .background-image img {
-        height: 700px;
-    }
-
+body.sustainability main .block.hero-banner.composite .composite-container h1 {
+    margin: 0;
 }
 
-/* only Tablet */
-@media (min-width: 62rem) and (max-width: 77rem) {
+/* Tablet & Desktop */
+@media (min-width: 62rem) {
     body.sustainability main .section.bg-image-max-height > .background-image img {
         height: 530px;
     }
 
     body.sustainability main .block.composite.two-column .composite-item-right img {
         width: 80%;
-    }
-
-}
-
-/* Desktop & Tablet */
-@media (min-width: 62rem) {
-    body.sustainability main .block.composite.two-column .composite-item-right img {
         float: right;
     }
 
+    body.sustainability main .block.hero-banner.composite .composite-container h1 {
+        margin: 3.5rem 0 2rem;;
+    }
 }
 
-/* only Mobile */
-@media (max-width: 62rem) {
+/* only Desktop */
+@media (min-width: 77rem) {
     body.sustainability main .section.bg-image-max-height > .background-image img {
-        height: auto;
+        height: 700px;
     }
 
-    body.sustainability main .composite .composite-container h1 {
-        margin: 0;
+    body.sustainability main .block.composite.two-column .composite-item-right img {
+        width: auto;
     }
 
 }
 
-@media (max-width: 42rem) {
+/* Special breakpoint within Mobile */
+@media (min-width: 42rem) {
     body.sustainability main .block.composite.two-column .composite-item-left {
-        grid-column: 2 / 3;
+        grid-column: 1 / 2;
         justify-self: start;
     }
 }
