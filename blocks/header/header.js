@@ -195,28 +195,26 @@ function attachWindowResizeListeners(nav) {
   const header = document.querySelector('header');
   const { body } = document;
   window.addEventListener('viewportResize', (event) => {
+    const toggler = nav.querySelector('.navbar-toggler');
     if (event.detail.deviceType === 'Desktop') {
-      const toggler = nav.querySelector('.navbar-toggler');
-      if (event.matches) {
-        if (nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          header.classList.remove('menu-open');
-          body.classList.remove('fixed');
-        }
-        if (toggler.classList.contains('visible')) {
-          toggler.classList.remove('visible');
-        }
-        const visibleMegaDrop = nav.querySelector('.mega-dropdown.visible');
-        if (visibleMegaDrop) {
-          visibleMegaDrop.classList.remove('visible');
-        }
-        const backButton = nav.querySelector('.menu-back-btn');
-        if (backButton) {
-          backButton.remove();
-        }
-      } else {
-        toggler.classList.add('visible');
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        header.classList.remove('menu-open');
+        body.classList.remove('fixed');
       }
+      if (toggler.classList.contains('visible')) {
+        toggler.classList.remove('visible');
+      }
+      const visibleMegaDrop = nav.querySelector('.mega-dropdown.visible');
+      if (visibleMegaDrop) {
+        visibleMegaDrop.classList.remove('visible');
+      }
+      const backButton = nav.querySelector('.menu-back-btn');
+      if (backButton) {
+        backButton.remove();
+      }
+    } else {
+      toggler.classList.add('visible');
     }
   }, true);
 }
