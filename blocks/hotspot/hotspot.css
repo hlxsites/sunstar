@@ -1,9 +1,10 @@
 .block.hotspot {
-    position: relative;
+    position: absolute;
 }
 
 .block.hotspot.right {
-    left: 35%;
+   right: -10rem;
+   top: -10rem;
 }
 
 .block.hotspot img {
@@ -11,6 +12,7 @@
     width: auto;
     height: auto;
 }
+
 
 .block.hotspot > div:nth-child(n+2) {
     width: 30px;
