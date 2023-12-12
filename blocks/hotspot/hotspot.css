@@ -28,7 +28,13 @@
     }
 
     .block.hotspot > div:nth-child(n+2) {
-        width: 7vw
+        width: 7vw;
+    }
+}
+
+@media (min-width: 77rem) {
+    .block.hotspot > div:nth-child(n+2) {
+        width: 5vw;
     }
 }
 
