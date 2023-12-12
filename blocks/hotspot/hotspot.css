@@ -19,12 +19,6 @@
     background: white;
     position: absolute;
     width: 25vw;
-    cursor: pointer;
-    content: attr(data);
-    padding: 5px;
-    font-size: var(--body-font-size-m);
-    transition: opacity 0.4s linear;
-    z-index: +1;
     color: var(--primary);
 }
 

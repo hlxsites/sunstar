@@ -4,7 +4,6 @@ export default function decorate(block) {
       const nexticondiv = document.createElement('div');
       nexticondiv.style.left = [...row.children][1].textContent;
       nexticondiv.style.top = [...row.children][2].textContent;
-      // nexticondiv.setAttribute('data', [...row.children][0].textContent);
       nexticondiv.innerText = [...row.children][0].textContent;
       row.after(nexticondiv);
       row.remove();

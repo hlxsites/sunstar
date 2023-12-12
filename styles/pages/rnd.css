@@ -1,4 +1,4 @@
-body.rnd main .section.image-before > .section-container {
+  body.rnd main .section.image-before > .section-container {
     position: relative;
     max-width: 100%;
   }
@@ -81,7 +81,7 @@ body.rnd main .section.image-before > .section-container {
   }
 
   body.rnd main .section > .section-container h5, h4, h6 {
-    line-height: 1.8 !important;
+    line-height: 1.8;
   }
 
   body.rnd main > .section.brown-rice h1,
@@ -95,7 +95,7 @@ body.rnd main .section.image-before > .section-container {
  
 
   /* section - brown-rice */
-    main .section.brown-rice {
+  main .section.brown-rice {
       background-color: var(--brown-rice-background);
   }
 
@@ -107,21 +107,21 @@ body.rnd main .section.image-before > .section-container {
   }
   
   body.rnd .section.underfill.with-background-image.align-bottom.text-shadow h1 {
-      text-shadow: 0 0 120px #490c61, 0 0 100px #490c61, 0 0 90px #490c61, 0 0 80px #490c61, 0 0 80px #490c61, 0 0 90px #490c61, 0 0 0 #490c61;
+      text-shadow: 0 0 120px var(--underfill-dark-indigo), 0 0 100px var(--underfill-dark-indigo), 0 0 90px var(--underfill-dark-indigo), 0 0 80px var(--underfill-dark-indigo), 0 0 80px var(--underfill-dark-indigo), 0 0 90px var(--underfill-dark-indigo), 0 0 0 var(--underfill-dark-indigo);
   }
   
   
-    /* stylelint-disable-next-line no-descending-specificity */
-    body.rnd .section.with-background-image.align-left > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  body.rnd .section.with-background-image.align-left > .section-container {
       top: 50%;
       left: 10%;
       transform: translate(-50%, -50%);
-    }
+  }
   
-    /* section - image-before */
-    body.rnd main .section.image-before>div p img {
+  /* section - image-before */
+  body.rnd main .section.image-before>div p img {
       display: none;
-    }
+  }
   
   body.rnd main .section.image-after > div p img {
       display: none;
@@ -197,34 +197,34 @@ body.rnd main .section.image-before > .section-container {
 
   @media (min-width: 62rem) {
     main .block.align-left {
-      position: relative;
-      right: 25%;
+        position: relative;
+        right: 25%;
     }
 
-      body.rnd main .section.image-before > div p img {
+    body.rnd main .section.image-before > div p img {
           display: block;
-      }
+    }
   
-      body.rnd main .section.up {
+    body.rnd main .section.up {
           position: relative;
           top: -17vh;
-      }
+    }
 
-      body.rnd main .section.with-background-image > .section-container {
+    body.rnd main .section.with-background-image > .section-container {
         max-width: 50%;
         right: 8vw;
-      }
+    }
 
-      body.rnd main .section.with-background-image.align-right > .section-container {
+    body.rnd main .section.with-background-image.align-right > .section-container {
         right: -50%;
-      }
+    }
   
-      body.rnd main .section.with-background-image.title > .section-container {
+    body.rnd main .section.with-background-image.title > .section-container {
           max-width: 70%;
           right: 8vw;
-      }
+    }
 
-      body.rnd main .section.image-before-after-t5 > div p img {
+    body.rnd main .section.image-before-after-t5 > div p img {
         width: 490px;
         height: 260px;
         position: absolute;
@@ -232,24 +232,24 @@ body.rnd main .section.image-before > .section-container {
         z-index: 1;
         left: 51%;
         transform: translate(-50%,-50%);
-      }
+    }
       
 
-      body.rnd .brown-rice .cards.grid > ul {
+    body.rnd .brown-rice .cards.grid > ul {
         grid-template-columns: repeat(auto-fill, 20rem);
-      }
+    }
 
-      body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type {
+    body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type {
         object-fit: cover;
         flex-basis: 70%
-      }
+    }
 
-      body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
+    body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
         width: 100%;
         flex-basis: 35%;
-      }
+    }
 
-  
+
   }
   
   @media (min-width: 77rem) {
@@ -258,11 +258,11 @@ body.rnd main .section.image-before > .section-container {
       }
       
 
-        /* stylelint-disable-next-line no-descending-specificity */
-    main .block.align-left {
-      position: relative;
-      right: 35%;
-    }
+      /* stylelint-disable-next-line no-descending-specificity */
+      main .block.align-left {
+          position: relative;
+          right: 35%;
+      }
   
       body.rnd main .section.with-background-image > .section-container {
           max-width: 50%;
