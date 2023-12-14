@@ -1,0 +1,290 @@
+  body.rnd main .section.image-before > .section-container {
+    position: relative;
+    max-width: 100%;
+  }
+  
+  body.rnd main .section.image-after > .section-container {
+    position: relative;
+    max-width: 100%;
+  }
+  
+  body.rnd main .section > .section-container img {
+      width: 100%;
+  }
+  
+  body.rnd main .section.image-before-after-t1 > div p img {
+    width: 402px;
+    height: 253px;
+    position: absolute;
+    top: -22vh;
+    z-index: 1;
+  }
+  
+  body.rnd main .section.image-before-after-t2 > div p img {
+    width: 181px;
+    height: 533px;
+    position: absolute;
+    top: -29vh;
+    z-index: 1;
+  }
+  
+  body.rnd main .section.image-before-after-t3 > div p img {
+    width: 190px;
+    height: 131px;
+    position: absolute;
+    top: -30vh;
+    z-index: 1;
+  }
+  
+  body.rnd main .section.image-before-after-t4 > div p img {
+    width: 107px;
+    height: 420px;
+    position: absolute;
+    top: -30vh;
+    z-index: 1;
+    right: 90px;
+  }
+
+  body.rnd main .section.image-before-after-t5 > div p img {
+    width: 392px;
+    height: 208;
+    position: absolute;
+    top: 6vh;
+    z-index: 1;
+    left: 54%;
+    transform: translate(-50%,-50%);
+  }
+  
+  body.rnd main .section.right > div p img {
+    right: 0;
+  }
+  
+  /* section - full-width */
+  body.rnd main .section.full-width > .section-container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  body.rnd main .section.with-background-image > .section-container {
+      max-width: 50%;
+      right: 8vw;
+  }
+  
+  /* section - dark indigo */
+  body.rnd main .section.bg-dark-indigo {
+      background-color: var(--underfill-dark-indigo);
+  }
+
+  body.rnd main .section > .section-container h1 {
+    font-size: var(--heading-font-size-xxl);
+  }
+
+  body.rnd main .section > .section-container h5, 
+  body.rnd main .section > .section-container h4, 
+  body.rnd main .section > .section-container h6 {
+    line-height: 1.8;
+  }
+
+  body.rnd main > .section.brown-rice h1,
+  body.rnd main > .section.brown-rice h2,
+  body.rnd main > .section.brown-rice h3,
+  body.rnd main > .section.brown-rice h5,
+  body.rnd main > .section.brown-rice h6 {
+    color: var(--brown-rice-color);
+  }
+  
+ 
+
+  /* section - brown-rice */
+  main .section.brown-rice {
+      background-color: var(--brown-rice-background);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  body.rnd .section.with-background-image.align-bottom > .section-container {
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  body.rnd .section.underfill.with-background-image.align-bottom.text-shadow h1 {
+      text-shadow: 0 0 120px var(--underfill-dark-indigo), 0 0 100px var(--underfill-dark-indigo), 0 0 90px var(--underfill-dark-indigo), 0 0 80px var(--underfill-dark-indigo), 0 0 80px var(--underfill-dark-indigo), 0 0 90px var(--underfill-dark-indigo), 0 0 0 var(--underfill-dark-indigo);
+  }
+  
+  
+  /* stylelint-disable-next-line no-descending-specificity */
+  body.rnd .section.with-background-image.align-left > .section-container {
+      top: 50%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+  }
+  
+  /* section - image-before */
+  body.rnd main .section.image-before>div p img {
+      display: none;
+  }
+  
+  body.rnd main .section.image-after > div p img {
+      display: none;
+  }
+
+  body.rnd main .section.image-before.image-before-after-t5 > div p img {
+    display: block;
+  }
+  
+  body.rnd main .section .text-col {
+      line-height: 1.8;
+  }
+
+  body.rnd main .section.with-background-image.title > .section-container {
+    max-width: 70%;
+    right: 8vw;
+  }
+
+  body.rnd .small-images.columns.block.text-and-image-in-column img {
+    width: 10%;
+  }
+
+  body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div {
+    gap: 0;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type {
+    flex-basis: 70%;
+  }
+
+  body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
+    width: 100%;
+    flex-basis: 35%;
+  }
+
+  body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type img {
+    object-fit: cover;
+  }
+
+  body.rnd .block.quote::before {
+    left: 0;
+  }
+  
+  body.rnd .section.brown-rice.nolink .cards > ul > li {
+    background-color: var(--brown-rice-background);
+  }
+
+  body.rnd .section.brown-rice.nolink .cards > ul > li .cards-card-image {
+    height: 190px;
+  }
+
+  body.rnd .brown-rice .block.cards {
+    margin: 0;
+  }
+
+  body.rnd .brown-rice.section.cards-container {
+    margin: 0;
+  }
+
+  body.rnd .brown-rice .cards .cards-card-body {
+    padding: 0;
+  }
+  
+
+  @media (min-width: 62rem) {
+    main .block.align-left {
+        position: relative;
+        right: 25%;
+    }
+
+    body.rnd main .section.image-before > div p img {
+          display: block;
+    }
+  
+    body.rnd main .section.up {
+          position: relative;
+          top: -17vh;
+    }
+
+    body.rnd main .section.with-background-image > .section-container {
+        max-width: 50%;
+        right: 8vw;
+    }
+
+    body.rnd main .section.with-background-image.align-right > .section-container {
+        right: -50%;
+    }
+  
+    body.rnd main .section.with-background-image.title > .section-container {
+          max-width: 70%;
+          right: 8vw;
+    }
+
+    body.rnd main .section.image-before-after-t5 > div p img {
+        width: 490px;
+        height: 260px;
+        position: absolute;
+        top: 2vh;
+        z-index: 1;
+        left: 51%;
+        transform: translate(-50%,-50%);
+    }
+      
+
+    body.rnd .brown-rice .cards.grid > ul {
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+
+    body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:first-of-type {
+        object-fit: cover;
+        flex-basis: 70%
+    }
+
+    body.rnd .section.no-margins.columns-container.only-images-without-padding > .section-container .columns > div > div:last-of-type {
+        width: 100%;
+        flex-basis: 35%;
+    }
+
+
+  }
+  
+  @media (min-width: 77rem) {
+      body.rnd main .section.image-after > div p img {
+          display: block;
+      }
+      
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      main .block.align-left {
+          position: relative;
+          right: 35%;
+      }
+  
+      body.rnd main .section.with-background-image > .section-container {
+          max-width: 50%;
+          right: 8vw;
+      }
+
+      body.rnd main .section.with-background-image.align-right > .section-container {
+        right: -40%;
+      }
+  
+      body.rnd main .section.with-background-image.title > .section-container {
+          max-width: 60%;
+          right: 8vw;
+      }
+
+      body.rnd .brown-rice .cards.grid > ul {
+        grid-template-columns: repeat(auto-fill, 15rem);
+      }
+      
+  }
+  
+  
+  
