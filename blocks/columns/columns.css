@@ -103,7 +103,6 @@
   background-color: unset;
   color: var(--tertiary);
   justify-content: flex-start;
-  padding: 0;
 }
 
 .columns a.button.primary.video-link::after {
