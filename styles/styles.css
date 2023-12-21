@@ -10,12 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-   /* fallback font for Noto Sans (normal - 400) */
-   @font-face {
-    font-family: "noto-sans-normal-400-fallback";
-    size-adjust: 105.431%;
-    src: local("Arial");
-  }
+/* fallback font for Noto Sans (normal - 400) */
+@font-face {
+  font-family: "noto-sans-normal-400-fallback";
+  size-adjust: 105.431%;
+  src: local("Arial");
+}
 
 :root {
   /* colors */
@@ -867,10 +867,7 @@ main .section.narrower.section.with-background-image > .section-container > .lin
   width: 100%;
 }
 
-/* section - static */
-main .section.static {
-  margin-bottom: 7.5rem;
-}
+
 
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.static > .section-container,
@@ -1091,6 +1088,7 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   transform: translate(-50%, 0%);
 }
 
+
 /* END Section Styles END */
 
 /* START Keyframes START */
@@ -1164,6 +1162,11 @@ main .section.with-background-image.align-top > .section-container, main .sectio
 
   main .section.small-narrow h5 {
     margin-bottom: 1rem;
+  }
+
+  /* section - static */
+  main .section.static > .section-container {
+    margin-bottom: 7.5rem;
   }
 
   /* section - narrow */
@@ -1356,7 +1359,7 @@ main .section.with-background-image.align-top > .section-container, main .sectio
   }
 
   main .block.lead p,
-   p.lead {
+  p.lead {
     font-size: var(--body-font-size-xxl);
   }
 
