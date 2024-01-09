@@ -13,6 +13,6 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.38.0",
-    "sharp": "^0.32.1"
+    "sharp": "^0.33.0"
   }
 }

@@ -1,3 +1,7 @@
+main .block.text.padded {
+  padding: 0 1rem;
+}
+
 main .block.text.narrow {
   width: 100%;
   padding-right: 0;
@@ -6,6 +10,16 @@ main .block.text.narrow {
   margin-left: auto;
   max-width: 37.5rem;
   text-align: left;
+  margin-bottom: 3.5rem;
+}
+
+main .block.text.narrower {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 45rem;
   margin-bottom: 3.5rem;
 }
 
@@ -52,11 +66,17 @@ main .block.text.highlight a.button.primary {
   height: auto;
 }
 
+main .block.text.half-width-center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
 main .block.text.muted,
 main .block.text.muted p {
   color: var(--steel-blue);
   font-size: var(--body-font-size-xs);
-  padding: 0; 
+  padding: 0;
   margin: 0;
 }
 
@@ -92,7 +112,6 @@ main .block.text.rounded-border  h4 {
 main .block.text.lead {
   font-size: var(--body-font-size-xl);
   margin: 0 0 1.25rem;
-  
 }
 
 main .block.text.colored {
@@ -125,6 +144,25 @@ main .block.text.light-background  > div > div > :first-child {
 main .block.text.emphasis > div > div > :last-child,
 main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
+}
+
+main .block.text.red-circle > div > div::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: var(--red);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main .block.text.red-circle > div {
+  position: relative;
+}
+
+main .block.text.red-circle > div > div * {
+  margin-left: 10px;
 }
 
 @media (min-width: 77rem) {

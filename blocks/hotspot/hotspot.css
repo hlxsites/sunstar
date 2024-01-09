@@ -1,0 +1,41 @@
+.block.hotspot {
+    position: relative;
+}
+
+.block.hotspot.right {
+   right: -15rem;
+   top: 0;
+}
+
+.block.hotspot img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+.block.hotspot > div:nth-child(n+2) {
+    border-radius: 5px;
+    background: white;
+    position: absolute;
+    width: 25vw;
+    color: var(--primary);
+}
+
+@media (min-width: 62rem) {
+    .block.hotspot {
+        position: absolute;
+    }
+
+    .block.hotspot > div:nth-child(n+2) {
+        width: 7vw;
+    }
+}
+
+@media (min-width: 77rem) {
+    .block.hotspot > div:nth-child(n+2) {
+        width: 5vw;
+    }
+}
+
+

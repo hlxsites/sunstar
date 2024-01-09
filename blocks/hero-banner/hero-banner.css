@@ -3,6 +3,49 @@
     margin-bottom: 2rem;
 }
 
+main .block.hero-banner.composite.two-column .composite-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
+}
+
+main .block.hero-banner.composite.two-column .composite-item-full {
+    grid-column: 1/-1;
+}
+
+main .block.hero-banner.composite.two-column .composite-item-right {
+    align-self: flex-end;
+    grid-column: 2 / -1;
+}
+
+main .block.hero-banner.composite.two-column .composite-item-left {
+    grid-column: 2 / 3;
+    justify-self: start;
+}
+
+main .block.hero-banner.composite.padded {
+    padding: 0 1rem;
+}
+
+main .block.hero-banner.composite.button a {
+    font-size: var(--body-font-size-m);
+    background: var(--secondary);
+    border-color: var(--primary);
+    color: var(--white);
+    min-width: 160px;
+    height: 48px;
+    padding: 0 1.5em;
+    font-weight: var(--font-weight-bold);
+    display: inline-flex;
+    justify-content: center;
+    user-select: auto;
+    text-decoration: none;
+}
+
+main .block.hero-banner.composite.button a:hover {
+    background: var(--link-sky-color);
+}
+
 .hero-banner.careers {
     background-image: url("/assets/careers-mobile-top.jpg");
 }
@@ -17,6 +60,11 @@
     top: 0;
     z-index: 0;
     overflow: hidden;
+}
+
+.hero-banner.static .hero-banner-media-section {
+    position: relative;
+    height: auto;
 }
 
 .hero-banner.careers .hero-banner-media-section {
@@ -38,6 +86,11 @@
 
 .hero-banner.image-left img {
     object-position: 20% 0;
+}
+
+.hero-banner.native-image-sizes img {
+    width: auto;
+    height: auto;
 }
 
 .hero-banner .hero-banner-heading-section {
@@ -187,6 +240,11 @@
         margin-bottom: 8.625rem;
     }
 
+    .section.full-width.natural-height.hero-banner-container {
+        height: auto;
+        margin-bottom: 0;
+    }
+
     /* TODO refactor to work on firefox as well */
     .section.full-width.hero-banner-container:has(.hero-banner.careers) {
         height: 36.4rem;
@@ -282,8 +340,8 @@
     .hero-banner.overlap .hero-banner-text-container {
         display: block;
         padding: 3rem 2rem;
-        width: 24.25rem;
-        height: 26rem;
+        width: 28.25rem;
+        height: 32rem;
     }
 
     .hero-banner.overlap .hero-banner-text-wrapper {
@@ -360,8 +418,8 @@
 
     .hero-banner.overlap .hero-banner-text-container {
         padding: 10rem 3.75rem 0;
-        width: 27.5rem;
-        height: 33.75rem;
+        width: 35rem;
+        height: 43.75rem;
     }
 
     .hero-banner.overlap .hero-banner-media-section {
@@ -372,7 +430,7 @@
 /* Variation small-box */
 @media (min-width: 62rem) {
     .hero-banner.overlap.small-box .hero-banner-text-container {
-        height: 23.75rem;
+        height: 29.75rem;
         margin-top: 1rem;
         display: flex;
         align-items: center;
@@ -399,10 +457,14 @@
     .hero-banner.overlap.small-box .hero-banner-text-container {
         padding: 3rem;
         margin-top: 3rem;
-        height: 23.75rem;
+        height: 29.75rem;
     }
 
     .hero-banner.overlap.small-box .hero-banner-text-wrapper h2 {
         font-size: var(--heading-font-size-l);
+    }
+
+    main .block.composite .composite-container {
+        padding: 1rem 2rem;
     }
 }

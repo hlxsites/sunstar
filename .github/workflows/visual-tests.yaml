@@ -36,7 +36,7 @@ jobs:
         id: run-playwright-tests
         run: ./run-and-create-github-summary.bash
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           path: .github/visual-tests/screenshots/*

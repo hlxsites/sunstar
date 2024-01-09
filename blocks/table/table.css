@@ -178,6 +178,26 @@ main .table.inner-table table tr a {
   display: unset;
 }
 
+main .table.padding-1 table td {
+    padding: 1rem;
+}
+
+main .table.padding-2 table td {
+    padding: 2rem;
+}
+
+main .table.text-align-left tr td {
+    text-align: left;
+}
+
+main .table.text-align-right tr td {
+    text-align: right;
+}
+
+main .table.text-align-center tr td {
+    text-align: center;
+}
+
 main .table.text-table table tr td {
     color: var(--text-color);
     flex-basis: calc(100% - 7.5em);
@@ -186,10 +206,6 @@ main .table.text-table table tr td {
 /* Blue theme */
 main .table.theme-blue table tbody tr td {
     color: var(--secondary);
-}
-
-main .table.highlight-first-column table td:nth-child(1) {
-    background-color: var(--transparent-grey-light-color);
 }
 
 main .table.text-table table tr td h4 {
@@ -225,6 +241,30 @@ main .table.text-table table tr td:first-child {
 main .table.theme-blue table tbody tr:first-of-type td {
     background-color: var(--secondary);
     color: var(--white);
+}
+
+main .table.highlight-first-column:not(.no-head) tr:not(:first-of-type) td{
+    text-align: center;
+}
+
+main .table.highlight-first-column:not(.no-head) tr:first-of-type td{
+    background-color: var(--secondary);
+    color: var(--white);
+    font-weight: var(--font-weight-bold);
+}
+
+main .table.highlight-first-column tr.highlight-item td:first-of-type{
+    background-color: var(--transparent-grey-light-color);
+    color: var(--secondary);
+    text-align: center;
+}
+
+main .table.first-column-per30 tr.highlight-item td:first-of-type{
+    width: 30%;
+}
+
+main .section .table.native-image-size img {
+    width: 100%;
 }
 
 main .table.inner-table table tbody tr:first-of-type {

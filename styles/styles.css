@@ -10,17 +10,21 @@
  * governing permissions and limitations under the License.
  */
 
-   /* fallback font for Noto Sans (normal - 400) */
-   @font-face {
-    font-family: "noto-sans-normal-400-fallback";
-    size-adjust: 105.431%;
-    src: local("Arial");
-  }
+/* fallback font for Noto Sans (normal - 400) */
+@font-face {
+  font-family: "noto-sans-normal-400-fallback";
+  size-adjust: 105.431%;
+  src: local("Arial");
+}
 
 :root {
   /* colors */
   --black: #000;
   --blue: #007bff;
+  --beaublue: #bedceb;
+  --granny-smith-apple: #9ce69b;
+  --alice-blue: #e8f5ff;
+  --caribbean-green: #00be91;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -76,6 +80,8 @@
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
   --underfill-dark-indigo: #490c61;
+  --brown-rice-background: #d07c68;
+  --brown-rice-color: #821e14;
 
 
   /* fonts */
@@ -108,6 +114,16 @@
   --heading-font-size-xxs: 14px;
   --heading-font-size-xxxs: 12px;
 
+  /* Heading Variables */
+  --h1-font-size-desktop: var(--heading-font-size-mxl);
+  --h1-font-size-mobile: var(--heading-font-size-m);
+  --h2-font-size-desktop: var(--heading-font-size-s);
+  --h2-font-size-mobile: var(--heading-font-size-ms);
+  --h3-font-size-desktop: var(--heading-font-size-ms);
+  --h3-font-size-mobile: var(--heading-font-size-xs);
+  --h4-font-size-desktop: var(--heading-font-size-xs);
+  --h4-font-size-mobile: var(--heading-font-size-mxs);
+
   /* Font Weight */
   --font-weight-small: 300;
   --font-weight-regular: 400;
@@ -127,7 +143,7 @@
   );
 
   /* button */
-  --button-background-color: #007cad;
+  --button-background-color: var(--secondary);
   --button-background-disabled-color: #ccc;
   --button-padding: 0 1.5em;
   --button-text-color: white;
@@ -143,10 +159,15 @@
   --split-lastquarter: 75%:25%;
   --split-firstthird: 34%:66%;
   --split-lastthird: 66%:34%;
+  --split-firsttwothird: 40%:60%;
+  --split-lasttwothird: 60%:40%;
 }
+
+*, *::before, *::after { box-sizing: inherit; }
 
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
@@ -194,26 +215,26 @@ h6 {
 }
 
 h1 {
-  font-size: var(--heading-font-size-mxl);
+  font-size: var(--h1-font-size-mobile);
   margin: 3.5rem 0 2rem;
 }
 
 h2 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--h2-font-size-mobile);
   margin: 3rem 0 1.5rem;
   font-weight: 500;
   line-height: 1.3em;
 }
 
 h3 {
-  font-size: var(--heading-font-size-ms);
+  font-size: var(--h3-font-size-mobile);
   margin: 2rem 0 0.75rem;
   font-weight: 500;
   line-height: 1.3em;
 }
 
 h4 {
-  font-size: var(--heading-font-size-mxs);
+  font-size: var(--h4-font-size-mobile);
   margin: 1.5em 0 0.5rem;
 }
 
@@ -324,6 +345,22 @@ a {
   color: var(--white);
 }
 
+.h1 h2, .h1 h3, .h1 h4 {
+  font-size: var(--h1-font-size-mobile)
+}
+
+.h2 h1, .h2 h3, .h2 h4 {
+  font-size: var(--h2-font-size-mobile);
+}
+
+.h3 h1, .h3 h2 .h3 h4 {
+  font-size: var(--h3-font-size-mobile);
+}
+
+.h4 h1, .h4 h2, .h4 h3 {
+  font-size: var(--h4-font-size-mobile);
+}
+
 main {
   max-width: 100vw;
 }
@@ -335,6 +372,10 @@ main .block.lead p {
 
 
 /* Mixins carry !important to override the default styles */
+.display-block * {
+  display: block!important;
+}
+
 .no-borders * {
   border: none!important;
   box-shadow: none!important;
@@ -343,6 +384,30 @@ main .block.lead p {
 .no-margins,
 .no-margins  * {
   margin: 0!important;
+}
+
+.no-margin-bottom, .no-margin-bottom * {
+  margin-bottom: 0!important;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.quarter-width {
+  width: 30%!important;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.padded-block {
+  padding: 1rem 0!important;
 }
 
 .dark h6 {
@@ -393,8 +458,8 @@ main pre {
   background-position: center;
   background-size: cover;
   display: inline-block;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 24px;
 }
 
 .icon svg {
@@ -424,11 +489,30 @@ main pre {
 }
 
 .icon.icon-angle-white-70 {
-  margin-left: 0.2rem;
-  margin-bottom: 0.2rem;
+  background-image: url("/icons/angle-white-70.svg");
+  margin-left: 6px;
+  height: 22px;
+  width: 14px;
+  scale: 0.8;
 }
 
-.icon.icon-angle-right-blue-bg {
+.icon.icon-link-blue {
+  background-image: url("/icons/link-blue.svg");
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.3rem;
+}
+
+.icon.icon-angle-left-blue {
+  background-image: url("/icons/angle-left-blue.svg");
+  width: 8px;
+  height: 12px;
+  position: relative;
+  margin-right: 4px;
+}
+
+.icon.icon-angle-right-blue-bg,
+.icon.icon-angle-right-blue {
   background-image: url("/icons/angle-right-blue.svg");
   vertical-align: middle;
   width: 0.5rem;
@@ -462,11 +546,6 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
-}
-
-/* TODO: Remove this once this icon renders correctly */
-main table a > .icon-angle-right-blue {
-  transform: rotate(180deg);
 }
 
 a:any-link {
@@ -586,21 +665,10 @@ main .block.centered {
   text-align: center;
 }
 
-.icon.icon-link-blue {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-left: 0.3rem;
-}
-
-.icon.icon-angle-left-blue {
-  width: 1rem;
-  height: 1rem;
-  top: 0.2rem;
-  position: relative;
-}
 
 /* START Section Styles START */
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section .section-container {
   max-width: 100%;
   padding-left: 0;
@@ -609,6 +677,14 @@ main .section .section-container {
 
 main .section.auto-top-spacing .section-container {
   margin-top: 3rem !important;
+}
+
+main .section .default-content-wrapper:first-of-type > :first-child {
+  margin-top: 0;
+}
+
+main .section .default-content-wrapper:last-of-type > :last-child {
+  margin-bottom: 0;
 }
 
 /* section - no-padding-top for h1 */
@@ -774,13 +850,24 @@ main .section.narrow.section.with-background-image > .section-container,
 main .section.narrower.section.with-background-image > .section-container {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  box-sizing: border-box;
 }
 
-/* section - static */
-main .section.static {
-  margin-bottom: 7.5rem;
+main .section.narrower-picture.section.with-background-image > picture {
+  margin: auto;
+  margin-block-end: 3rem;
+  max-width: 45rem;
 }
+
+main .section.narrower.section.with-background-image > .section-container > .link-wrapper {
+  width: 100%;
+}
+
+
 
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.static > .section-container,
@@ -812,6 +899,23 @@ main .section.static .section-container h2 {
   margin: 4rem 0 1.5rem;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.three-columns-layout .section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main .section.three-columns-layout .section-container > div  {
+  max-width: 50%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.three-columns-layout.with-background-image > picture,
+main .section.three-columns-layout.with-static-background-image > picture {
+  position: absolute;
+  bottom: 0;
+}
+
 /* section - margin-bottom */
 main .section.margin-bottom {
   margin-bottom: 5rem;
@@ -827,6 +931,12 @@ main .section.no-margin-top {
   margin-top: 0;
 }
 
+/* fixed padding bottom of section-container - 400px */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.padding-bottom-400 .section-container {
+  padding-bottom: 400px;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
@@ -835,6 +945,26 @@ main .section .section-container.highlight {
 /* section - dark-blue */
 main .section.dark {
   background-color: var(--primary);
+}
+
+/* section - beau-blue */
+main .section.beau-blue {
+  background-color: var(--beaublue);
+}
+
+/* section - apple-green */
+main .section.apple-green {
+  background-color: var(--granny-smith-apple);
+}
+
+/* section - Alice Blue */
+main .section.alice-blue {
+  background-color: var(--alice-blue);
+}
+
+/* section - apple-caribbean-green gradient */
+main .section.apple-caribbean-green {
+  background: linear-gradient(to bottom, var(--granny-smith-apple) 28%, var(--caribbean-green) 100%);
 }
 
 /* section - light-blue */
@@ -861,10 +991,6 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
-main .section.newsroom h4 {
-  color: #89d1e1;
-}
-
 main .section.bg-primary p {
   color: var(--white);
   margin-top: 0.5rem;
@@ -886,6 +1012,7 @@ main .section.padded-inline > .tab-item.active > .section-container {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .block.centered > div {
   margin: auto;
 }
@@ -898,19 +1025,24 @@ main .block.download a::after {
 }
 
 /* Section Styles for background images */
-.section.with-background-image {
+.section.with-background-image, .section.with-static-background-image {
   position: relative;
 }
 
-.section.with-background-image > picture {
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image > picture, .section.with-static-background-image > picture {
   display: block;
   width: 100%;
   z-index: -1;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.float-image-right picture {
+  float: right;
+}
 
 /* stylelint-disable-next-line no-descending-specificity */
-.section.with-background-image > picture > img {
+.section.with-background-image > picture > img, .section.with-static-background-image > picture > img {
   display: block;
   object-fit: cover;
   width: 100%;
@@ -921,16 +1053,16 @@ main .block.download a::after {
 .section.with-background-image > .tab-item.active > .section-container {
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-right > .section-container,
 .section.with-background-image.align-right > .tab-item.active > .section-container {
-  right: 0;
-  left: unset;
+  right: -50%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -942,10 +1074,20 @@ main .block.download a::after {
 
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-bottom > .section-container {
-  top: 80%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.with-background-image.align-top > .section-container, main .section.narrow.with-background-image.align-top > .section-container, main .section.narrower.with-background-image.align-top > .section-container  {
+  margin-top: 1.5rem;
+  top: 0%;
+  height: auto;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
 
 /* END Section Styles END */
 
@@ -1010,12 +1152,21 @@ main .block.download a::after {
   }
 
   /* section - small narrow */
+  main .section.small-narrow > .section-container {
+    padding: unset;
+  }
+
   main .section.small-narrow h1 {
     margin-bottom: 3.5rem;
   }
 
   main .section.small-narrow h5 {
     margin-bottom: 1rem;
+  }
+
+  /* section - static */
+  main .section.static > .section-container {
+    margin-bottom: 7.5rem;
   }
 
   /* section - narrow */
@@ -1046,8 +1197,9 @@ main .block.download a::after {
   }
 
   /* section - narrow/narrower with background image compatibility */
-  main .section.narrow.section.with-background-image > .section-container,
-  main .section.narrower.section.with-background-image > .section-container {
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .section.narrow.with-background-image > .section-container,
+  main .section.narrower.with-background-image > .section-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1130,7 +1282,7 @@ main .block.download a::after {
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.padded > .section-container,
   main .section.padded > .tab-item.active > .section-container {
-    padding: 2rem;
+    padding: 2rem 0;
   }
 
   /* section - padded-inline - not applied for wide screens */
@@ -1151,23 +1303,39 @@ main .block.download a::after {
   }
 
   h1 {
-    font-size: var(--heading-font-size-xxl);
+    font-size: var(--h1-font-size-desktop);
     margin: 4.375rem 0 2.5rem;
   }
 
   h2 {
-    font-size: var(--heading-font-size-mxl);
+    font-size: var(--h2-font-size-desktop);
     margin: 3.5rem 0 2rem;
   }
 
   h3 {
-    font-size: var(--heading-font-size-m);
+    font-size: var(--h3-font-size-desktop);
     margin: 2.5rem 0 1rem;
   }
 
   h4 {
-    font-size: var(--heading-font-size-ms);
+    font-size: var(--h4-font-size-desktop);
     margin: 2rem 0 0.5rem;
+  }
+
+  .h1 h2, .h1 h3, .h1 h4 {
+    font-size: var(--h1-font-size-desktop)
+  }
+
+  .h2 h1, .h2 h3, .h2 h4 {
+    font-size: var(--h2-font-size-desktop);
+  }
+
+  .h3 h1, .h3 h2 .h3 h4 {
+    font-size: var(--h3-font-size-desktop);
+  }
+
+  .h4 h1, .h4 h2, .h4 h3 {
+    font-size: var(--h4-font-size-desktop);
   }
 
   h5 {
@@ -1191,7 +1359,7 @@ main .block.download a::after {
   }
 
   main .block.lead p,
-   p.lead {
+  p.lead {
     font-size: var(--body-font-size-xxl);
   }
 
@@ -1236,5 +1404,12 @@ main .block.download a::after {
     margin-right: auto;
     margin-left: auto;
     max-width: 1200px;
+  }
+
+  /* Three Column Layout */
+  main .section.three-columns-layout .section-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 }

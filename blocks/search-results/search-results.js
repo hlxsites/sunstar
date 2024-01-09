@@ -132,7 +132,9 @@ async function searchPages(placeholders, term, page) {
     header.appendChild(link);
     res.appendChild(header);
     const para = document.createElement('p');
-    setResultValue(para, line.description, term);
+    if (getLanguage() === 'jp') {
+      setResultValue(para, line?.description?.split('。')[0], term);
+    } else setResultValue(para, line.description, term);
 
     res.appendChild(para);
     div.appendChild(res);

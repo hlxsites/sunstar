@@ -37,9 +37,9 @@ async function decorateWebsitePicker(websitePicker) {
     li.classList.add('website-picker-item');
   });
 
-  const a = document.createElement('a');
-  a.textContent = title;
-  websitePicker.prepend(a);
+  const div = document.createElement('div');
+  div.textContent = title;
+  websitePicker.prepend(div);
 
   if (websitePicker.querySelectorAll(':scope>ul>li').length === 0 && websitePicker.querySelector('ul')) {
     websitePicker.querySelector('ul').remove();
@@ -59,7 +59,7 @@ function decorateOtherItems(otherItemsEl) {
   const websitePicker = document.createElement('li');
   websitePicker.classList.add('mobile-website-picker');
   const websitePickerUl = document.createElement('ul');
-  const title = otherItemsEl.querySelector('.website-picker').querySelector(':scope>a');
+  const title = otherItemsEl.querySelector('.website-picker').querySelector(':scope>div');
   websitePicker.appendChild(title);
   websitePicker.appendChild(websitePickerUl);
   otherItemsEl.querySelector('.website-picker').querySelectorAll(':scope>ul>li').forEach((li) => {
@@ -135,9 +135,9 @@ async function decorateLangPicker(langPicker) {
     }
   });
 
-  const a = document.createElement('a');
-  a.textContent = langName;
-  langPicker.prepend(a);
+  const div = document.createElement('div');
+  div.textContent = langName;
+  langPicker.prepend(div);
 
   if (langPicker.querySelectorAll(':scope>ul>li').length === 0 && langPicker.querySelector('ul')) {
     langPicker.querySelector('ul').remove();
@@ -162,7 +162,7 @@ function decorateMiddleNav(nav) {
 }
 
 function getNavbarToggler() {
-  const navbarToggl = htmlToElement(`<button class="navbar-toggler aria-label='Menu'">
+  const navbarToggl = htmlToElement(`<button class="navbar-toggler" aria-label="Menu">
   <span class="mobile-icon">
     <i></i>
     <i></i>
@@ -170,8 +170,8 @@ function getNavbarToggler() {
     <i></i>
   </span>
   </button>`);
-  const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
-  if (!widerScreenWidth.matches) {
+
+  if (window.deviceType !== 'Desktop') {
     navbarToggl.classList.add('visible');
   }
   navbarToggl.addEventListener('click', () => {
@@ -194,10 +194,9 @@ function getNavbarToggler() {
 function attachWindowResizeListeners(nav) {
   const header = document.querySelector('header');
   const { body } = document;
-  const widerScreenWidth = window.matchMedia('(min-width: 77rem)');
-  widerScreenWidth.addEventListener('change', (event) => {
+  window.addEventListener('viewportResize', (event) => {
     const toggler = nav.querySelector('.navbar-toggler');
-    if (event.matches) {
+    if (event.detail.deviceType === 'Desktop') {
       if (nav.classList.contains('open')) {
         nav.classList.remove('open');
         header.classList.remove('menu-open');

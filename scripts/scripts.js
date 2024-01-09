@@ -4,7 +4,6 @@ import {
   loadHeader,
   loadFooter,
   decorateButtons,
-  decorateIcons,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
@@ -336,17 +335,6 @@ export function addTopSpacingStyleToFirstMatchingSection(main) {
   });
 }
 
-function getViewPort() {
-  const { width } = getWindowSize();
-  if (width >= 1232) {
-    return 'desktop';
-  }
-  if (width >= 992) {
-    return 'tablet';
-  }
-  return 'mobile';
-}
-
 function decorateSectionsWithBackgrounds(element) {
   const sections = element.querySelectorAll(`.section[data-bg-image],
   .section[data-bg-image-desktop],
@@ -357,13 +345,13 @@ function decorateSectionsWithBackgrounds(element) {
     const bgImageDesktop = section.getAttribute('data-bg-image-desktop');
     const bgImageMobile = section.getAttribute('data-bg-image-mobile');
     const bgImageTablet = section.getAttribute('data-bg-image-tablet');
-    const viewPort = getViewPort();
+    const viewPort = window.deviceType;
     let background;
     switch (viewPort) {
-      case 'mobile':
+      case 'Mobile':
         background = bgImageMobile || bgImageTablet || bgImageDesktop || bgImage;
         break;
-      case 'tablet':
+      case 'Tablet':
         background = bgImageTablet || bgImageDesktop || bgImage || bgImageMobile;
         break;
       default:
@@ -371,12 +359,25 @@ function decorateSectionsWithBackgrounds(element) {
         break;
     }
     if (background) {
-      section.classList.add('with-background-image');
+      if (section.classList.contains('with-static-background-image')) {
+        section.classList.add('with-static-background-image');
+      } else {
+        section.classList.add('with-background-image');
+      }
       const backgroundPic = createOptimizedPicture(background);
       backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
     }
   });
+}
+
+function decorateSectionsWithBackgroundColor(element) {
+  element
+    .querySelectorAll('.section[data-bg-color]')
+    .forEach((section) => {
+      const bgColors = section.getAttribute('data-bg-color').replaceAll(' ', '-').toLowerCase();
+      section.classList.add(bgColors);
+    });
 }
 
 /**
@@ -408,10 +409,10 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateAnchors(main);
-  decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateSectionsWithBackgrounds(main);
+  decorateSectionsWithBackgroundColor(main);
   decorateBlocks(main);
   addTopSpacingStyleToFirstMatchingSection(main);
 }
@@ -828,19 +829,40 @@ export function addPagingWidget(
 }
 
 export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '', locale = 'en') {
-  const placeholders = await fetchPlaceholders(locale);
+  window.tagsCategories = window.tagsCategories || {};
+  const sheetKey = sheet;
+  const loaded = window.tagsCategories[`${sheetKey}-loaded`];
+
+  if (!loaded) {
+    const placeholders = await fetchPlaceholders(locale);
+    const sheetName = sheet ? `sheet=${sheet}` : '';
+    window.tagsCategories[`${sheetKey}-loaded`] = new Promise((resolve, reject) => {
+      fetch(`/tags-categories.json?${sheetName}`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          throw new Error(`${resp.status}: ${resp.statusText}`);
+        })
+        .then((results) => {
+          // eslint-disable-next-line max-len
+          window.tagsCategories[sheetKey] = results.data.map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
+          resolve();
+        }).catch((error) => {
+          // Error While Loading tagsCategories
+          window.tagsCategories[sheetKey] = {};
+          reject(error);
+        });
+    });
+  }
+
   if (!window.jslinq) {
     await loadScript('/ext-libs/jslinq/jslinq.min.js');
   }
-  const sheetName = sheet ? `sheet=${sheet}` : '';
-  const tagDetails = await fetch(`/tags-categories.json?${sheetName}`);
-  const results = await tagDetails.json();
-  const { jslinq } = window;
 
-  // eslint-disable-next-line max-len
-  return jslinq(results.data).where((ele) => (!ids.length || ids.indexOf(ele.Key) > -1) && (!type || ele.Type === type))
-    .toList()
-    .map((ele) => ({ id: ele.Key, type: ele.Type, name: placeholders[ele.Key] }));
+  await window.tagsCategories[`${sheetKey}-loaded`];
+  return window.tagsCategories[sheetKey]
+    .filter((ele) => (!ids.length || ids.indexOf(ele.id) > -1) && (!type || ele.type === type));
 }
 
 export function wrapImgsInLinks(container) {

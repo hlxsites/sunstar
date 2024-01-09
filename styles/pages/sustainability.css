@@ -1,0 +1,62 @@
+body.sustainability main .section.full-height > .section-container {
+    height: 100%;
+}
+
+body.sustainability main .block.hero-banner.composite .composite-container h2, body.sustainability main .block.hero-banner.composite .composite-container h3 {
+    margin: 1rem 0;
+}
+
+body.sustainability main .section.bg-image-max-height > .background-image img {
+    height: auto;
+    min-height: 700px;
+}
+
+body.sustainability main .section.image-at-bottom-of-section.with-background-image .section-container picture img {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+body.sustainability main .section.half-image-sizes.with-background-image .section-container picture img {
+    width: 20%;
+}
+
+body.sustainability main .block.hero-banner.composite .composite-container h1 {
+    margin: 0;
+}
+
+/* Tablet & Desktop */
+@media (min-width: 62rem) {
+    body.sustainability main .section.bg-image-max-height > .background-image img {
+        height: 530px;
+    }
+
+    body.sustainability main .block.composite.two-column .composite-item-right img {
+        width: 80%;
+        float: right;
+    }
+
+    body.sustainability main .block.hero-banner.composite .composite-container h1 {
+        margin: 3.5rem 0 2rem;;
+    }
+}
+
+/* only Desktop */
+@media (min-width: 77rem) {
+    body.sustainability main .section.bg-image-max-height > .background-image img {
+        height: 700px;
+    }
+
+    body.sustainability main .block.composite.two-column .composite-item-right img {
+        width: auto;
+    }
+
+}
+
+/* Special breakpoint within Mobile */
+@media (min-width: 42rem) {
+    body.sustainability main .block.composite.two-column .composite-item-left {
+        grid-column: 1 / 2;
+        justify-self: start;
+    }
+}

@@ -3,7 +3,7 @@
 }
 
 .columns.small-margin {
-  margin: 2rem 0 0;
+  margin: 1.25rem 0;
 }
 
 .columns p,
@@ -51,7 +51,7 @@
 .columns h2,
 .columns h3,
 .columns h4 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--h1-font-size-mobile);
   font-weight: var(--font-weight-medium);
   line-height: 1.3em;
   margin: 0 auto 1rem;
@@ -65,11 +65,11 @@
 }
 
 .columns :not(.table) h4 {
-  font-size: var(--heading-font-size-mxs);
+  font-size: var(--h4-font-size-mobile);
 }
 
 .columns :not(.table) h3 {
-  font-size: var(--heading-font-size-ms);
+  font-size: var(--h3-font-size-mobile);
 }
 
 .columns.history h6 {
@@ -103,7 +103,6 @@
   background-color: unset;
   color: var(--tertiary);
   justify-content: flex-start;
-  padding: 0;
 }
 
 .columns a.button.primary.video-link::after {
@@ -144,7 +143,7 @@
   border-bottom: 1px solid var(--primary);
   margin-inline: 0;
   margin-bottom: 1rem;
-  font-size: var(--heading-font-size-xl);
+  font-size: var(--h1-font-size-mobile);
   font-weight: var(--font-weight-small);
 }
 
@@ -212,7 +211,7 @@
 }
 
 .columns.text-layout > div > div h2 {
-  font-size: var(--heading-font-size-mxl);
+  font-size: var(--h1-font-size-mobile);
   margin: 0;
 }
 
@@ -301,6 +300,16 @@
 
 .columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
+}
+
+.columns.block.image-with-label > div {
+  display: flex;
+  gap: unset;
+  margin: 0;
+}
+
+.columns.block.image-with-label > div .img-col > picture {
+  width: 8rem;
 }
 
 /* both autoblocking options for bottom caption */
@@ -402,6 +411,7 @@ div.img-col > video {
   list-style: none;
   padding-bottom: 1rem;
   box-sizing: border-box;
+  padding-left: 0;
 }
 
 .columns.plain-links > div a {
@@ -418,6 +428,7 @@ div.img-col > video {
 
 .columns.plain-links.collapse ul {
   display:none;
+  padding: 0;
 }
 
 .columns.plain-links.collapse ul.active {
@@ -436,7 +447,7 @@ div.img-col > video {
   .columns h2,
   .columns:not(.no-buttons) h3,
   .columns:not(.no-buttons) h4 {
-    font-size: var(--heading-font-size-mxl);
+    font-size: var(--h1-font-size-desktop);
     font-weight: var(--font-weight-small);
     margin: 0 auto 1.5rem;
   }
@@ -617,7 +628,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding, .history) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
@@ -626,6 +637,10 @@ div.img-col > video {
   div.img-col > video {
     height: 469px;
     width: 469px;
+  }
+
+  main .block.columns.big-gap > div {
+    gap: 10.25rem;
   }
 }
 
@@ -676,17 +691,20 @@ div.img-col > video {
 }
 
 @media (min-width: 62rem) {
+  .columns.small-margin {
+    margin: 1.5rem 0;
+  }
+
   .columns.text-and-image-in-column.overlap .button-container a {
     font-size: var(--body-font-size-xl);
     margin: 0 1rem;
   }
 
   .columns :not(.table) h4 {
-    font-size: var(--heading-font-size-ms);
+    font-size: var(--h4-font-size-desktop);
   }
 
   .columns :not(.table) h3 {
-    font-size: var(--heading-font-size-m);
+    font-size: var(--h3-font-size-desktop);
   }
-
 }

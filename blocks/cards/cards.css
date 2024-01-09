@@ -71,6 +71,8 @@ main .block.cards {
   text-align: left;
   color: var(--light-black);
   padding: 20px;
+  height: calc(100% - 12.5rem);
+  box-sizing: border-box;
 }
 
 .cards.hide-body .cards-card-body {
@@ -85,6 +87,7 @@ main .block.cards {
   margin-bottom: 1rem;
   font-size: var(--body-font-size-l);
   color: var(--gray-dark);
+  flex: 1;
 }
 
 .cards.large-text .cards-card-body .date {
@@ -109,6 +112,29 @@ main .block.cards {
   height: 100%;
 }
 
+.cards.light-background .cards-card-image span.icon svg {
+  width: 7rem;
+  height: 7rem;
+  margin-top: 1rem;
+}
+
+main .cards.features-items ul > li {
+  align-items: flex-start;
+}
+
+main .cards.info-points > ul > li {
+  display: flex;
+  box-shadow: none;
+}
+
+main .block.cards.light-background ul > li{
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+  border-bottom: none;
+  margin: 0;
+}
+
 .cards .cards-card-body u {
   text-decoration: none;
 }
@@ -120,22 +146,20 @@ main .block.cards {
 }
 
 .cards .cards-card-body div {
-  height: 100%;
   margin: 0;
 }
 
 .cards .cards-card-body div:last-child {
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* Styles for features-items cards */
 main .cards.features-items h6 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-main .cards.features-items ul > li {
-  align-items: flex-start;
 }
 
 /* Styles for Flat List */
@@ -186,11 +210,6 @@ main .cards.info-points > ul {
   flex-direction: column;
 }
 
-main .cards.info-points > ul > li {
-  display: flex;
-  box-shadow: none;
-}
-
 main .cards.info-points > ul > li:hover {
   box-shadow: none;
 }
@@ -206,7 +225,17 @@ main .cards.machine-parts .cards-card-image {
   height: 9rem;
   flex-shrink: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+main .cards .cards-card-image span.icon.icon-scientific-literature-1 {
+  background-image: url("/icons/scientific-literature-1.svg");
+  width: 84px;
+  height: 84px;
+}
+
 
 main .cards.machine-parts .cards-card-body {
   width: auto;
@@ -311,8 +340,30 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
-.cards.nolink.no-buttons.machine-parts.block > ul{
+main .cards-wrapper .light-background .cards-card-body h3 {
+  color: var(--primary);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-medium);
+}
+
+.cards.nolink.no-buttons.machine-parts.block > ul {
   flex-flow: column;
+}
+
+.cards-card-body .category {
+  color: var(--primary);
+  border: 1px solid;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  width: fit-content;
+  font-size: var(--body-font-size-xs);
+}
+
+.cards-card-body .category:hover {
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  text-decoration: unset;
 }
 
 @media screen and (min-width: 48rem) {
@@ -495,6 +546,14 @@ main .cards-wrapper .machine-parts .cards-card-body h3{
     width: auto;
     height: 12.1875rem;
     flex: 1;
+    margin: 0;
+  }
+
+  main .block.cards.light-background ul > li {
+    padding: 1rem;
+    background-color: var(--transparent-blue-light-color);
+    margin-block: 1.5rem;
+    border-bottom: none;
     margin: 0;
   }
 

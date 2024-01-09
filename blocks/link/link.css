@@ -111,6 +111,13 @@
   flex-grow: 1;
 }
 
+.block.link.breadcrumb.arrow a::after {
+  left: 0;
+  top: 0;
+  padding-inline: 8px;
+  vertical-align: middle;
+}
+
 @media (min-width: 62rem) {
   .block.link {
     margin-bottom: 1.5rem;
