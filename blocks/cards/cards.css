@@ -195,6 +195,14 @@ main .section.cards-container:has(.cards.info-points) h2 {
   object-position: center;
 }
 
+.cards.grid .cards-card-body .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 main .cards.info-points .cards-card-body h4 {
   font-size: var(--heading-font-size-mxs);
   font-weight: var(--font-weight-bold);

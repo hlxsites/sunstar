@@ -5,6 +5,7 @@ export default function decorate(block) {
   const isHero = block.classList.contains('hero-block');
   /* change to ul, li */
   const ul = document.createElement('ul');
+  const grid = block.classList.contains('grid');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.innerHTML = row.innerHTML;
@@ -50,7 +51,9 @@ export default function decorate(block) {
     const title = li.querySelector('.title');
     if (title) {
       [title.textContent] = title.textContent.split('|');
-      title.textContent = cropString(title.textContent, 65);
+      if (!grid) {
+        title.textContent = cropString(title.textContent, 65);
+      }
     }
     ul.append(li);
   });
