@@ -6,7 +6,10 @@ export default async function decorate(block) {
   others.classList.add('others');
   block.querySelectorAll(':scope > div').forEach((div, index) => {
     if (index === 0) {
-      spotlight = div;
+      if (hideSpotlight) {
+        div.classList.add('other');
+        others.appendChild(div);
+      } else spotlight = div;
     } else {
       div.classList.add('other');
       others.appendChild(div);
