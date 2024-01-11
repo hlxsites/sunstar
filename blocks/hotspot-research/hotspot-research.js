@@ -7,9 +7,11 @@ export default function decorate(block) {
       const nexticondiv = document.createElement('div');
       nexticondiv.style.left = [...row.children][1].textContent;
       nexticondiv.style.top = [...row.children][2].textContent;
-      console.log([...row.children][0].innerHTML);
-      nexticondiv.setAttribute('data', [...row.children][0].textContent);
-      console.log(nexticondiv);
+      nexticondiv.setAttribute('data', [...row.children][0].textContent.split(':')[1]);
+      nexticondiv.setAttribute('data-city', [...row.children][0].textContent.split('\n')[2].split(':')[0]);
+      // const y = [...row.children][0].textContent;
+      // console.log(y);
+      // console.log(y.split(':')[1]);
       nexticondiv.addEventListener('click', () => {
         if (!isDesktop.matches) {
           const isOnClick = nexticondiv.classList.contains('onclick');

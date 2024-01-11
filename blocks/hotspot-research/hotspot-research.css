@@ -22,19 +22,29 @@
 .block.hotspot-research > div:nth-child(n+2):focus::after,
 .block.hotspot-research > div:nth-child(n+2).onclick::after {
     opacity: 1;
-    content: attr(data);
+    content: attr(data-city) " : " attr(data);
     position: absolute;
     padding: 15px;
     width: 20vw;
     left: -150%;
     bottom: 150%;
     background-color: var(--white);
-    box-shadow: 0 8px 8px -4px lightgrey;
+    box-shadow: 0 8px 8px -4px lightgrey; 
+    font-size: var(--body-font-size-s);
+    z-index: +1;
+}
+
+[data-city] {
+    color: var(--primary);
+}
+
+.section.hotspot-research-container > .section-container {
+    display: flex;
+}
+
+.section.hotspot-research-container > .section-container > div:first-of-type {
+    flex-basis: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--body-font-size-s);
-    transition: opacity 0.4s linear;
-    z-index: +1;
+    justify-content: flex-end;
 }
