@@ -1,2 +1,5 @@
 mountpoints:
   /: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/sunstar/sunstar
+# Tag pages test
+folders:
+  /healthy-thinking/tag/: /healthy-thinking/tag/tag-template
