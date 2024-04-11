@@ -3,6 +3,7 @@ import {
   getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex, getLanguage, fetchTagsOrCategories } from '../../scripts/scripts.js';
+import { getTagName } from '../../scripts/blocks-utils.js';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
@@ -140,10 +141,10 @@ export default async function decorate(block) {
 
   // Parse the query string into an object
   const queryParams = new URLSearchParams(queryString);
-
+  const tagName = getTagName();
   const type = (blockCfg.type ?? getMetadataNullable('type') ?? queryParams.get('feed-type'))?.trim().toLowerCase();
   const category = (blockCfg.category ?? getMetadataNullable('category' ?? queryParams.get('feed-category')))?.trim().toLowerCase();
-  const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? queryParams.get('feed-tags'))?.trim().toLowerCase();
+  const tags = (blockCfg.tags ?? getMetadataNullable('tags') ?? tagName)?.trim().toLowerCase();
   const omitPageTypes = (blockCfg['omit-page-types'] ?? getMetadataNullable('omit-page-types')
     ?? queryParams.get('feed-omit-page-types'))?.trim().toLowerCase();
   // eslint-disable-next-line prefer-arrow-callback

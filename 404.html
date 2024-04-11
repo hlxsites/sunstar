@@ -41,16 +41,6 @@
 			window.location.replace(newLoc);
     }
 
-    /**
-    * * Redirecting all tag pages
-    */
-    const tagRegex = /(.*\/healthy-thinking\/tag)\/(.+)/;
-    if (tagRegex.test(windowHref)) {
-      window.stop(); // Stop processing this page, make sure no 404 rendering is done
-      const newLoc = windowHref.replace(tagRegex, "$1" + "?feed-tags=" + "$2");
-      window.location.replace(newLoc);
-    }
-
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">

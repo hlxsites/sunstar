@@ -7,6 +7,7 @@ import {
   setMetaTag,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
+import { getTagName } from '../../scripts/blocks-utils.js';
 
 function prependSlash(path) {
   return path.startsWith('/') ? path : `/${path}`;
@@ -28,9 +29,7 @@ async function getTagPageTitle() {
   const type = getMetadata('type') || '';
   const locale = getLanguage();
   const tags = await fetchTagsOrCategories([], 'tags', type, locale);
-  const queryString = window.location.search;
-  const queryParams = new URLSearchParams(queryString);
-  const feedTags = queryParams.get('feed-tags');
+  const feedTags = getTagName();
   let tagPageTitle = '';
   if (feedTags && tags.length) {
     const tag = tags.find((tagItem) => (feedTags.trim() === tagItem.id));

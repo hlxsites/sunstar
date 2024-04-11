@@ -24,7 +24,7 @@ export default async function decorate(block) {
       .join('-');
     tags.forEach((tag) => {
       const prefix = locale === 'en' ? '/' : `/${locale}/`;
-      const hrefVal = `${prefix}${typeKey}/tag?feed-tags=${tag.id}`;
+      const hrefVal = `${prefix}${typeKey}/tag/${tag.id}`;
       const a = document.createElement('a');
       a.href = hrefVal || '#';
       a.textContent = tag.name || tag.id;

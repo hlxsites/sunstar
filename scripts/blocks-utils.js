@@ -95,3 +95,14 @@ export function addTabs(tabs, block) {
     }
   });
 }
+
+export function getTagName() {
+  const urlPathName = window.location.pathname;
+  let tagName = '';
+  const tagRegex = /(^\/healthy-thinking\/tag)\/(.+)/;
+  if (tagRegex.test(urlPathName)) {
+    const pathArr = urlPathName.replace(tagRegex, '$2');
+    tagName = pathArr.endsWith('/') ? pathArr.slice(0, -1) : pathArr;
+  }
+  return tagName;
+}
