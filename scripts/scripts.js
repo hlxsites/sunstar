@@ -631,7 +631,21 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+/**
+ * Redirect tag page with url parameter to
+ * tag page in url path.
+ */
+function redirectTagPage() {
+  const windowHref = window.location.href;
+  const tagRegex = /(.*\/healthy-thinking\/tag)\?feed-tags=(.*)/;
+  if (tagRegex.test(windowHref)) {
+    const newLoc = windowHref.replace(tagRegex, '$1/$2');
+    window.location.replace(newLoc);
+  }
+}
+
 async function loadPage() {
+  redirectTagPage();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
